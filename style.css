@@ -1,0 +1,17 @@
+/*
+Theme Name: Illdy
+Theme URI: http://colorlib.com/wp/themes/illdy/
+Author: Macho Themes
+Author URI: http://colorlib.com
+Description: Illdy is a free premium one page WordPress theme.
+Version: 1.0.5
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Text Domain: illdy
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+@import 'layout/css/main.min.css';
