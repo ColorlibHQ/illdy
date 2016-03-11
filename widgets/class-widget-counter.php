@@ -56,21 +56,25 @@ class Illdy_Widget_Counter extends WP_Widget {
 
         <p>
             <label for="<?php echo $this->get_field_id( 'data_from' ); ?>"><?php _e( 'Data from:', 'illdy' ); ?></label>
+            <span class="widefat" style="font-style: italic; display: block;"><?php _e( 'The number the element should start at.', 'illdy' ); ?></span>
             <input class="widefat" id="<?php echo $this->get_field_id( 'data_from' ); ?>" name="<?php echo $this->get_field_name( 'data_from' ); ?>" type="number" value="<?php echo esc_attr( $data_from ); ?>">
         </p>
 
         <p>
             <label for="<?php echo $this->get_field_id( 'data_to' ); ?>"><?php _e( 'Data to:', 'illdy' ); ?></label>
+            <span class="widefat" style="font-style: italic; display: block;"><?php _e( 'The number the element should end at.', 'illdy' ); ?></span>
             <input class="widefat" id="<?php echo $this->get_field_id( 'data_to' ); ?>" name="<?php echo $this->get_field_name( 'data_to' ); ?>" type="number" value="<?php echo esc_attr( $data_to ); ?>">
         </p>
 
         <p>
             <label for="<?php echo $this->get_field_id( 'data_speed' ); ?>"><?php _e( 'Data speed:', 'illdy' ); ?></label>
+            <span class="widefat" style="font-style: italic; display: block;"><?php _e( 'How long it should take to count between the target numbers.', 'illdy' ); ?></span>
             <input class="widefat" id="<?php echo $this->get_field_id( 'data_speed' ); ?>" name="<?php echo $this->get_field_name( 'data_speed' ); ?>" type="number" value="<?php echo esc_attr( $data_speed ); ?>">
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id( 'data_refresh_interval' ); ?>"><?php _e( 'Data speed:', 'illdy' ); ?></label>
+            <label for="<?php echo $this->get_field_id( 'data_refresh_interval' ); ?>"><?php _e( 'Data refresh interval:', 'illdy' ); ?></label>
+            <span class="widefat" style="font-style: italic; display: block;"><?php _e( 'How often the element should be updated.', 'illdy' ); ?></span>
             <input class="widefat" id="<?php echo $this->get_field_id( 'data_refresh_interval' ); ?>" name="<?php echo $this->get_field_name( 'data_refresh_interval' ); ?>" type="number" value="<?php echo esc_attr( $data_refresh_interval ); ?>">
         </p>
         <?php 

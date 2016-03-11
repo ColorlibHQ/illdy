@@ -8,7 +8,6 @@
  */
 if(!function_exists('illdy_setup')) {
 	add_action( 'after_setup_theme', 'illdy_setup' );
-
 	function illdy_setup() {
 		// Extras
 		require_once( 'inc/extras.php' );
@@ -22,9 +21,10 @@ if(!function_exists('illdy_setup')) {
 		// JetPack
 		require_once( 'inc/jetpack.php' );
 
+		// TGM Plugin Activation
 		require_once( 'inc/tgm-plugin-activation/tgm-plugin-activation.php' );
 
-		// Coponents
+		// Components
 		require_once( 'inc/components/pagination/class.mt-pagination.php' );
 		require_once( 'inc/components/entry-meta/class.mt-entry-meta.php' );
 		require_once( 'inc/components/social-sharing/class.mt-social-sharing.php' );

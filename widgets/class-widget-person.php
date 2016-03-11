@@ -8,14 +8,51 @@ class Illdy_Widget_Person extends WP_Widget {
         parent::__construct( 'illdy_person', __( '[Illdy] - Person', 'illdy' ), array( 'description' => __( 'Add this widget in "Front page - Team Sidebar".', 'illdy' ), ) );
 
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+        add_action( 'admin_footer-widgets.php', array( $this, 'print_scripts' ), 9999 );
     }
 
     /**
      *  Enqueue Scripts
      */
     public function enqueue_scripts() {
+        wp_enqueue_style( 'wp-color-picker' );
+        wp_enqueue_script( 'wp-color-picker' );
+        wp_enqueue_script( 'underscore' );
         wp_enqueue_media();
         wp_enqueue_script( 'illdy-widget-upload-image', get_template_directory_uri() . '/layout/js/widget-upload-image/widget-upload-image.min.js', false, '1.0', true);
+    }
+
+    /**
+     * Print scripts.
+     *
+     * @since 1.0
+     */
+    public function print_scripts() {
+        ?>
+        <script>
+            ( function( $ ){
+                function initColorPicker( widget ) {
+                    widget.find( '.color-picker' ).wpColorPicker( {
+                        change: _.throttle( function() { // For Customizer
+                            $(this).trigger( 'change' );
+                        }, 3000 )
+                    });
+                }
+
+                function onFormUpdate( event, widget ) {
+                    initColorPicker( widget );
+                }
+
+                $( document ).on( 'widget-added widget-updated', onFormUpdate );
+
+                $( document ).ready( function() {
+                    $( '#widgets-right .widget:has(.color-picker)' ).each( function () {
+                        initColorPicker( $( this ) );
+                    } );
+                } );
+            }( jQuery ) );
+        </script>
+        <?php
     }
 
     /**
@@ -36,7 +73,7 @@ class Illdy_Widget_Person extends WP_Widget {
         $facebook_url = !empty( $instance['facebook_url'] ) ? esc_url( $instance['facebook_url'] ) : '';
         $twitter_url = !empty( $instance['twitter_url'] ) ? esc_url( $instance['twitter_url'] ) : '';
         $linkedin_url = !empty( $instance['linkedin_url'] ) ? esc_url( $instance['linkedin_url'] ) : '';
-        $color = ( !empty( $instance['color'] ) ? esc_attr( $instance['color'] ) : '' );
+        $color = ( !empty( $instance['color'] ) ? esc_attr( $instance['color'] ) : '#000000' );
 
         $image_id = illdy_get_image_id_from_image_url( $image );
         $get_attachment_image_src = wp_get_attachment_image_src( $image_id, 'illdy-front-page-person' );
@@ -82,17 +119,6 @@ class Illdy_Widget_Person extends WP_Widget {
         $color = !empty( $instance['color'] ) ? esc_attr( $instance['color'] ) : '';
         ?>
 
-        <script type="text/javascript">
-              //<![CDATA[
-              jQuery(document).ready(function() {
-                  jQuery(' .cw-color-picker' ).each(function(){
-                      var $this = jQuery(this), id = $this.attr('rel');
-                      $this.farbtastic('#' + id);
-                  });
-              });
-              //]]>   
-        </script>
-
         <p>
             <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'illdy' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
@@ -130,9 +156,8 @@ class Illdy_Widget_Person extends WP_Widget {
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id( 'color' ); ?>"><?php _e( 'Color:', 'illdy' ); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id( 'color' ); ?>" name="<?php echo $this->get_field_name( 'color' ); ?>" type="text" value="<?php if( $color ): echo esc_attr( $color ); else: echo '#000000'; endif; ?>" />
-            <div class="cw-color-picker" rel="<?php echo $this->get_field_id( 'color' ); ?>"></div>
+            <label for="<?php echo $this->get_field_id( 'color' ); ?>"><?php _e( 'Color:', 'illdy' ); ?></label><br>
+            <input type="text" name="<?php echo $this->get_field_name( 'color' ); ?>" class="color-picker" id="<?php echo $this->get_field_id( 'color' ); ?>" value="<?php echo $color; ?>" data-default-color="#000000" />
         </p>
         <?php 
     }
@@ -167,13 +192,3 @@ function illdy_register_widget_person () {
     register_widget( 'Illdy_Widget_Person' );
 }
 add_action( 'widgets_init', 'illdy_register_widget_person' );
-
-add_action( 'admin_print_scripts-widgets.php', 'illdy_enqueue_script_farbtastic_person' );
-function illdy_enqueue_script_farbtastic_person() {
-    wp_enqueue_script( 'farbtastic' );
-}
-
-add_action( 'admin_print_styles-widgets.php', 'illd_enqueue_style_farbtastic_person' );
-function illd_enqueue_style_farbtastic_person() {
-    wp_enqueue_style( 'farbtastic' );
-}

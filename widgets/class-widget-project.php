@@ -51,7 +51,7 @@ class Illdy_Widget_Project extends WP_Widget {
      * @param array $instance Previously saved values from database.
      */
     public function form( $instance ) {
-        $title = ! empty( $instance['title'] ) ? sanitize_text_field( $instance['title'] ) : __( '[Illdy] - Project', 'illdy' );
+        $title = !empty( $instance['title'] ) ? sanitize_text_field( $instance['title'] ) : __( '[Illdy] - Project', 'illdy' );
         $image = !empty( $instance['image'] ) ? esc_url( $instance['image'] ) : '';
         $url = !empty( $instance['url'] ) ? sanitize_text_field( $instance['url'] ) : esc_url( '#' );
         ?>

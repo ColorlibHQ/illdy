@@ -413,9 +413,9 @@
 	wp.customize( 'illdy_latest_news_general_show', function( value ) {
 		value.bind( function( newval ) {
 			if( newval == false ) {
-				$( '#services' ).addClass( 'customizer-display-none' );
+				$( '#latest-news' ).addClass( 'customizer-display-none' );
 			} else if( newval == true ) {
-				$( '#services' ).removeClass( 'customizer-display-none' );
+				$( '#latest-news' ).removeClass( 'customizer-display-none' );
 			}
 		} );
 	} );

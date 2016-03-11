@@ -28,11 +28,11 @@ jQuery( document ).ready( function($) {
 
 	// Testimonials OWL Carousel
 	function testimonialsOwlCarousel() {
-		if( $( '.testimonials-carousel' ).length ) {
-			$( '.testimonials-carousel' ).owlCarousel({
+		if( $( '.testimonials-carousel.owl-carousel-enabled' ).length ) {
+			$( '.testimonials-carousel.owl-carousel-enabled' ).owlCarousel({
 				'items': 1,
 				'loop': true,
-				'dots': true,
+				'dots': true
 			});
 		}
 	}

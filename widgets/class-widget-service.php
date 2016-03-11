@@ -6,6 +6,59 @@ class Illdy_Widget_Service extends WP_Widget {
     */
     function __construct() {
         parent::__construct( 'illdy_service', __( '[Illdy] - Service', 'illdy' ), array( 'description' => __( 'Add this widget in "Front page - Services Sidebar".', 'illdy' ), ) );
+    
+        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+        add_action( 'admin_footer-widgets.php', array( $this, 'print_scripts' ), 9999 );
+    }
+
+    /**
+     * Enqueue scripts.
+     *
+     * @since 1.0
+     *
+     * @param string $hook_suffix
+     */
+    public function enqueue_scripts( $hook_suffix ) {
+        if ( 'widgets.php' !== $hook_suffix ) {
+            return;
+        }
+
+        wp_enqueue_style( 'wp-color-picker' );
+        wp_enqueue_script( 'wp-color-picker' );
+        wp_enqueue_script( 'underscore' );
+    }
+
+    /**
+     * Print scripts.
+     *
+     * @since 1.0
+     */
+    public function print_scripts() {
+        ?>
+        <script>
+            ( function( $ ){
+                function initColorPicker( widget ) {
+                    widget.find( '.color-picker' ).wpColorPicker( {
+                        change: _.throttle( function() { // For Customizer
+                            $(this).trigger( 'change' );
+                        }, 3000 )
+                    });
+                }
+
+                function onFormUpdate( event, widget ) {
+                    initColorPicker( widget );
+                }
+
+                $( document ).on( 'widget-added widget-updated', onFormUpdate );
+
+                $( document ).ready( function() {
+                    $( '#widgets-right .widget:has(.color-picker)' ).each( function () {
+                        initColorPicker( $( this ) );
+                    } );
+                } );
+            }( jQuery ) );
+        </script>
+        <?php
     }
 
     /**
@@ -22,7 +75,7 @@ class Illdy_Widget_Service extends WP_Widget {
         $title = ( !empty( $instance['title'] ) ? esc_html( $instance['title'] ) : '' );
         $icon = ( !empty( $instance['icon'] ) ? esc_attr( $instance['icon'] ) : '' );
         $entry = ( !empty( $instance['entry'] ) ? esc_textarea( $instance['entry'] ) : '' );
-        $color = ( !empty( $instance['color'] ) ? esc_attr( $instance['color'] ) : '' );
+        $color = ( !empty( $instance['color'] ) ? esc_attr( $instance['color'] ) : '#000000' );
 
         $output = '';
 
@@ -84,12 +137,12 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-arrows-v' => 'fa-arrows-v',
             'fa-asterisk' => 'fa-asterisk',
             'fa-at' => 'fa-at',
-            'fa-automobile(alias)' => 'fa-automobile(alias)',
+            'fa-automobile' => 'fa-automobile',
             'fa-backward' => 'fa-backward',
             'fa-ban' => 'fa-ban',
-            'fa-bank(alias)' => 'fa-bank(alias)',
+            'fa-bank' => 'fa-bank',
             'fa-bar-chart' => 'fa-bar-chart',
-            'fa-bar-chart-o(alias)' => 'fa-bar-chart-o(alias)',
+            'fa-bar-chart-o' => 'fa-bar-chart-o',
             'fa-barcode' => 'fa-barcode',
             'fa-bars' => 'fa-bars',
             'fa-bed' => 'fa-bed',
@@ -105,7 +158,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-birthday-cake' => 'fa-birthday-cake',
             'fa-bitbucket' => 'fa-bitbucket',
             'fa-bitbucket-square' => 'fa-bitbucket-square',
-            'fa-bitcoin(alias)' => 'fa-bitcoin(alias)',
+            'fa-bitcoin' => 'fa-bitcoin',
             'fa-bold' => 'fa-bold',
             'fa-bolt' => 'fa-bolt',
             'fa-bomb' => 'fa-bomb',
@@ -121,7 +174,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-bullseye' => 'fa-bullseye',
             'fa-bus' => 'fa-bus',
             'fa-buysellads' => 'fa-buysellads',
-            'fa-cab(alias)' => 'fa-cab(alias)',
+            'fa-cab' => 'fa-cab',
             'fa-calculator' => 'fa-calculator',
             'fa-calendar' => 'fa-calendar',
             'fa-calendar-o' => 'fa-calendar-o',
@@ -146,7 +199,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-cc-stripe' => 'fa-cc-stripe',
             'fa-cc-visa' => 'fa-cc-visa',
             'fa-certificate' => 'fa-certificate',
-            'fa-chain(alias)' => 'fa-chain(alias)',
+            'fa-chain' => 'fa-chain',
             'fa-chain-broken' => 'fa-chain-broken',
             'fa-check' => 'fa-check',
             'fa-check-circle' => 'fa-check-circle',
@@ -168,11 +221,11 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-circle-thin' => 'fa-circle-thin',
             'fa-clipboard' => 'fa-clipboard',
             'fa-clock-o' => 'fa-clock-o',
-            'fa-close(alias)' => 'fa-close(alias)',
+            'fa-close' => 'fa-close',
             'fa-cloud' => 'fa-cloud',
             'fa-cloud-download' => 'fa-cloud-download',
             'fa-cloud-upload' => 'fa-cloud-upload',
-            'fa-cny(alias)' => 'fa-cny(alias)',
+            'fa-cny' => 'fa-cny',
             'fa-code' => 'fa-code',
             'fa-code-fork' => 'fa-code-fork',
             'fa-codepen' => 'fa-codepen',
@@ -187,7 +240,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-compass' => 'fa-compass',
             'fa-compress' => 'fa-compress',
             'fa-connectdevelop' => 'fa-connectdevelop',
-            'fa-copy(alias)' => 'fa-copy(alias)',
+            'fa-copy' => 'fa-copy',
             'fa-copyright' => 'fa-copyright',
             'fa-credit-card' => 'fa-credit-card',
             'fa-crop' => 'fa-crop',
@@ -195,24 +248,24 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-css3' => 'fa-css3',
             'fa-cube' => 'fa-cube',
             'fa-cubes' => 'fa-cubes',
-            'fa-cut(alias)' => 'fa-cut(alias)',
+            'fa-cut' => 'fa-cut',
             'fa-cutlery' => 'fa-cutlery',
-            'fa-dashboard(alias)' => 'fa-dashboard(alias)',
+            'fa-dashboard' => 'fa-dashboard',
             'fa-dashcube' => 'fa-dashcube',
             'fa-database' => 'fa-database',
-            'fa-dedent(alias)' => 'fa-dedent(alias)',
+            'fa-dedent' => 'fa-dedent',
             'fa-delicious' => 'fa-delicious',
             'fa-desktop' => 'fa-desktop',
             'fa-deviantart' => 'fa-deviantart',
             'fa-diamond' => 'fa-diamond',
             'fa-digg' => 'fa-digg',
-            'fa-dollar(alias)' => 'fa-dollar(alias)',
+            'fa-dollar' => 'fa-dollar',
             'fa-dot-circle-o' => 'fa-dot-circle-o',
             'fa-download' => 'fa-download',
             'fa-dribbble' => 'fa-dribbble',
             'fa-dropbox' => 'fa-dropbox',
             'fa-drupal' => 'fa-drupal',
-            'fa-edit(alias)' => 'fa-edit(alias)',
+            'fa-edit' => 'fa-edit',
             'fa-eject' => 'fa-eject',
             'fa-ellipsis-h' => 'fa-ellipsis-h',
             'fa-ellipsis-v' => 'fa-ellipsis-v',
@@ -222,7 +275,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-envelope-square' => 'fa-envelope-square',
             'fa-eraser' => 'fa-eraser',
             'fa-eur' => 'fa-eur',
-            'fa-euro(alias)' => 'fa-euro(alias)',
+            'fa-euro' => 'fa-euro',
             'fa-exchange' => 'fa-exchange',
             'fa-exclamation' => 'fa-exclamation',
             'fa-exclamation-circle' => 'fa-exclamation-circle',
@@ -234,7 +287,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-eye-slash' => 'fa-eye-slash',
             'fa-eyedropper' => 'fa-eyedropper',
             'fa-facebook' => 'fa-facebook',
-            'fa-facebook-f(alias)' => 'fa-facebook-f(alias)',
+            'fa-facebook-f' => 'fa-facebook-f',
             'fa-facebook-official' => 'fa-facebook-official',
             'fa-facebook-square' => 'fa-facebook-square',
             'fa-fast-backward' => 'fa-fast-backward',
@@ -248,18 +301,18 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-file-code-o' => 'fa-file-code-o',
             'fa-file-excel-o' => 'fa-file-excel-o',
             'fa-file-image-o' => 'fa-file-image-o',
-            'fa-file-movie-o(alias)' => 'fa-file-movie-o(alias)',
+            'fa-file-movie-o' => 'fa-file-movie-o',
             'fa-file-o' => 'fa-file-o',
             'fa-file-pdf-o' => 'fa-file-pdf-o',
-            'fa-file-photo-o(alias)' => 'fa-file-photo-o(alias)',
-            'fa-file-picture-o(alias)' => 'fa-file-picture-o(alias)',
+            'fa-file-photo-o' => 'fa-file-photo-o',
+            'fa-file-picture-o' => 'fa-file-picture-o',
             'fa-file-powerpoint-o' => 'fa-file-powerpoint-o',
-            'fa-file-sound-o(alias)' => 'fa-file-sound-o(alias)',
+            'fa-file-sound-o' => 'fa-file-sound-o',
             'fa-file-text' => 'fa-file-text',
             'fa-file-text-o' => 'fa-file-text-o',
             'fa-file-video-o' => 'fa-file-video-o',
             'fa-file-word-o' => 'fa-file-word-o',
-            'fa-file-zip-o(alias)' => 'fa-file-zip-o(alias)',
+            'fa-file-zip-o' => 'fa-file-zip-o',
             'fa-files-o' => 'fa-files-o',
             'fa-film' => 'fa-film',
             'fa-filter' => 'fa-filter',
@@ -268,7 +321,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-flag' => 'fa-flag',
             'fa-flag-checkered' => 'fa-flag-checkered',
             'fa-flag-o' => 'fa-flag-o',
-            'fa-flash(alias)' => 'fa-flash(alias)',
+            'fa-flash' => 'fa-flash',
             'fa-flask' => 'fa-flask',
             'fa-flickr' => 'fa-flickr',
             'fa-floppy-o' => 'fa-floppy-o',
@@ -285,17 +338,17 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-gamepad' => 'fa-gamepad',
             'fa-gavel' => 'fa-gavel',
             'fa-gbp' => 'fa-gbp',
-            'fa-ge(alias)' => 'fa-ge(alias)',
-            'fa-gear(alias)' => 'fa-gear(alias)',
-            'fa-gears(alias)' => 'fa-gears(alias)',
-            'fa-genderless(alias)' => 'fa-genderless(alias)',
+            'fa-ge' => 'fa-ge',
+            'fa-gear' => 'fa-gear',
+            'fa-gears' => 'fa-gears',
+            'fa-genderless' => 'fa-genderless',
             'fa-gift' => 'fa-gift',
             'fa-git' => 'fa-git',
             'fa-git-square' => 'fa-git-square',
             'fa-github' => 'fa-github',
             'fa-github-alt' => 'fa-github-alt',
             'fa-github-square' => 'fa-github-square',
-            'fa-gittip(alias)' => 'fa-gittip(alias)',
+            'fa-gittip' => 'fa-gittip',
             'fa-glass' => 'fa-glass',
             'fa-globe' => 'fa-globe',
             'fa-google' => 'fa-google',
@@ -304,7 +357,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-google-wallet' => 'fa-google-wallet',
             'fa-graduation-cap' => 'fa-graduation-cap',
             'fa-gratipay' => 'fa-gratipay',
-            'fa-group(alias)' => 'fa-group(alias)',
+            'fa-group' => 'fa-group',
             'fa-h-square' => 'fa-h-square',
             'fa-hacker-news' => 'fa-hacker-news',
             'fa-hand-o-down' => 'fa-hand-o-down',
@@ -320,17 +373,17 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-history' => 'fa-history',
             'fa-home' => 'fa-home',
             'fa-hospital-o' => 'fa-hospital-o',
-            'fa-hotel(alias)' => 'fa-hotel(alias)',
+            'fa-hotel' => 'fa-hotel',
             'fa-html5' => 'fa-html5',
             'fa-ils' => 'fa-ils',
-            'fa-image(alias)' => 'fa-image(alias)',
+            'fa-image' => 'fa-image',
             'fa-inbox' => 'fa-inbox',
             'fa-indent' => 'fa-indent',
             'fa-info' => 'fa-info',
             'fa-info-circle' => 'fa-info-circle',
             'fa-inr' => 'fa-inr',
             'fa-instagram' => 'fa-instagram',
-            'fa-institution(alias)' => 'fa-institution(alias)',
+            'fa-institution' => 'fa-institution',
             'fa-ioxhost' => 'fa-ioxhost',
             'fa-italic' => 'fa-italic',
             'fa-joomla' => 'fa-joomla',
@@ -345,14 +398,14 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-lastfm-square' => 'fa-lastfm-square',
             'fa-leaf' => 'fa-leaf',
             'fa-leanpub' => 'fa-leanpub',
-            'fa-legal(alias)' => 'fa-legal(alias)',
+            'fa-legal' => 'fa-legal',
             'fa-lemon-o' => 'fa-lemon-o',
             'fa-level-down' => 'fa-level-down',
             'fa-level-up' => 'fa-level-up',
-            'fa-life-bouy(alias)' => 'fa-life-bouy(alias)',
-            'fa-life-buoy(alias)' => 'fa-life-buoy(alias)',
+            'fa-life-bouy' => 'fa-life-bouy',
+            'fa-life-buoy' => 'fa-life-buoy',
             'fa-life-ring' => 'fa-life-ring',
-            'fa-life-saver(alias)' => 'fa-life-saver(alias)',
+            'fa-life-saver' => 'fa-life-saver',
             'fa-lightbulb-o' => 'fa-lightbulb-o',
             'fa-line-chart' => 'fa-line-chart',
             'fa-link' => 'fa-link',
@@ -371,9 +424,9 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-long-arrow-up' => 'fa-long-arrow-up',
             'fa-magic' => 'fa-magic',
             'fa-magnet' => 'fa-magnet',
-            'fa-mail-forward(alias)' => 'fa-mail-forward(alias)',
-            'fa-mail-reply(alias)' => 'fa-mail-reply(alias)',
-            'fa-mail-reply-all(alias)' => 'fa-mail-reply-all(alias)',
+            'fa-mail-forward' => 'fa-mail-forward',
+            'fa-mail-reply' => 'fa-mail-reply',
+            'fa-mail-reply-all' => 'fa-mail-reply-all',
             'fa-male' => 'fa-male',
             'fa-map-marker' => 'fa-map-marker',
             'fa-mars' => 'fa-mars',
@@ -394,13 +447,13 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-minus-square' => 'fa-minus-square',
             'fa-minus-square-o' => 'fa-minus-square-o',
             'fa-mobile' => 'fa-mobile',
-            'fa-mobile-phone(alias)' => 'fa-mobile-phone(alias)',
+            'fa-mobile-phone' => 'fa-mobile-phone',
             'fa-money' => 'fa-money',
             'fa-moon-o' => 'fa-moon-o',
-            'fa-mortar-board(alias)' => 'fa-mortar-board(alias)',
+            'fa-mortar-board' => 'fa-mortar-board',
             'fa-motorcycle' => 'fa-motorcycle',
             'fa-music' => 'fa-music',
-            'fa-navicon(alias)' => 'fa-navicon(alias)',
+            'fa-navicon' => 'fa-navicon',
             'fa-neuter' => 'fa-neuter',
             'fa-newspaper-o' => 'fa-newspaper-o',
             'fa-openid' => 'fa-openid',
@@ -411,7 +464,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-paper-plane-o' => 'fa-paper-plane-o',
             'fa-paperclip' => 'fa-paperclip',
             'fa-paragraph' => 'fa-paragraph',
-            'fa-paste(alias)' => 'fa-paste(alias)',
+            'fa-paste' => 'fa-paste',
             'fa-pause' => 'fa-pause',
             'fa-paw' => 'fa-paw',
             'fa-paypal' => 'fa-paypal',
@@ -420,7 +473,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-pencil-square-o' => 'fa-pencil-square-o',
             'fa-phone' => 'fa-phone',
             'fa-phone-square' => 'fa-phone-square',
-            'fa-photo(alias)' => 'fa-photo(alias)',
+            'fa-photo' => 'fa-photo',
             'fa-picture-o' => 'fa-picture-o',
             'fa-pie-chart' => 'fa-pie-chart',
             'fa-pied-piper' => 'fa-pied-piper',
@@ -446,47 +499,47 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-question-circle' => 'fa-question-circle',
             'fa-quote-left' => 'fa-quote-left',
             'fa-quote-right' => 'fa-quote-right',
-            'fa-ra(alias)' => 'fa-ra(alias)',
+            'fa-ra' => 'fa-ra',
             'fa-random' => 'fa-random',
             'fa-rebel' => 'fa-rebel',
             'fa-recycle' => 'fa-recycle',
             'fa-reddit' => 'fa-reddit',
             'fa-reddit-square' => 'fa-reddit-square',
             'fa-refresh' => 'fa-refresh',
-            'fa-remove(alias)' => 'fa-remove(alias)',
+            'fa-remove' => 'fa-remove',
             'fa-renren' => 'fa-renren',
-            'fa-reorder(alias)' => 'fa-reorder(alias)',
+            'fa-reorder' => 'fa-reorder',
             'fa-repeat' => 'fa-repeat',
             'fa-reply' => 'fa-reply',
             'fa-reply-all' => 'fa-reply-all',
             'fa-retweet' => 'fa-retweet',
-            'fa-rmb(alias)' => 'fa-rmb(alias)',
+            'fa-rmb' => 'fa-rmb',
             'fa-road' => 'fa-road',
             'fa-rocket' => 'fa-rocket',
-            'fa-rotate-left(alias)' => 'fa-rotate-left(alias)',
-            'fa-rotate-right(alias)' => 'fa-rotate-right(alias)',
-            'fa-rouble(alias)' => 'fa-rouble(alias)',
+            'fa-rotate-left' => 'fa-rotate-left',
+            'fa-rotate-right' => 'fa-rotate-right',
+            'fa-rouble' => 'fa-rouble',
             'fa-rss' => 'fa-rss',
             'fa-rss-square' => 'fa-rss-square',
             'fa-rub' => 'fa-rub',
-            'fa-ruble(alias)' => 'fa-ruble(alias)',
-            'fa-rupee(alias)' => 'fa-rupee(alias)',
-            'fa-save(alias)' => 'fa-save(alias)',
+            'fa-ruble' => 'fa-ruble',
+            'fa-rupee' => 'fa-rupee',
+            'fa-save' => 'fa-save',
             'fa-scissors' => 'fa-scissors',
             'fa-search' => 'fa-search',
             'fa-search-minus' => 'fa-search-minus',
             'fa-search-plus' => 'fa-search-plus',
             'fa-sellsy' => 'fa-sellsy',
-            'fa-send(alias)' => 'fa-send(alias)',
-            'fa-send-o(alias)' => 'fa-send-o(alias)',
+            'fa-send' => 'fa-send',
+            'fa-send-o' => 'fa-send-o',
             'fa-server' => 'fa-server',
             'fa-share' => 'fa-share',
             'fa-share-alt' => 'fa-share-alt',
             'fa-share-alt-square' => 'fa-share-alt-square',
             'fa-share-square' => 'fa-share-square',
             'fa-share-square-o' => 'fa-share-square-o',
-            'fa-shekel(alias)' => 'fa-shekel(alias)',
-            'fa-sheqel(alias)' => 'fa-sheqel(alias)',
+            'fa-shekel' => 'fa-shekel',
+            'fa-sheqel' => 'fa-sheqel',
             'fa-shield' => 'fa-shield',
             'fa-ship' => 'fa-ship',
             'fa-shirtsinbulk' => 'fa-shirtsinbulk',
@@ -502,7 +555,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-sliders' => 'fa-sliders',
             'fa-slideshare' => 'fa-slideshare',
             'fa-smile-o' => 'fa-smile-o',
-            'fa-soccer-ball-o(alias)' => 'fa-soccer-ball-o(alias)',
+            'fa-soccer-ball-o' => 'fa-soccer-ball-o',
             'fa-sort' => 'fa-sort',
             'fa-sort-alpha-asc' => 'fa-sort-alpha-asc',
             'fa-sort-alpha-desc' => 'fa-sort-alpha-desc',
@@ -510,10 +563,10 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-sort-amount-desc' => 'fa-sort-amount-desc',
             'fa-sort-asc' => 'fa-sort-asc',
             'fa-sort-desc' => 'fa-sort-desc',
-            'fa-sort-down(alias)' => 'fa-sort-down(alias)',
+            'fa-sort-down' => 'fa-sort-down',
             'fa-sort-numeric-asc' => 'fa-sort-numeric-asc',
             'fa-sort-numeric-desc' => 'fa-sort-numeric-desc',
-            'fa-sort-up(alias)' => 'fa-sort-up(alias)',
+            'fa-sort-up' => 'fa-sort-up',
             'fa-soundcloud' => 'fa-soundcloud',
             'fa-space-shuttle' => 'fa-space-shuttle',
             'fa-spinner' => 'fa-spinner',
@@ -525,8 +578,8 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-stack-overflow' => 'fa-stack-overflow',
             'fa-star' => 'fa-star',
             'fa-star-half' => 'fa-star-half',
-            'fa-star-half-empty(alias)' => 'fa-star-half-empty(alias)',
-            'fa-star-half-full(alias)' => 'fa-star-half-full(alias)',
+            'fa-star-half-empty' => 'fa-star-half-empty',
+            'fa-star-half-full' => 'fa-star-half-full',
             'fa-star-half-o' => 'fa-star-half-o',
             'fa-star-o' => 'fa-star-o',
             'fa-steam' => 'fa-steam',
@@ -544,7 +597,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-suitcase' => 'fa-suitcase',
             'fa-sun-o' => 'fa-sun-o',
             'fa-superscript' => 'fa-superscript',
-            'fa-support(alias)' => 'fa-support(alias)',
+            'fa-support' => 'fa-support',
             'fa-table' => 'fa-table',
             'fa-tablet' => 'fa-tablet',
             'fa-tachometer' => 'fa-tachometer',
@@ -569,12 +622,12 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-times-circle' => 'fa-times-circle',
             'fa-times-circle-o' => 'fa-times-circle-o',
             'fa-tint' => 'fa-tint',
-            'fa-toggle-down(alias)' => 'fa-toggle-down(alias)',
-            'fa-toggle-left(alias)' => 'fa-toggle-left(alias)',
+            'fa-toggle-down' => 'fa-toggle-down',
+            'fa-toggle-left' => 'fa-toggle-left',
             'fa-toggle-off' => 'fa-toggle-off',
             'fa-toggle-on' => 'fa-toggle-on',
-            'fa-toggle-right(alias)' => 'fa-toggle-right(alias)',
-            'fa-toggle-up(alias)' => 'fa-toggle-up(alias)',
+            'fa-toggle-right' => 'fa-toggle-right',
+            'fa-toggle-up' => 'fa-toggle-up',
             'fa-train' => 'fa-train',
             'fa-transgender' => 'fa-transgender',
             'fa-transgender-alt' => 'fa-transgender-alt',
@@ -588,7 +641,7 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-tty' => 'fa-tty',
             'fa-tumblr' => 'fa-tumblr',
             'fa-tumblr-square' => 'fa-tumblr-square',
-            'fa-turkish-lira(alias)' => 'fa-turkish-lira(alias)',
+            'fa-turkish-lira' => 'fa-turkish-lira',
             'fa-twitch' => 'fa-twitch',
             'fa-twitter' => 'fa-twitter',
             'fa-twitter-square' => 'fa-twitter-square',
@@ -596,10 +649,10 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-underline' => 'fa-underline',
             'fa-undo' => 'fa-undo',
             'fa-university' => 'fa-university',
-            'fa-unlink(alias)' => 'fa-unlink(alias)',
+            'fa-unlink' => 'fa-unlink',
             'fa-unlock' => 'fa-unlock',
             'fa-unlock-alt' => 'fa-unlock-alt',
-            'fa-unsorted(alias)' => 'fa-unsorted(alias)',
+            'fa-unsorted' => 'fa-unsorted',
             'fa-upload' => 'fa-upload',
             'fa-usd' => 'fa-usd',
             'fa-user' => 'fa-user',
@@ -619,29 +672,29 @@ class Illdy_Widget_Service extends WP_Widget {
             'fa-volume-down' => 'fa-volume-down',
             'fa-volume-off' => 'fa-volume-off',
             'fa-volume-up' => 'fa-volume-up',
-            'fa-warning(alias)' => 'fa-warning(alias)',
-            'fa-wechat(alias)' => 'fa-wechat(alias)',
+            'fa-warning' => 'fa-warning',
+            'fa-wechat' => 'fa-wechat',
             'fa-weibo' => 'fa-weibo',
             'fa-weixin' => 'fa-weixin',
             'fa-whatsapp' => 'fa-whatsapp',
             'fa-wheelchair' => 'fa-wheelchair',
             'fa-wifi' => 'fa-wifi',
             'fa-windows' => 'fa-windows',
-            'fa-won(alias)' => 'fa-won(alias)',
+            'fa-won' => 'fa-won',
             'fa-wordpress' => 'fa-wordpress',
             'fa-wrench' => 'fa-wrench',
             'fa-xing' => 'fa-xing',
             'fa-xing-square' => 'fa-xing-square',
             'fa-yahoo' => 'fa-yahoo',
             'fa-yelp' => 'fa-yelp',
-            'fa-yen(alias)' => 'fa-yen(alias)',
+            'fa-yen' => 'fa-yen',
             'fa-youtube' => 'fa-youtube',
             'fa-youtube-play' => 'fa-youtube-play',
             'fa-youtube-square' => 'fa-youtube-square'
         );
 
         foreach( $icons as $icon ) {
-              $all_icons[$icon] = $icon;
+            $all_icons[$icon] = $icon;
         }
 
         return $all_icons;
@@ -662,17 +715,6 @@ class Illdy_Widget_Service extends WP_Widget {
 
         $get_fontawesome_icons = $this->get_fontawesome_icons();
         ?>
-
-        <script type="text/javascript">
-              //<![CDATA[
-              jQuery(document).ready(function() {
-                  jQuery(' .cw-color-picker' ).each(function(){
-                      var $this = jQuery(this), id = $this.attr('rel');
-                      $this.farbtastic('#' + id);
-                  });
-              });
-              //]]>   
-        </script>
 
         <p>
             <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'illdy' ); ?></label>
@@ -695,9 +737,8 @@ class Illdy_Widget_Service extends WP_Widget {
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id( 'color' ); ?>"><?php _e( 'Color:', 'illdy' ); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id( 'color' ); ?>" name="<?php echo $this->get_field_name( 'color' ); ?>" type="text" value="<?php if( $color ): echo esc_attr( $color ); else: echo '#000000'; endif; ?>" />
-            <div class="cw-color-picker" rel="<?php echo $this->get_field_id( 'color' ); ?>"></div>
+            <label for="<?php echo $this->get_field_id( 'color' ); ?>"><?php _e( 'Color:', 'illdy' ); ?></label><br>
+            <input type="text" name="<?php echo $this->get_field_name( 'color' ); ?>" class="color-picker" id="<?php echo $this->get_field_id( 'color' ); ?>" value="<?php echo $color; ?>" data-default-color="#000000" />
         </p>
     <?php 
     }
@@ -727,14 +768,4 @@ class Illdy_Widget_Service extends WP_Widget {
 add_action( 'widgets_init', 'illdy_register_widget_service' );
 function illdy_register_widget_service () {
     register_widget( 'Illdy_Widget_Service' );
-}
-
-add_action( 'admin_print_scripts-widgets.php', 'illdy_enqueue_script_farbtastic_service' );
-function illdy_enqueue_script_farbtastic_service() {
-    wp_enqueue_script( 'farbtastic' );
-}
-
-add_action( 'admin_print_styles-widgets.php', 'illd_enqueue_style_farbtastic_service' );
-function illd_enqueue_style_farbtastic_service() {
-    wp_enqueue_style( 'farbtastic' );
 }

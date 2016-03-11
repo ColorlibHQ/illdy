@@ -1,3 +1,22 @@
+### v1.0.9
+	- Has been fixed Phone Number and E-mail Address from Customizer.
+
+### v1.0.8
+	- Has been generated POT file.
+	- Has been fixed the checkbox from customizer for Latest News section.
+	- Has been fixed Testimonials section when are added one post.
+
+### v1.0.7
+	- Has been added the background on preloader.
+	- Has been changed the link in footer.
+	- Has been changed the author name from style file.
+
+### v1.0.6
+	- Has been changed the color picker for custom widgets: Skill, Service and Person.
+	- Has been removed alias text from Font Awesome.
+	- Has been added the descriptions on fields from Counter widget.
+	- Has been added sanitize function for checkboxs from customizer.
+
 ### v1.0.5
 	- Has been removed JSON widgets importer function.
 	- Has been added the preloader.

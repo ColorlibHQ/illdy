@@ -37,15 +37,16 @@ $number_of_posts = get_theme_mod( 'illdy_testimonials_number_of_posts', absint( 
 		);
 		?>
 		<?php $jetpack_testimonial_query = new WP_Query( $jetpack_testimonial_query_args ); ?>
+		<?php $count_posts = wp_count_posts( 'jetpack-testimonial' ); ?>
 		<?php if( $jetpack_testimonial_query->have_posts() ): ?>
 			<div class="section-content">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-10 col-sm-offset-1 no-padding">
-							<div class="testimonials-carousel">
+							<div class="testimonials-carousel <?php if( $count_posts->publish > 1 ): echo 'owl-carousel-enabled'; endif; ?>">
 								<?php while( $jetpack_testimonial_query->have_posts() ): ?>
 									<?php $jetpack_testimonial_query->the_post(); ?>
-									<div class="carousel-testimonial">
+									<div class="carousel-testimonial" style="<?php if( $count_posts->publish == 1 ): echo 'margin-bottom: 42px;'; endif; ?>">
 										<div class="testimonial-image">
 											<?php the_post_thumbnail( $post->ID, 'illdy-front-page-testimonials' ); ?>
 										</div><!--/.testimonial-image-->
@@ -57,7 +58,7 @@ $number_of_posts = get_theme_mod( 'illdy_testimonials_number_of_posts', absint( 
 										</div><!--/.testimonial-meta-->
 									</div><!--/.carousel-testimonial-->
 								<?php endwhile; ?>
-							</div><!--/.testimonials-carousel-->
+							</div><!--/.testimonials-carousel.owl-carousel-enabled-->
 						</div><!--/.col-sm-10.col-sm-offset-1.no-padding-->
 					</div><!--/.row-->
 				</div><!--/.container-->

@@ -10,6 +10,7 @@
 $img_logo = get_theme_mod( 'illdy_img_logo', esc_url( get_template_directory_uri() . '/layout/images/header-logo.png' ) );
 $text_logo = get_theme_mod( 'illdy_text_logo', esc_html__('Illdy', 'illdy') );
 $jumbotron_general_image = get_theme_mod( 'illdy_jumbotron_general_image', esc_url( get_template_directory_uri() . '/layout/images/front-page/front-page-header.png' ) );
+$preloader_enable = get_theme_mod( 'illdy_preloader_enable', 1 );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -19,6 +20,9 @@ $jumbotron_general_image = get_theme_mod( 'illdy_jumbotron_general_image', esc_u
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
+		<?php if( $preloader_enable == 1 ): ?>
+			<div class="pace-overlay"></div>
+		<?php endif; ?>
 		<header id="header" class="<?php if( is_front_page() ): echo 'header-front-page'; else: echo 'header-blog'; endif; ?>" style="background-image: url('<?php if( is_front_page() ): echo ( ( $jumbotron_general_image ) ? esc_url( $jumbotron_general_image ) : '' ); else: echo esc_url( get_header_image() ); endif; ?>');">
 			<div class="top-header">
 				<div class="container">

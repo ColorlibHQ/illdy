@@ -74,6 +74,26 @@
         )
     );
 
+    // Background Color
+    $wp_customize->add_setting(
+        $prefix . '_preloader_background_color',
+        array(
+            'sanitize_callback' => 'sanitize_hex_color',
+            'default'           => '#ffffff',
+        )
+    );
+    $wp_customize->add_control( 
+        new WP_Customize_Color_Control( 
+        $wp_customize, 
+        $prefix . '_preloader_background_color',
+        array(
+            'label'     => __( 'Background Color', 'illdy' ),
+            'section'   => $prefix . '_preloader_section',
+            'settings'  => $prefix . '_preloader_background_color',
+            'priority'  => 2
+        ) ) 
+    );
+
     // Primary Color
     $wp_customize->add_setting(
         $prefix . '_preloader_primary_color',
@@ -90,7 +110,7 @@
             'label'     => __( 'Primary Color', 'illdy' ),
             'section'   => $prefix . '_preloader_section',
             'settings'  => $prefix . '_preloader_primary_color',
-            'priority'  => 2
+            'priority'  => 3
         ) ) 
     );
 
@@ -110,7 +130,7 @@
             'label'     => __( 'Secondly Color', 'illdy' ),
             'section'   => $prefix . '_preloader_section',
             'settings'  => $prefix . '_preloader_secondly_color',
-            'priority'  => 3
+            'priority'  => 4
         ) ) 
     );
 
@@ -243,7 +263,7 @@
 	/* email */
     $wp_customize->add_setting( $prefix.'_email',
         array(
-            'sanitize_callback'  => 'sanitize_email',
+            'sanitize_callback'  => 'sanitize_text_field',
             'default'            => esc_html__( 'contact@site.com', 'illdy' ),
             'transport'          => 'postMessage'
         )
@@ -263,7 +283,7 @@
     /* phone number */
     $wp_customize->add_setting( $prefix.'_phone',
         array(
-            'sanitize_callback'  => $prefix.'_sanitize_number',
+            'sanitize_callback'  => 'sanitize_text_field',
             'default'            => esc_html__( '(555) 555-5555', 'illdy' ),
             'transport'          => 'postMessage'
         )

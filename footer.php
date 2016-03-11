@@ -54,7 +54,7 @@ $img_footer_logo = get_theme_mod( 'illdy_img_footer_logo', esc_url( get_template
 							<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="footer-logo"><img src="<?php echo esc_url( $img_footer_logo ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" /></a>
 						<?php endif; ?>
 						<?php if( $display_copyright == 1 ): ?>
-							<p class="copyright"><span data-customizer="copyright-credit"><?php printf( '%s <a href="%s" title="%s" target="_blank">%s</a>.', __( 'Theme:', 'illdy' ), esc_url( home_url('/') ), __( 'Illdy', 'illdy' ), __( 'Illdy', 'illdy' ) ); ?></span> <?php echo esc_html( $footer_copyright ); ?></p>
+							<p class="copyright"><span data-customizer="copyright-credit"><?php printf( '%s <a href="%s" title="%s" target="_blank">%s</a>.', __( 'Theme:', 'illdy' ), esc_url( 'http://colorlib.com/wp/themes/illdy' ), __( 'Illdy', 'illdy' ), __( 'Illdy', 'illdy' ) ); ?></span> <?php echo esc_html( $footer_copyright ); ?></p>
 						<?php else: ?>
 							<p class="copyright"><?php echo esc_html( $footer_copyright ); ?></p>
 						<?php endif; ?>

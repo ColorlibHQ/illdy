@@ -1,11 +1,11 @@
 === Illdy ===
 
-Contributors: Macho Themes
+Contributors: Colorlib
 Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
 
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 1.0.4
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,17 @@ Illdy is a free premium one page WordPress theme.
 
 
 == Changelog ==
+
+### v1.0.7
+	- Has been added the background on preloader.
+	- Has been changed the link in footer.
+	- Has been changed the author name from style file.
+
+### v1.0.6
+	- Has been changed the color picker for custom widgets: Skill, Service and Person.
+	- Has been removed alias text from Font Awesome.
+	- Has been added the descriptions on fields from Counter widget.
+	- Has been added sanitize function for checkboxs from customizer.
 
 ### v1.0.5
 	- Has been removed JSON widgets importer function.

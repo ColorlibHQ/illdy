@@ -116,14 +116,33 @@ if( !function_exists( 'illdy_customizer_css' ) ) {
     function illdy_customizer_css() {
         $preloader_primary_color = get_theme_mod( 'illdy_preloader_primary_color', '#f1d204' );
         $preloader_secondly_color = get_theme_mod( 'illdy_preloader_secondly_color', '#ffffff' );
+        $preloader_background_color = get_theme_mod( 'illdy_preloader_background_color', '#ffffff' );
 
         $output = '';
 
         $output .= '<style type="text/css">';
             $output .= ( $preloader_primary_color ? '.pace .pace-progress {background-color: '. $preloader_primary_color .'; color: '. $preloader_primary_color .';}' : '' );
             $output .= ( $preloader_primary_color || $preloader_secondly_color ? '.pace .pace-activity {box-shadow: inset 0 0 0 2px '. $preloader_primary_color .', inset 0 0 0 7px '. $preloader_secondly_color .';}' : '' );
+            $output .= ( $preloader_background_color ? '.pace-overlay {background-color: '. $preloader_background_color .';}' : '' );
         $output .= '</style>';
 
         echo $output;
+    }
+}
+
+if( !function_exists( 'illdy_sanitize_checkbox' ) ) {
+    /**
+     * Function to sanitize checkboxes
+     *
+     * @param $value
+     * @return int
+     */
+    function illdy_sanitize_checkbox($value)
+    {
+        if ($value == 1) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
