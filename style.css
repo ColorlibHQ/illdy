@@ -3,15 +3,14 @@ Theme Name: Illdy
 Theme URI: http://colorlib.com/wp/themes/illdy/
 Author: Colorlib
 Author URI: http://colorlib.com
-Description: Illdy is a free premium one page WordPress theme.
-Version: 1.0.9
+Description: Illdy is a stunning multipurpose WordPress theme built based on Bootstrap frontend framework making it fully responsive and mobile friendly. This theme is well suited for business, landing page, portfolio or any other creative websites. This leaves heavy lifting to WordPress Customizer therefore you can create your website on live preview mode. Which means that you can see changes happen on your website in real time as you make them
+Version: 1.0.35
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Tags: blog, e-commerce, portfolio
 Text Domain: illdy
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
-@import 'layout/css/main.min.css';

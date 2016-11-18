@@ -1,24 +1,18 @@
 <?php
 
 /**
- * Class MTL_Extended_Menu_Walker
+ * Class Illdy_Extended_Menu_Walker
  *
  * This file does the color handling of the navmenu walker for the Muscle Core Lite Framework
- *
- * @author		Cristian Raiber
- * @copyright	(c) Copyright by Macho Themes
- * @link		http://www.machothemes.com
- * @package 	Muscle Core Lite
- * @since		Version 1.0
  */
 
 
-if(!class_exists('MTL_Extended_Menu_Walker') ) {
+if(!class_exists('Illdy_Extended_Menu_Walker') ) {
     /**
      * My extended menu walker
      * Supports separators as "ex_separator" arg to wp_nav_menu call
      */
-    class MTL_Extended_Menu_Walker extends Walker_Nav_Menu
+    class Illdy_Extended_Menu_Walker extends Walker_Nav_Menu
     {
         var $db_fields = array('parent' => 'menu_item_parent', 'id' => 'db_id');
 
@@ -102,54 +96,26 @@ if(!class_exists('MTL_Extended_Menu_Walker') ) {
          */
         public static function fallback( $args = array() ) {
 
-            if ( current_user_can( 'manage_options' ) ) {
+            extract( $args );
 
-                extract( $args );
-
-                $fb_output = null;
-                if ( $container ) {
-                    $fb_output = '<' . $container;
-                    if ( $container_id )
-                        $fb_output .= ' id="' . $container_id . '"';
-                    if ( $container_class )
-                        $fb_output .= ' class="' . $container_class . '"';
-                    $fb_output .= '>';
-                }
-                if ( $menu_id )
-                    $fb_output .= ' id="' . $menu_id . '"';
-                if ( $menu_class )
-                    $fb_output .= ' class="' . $menu_class . '"';
-                $fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">'. __('Add a menu', 'illdy'). '</a></li>';
-                if ( $container )
-                    $fb_output .= '</' . $container . '>';
-                echo $fb_output;
-            } else {
-                extract( $args );
-
-                $fb_output = null;
-                if ( $container ) {
-                    $fb_output = '<' . $container;
-                    if ( $container_id )
-                        $fb_output .= ' id="' . $container_id . '"';
-                    if ( $container_class )
-                        $fb_output .= ' class="' . $container_class . '"';
-                    $fb_output .= '>';
-                }
-                if ( $menu_id )
-                    $fb_output .= ' id="' . $menu_id . '"';
-                if ( $menu_class )
-                    $fb_output .= ' class="' . $menu_class . '"';
-                $fb_output .= '<li><a href="'. esc_url( home_url() ) .'" title="'. esc_attr( 'Home', 'illdy' ) .'">'. esc_html( 'Home', 'illdy' ) .'</a></li>';
-                $fb_output .= '<li><a href="#projects" title="'. esc_attr( 'Projects', 'illdy' ) .'">'. esc_html( 'Projects', 'illdy' ) .'</a></li>';
-                $fb_output .= '<li><a href="#testimonials" title="'. esc_attr( 'Testimonials', 'illdy' ) .'">'. esc_html( 'Testimonials', 'illdy' ) .'</a></li>';
-                $fb_output .= '<li><a href="#services" title="'. esc_attr( 'Services', 'illdy' ) .'">'. esc_html( 'Services', 'illdy' ) .'</a></li>';
-                $fb_output .= '<li><a href="#latest-news" title="'. esc_attr( 'News', 'illdy' ) .'">'. esc_html( 'News', 'illdy' ) .'</a></li>';
-                $fb_output .= '<li><a href="#team" title="'. esc_attr( 'Team', 'illdy' ) .'">'. esc_html( 'Team', 'illdy' ) .'</a></li>';
-                $fb_output .= '<li><a href="#contact-us" title="'. esc_attr( 'Contact', 'illdy' ) .'">'. esc_html( 'Contact', 'illdy' ) .'</a></li>';
-                if ( $container )
-                    $fb_output .= '</' . $container . '>';
-                echo $fb_output;
+            $fb_output = null;
+            if ( $container ) {
+                $fb_output = '<' . $container;
+                if ( $container_id )
+                    $fb_output .= ' id="' . $container_id . '"';
+                if ( $container_class )
+                    $fb_output .= ' class="' . $container_class . '"';
+                $fb_output .= '>';
             }
+            if ( $menu_id )
+                $fb_output .= ' id="' . $menu_id . '"';
+            if ( $menu_class )
+                $fb_output .= ' class="' . $menu_class . '"';
+            $fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">'. __('Add a menu', 'illdy'). '</a></li>';
+            if ( $container )
+                $fb_output .= '</' . $container . '>';
+            echo $fb_output;
+            
         }
 
 

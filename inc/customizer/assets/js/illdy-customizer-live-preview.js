@@ -141,16 +141,6 @@
 		} );
 	} );
 
-	/* Social Sharing on single blog posts */
-	wp.customize( 'illdy_enable_social_sharing_blog_posts', function( value ) {
-		value.bind( function( newval ) {
-			if( newval == false ) {
-				$( 'body.single #blog .blog-post .social-links-list' ).addClass( 'customizer-display-none' );
-			} else if( newval == true ) {
-				$( 'body.single #blog .blog-post .social-links-list' ).removeClass( 'customizer-display-none' );
-			}
-		} );
-	} );
 
 	/* Author Info Box on single blog posts */
 	wp.customize( 'illdy_enable_author_box_blog_posts', function( value ) {
@@ -202,33 +192,18 @@
 			if( newval == 'remove-header' ) {
 				$( '#header.header-blog' ).removeAttr( 'style' );
 			} else if( newval == 'random-uploaded-image' ) {
-				$( '#header.header-blog' ).removeAttr( 'style' );
+				// $( '#header.header-blog' ).removeAttr( 'style' );
 			} else if( newval == 'random-default-image' ) {
-				$( '#header.header-blog' ).removeAttr( 'style' );
+				// $( '#header.header-blog' ).removeAttr( 'style' );
 			} else {
 				$( '#header.header-blog' ).css( 'background-image', 'url('+ newval +')' );
 			}
 		} );
 	} );
 
-	// Blog name
-	wp.customize( 'blogname', function( value ) {
-		value.bind( function( newval ) {
-			$( '#header .bottom-header h2' ).html( newval + '<span class="span-dot">.</span>' );
-		} );
-	} );
-
-	// Blog description
-	wp.customize( 'blogdescription', function( value ) {
-		value.bind( function( newval ) {
-			$( '#header .bottom-header p' ).html( newval );
-		} );
-	} );
-
 	// Image
 	wp.customize( 'illdy_jumbotron_general_image', function( value ) {
 		value.bind( function( newval ) {
-			console.log( newval );
 			if( newval == '' ) {
 				$( '#header.header-front-page' ).removeAttr( 'style' );
 			} else {

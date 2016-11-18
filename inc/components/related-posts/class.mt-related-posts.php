@@ -1,22 +1,17 @@
 <?php
 
 /**
- * Class MTL_Related_Posts_Output
+ * Class Illdy_Related_Posts_Output
  *
  * This file does the social sharing handling for the Muscle Core Lite Framework
  *
- * @author		Cristian Raiber
- * @copyright	(c) Copyright by Macho Themes
- * @link		http://www.machothemes.com
- * @package 	Muscle Core Lite
- * @since		Version 1.0.0
  */
 
 // @todo : more effects for hover images
 // @todo: pull in more than post title & date
 
 
-if( !function_exists( 'MTL_CallRelatedPostsClass' ) ) {
+if( !function_exists( 'Illdy_CallRelatedPostsClass' ) ) {
     /**
      *
      * Gets called only if the "display related posts" option is checked
@@ -25,26 +20,26 @@ if( !function_exists( 'MTL_CallRelatedPostsClass' ) ) {
      * @since   1.0.0
      *
      */
-    function MTL_CallRelatedPostsClass()
+    function Illdy_CallRelatedPostsClass()
     {
         $display_related_blog_posts = get_theme_mod('illdy_enable_related_blog_posts', 1);
 
         if ($display_related_blog_posts == 1) {
 
             // instantiate the class & load everything else
-            MTL_Related_Posts_Output::getInstance();
+            Illdy_Related_Posts_Output::getInstance();
         }
     }
-    add_action( 'wp_loaded', 'MTL_CallRelatedPostsClass');
+    add_action( 'wp_loaded', 'Illdy_CallRelatedPostsClass');
 }
 
 
-if( !class_exists( 'MTL_Related_Posts_Output' ) ) {
+if( !class_exists( 'Illdy_Related_Posts_Output' ) ) {
 
 	/**
-	 * Class MTL_Related_Posts_Output
+	 * Class Illdy_Related_Posts_Output
 	 */
-	class MTL_Related_Posts_Output {
+	class Illdy_Related_Posts_Output {
 
 		/**
 		 * @var Singleton The reference to *Singleton* instance of this class
@@ -55,7 +50,7 @@ if( !class_exists( 'MTL_Related_Posts_Output' ) ) {
 		 *
 		 */
 		protected function __construct() {
-			add_action( 'mtl_single_after_content', array( $this, 'output_related_posts' ), 3 );
+			add_action( 'illdy_single_after_content', array( $this, 'output_related_posts' ), 3 );
 		}
 
 		/**

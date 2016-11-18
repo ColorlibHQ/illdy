@@ -2,20 +2,15 @@
 
 
 /**
- * Class MTL_Related_Posts_Output
+ * Class Illdy_Related_Posts_Output
  *
  * This file does the author box for the Muscle Core Lite Framework
  *
- * @author		Cristian Raiber
- * @copyright	(c) Copyright by Macho Themes
- * @link		http://www.machothemes.com
- * @package 	Muscle Core Lite
- * @since		Version 1.0.0
  */
 
 // @todo: make the order of the boxed changeable
 
-if( !function_exists( 'MTL_CallAuthorBoxClass' ) ) {
+if( !function_exists( 'Illdy_CallAuthorBoxClass' ) ) {
     /**
      *
      * Gets called only if the "display social media options" option is checked
@@ -24,24 +19,24 @@ if( !function_exists( 'MTL_CallAuthorBoxClass' ) ) {
      * @since   1.0.0
      *
      */
-    function MTL_CallAuthorBoxClass()
+    function Illdy_CallAuthorBoxClass()
     {
         $display_author_box = get_theme_mod( 'illdy_enable_author_box_blog_posts', 1 );
 
         if ( $display_author_box == 1 ) {
             // instantiate the class & load everything else
-            MTL_Author_Box_Output::getInstance();
+            Illdy_Author_Box_Output::getInstance();
         }
     }
-    add_action('wp_loaded', 'MTL_CallAuthorBoxClass');
+    add_action('wp_loaded', 'Illdy_CallAuthorBoxClass');
 }
 
-if( !class_exists( 'MTL_Author_Box_Output' ) ) {
+if( !class_exists( 'Illdy_Author_Box_Output' ) ) {
 
     /**
-     * Class MTL_Author_Box_Output
+     * Class Illdy_Author_Box_Output
      */
-    class MTL_Author_Box_Output {
+    class Illdy_Author_Box_Output {
 
         /**
          * @var Singleton The reference to *Singleton* instance of this class
@@ -52,7 +47,7 @@ if( !class_exists( 'MTL_Author_Box_Output' ) ) {
          *
          */
         protected function __construct() {
-            add_action( 'mtl_single_after_content', array( $this, 'output_author_box' ), 3 );
+            add_action( 'illdy_single_after_content', array( $this, 'output_author_box' ), 3 );
         }
 
         /**

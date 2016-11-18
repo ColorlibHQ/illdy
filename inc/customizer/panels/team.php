@@ -8,26 +8,16 @@ $prefix = 'illdy';
 /***********************************************/
 /********************** TEAM  ******************/
 /***********************************************/
-$wp_customize->add_panel( $panel_id,
+$wp_customize->add_section( $panel_id,
     array(
-        'priority'          => 101,
+        'priority'          => 108,
         'capability'        => 'edit_theme_options',
         'theme_supports'    => '',
-        'title'             => esc_html__( 'Team', 'illdy' ),
-        'description'       => esc_html__( 'Control various options for team section from front page.', 'illdy' ),
+        'title'             => __( 'Team Section', 'illdy' ),
+        'description'       => __( 'Control various options for team section from front page.', 'illdy' ),
     )
 );
 
-/***********************************************/
-/******************* General *******************/
-/***********************************************/
-$wp_customize->add_section( $prefix . '_team_general' ,
-    array(
-        'title'     => esc_html__( 'General', 'illdy' ),
-        'panel'     => $panel_id,
-        'priority'  => 1
-    )
-);
 
 // Show this section
 $wp_customize->add_setting( $prefix . '_team_general_show',
@@ -41,8 +31,8 @@ $wp_customize->add_control(
     $prefix . '_team_general_show',
     array(
         'type'      => 'checkbox',
-        'label'     => esc_html__( 'Show this section?', 'illdy' ),
-        'section'   => $prefix . '_team_general',
+        'label'     => __( 'Show this section?', 'illdy' ),
+        'section'   => $panel_id,
         'priority'  => 1
     )
 );
@@ -50,36 +40,61 @@ $wp_customize->add_control(
 // Title
 $wp_customize->add_setting( $prefix .'_team_general_title',
     array(
-        'sanitize_callback' => 'sanitize_text_field',
-        'default'           => esc_html__( 'Team', 'illdy' ),
+        'sanitize_callback' => 'illdy_sanitize_html',
+        'default'           => __( 'Team', 'illdy' ),
         'transport'         => 'postMessage'
     )
 );
 $wp_customize->add_control(
     $prefix .'_team_general_title',
     array(
-        'label'         => esc_html__( 'Title', 'illdy' ),
-        'description'   => esc_html__( 'Add the title for this section.', 'illdy'),
-        'section'       => $prefix . '_team_general',
+        'label'         => __( 'Title', 'illdy' ),
+        'description'   => __( 'Add the title for this section.', 'illdy'),
+        'section'       => $panel_id,
         'priority'      => 2
     )
 );
 
 // Entry
-$wp_customize->add_setting( $prefix .'_team_general_entry',
-    array(
-        'sanitize_callback' => 'sanitize_text_field',
-        'default'           => esc_html__( 'Meet the people that are going to take your business to the next level.', 'illdy' ),
-        'transport'         => 'postMessage'
-    )
-);
-$wp_customize->add_control(
-    $prefix .'_team_general_entry',
-    array(
-        'label'         => esc_html__( 'Entry', 'illdy' ),
-        'description'   => esc_html__( 'Add the content for this section.', 'illdy'),
-        'section'       => $prefix . '_team_general',
-        'priority'      => 3,
-        'type'          => 'textarea'
-    )
-);
+if ( get_theme_mod( $prefix .'_team_general_entry' ) ) {
+
+    $wp_customize->add_setting( $prefix .'_team_general_entry',
+        array(
+            'sanitize_callback' => 'illdy_sanitize_html',
+            'default'           => __( 'Meet the people that are going to take your business to the next level.', 'illdy' ),
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        $prefix .'_team_general_entry',
+        array(
+            'label'         => __( 'Entry', 'illdy' ),
+            'description'   => __( 'Add the content for this section.', 'illdy'),
+            'section'       => $panel_id,
+            'priority'      => 3,
+            'type'          => 'textarea'
+        )
+    );
+}elseif ( !defined( "ILLDY_COMPANION" ) ) {
+    
+    $wp_customize->add_setting(
+        $prefix . '_team_entry_text',
+        array(
+            'sanitize_callback' => 'esc_html',
+            'default'           => '',
+            'transport'         => 'postMessage'
+        )
+    );
+    $wp_customize->add_control(
+        new Illdy_Text_Custom_Control(
+            $wp_customize, $prefix . '_team_entry_text',
+            array(
+                'label'             => __( 'Install Illdy Companion', 'illdy' ),
+                'description'       => sprintf(__( 'In order to edit description please install <a href="%s" target="_blank">Illdy Companion</a>', 'illdy' ), illdy_get_tgmpa_url()),
+                'section'           => $panel_id,
+                'settings'          => $prefix . '_team_entry_text',
+                'priority'          => 3,
+            )
+        )
+    );
+}

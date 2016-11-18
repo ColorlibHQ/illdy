@@ -7,9 +7,18 @@
  */
 ?>
 <?php
-$general_title = get_theme_mod( 'illdy_team_general_title', esc_html__( 'Team', 'illdy' ) );
-$general_entry = get_theme_mod( 'illdy_team_general_entry', esc_html__( 'Meet the people that are going to take your business to the next level.', 'illdy' ) );
+if ( current_user_can( 'edit_theme_options' ) ) {
+	$general_title = get_theme_mod( 'illdy_team_general_title', __( 'Team', 'illdy' ) );
+	$general_entry = get_theme_mod( 'illdy_team_general_entry', __( 'Meet the people that are going to take your business to the next level.', 'illdy' ) );
+}else{
+	$general_title = get_theme_mod( 'illdy_team_general_title' );
+	$general_entry = get_theme_mod( 'illdy_team_general_entry' );
+}
+
 ?>
+
+<?php if ( $general_title != '' || $general_entry != '' || is_active_sidebar( 'front-page-team-sidebar' ) ) { ?>
+
 <section id="team" class="front-page-section">
 	<?php if( $general_title || $general_entry ): ?>
 		<div class="section-header">
@@ -17,12 +26,12 @@ $general_entry = get_theme_mod( 'illdy_team_general_entry', esc_html__( 'Meet th
 				<div class="row">
 					<?php if( $general_title ): ?>
 						<div class="col-sm-12">
-							<h3><?php echo esc_html( $general_title ); ?></h3>
+							<h3><?php echo illdy_sanitize_html( $general_title ); ?></h3>
 						</div><!--/.col-sm-12-->
 					<?php endif; ?>
 					<?php if( $general_entry ): ?>
 						<div class="col-sm-10 col-sm-offset-1">
-							<p><?php echo esc_html( $general_entry ); ?></p>
+							<p><?php echo illdy_sanitize_html( $general_entry ); ?></p>
 						</div><!--/.col-sm-10.col-sm-offset-1-->
 					<?php endif; ?>
 				</div><!--/.row-->
@@ -31,11 +40,11 @@ $general_entry = get_theme_mod( 'illdy_team_general_entry', esc_html__( 'Meet th
 	<?php endif; ?>
 	<div class="section-content">
 		<div class="container">
-			<div class="row">
+			<div class="row inline-columns">
 				<?php
 				if( is_active_sidebar( 'front-page-team-sidebar' ) ):
 					dynamic_sidebar( 'front-page-team-sidebar' );
-				else:
+				elseif ( current_user_can( 'edit_theme_options' ) & defined("ILLDY_COMPANION") ):
 					$the_widget_args = array(
 						'before_widget'	=> '<div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1 widget_illdy_person">',
 						'after_widget'	=> '</div>',
@@ -52,3 +61,5 @@ $general_entry = get_theme_mod( 'illdy_team_general_entry', esc_html__( 'Meet th
 		</div><!--/.container-->
 	</div><!--/.section-content-->
 </section><!--/#team.front-page-section-->
+
+<?php } ?>

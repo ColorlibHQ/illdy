@@ -2177,7 +2177,9 @@ input {
 
 /* 17. Responsive */
 @media only screen and (max-width: 767px) {
-	
+	#header .top-header .header-logo img {
+		max-width: 320px;
+	}
 	#header .bottom-header h2 {
 		font-size: 60px;
 	}

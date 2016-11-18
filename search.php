@@ -11,7 +11,7 @@
 	<div class="row">
 		<div class="col-sm-7">
 			<section id="blog">
-				<?php do_action( 'mtl_above_content_after_header' ); ?>
+				<?php do_action( 'illdy_above_content_after_header' ); ?>
 				<?php
 				if( have_posts() ):
 					while( have_posts() ):
@@ -22,7 +22,7 @@
 					get_template_part( 'template-parts/content', 'none' );
 				endif;
 				?>
-				<?php do_action( 'mtl_after_content_above_footer' ); ?>
+				<?php do_action( 'illdy_after_content_above_footer' ); ?>
 			</section><!--/#blog-->
 		</div><!--/.col-sm-7-->
 		<?php get_sidebar(); ?>

@@ -6,58 +6,104 @@
  *	@subpackage illdy
  */
 
-$about_general_show = get_theme_mod( 'illdy_about_general_show', 1 );
-$projects_general_show = get_theme_mod( 'illdy_projects_general_show', 1 );
-$testimonials_general_show = get_theme_mod( 'illdy_testimonials_general_show', 1 );
-$services_general_show = get_theme_mod( 'illdy_services_general_show', 1 );
-$latest_news_general = get_theme_mod( 'illdy_latest_news_general_show', 1 );
-$counter_general_show = get_theme_mod( 'illdy_counter_general_show', 1 );
-$team_general_show = get_theme_mod( 'illdy_team_general_show', 1 );
-$contact_us_general_show = get_theme_mod( 'illdy_contact_us_general_show', 1 );
 
 get_header();
 
-if( get_option( 'show_on_front' ) == 'page' ):
-	if( is_page_template( 'page-templates/blog.php' ) ):
-		get_template_part( 'page-templates/blog' );
-	elseif( is_page_template( 'page-templates/left-sidebar.php' ) ):
-		get_template_part( 'page-templates/left', 'sidebar' );
-	elseif( is_page_template( 'page-templates/no-sidebar.php' ) ):
-		get_template_part( 'page-templates/no', 'sidebar' );
-	else:
-		get_template_part( 'page' );
-	endif;
+
+if( get_option( 'show_on_front' ) == 'posts' ): ?>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-7">
+				<section id="blog">
+					<?php do_action( 'illdy_above_content_after_header' ); ?>
+					<?php
+					if( have_posts() ):
+						while( have_posts() ):
+							the_post();
+							get_template_part( 'template-parts/content', get_post_format() );
+						endwhile;
+					else:
+						get_template_part( 'template-parts/content', 'none' );
+					endif;
+					?>
+					<?php do_action( 'illdy_after_content_above_footer' ); ?>
+				</section><!--/#blog-->
+			</div><!--/.col-sm-7-->
+			<?php get_sidebar(); ?>
+		</div><!--/.row-->
+	</div><!--/.container-->
+
+<?php
 else:
-	if( $about_general_show == 1 ):
-		get_template_part( 'sections/front-page', 'about' );
+
+	$sections_order_first_section = get_theme_mod( 'illdy_general_sections_order_first_section', 1 );
+	$sections_order_second_section = get_theme_mod( 'illdy_general_sections_order_second_section', 2 );
+	$sections_order_third_section = get_theme_mod( 'illdy_general_sections_order_third_section', 3 );
+	$sections_order_fourth_section = get_theme_mod( 'illdy_general_sections_order_fourth_section', 4 );
+	$sections_order_fifth_section = get_theme_mod( 'illdy_general_sections_order_fifth_section', 5 );
+	$sections_order_sixth_section = get_theme_mod( 'illdy_general_sections_order_sixth_section', 6 );
+	$sections_order_seventh_section = get_theme_mod( 'illdy_general_sections_order_seventh_section', 7 );
+	$sections_order_eighth_section = get_theme_mod( 'illdy_general_sections_order_eighth_section', 8 );
+	
+	if( have_posts() ):
+		while( have_posts() ): the_post();
+			$static_page_content = get_the_content();
+			if ( $static_page_content != '' ) : ?>
+				<section class="front-page-section" id="static-page-content">
+					<div class="section-header">
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-12">
+									<h3><?php the_title(); ?></h3>
+								</div><!--/.col-sm-12-->
+							</div><!--/.row-->
+						</div><!--/.container-->
+					</div><!--/.section-header-->
+					<div class="section-content">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-sm-10 col-sm-offset-1">
+									<?php echo $static_page_content; ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			<?php endif;
+		endwhile;
 	endif;
 
-	if( $projects_general_show == 1 ):
-		get_template_part( 'sections/front-page', 'projects' );
+	if( $sections_order_first_section ):
+		illdy_sections_order( $sections_order_first_section );
 	endif;
 
-	if( $testimonials_general_show == 1 ):
-		get_template_part( 'sections/front-page', 'testimonials' );
+	if( $sections_order_second_section ):
+		illdy_sections_order( $sections_order_second_section );
 	endif;
 
-	if( $services_general_show == 1 ):
-		get_template_part( 'sections/front-page', 'services' );
+	if( $sections_order_third_section ):
+		illdy_sections_order( $sections_order_third_section );
 	endif;
 
-	if( $latest_news_general == 1 ):
-		get_template_part( 'sections/front-page', 'latest-news' );
+	if( $sections_order_fourth_section ):
+		illdy_sections_order( $sections_order_fourth_section );
 	endif;
 
-	if( $counter_general_show == 1 ):
-		get_template_part( 'sections/front-page', 'counter' );
+	if( $sections_order_fifth_section ):
+		illdy_sections_order( $sections_order_fifth_section );
 	endif;
 
-	if( $team_general_show == 1 ):
-		get_template_part( 'sections/front-page', 'team' );
+	if( $sections_order_sixth_section ):
+		illdy_sections_order( $sections_order_sixth_section );
+	endif;
+	
+	if( $sections_order_seventh_section ):
+		illdy_sections_order( $sections_order_seventh_section );
 	endif;
 
-	if( $contact_us_general_show == 1 ):
-		get_template_part( 'sections/front-page', 'contact-us' );
+	if( $sections_order_eighth_section ):
+		illdy_sections_order( $sections_order_eighth_section );
 	endif;
 endif;
 

@@ -1,11 +1,11 @@
 === Illdy ===
 
 Contributors: Colorlib
-Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Tags: blog, e-commerce, education, entertainment, news, food-and-drink, holiday, photography, portfolio
 
 Requires at least: 4.0
-Tested up to: 4.4
-Stable tag: 1.0.9
+Tested up to: 4.5.1
+Stable tag: 1.0.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,52 +21,8 @@ Illdy is a free premium one page WordPress theme.
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
 
-
-== Changelog ==
-
-### v1.0.7
-	- Has been added the background on preloader.
-	- Has been changed the link in footer.
-	- Has been changed the author name from style file.
-
-### v1.0.6
-	- Has been changed the color picker for custom widgets: Skill, Service and Person.
-	- Has been removed alias text from Font Awesome.
-	- Has been added the descriptions on fields from Counter widget.
-	- Has been added sanitize function for checkboxs from customizer.
-
-### v1.0.5
-	- Has been removed JSON widgets importer function.
-	- Has been added the preloader.
-	- Has been resolved the responsive.
-
-### v1.0.4
-	- Has been renamed "illdy_get_cf7_forms()" function instead "pixova_lite_get_cf7_forms()".
-	- Has been changed the footer copyright URL.
-	- Has been fixed the margin button in the subheader.
-
-### v1.0.3
-	- Has been reordered the panels from customizer.
-	- Has been added fields from Site Identity panel on header blog taglines.
-	- Has been added contition on image from Person widget.
-	- On Person widget has been added black color instead white color.
-	- On Skill and Services widgets has been added black color instead white color.
-	- Has been fixed header image for blog in customizer live preview.
-	- Has been added edited the description for social icons from contact section.
-	- Has been fixed logo text in customizer live preview.
-
-### v1.0.2
-	- Has been added textdomain on "Display title?" string.
-
-### v1.0.1
-	- Initial release.
-
-### v1.0.0
-	- Initial release.
-
-
 = License =
-Illdy WordPress theme, Copyright (C) 2015 MachoThemes.com
+Illdy WordPress theme, Copyright (C) 2015 Colorlib.com
 Illdy WordPress theme is licensed under the GPL3.
 
 Unless otherwise specified, all the theme files, scripts and images are licensed under GNU General Public License.
@@ -77,8 +33,33 @@ The exceptions to this license are as follows:
     Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 
 * Images:
-	All images are from Unsplash (www.unsplash.com).
+	All images are from Unsplash (	www.unsplash.com	) and Pixabay( www.pixabay.com	)
 	License under Creative Commons Zero.
+
+
+	https://pixabay.com/en/lens­photo­photograph­camera­456638/
+
+
+	Sources for images used:
+		https://unsplash.com/photos/VviFtDJakYk
+		https://unsplash.com/photos/hoCXpPUMCoE
+		https://pixabay.com/en/coffee­tablet­headphones­work­1128140/
+		https://unsplash.com/photos/T0bQdp74I0U
+		https://unsplash.com/photos/VLT62­JzddA
+		https://pixabay.com/en/turntable­top­view­audio­equipment­1109588/
+		https://pixabay.com/en/computer­apple­imac­keyboard­mouse­791392/
+		https://pixabay.com/en/man­reading­touchscreen­blog­791049/
+		https://pixabay.com/en/workspace­place­of­work­work­766045/
+		https://pixabay.com/en/coffee­coffe­latte­516186/
+		https://unsplash.com/photos/zCevd81eJDU
+		https://unsplash.com/photos/2UE1givDiPM
+		https://unsplash.com/photos/lZlfHGqx44Q
+		https://unsplash.com/photos/71cd1rWqO8M
+		https://unsplash.com/photos/HALe2SmkWAI
+		https://unsplash.com/photos/hiAdjnXZxl8
+		https://unsplash.com/photos/eqsEZNCm4­c
+		https://pixabay.com/en/fashion­beauty­model­portrait­girl­1063100/
+		https://pixabay.com/en/home­office­notebook­home­couch­569153/
 
 * Font Awesome:
 	License: SIL OFL 1.1

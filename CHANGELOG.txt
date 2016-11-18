@@ -1,3 +1,120 @@
+### V1.0.35
+	- Resolved #57 - Removed link attribution. (https://github.com/MachoThemes/illdy/issues/57)
+
+### V1.0.34
+	- Resolved #56 - Services and Testimonials Sections are missing the Title field. (https://github.com/MachoThemes/illdy/issues/56)
+
+### V1.0.33
+	- Resolved #51 - Uncheck dedicated page header picture by default.( https://github.com/MachoThemes/illdy/issues/51 )
+	- Resolved #52 - Change Parallax header background position from cover to contain.( https://github.com/MachoThemes/illdy/issues/52 )
+	- Resolved #53 - Style contact form 7 outside of homepage.( https://github.com/MachoThemes/illdy/issues/53 )
+	- Resolved #54 - Random number in sections.( https://github.com/MachoThemes/illdy/issues/54 )
+	- Resolved #55 - Projects cannot be created.( https://github.com/MachoThemes/illdy/issues/55 )
+	
+### V1.0.32
+    - we had two panels for the counter section and we made them into a single one.
+    - added a new CSS stylesheet to beautify section descriptions (make them more visible). /inc/customizer/assets/css/illdy-customizer.css
+
+### V1.0.31
+    - w.org requirements: Please change the text in the theme about page "Actions required" there should be no required actions. (fixed)
+    - w.org requirements: The front page sections do not have any options to define where the data is coming from (fixed, if the companion plugin is not installed a notice will be shown that takes you to the TGMPA plugin install page).
+
+### V1.0.30
+    - #26 ( Mobile burger position is off )
+    - #34 ( Position for the (jumbotron) header picture to be center )
+    - #37 ( Blog listing as homepage (your latest posts) always displays Archive as header title )
+    - #38 ( Contact map entry title field is missing from Customizer )
+    - #39 ( Add 5 more social services for contact section )
+    - #40 ( Provide option to make blog and posts full width. Currently all have sidebar )
+    - #41 ( Strange site title and jumbotron behaviour )
+    - #43 ( Add "Demo Content will not display on live website" Message )
+    - #45 ( Fix display for more than 3-4 elements in services, team, news etc )
+    - #46 ( Copyright options not working )
+    - #49 ( Jumbotron parallax effect )
+    - #50 ( Add page sidebar )
+
+### V1.0.29
+    - #35 ( Notice: Undefined index: Illdy_Widget_Recent_Posts  )
+    - #36 ( Missing escape function in header.php )
+
+### V1.0.28
+	- #27 ( single post options, blog header image -> Blog Options )
+	- #28 ( Menu, section order -> general options )
+	- #29 ( add section to about/project/testimonials/etc )
+	- #30 ( general option- contact details + contac us -> General + contact details )
+	- #31 ( footer details -> copyright )
+	- #32 ( site title -> description - apare in archive )
+	- #33 ( company name -> apare doar in static frontpage )
+
+### V1.0.27
+	- #5 ( Contact form send message succesfully display bug  )
+	- #7 ( Aphostrophe renders as &amp;#039; in Service entry text )
+	- #18 ( CSS Stylesheets should be enqueued not @Imported )
+	- #19 ( Update TGMPA nag type to 'updated' )
+	- #21 ( Fix display for less items than the default 3-4 per section )
+	- #23 ( Jumbotron buttons does not hide when there's no information )
+	- #25 ( Change page title from h2 to h1 )
+
+### V1.0.26
+	- Moved widgets to Illdy Companion
+	- Resolved "Change page title from h2 to h1" (#25)
+	- Resolved "Jumbotron buttons does not hide when there's no information" (#23)
+	- Resolved "Fix display for less items than the default 3-4 per section" (#21)
+	- Resolved "Update TGMPA" (#19)
+	- Resolved "CSS Stylesheets should be enqueued not @Imported" (#18)
+	- Resolved "Contact form send message succesfully display bug" (#5)
+	- Resolved repo ticket : https://themes.trac.wordpress.org/ticket/29912#comment:45
+	
+### V1.0.17
+	- Updated TGMPA to latest version (2.6.1).
+	- Fixed a few strings which weren't available for translation.
+	- Update tag themes in style.css to match the new ones for the wordpress.org repo.
+	- Fixed a few strings which had 'untranslatable characters' in them.
+	- Added theme support for custom background images.
+	- Loaded the 'Source Sans Pro' font in the back-end editor so fonts resemble the ones on the front-page.
+
+### v1.0.16
+	- Has been fixed paginate links on blog.
+
+### v1.0.15
+	- Has been fixed the jQuery error in console on WordPress v4.5.
+
+### v1.0.14
+	- Has been added theme support function for WooCommerce.
+	- Has been added version on enqueue functions.
+
+### v1.0.13
+	- Has been fixed the third level menu.
+	- Has been fixed E-mail and Phone text from Contact us section on responsive.
+	- Has been fixed buttons alignment from Jumbotron section on responsive.
+	- Has been changed the post/ page title and description on singular header posts/ pages.
+	- Has been added sticky post.
+	- Has been fixed translation string and regenerated new .pot file.
+	- Has been added WooCommerce support.
+	- Has been added dropdown fields in customizer to order the sections on front page.
+
+### v1.0.12
+	- Has been added CSS style for the second sub menu from header navigation.
+	- Has been added the link to Contact Form 7 in Contact Form Creation field from customizer.
+	- Has been changed the title "Contact Form Creation" instead "Contact Form 7".
+
+### v1.0.11
+	- Has been added HTML sanitize function for customizer.
+	- Has been added active calback function for Contact Form 7 from customizer.
+	- Customizer - Contact us: has been changed in section from panel.
+	- Has been removed Social Sharing component.
+	- Customizer - Latest News: has been changed in section from panel.
+	- Has been added active callback functions for Testimonials section from customizer.
+	- Customizer - Testimonials: has been changed in section from panel.
+	- Customizer - Jumotron: has been changed in section from panel.
+	- Has been changed the Footer Logo instead Image Site Logo.
+	- Has been changed the Blog Header Image instead Header Image.
+	- Has been changed the description at Contact Details from customizer.
+
+### v1.0.10
+	- Has been fixed OWL Carousel when JetPack plugin is not installed.
+	- Has been added "max-width" in CSS for logo on responsive. 
+
 ### v1.0.9
 	- Has been fixed Phone Number and E-mail Address from Customizer.
 

@@ -9,7 +9,11 @@
 <?php get_header(); ?>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-7">
+		<?php if ( is_active_sidebar( 'page-sidebar' ) ) { ?>
+		<div class="col-sm-8">
+			<?php } else { ?>
+			<div class="col-sm-8 col-sm-offset-2">
+				<?php } ?>
 			<section id="blog">
 				<?php
 				if( have_posts() ):
@@ -21,7 +25,13 @@
 				?>
 			</section><!--/#blog-->
 		</div><!--/.col-sm-7-->
-		<?php get_sidebar(); ?>
+		<?php if ( is_active_sidebar( 'page-sidebar' ) ) { ?>
+			<div class="col-sm-4">
+				<div id="sidebar">
+					<?php dynamic_sidebar( 'page-sidebar' ); ?>
+				</div>
+			</div>
+		<?php } ?>
 	</div><!--/.row-->
 </div><!--/.container-->
 <?php get_footer(); ?>
