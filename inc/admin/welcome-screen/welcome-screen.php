@@ -1,14 +1,14 @@
 <?php
+
 /**
  * Welcome Screen Class
  */
-class illdy_Welcome {
+class Illdy_Welcome {
 
 	/**
 	 * Constructor for the welcome screen
 	 */
 	public function __construct() {
-
 		/* create dashbord page */
 		add_action( 'admin_menu', array( $this, 'illdy_welcome_register_menu' ) );
 
@@ -21,166 +21,203 @@ class illdy_Welcome {
 		/* enqueue script for customizer */
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'illdy_welcome_scripts_for_customizer' ) );
 
-		/* load welcome screen */
-		add_action( 'illdy_welcome', array( $this, 'illdy_welcome_getting_started' ), 	    10 );
-		add_action( 'illdy_welcome', array( $this, 'illdy_welcome_actions_required' ),        20 );
-		add_action( 'illdy_welcome', array( $this, 'illdy_welcome_github' ), 		            40 );
-		add_action( 'illdy_welcome', array( $this, 'illdy_welcome_changelog' ), 				50 );
-
 		/* ajax callback for dismissable required actions */
-		add_action( 'wp_ajax_illdy_lite_dismiss_required_action', array( $this, 'illdy_dismiss_required_action_callback') );
+		add_action( 'wp_ajax_illdy_dismiss_required_action', array(
+			$this,
+			'illdy_dismiss_required_action_callback'
+		) );
+		add_action( 'wp_ajax_nopriv_illdy_dismiss_required_action', array(
+			$this,
+			'illdy_dismiss_required_action_callback'
+		) );
 
+		add_action( 'admin_init', array( $this, 'illdy_activate_plugin' ) );
+		add_action( 'admin_init', array( $this, 'illdy_deactivate_plugin' ) );
+		add_action( 'admin_init', array( $this, 'illdy_set_pages' ) );
+	}
+
+	public function illdy_set_pages() {
+		if ( ! empty( $_GET ) ) {
+			/**
+			 * Check action
+			 */
+			if ( ! empty( $_GET['action'] ) && $_GET['action'] === 'set_page_automatic' ) {
+				$active_tab = $_GET['tab'];
+				$about      = get_page_by_title( 'Homepage' );
+				update_option( 'page_on_front', $about->ID );
+				update_option( 'show_on_front', 'page' );
+
+				// Set the blog page
+				$blog = get_page_by_title( 'Blog' );
+				update_option( 'page_for_posts', $blog->ID );
+
+				wp_redirect( self_admin_url( 'themes.php?page=illdy-welcome&tab=' . $active_tab ) );
+			}
+		}
+	}
+
+
+	public function illdy_activate_plugin() {
+		if ( ! empty( $_GET ) ) {
+			/**
+			 * Check action
+			 */
+			if ( ! empty( $_GET['action'] ) && ! empty( $_GET['plugin'] ) && $_GET['action'] === 'activate_plugin' ) {
+				$active_tab = $_GET['tab'];
+				$url        = self_admin_url( 'themes.php?page=illdy-welcome&tab=' . $active_tab );
+				activate_plugin( $_GET['plugin'], $url );
+			}
+		}
+	}
+
+	public function illdy_deactivate_plugin() {
+		if ( ! empty( $_GET ) ) {
+			/**
+			 * Check action
+			 */
+			if ( ! empty( $_GET['action'] ) && ! empty( $_GET['plugin'] ) && $_GET['action'] === 'deactivate_plugin' ) {
+				$active_tab = $_GET['tab'];
+				$url        = self_admin_url( 'themes.php?page=illdy-welcome&tab=' . $active_tab );
+				$current    = get_option( 'active_plugins', array() );
+				$search     = array_search( $_GET['plugin'], $current );
+				if ( array_key_exists( $search, $current ) ) {
+					unset( $current[ $search ] );
+				}
+				update_option( 'active_plugins', $current );
+			}
+		}
 	}
 
 	/**
 	 * Creates the dashboard page
-	 * @see  add_theme_page()
+	 *
+	 * @see   add_theme_page()
 	 * @since 1.8.2.4
 	 */
 	public function illdy_welcome_register_menu() {
-		add_theme_page( 'About Illdy', 'About Illdy', 'activate_plugins', 'illdy-welcome', array( $this, 'illdy_welcome_screen' ) );
+		$action_count = $this->count_actions();
+		$title        = $action_count > 0 ? 'About Illdy <span class="badge-action-count">' . esc_html( $action_count ) . '</span>' : 'About Illdy';
+
+		add_theme_page( 'About Illdy', $title, 'edit_theme_options', 'illdy-welcome', array(
+			$this,
+			'illdy_welcome_screen'
+		) );
 	}
 
 	/**
 	 * Adds an admin notice upon successful activation.
+	 *
 	 * @since 1.8.2.4
 	 */
 	public function illdy_activation_admin_notice() {
 		global $pagenow;
 
-		if ( is_admin() && ('themes.php' == $pagenow) && isset( $_GET['activated'] ) ) {
+		if ( is_admin() && ( 'themes.php' == $pagenow ) && isset( $_GET['activated'] ) ) {
 			add_action( 'admin_notices', array( $this, 'illdy_welcome_admin_notice' ), 99 );
 		}
 	}
 
 	/**
 	 * Display an admin notice linking to the welcome screen
+	 *
 	 * @since 1.8.2.4
 	 */
 	public function illdy_welcome_admin_notice() {
 		?>
-			<div class="updated notice is-dismissible">
-				<p><?php echo sprintf( esc_html__( 'Welcome! Thank you for choosing Illdy! To fully take advantage of the best our theme can offer please make sure you visit our %swelcome page%s.', 'illdy' ), '<a href="' . esc_url( admin_url( 'themes.php?page=illdy-welcome' ) ) . '">', '</a>' ); ?></p>
-				<p><a href="<?php echo esc_url( admin_url( 'themes.php?page=illdy-welcome' ) ); ?>" class="button" style="text-decoration: none;"><?php _e( 'Get started with Illdy', 'illdy' ); ?></a></p>
-			</div>
+		<div class="updated notice is-dismissible">
+			<p><?php echo sprintf( esc_html__( 'Welcome! Thank you for choosing Illdy! To fully take advantage of the best our theme can offer please make sure you visit our %swelcome page%s.', 'illdy' ), '<a href="' . esc_url( admin_url( 'themes.php?page=illdy-welcome' ) ) . '">', '</a>' ); ?></p>
+			<p><a href="<?php echo esc_url( admin_url( 'themes.php?page=illdy-welcome' ) ); ?>" class="button"
+			      style="text-decoration: none;"><?php _e( 'Get started with Illdy', 'illdy' ); ?></a></p>
+		</div>
 		<?php
 	}
 
 	/**
 	 * Load welcome screen css and javascript
+	 *
 	 * @since  1.8.2.4
 	 */
 	public function illdy_welcome_style_and_scripts( $hook_suffix ) {
 
-		if ( 'appearance_page_illdy-welcome' == $hook_suffix ) {
-			wp_enqueue_style( 'illdy-welcome-screen-css', get_template_directory_uri() . '/inc/admin/welcome-screen/css/welcome.css' );
-			wp_enqueue_script( 'illdy-welcome-screen-js', get_template_directory_uri() . '/inc/admin/welcome-screen/js/welcome.js', array('jquery') );
+		wp_enqueue_style( 'illdy-welcome-screen-css', get_template_directory_uri() . '/inc/admin/welcome-screen/css/welcome.css' );
+		wp_enqueue_script( 'illdy-welcome-screen-js', get_template_directory_uri() . '/inc/admin/welcome-screen/js/welcome.js', array( 'jquery' ) );
 
-			global $illdy_required_actions;
+		wp_localize_script( 'illdy-welcome-screen-js', 'illdyWelcomeScreenObject', array(
+			'nr_actions_required'      => $this->count_actions(),
+			'ajaxurl'                  => admin_url( 'admin-ajax.php' ),
+			'template_directory'       => get_template_directory_uri(),
+			'no_required_actions_text' => __( 'Hooray! There are no required actions for you right now.', 'illdy' )
+		) );
 
-			$nr_actions_required = 0;
-
-			/* get number of required actions */
-			if( get_option('illdy_show_required_actions') ):
-				$illdy_show_required_actions = get_option('illdy_show_required_actions');
-			else:
-				$illdy_show_required_actions = array();
-			endif;
-
-			if( !empty($illdy_required_actions) ):
-				foreach( $illdy_required_actions as $illdy_required_action_value ):
-					if(( !isset( $illdy_required_action_value['check'] ) || ( isset( $illdy_required_action_value['check'] ) && ( $illdy_required_action_value['check'] == false ) ) ) && ((isset($illdy_show_required_actions[$illdy_required_action_value['id']]) && ($illdy_show_required_actions[$illdy_required_action_value['id']] == true)) || !isset($illdy_show_required_actions[$illdy_required_action_value['id']]) )) :
-						$nr_actions_required++;
-					endif;
-				endforeach;
-			endif;
-
-			wp_localize_script( 'illdy-welcome-screen-js', 'illdyLiteWelcomeScreenObject', array(
-				'nr_actions_required' => $nr_actions_required,
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'template_directory' => get_template_directory_uri(),
-				'no_required_actions_text' => __( 'Hooray! There are no recomended actions for you right now.','illdy' )
-			) );
-		}
 	}
 
 	/**
 	 * Load scripts for customizer page
+	 *
 	 * @since  1.8.2.4
 	 */
 	public function illdy_welcome_scripts_for_customizer() {
 
 		wp_enqueue_style( 'illdy-welcome-screen-customizer-css', get_template_directory_uri() . '/inc/admin/welcome-screen/css/welcome_customizer.css' );
-		wp_enqueue_script( 'illdy-welcome-screen-customizer-js', get_template_directory_uri() . '/inc/admin/welcome-screen/js/welcome_customizer.js', array('jquery'), '20120206', true );
+		wp_enqueue_script( 'illdy-welcome-screen-customizer-js', get_template_directory_uri() . '/inc/admin/welcome-screen/js/welcome_customizer.js', array( 'jquery' ), '20120206', true );
 
-		global $illdy_required_actions;
-
-		$nr_actions_required = 0;
-
-		/* get number of required actions */
-		if( get_option('illdy_show_required_actions') ):
-			$illdy_show_required_actions = get_option('illdy_show_required_actions');
-		else:
-			$illdy_show_required_actions = array();
-		endif;
-
-		if( !empty($illdy_required_actions) ):
-			foreach( $illdy_required_actions as $illdy_required_action_value ):
-				if(( !isset( $illdy_required_action_value['check'] ) || ( isset( $illdy_required_action_value['check'] ) && ( $illdy_required_action_value['check'] == false ) ) ) && ((isset($illdy_show_required_actions[$illdy_required_action_value['id']]) && ($illdy_show_required_actions[$illdy_required_action_value['id']] == true)) || !isset($illdy_show_required_actions[$illdy_required_action_value['id']]) )) :
-					$nr_actions_required++;
-				endif;
-			endforeach;
-		endif;
-
-		wp_localize_script( 'illdy-welcome-screen-customizer-js', 'illdyLiteWelcomeScreenCustomizerObject', array(
-			'nr_actions_required' => $nr_actions_required,
-			'aboutpage' => esc_url( admin_url( 'themes.php?page=illdy-welcome#actions_required' ) ),
-			'customizerpage' => esc_url( admin_url( 'customize.php#actions_required' ) ),
-			'themeinfo' => __('View Theme Info','illdy'),
+		wp_localize_script( 'illdy-welcome-screen-customizer-js', 'illdyWelcomeScreenCustomizerObject', array(
+			'nr_actions_required' => $this->count_actions(),
+			'aboutpage'           => esc_url( admin_url( 'themes.php?page=illdy-welcome&tab=recommended_actions' ) ),
+			'customizerpage'      => esc_url( admin_url( 'customize.php#recommended_actions' ) ),
+			'themeinfo'           => __( 'View Theme Info', 'illdy' ),
 		) );
 	}
 
 	/**
 	 * Dismiss required actions
+	 *
 	 * @since 1.8.2.4
 	 */
 	public function illdy_dismiss_required_action_callback() {
 
 		global $illdy_required_actions;
 
-		$illdy_dismiss_id = (isset($_GET['dismiss_id'])) ? $_GET['dismiss_id'] : 0;
+		$action_id = ( isset( $_GET['id'] ) ) ? $_GET['id'] : 0;
 
-		echo $illdy_dismiss_id; /* this is needed and it's the id of the dismissable required action */
+		echo $action_id; /* this is needed and it's the id of the dismissable required action */
 
-		if( !empty($illdy_dismiss_id) ):
+		if ( ! empty( $action_id ) ):
 
 			/* if the option exists, update the record for the specified id */
-			if( get_option('illdy_show_required_actions') ):
+			if ( get_option( 'illdy_show_required_actions' ) ):
 
-				$illdy_show_required_actions = get_option('illdy_show_required_actions');
+				$illdy_show_required_actions = get_option( 'illdy_show_required_actions' );
 
-				$illdy_show_required_actions[$illdy_dismiss_id] = false;
+				switch($_GET['todo']){
+					case 'add';
+						$illdy_show_required_actions[ $action_id ] = true;
+						break;
+					case 'dismiss';
+						$illdy_show_required_actions[ $action_id ] = false;
+						break;
+				}
 
-				update_option( 'illdy_show_required_actions',$illdy_show_required_actions );
+				update_option( 'illdy_show_required_actions', $illdy_show_required_actions );
 
 			/* create the new option,with false for the specified id */
 			else:
 
 				$illdy_show_required_actions_new = array();
 
-				if( !empty($illdy_required_actions) ):
+				if ( ! empty( $illdy_required_actions ) ):
 
-					foreach( $illdy_required_actions as $illdy_required_action ):
+					foreach ( $illdy_required_actions as $illdy_required_action ):
 
-						if( $illdy_required_action['id'] == $illdy_dismiss_id ):
-							$illdy_show_required_actions_new[$illdy_required_action['id']] = false;
+						if ( $illdy_required_action['id'] == $action_id ):
+							$illdy_show_required_actions_new[ $illdy_required_action['id'] ] = false;
 						else:
-							$illdy_show_required_actions_new[$illdy_required_action['id']] = true;
+							$illdy_show_required_actions_new[ $illdy_required_action['id'] ] = true;
 						endif;
 
 					endforeach;
 
-				update_option( 'illdy_show_required_actions', $illdy_show_required_actions_new );
+					update_option( 'illdy_show_required_actions', $illdy_show_required_actions_new );
 
 				endif;
 
@@ -191,72 +228,200 @@ class illdy_Welcome {
 		die(); // this is required to return a proper result
 	}
 
+	/**
+	 *
+	 */
+	public function count_actions() {
+		global $illdy_required_actions;
+
+		$illdy_show_required_actions = get_option( 'illdy_show_required_actions' );
+		if ( ! $illdy_show_required_actions ) {
+			$illdy_show_required_actions = array();
+		}
+
+		$i = 0;
+		foreach ( $illdy_required_actions as $action ) {
+			$true      = false;
+			$dismissed = false;
+
+			if ( ! $action['check'] ) {
+				$true = true;
+			}
+
+			if ( ! empty( $illdy_show_required_actions ) && isset( $illdy_show_required_actions[ $action['id'] ] ) && ! $illdy_show_required_actions[ $action['id'] ] ) {
+				$true = false;
+			}
+
+			if ( $true ) {
+				$i ++;
+			}
+		}
+
+
+		return $i;
+	}
+
+	public function call_plugin_api( $slug ) {
+		include_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
+
+		if ( false === ( $call_api = get_transient( 'illdy_plugin_information_transient_' . $slug ) ) ) {
+			$call_api = plugins_api( 'plugin_information', array(
+				'slug'   => $slug,
+				'fields' => array(
+					'downloaded'        => false,
+					'rating'            => false,
+					'description'       => false,
+					'short_description' => true,
+					'donate_link'       => false,
+					'tags'              => false,
+					'sections'          => true,
+					'homepage'          => true,
+					'added'             => false,
+					'last_updated'      => false,
+					'compatibility'     => false,
+					'tested'            => false,
+					'requires'          => false,
+					'downloadlink'      => false,
+					'icons'             => true
+				)
+			) );
+			set_transient( 'illdy_plugin_information_transient_' . $slug, $call_api, 30 * MINUTE_IN_SECONDS );
+		}
+
+		return $call_api;
+	}
+
+	public function check_active( $slug ) {
+		if ( file_exists( ABSPATH . 'wp-content/plugins/' . $slug . '/' . $slug . '.php' ) ) {
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+			$needs = is_plugin_active( $slug . '/' . $slug . '.php' ) ? 'deactivate' : 'activate';
+
+			return array( 'status' => is_plugin_active( $slug . '/' . $slug . '.php' ), 'needs' => $needs );
+		}
+
+		return array( 'status' => false, 'needs' => 'install' );
+	}
+
+	public function check_for_icon( $arr ) {
+		if ( ! empty( $arr['svg'] ) ) {
+			$plugin_icon_url = $arr['svg'];
+		} elseif ( ! empty( $arr['2x'] ) ) {
+			$plugin_icon_url = $arr['2x'];
+		} elseif ( ! empty( $arr['1x'] ) ) {
+			$plugin_icon_url = $arr['1x'];
+		} else {
+			$plugin_icon_url = $arr['default'];
+		}
+
+		return $plugin_icon_url;
+	}
+
+	public function create_action_link( $state, $slug ) {
+		switch ( $state ) {
+			case 'install':
+				return wp_nonce_url(
+					add_query_arg(
+						array(
+							'action' => 'install-plugin',
+							'plugin' => $slug
+						),
+						network_admin_url( 'update.php' )
+					),
+					'install-plugin_' . $slug
+				);
+				break;
+			case 'deactivate':
+				return add_query_arg( array(
+					                      'action'        => 'deactivate',
+					                      'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
+					                      'plugin_status' => 'all',
+					                      'paged'         => '1',
+					                      '_wpnonce'      => wp_create_nonce( 'deactivate-plugin_' . $slug . '/' . $slug . '.php' ),
+				                      ), network_admin_url( 'plugins.php' ) );
+				break;
+			case 'activate':
+				return add_query_arg( array(
+					                      'action'        => 'activate',
+					                      'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
+					                      'plugin_status' => 'all',
+					                      'paged'         => '1',
+					                      '_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $slug . '/' . $slug . '.php' ),
+				                      ), network_admin_url( 'plugins.php' ) );
+				break;
+		}
+	}
 
 	/**
 	 * Welcome screen content
+	 *
 	 * @since 1.8.2.4
 	 */
 	public function illdy_welcome_screen() {
+		require_once( ABSPATH . 'wp-load.php' );
+		require_once( ABSPATH . 'wp-admin/admin.php' );
+		require_once( ABSPATH . 'wp-admin/admin-header.php' );
+
+		$illdy      = wp_get_theme();
+		$active_tab   = isset( $_GET['tab'] ) ? $_GET['tab'] : 'getting_started';
+		$action_count = $this->count_actions();
 
 		?>
 
-		<ul class="illdy-nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#getting_started" aria-controls="getting_started" role="tab" data-toggle="tab"><?php esc_html_e( 'Getting started','illdy'); ?></a></li>
-			<li role="presentation" class="illdy-w-red-tab"><a href="#actions_required" aria-controls="actions_required" role="tab" data-toggle="tab"><?php esc_html_e( 'Actions recomended','illdy'); ?></a></li>
-			<?php if ( defined("ILLDY_COMPANION") ) { ?>
-				<li role="presentation"><a href="#demo_content" aria-controls="demo_content" role="tab" data-toggle="tab"><?php esc_html_e( 'Demo Content','illdy'); ?></a></li>
-			<?php } ?>
-			<li role="presentation"><a href="#github" aria-controls="github" role="tab" data-toggle="tab"><?php esc_html_e( 'Contribute','illdy'); ?></a></li>
-			<li role="presentation"><a href="#changelog" aria-controls="changelog" role="tab" data-toggle="tab"><?php esc_html_e( 'Changelog','illdy'); ?></a></li>
-		</ul>
+		<div class="wrap about-wrap epsilon-wrap">
 
-		<div class="illdy-tab-content">
+			<h1><?php echo __( 'Welcome to Illdy! - Version ', 'illdy' ) . $illdy['Version']; ?></h1>
+
+			<div class="about-text">
+				<?php esc_html_e( 'Our most popular free one page WordPress theme, Illdy!','illdy'); ?><br>
+				<?php esc_html_e( 'We want to make sure you have the best experience using Illdy and that is why we gathered here all the necessary information for you. We hope you will enjoy using Illdy, as much as we enjoy creating great products.', 'illdy' ); ?>
+			</div>
+
+			<div class="wp-badge epsilon-welcome-logo"></div>
+
+
+			<h2 class="nav-tab-wrapper wp-clearfix">
+				<a href="<?php echo admin_url( 'themes.php?page=illdy-welcome&tab=getting_started' ); ?>"
+				   class="nav-tab <?php echo $active_tab == 'getting_started' ? 'nav-tab-active' : ''; ?>"><?php echo esc_html__( 'Getting Started', 'illdy' ); ?></a>
+				<a href="<?php echo admin_url( 'themes.php?page=illdy-welcome&tab=recommended_actions' ); ?>"
+				   class="nav-tab <?php echo $active_tab == 'recommended_actions' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Recommended Actions', 'illdy' ); ?>
+					<?php echo $action_count > 0 ? '<span class="badge-action-count">' . esc_html( $action_count ) . '</span>' : '' ?></a>
+				<a href="<?php echo admin_url( 'themes.php?page=illdy-welcome&tab=recommended_plugins' ); ?>"
+				   class="nav-tab <?php echo $active_tab == 'recommended_plugins' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Recommended Plugins', 'illdy' ); ?></a>
+				<a href="<?php echo admin_url( 'themes.php?page=illdy-welcome&tab=support' ); ?>"
+				   class="nav-tab <?php echo $active_tab == 'support' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Support', 'illdy' ); ?></a>
+				<a href="<?php echo admin_url( 'themes.php?page=illdy-welcome&tab=changelog' ); ?>"
+				   class="nav-tab <?php echo $active_tab == 'changelog' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Changelog', 'illdy' ); ?></a>
+			</h2>
 
 			<?php
-			/**
-			 * @hooked illdy_welcome_getting_started - 10
-			 * @hooked illdy_welcome_actions_required - 20
-			 * @hooked illdy_welcome_child_themes - 30
-			 * @hooked illdy_welcome_github - 40
-			 * @hooked illdy_welcome_changelog - 50
-			 */
-			do_action( 'illdy_welcome' ); ?>
+			switch ( $active_tab ) {
+				case 'getting_started':
+					require_once get_template_directory() . '/inc/admin/welcome-screen/sections/getting-started.php';
+					break;
+				case 'recommended_actions':
+					require_once get_template_directory() . '/inc/admin/welcome-screen/sections/actions-required.php';
+					break;
+				case 'recommended_plugins':
+					require_once get_template_directory() . '/inc/admin/welcome-screen/sections/recommended-plugins.php';
+					break;
+				case 'support':
+					require_once get_template_directory() . '/inc/admin/welcome-screen/sections/support.php';
+					break;
+				case 'changelog':
+					require_once get_template_directory() . '/inc/admin/welcome-screen/sections/changelog.php';
+					break;
+				default:
+					require_once get_template_directory() . '/inc/admin/welcome-screen/sections/getting-started.php';
+					break;
+			}
+			?>
 
-		</div>
+
+		</div><!--/.wrap.about-wrap-->
+
 		<?php
-	}
-
-	/**
-	 * Getting started
-	 * @since 1.8.2.4
-	 */
-	public function illdy_welcome_getting_started() {
-		require_once( get_template_directory() . '/inc/admin/welcome-screen/sections/getting-started.php' );
-	}
-
-	/**
-	 * Actions required
-	 * @since 1.8.2.4
-	 */
-	public function illdy_welcome_actions_required() {
-		require_once( get_template_directory() . '/inc/admin/welcome-screen/sections/actions-required.php' );
-	}
-
-	/**
-	 * Contribute
-	 * @since 1.8.2.4
-	 */
-	public function illdy_welcome_github() {
-		require_once( get_template_directory() . '/inc/admin/welcome-screen/sections/github.php' );
-	}
-
-	/**
-	 * Changelog
-	 * @since 1.8.2.4
-	 */
-	public function illdy_welcome_changelog() {
-		require_once( get_template_directory() . '/inc/admin/welcome-screen/sections/changelog.php' );
 	}
 }
 
-new illdy_Welcome();
+new Illdy_Welcome();

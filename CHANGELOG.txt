@@ -1,3 +1,21 @@
+### V1.0.36
+	- Added new Welcome Page.
+	- Remove static fronpate action from Illdy theme and added to Illdy companion
+	- Changed menu drop down design (https://github.com/puikinsh/illdy/issues/24)
+	- Resolved #5 - Add fallback image for jumbotron. (https://github.com/puikinsh/illdy/issues/5)
+	- Resolved #7 - Missing some strings in the POT-file (https://github.com/puikinsh/illdy/issues/7)
+	- Resolved #8 - Submenu not displaying as submenu in mobile version (https://github.com/puikinsh/illdy/issues/8)
+	- Resolved #9 - date display in European not changing (https://github.com/puikinsh/illdy/issues/9)
+	- Resolved #10 - Jumbotron images not show on IOS (https://github.com/puikinsh/illdy/issues/10)
+	- Resolved #12 - https://github.com/puikinsh/illdy/issues/12
+	- Resolved #14 - Search box in sidebar is off the position (https://github.com/puikinsh/illdy/issues/14)
+	- Resolved #15 - Responsive layout issues (https://github.com/puikinsh/illdy/issues/15)
+	- Resolved #16 - Jumbotron buttons does not hide (https://github.com/puikinsh/illdy/issues/16)
+	- Resolved #21 - Remove error-styled notice (https://github.com/puikinsh/illdy/issues/21)
+	- Resolved #22 - Remove grey border around recommended plugin images (https://github.com/puikinsh/illdy/issues/22)
+	- Resolved #29 - Footer Copyright issue (https://github.com/puikinsh/illdy/issues/29)
+	- Resolved #30 - Customizer : footer panel description (https://github.com/puikinsh/illdy/issues/30)
+	
 ### V1.0.35
 	- Resolved #57 - Removed link attribution. (https://github.com/MachoThemes/illdy/issues/57)
 

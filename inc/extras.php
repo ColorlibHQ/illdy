@@ -124,39 +124,3 @@ if( !function_exists( 'illdy_sections_order' ) ) {
         }
     }
 }
-
-#Create admin notice
-
-$pixova_show_update_notice = get_option( 'illdy-remove-update-notice', false );
-
-if ( ! $pixova_show_update_notice && 'posts' == get_option( 'show_on_front' ) && current_user_can( 'manage_options' ) ) {
-
-    add_action( 'admin_enqueue_scripts', 'illdy_enqueue_notice_js' );
-    add_action( 'admin_notices', 'illdy_admin_notice_html' );
-    add_action( 'wp_ajax_illdy_remove_upate_notice', 'illdy_disable_notice_ajax' );
-
-}
-
-function illdy_enqueue_notice_js( $hook ) {
-
-    wp_enqueue_script( 'illdy-update-error-status', get_template_directory_uri() . '/layout/js/illdy_notice.js', array( 'jquery' ), '1.0', true );
-}
-
-function illdy_admin_notice_html() {
-    ?>
-    <div class="notice error illdy-error-update is-dismissible">
-        <p>
-            <?php
-            _e( 'Some changes were made in the latest version so that the theme would properly work with core WordPress\' front page system.  If you\'d like to continue using the custom front page, visit', 'illdy' );
-            echo ' <a href="' . esc_url( admin_url( 'options-reading.php' ) ) . '">' . __( 'Settings > Readings', 'illdy' ) . '</a> ';
-            _e( 'and set your front page to display a page.', 'illdy' );
-            ?>
-        </p>
-    </div>
-    <?php
-}
-
-function illdy_disable_notice_ajax() {
-    update_option( 'illdy-remove-update-notice', true );
-    wp_die();
-}

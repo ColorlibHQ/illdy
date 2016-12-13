@@ -19,9 +19,6 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		// JetPack
 		require_once trailingslashit( get_template_directory() ) . 'inc/jetpack.php';
 
-		// TGM Plugin Activation
-		require_once trailingslashit( get_template_directory() ) . 'inc/tgm-plugin-activation/tgm-plugin-activation.php';
-
 		// Components
 		require_once trailingslashit( get_template_directory() ) . 'inc/components/entry-meta/class.mt-entry-meta.php';
 		require_once trailingslashit( get_template_directory() ) . 'inc/components/author-box/class.mt-author-box.php';
@@ -75,10 +72,15 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		/*************  Welcome screen *************/
 		/*******************************************/
 
+		// Welcome screen
 		if ( is_admin() ) {
-
-			global $illdy_required_actions;
-
+			require get_template_directory() . '/inc/notify-system-checks.php';
+			global $illdy_required_actions, $illdy_recommended_plugins;
+			$illdy_recommended_plugins = array(
+				'kiwi-social-share'		=> array( 'recommended' => false ),
+				'jetpack'           	=> array( 'recommended' => false ),
+				'contact-form-7'  		=> array( 'recommended' => false ),
+			);
 			/*
 			 * id - unique id; required
 			 * title
@@ -90,39 +92,21 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			$illdy_required_actions = array(
 				array(
 					"id"          => 'illdy-req-ac-install-illdy-companion',
-					"title"       => esc_html__( 'Install Illdy Companion', 'illdy' ),
-					"description" => esc_html__( '', 'illdy' ),
-					"check"       => defined( "ILLDY_COMPANION" ),
-					"plugin_slug" => 'illdy-companion',
+					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Illdy Companion', 'illdy' ), __( 'Activate: Illdy Companion', 'illdy' ), 'illdy-companion' ),
+					"description" => __( 'It is highly recommended that you install the Illdy Companion.', 'allegiant' ),
+					"check"       => MT_Notify_System::has_import_plugin( 'illdy-companion' ),
+					"plugin_slug" => 'illdy-companion'
 				),
 				array(
-					"id"          => 'illdy-req-ac-frontpage-latest-news',
-					"title"       => esc_html__( 'Get the one page template', 'illdy' ),
-					"description" => esc_html__( 'If you just installed Illdy, and are not able to see the one page template, you need to go to Settings -> Reading , Front page displays and select "Static Page".', 'illdy' ),
-					"check"       => illdy_is_not_latest_posts(),
-				),
-				array(
-					"id"          => 'illdy-req-ac-install-contact-forms',
-					"title"       => esc_html__( 'Install Contact Form 7', 'illdy' ),
-					"description" => esc_html__( 'Illdy works perfectly with Contact Form 7. Please install it & make sure you create at least 1 contact form before trying to set it on the front-page.', 'illdy' ),
-					"check"       => defined( "WPCF7_PLUGIN" ),
-					"plugin_slug" => 'contact-form-7',
-				),
-				array(
-					"id"          => 'illdy-req-import-content',
-					"title"       => esc_html__( 'Import Content', 'illdy' ),
-					"description" => esc_html__( 'Import our demo content from Demo Content tab', 'illdy' ),
-					"check"       => illdy_is_not_imported(),
-				),
-				array(
-					"id"          => 'illdy-req-insert-content',
-					"title"       => esc_html__( 'My content is missing', 'illdy' ),
-					"description" => esc_html__( 'If you\'re viewing your website while being logged-out and you notice some of your settings / texts might be missing, that\'s happening because WordPress.org does not allow us to use demo content. 
-					The best we could do is make it available for admins so that they at least know how the site might look with demo content. 
-					This can be easily fixed in two ways: import our demo content, by going to the Import Demo Content tab, or by going through each setting in the customizer, editing it (adding a space and deleting it will do it) and clicking on save. We are sorry for the inconvenience.', 'illdy' ),
-					"check"       => illdy_is_not_imported(),
-				),
+					"id"          => 'illdy-req-ac-install-jetpack',
+					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Jetpack', 'illdy' ), __( 'Activate: Jetpack', 'illdy' ), 'jetpack' ),
+					"description" => __( 'It is highly recommended that you install the Jetpack plugin.', 'allegiant' ),
+					"check"       => MT_Notify_System::has_import_plugin( 'jetpack' ),
+					"plugin_slug" => 'jetpack'
+				)
 			);
+
+			$illdy_required_actions = apply_filters( 'illdy_required_actions', $illdy_required_actions );
 
 			require get_template_directory() . '/inc/admin/welcome-screen/welcome-screen.php';
 		}
@@ -183,6 +167,7 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 		// Google Fonts
 		$google_fonts_args = array(
 			'family' => 'Source+Sans+Pro:400,900,700,300,300italic',
+			'family' => 'Lato:400,700',
 		);
 
 		// WP Register Style
@@ -388,13 +373,22 @@ function illdy_pagination() {
 }
 
 
-if ( !function_exists( 'illdy_get_tgmpa_url' ) ) {
-	function illdy_get_tgmpa_url() {
-		return add_query_arg(
-			array(
-				'page' => urlencode( 'tgmpa-install-plugins' ),
-			),
-			self_admin_url( 'themes.php' )
+if ( !function_exists( 'illdy_get_random_featured_image' ) ) {
+	function illdy_get_random_featured_image() {
+		$featured_image_list = array(
+			'random-blog-post-1.jpg',
+			'random-blog-post-2.jpg',
+			'random-blog-post-3.jpg',
+			'random-blog-post-4.jpg',
+			'random-blog-post-5.jpg',
 		);
+		$number = rand(0,4);
+		return get_template_directory_uri().'/layout/images/blog/'.$featured_image_list[$number];
+	}
+}
+
+if ( !function_exists( 'illdy_get_recommended_actions_url' ) ) {
+	function illdy_get_recommended_actions_url() {
+		return self_admin_url( 'themes.php?page=illdy-welcome&tab=recommended_actions' );
 	}
 }

@@ -26,6 +26,8 @@ if ( get_option( 'show_on_front' ) == 'page' && is_front_page() ) {
 	global $post;
 	if ( has_post_thumbnail( $post->ID ) ) {
 		$style = 'background-image: url(' . esc_url( get_the_post_thumbnail_url( $post->ID, 'full' ) ) . ');';
+	}else {
+		$style = 'background-image: url(' . get_header_image() . ');';
 	}
 } else {
 	$style = 'background-image: url(' . get_header_image() . ');';

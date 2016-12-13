@@ -2,63 +2,82 @@
 /**
  * Actions required
  */
+
+wp_enqueue_style( 'plugin-install' );
+wp_enqueue_script( 'plugin-install' );
+wp_enqueue_script( 'updates' );
 ?>
 
-<div id="actions_required" class="illdy-tab-pane">
-
-    <h1><?php esc_html_e( 'Actions recommend to make this theme look like in the demo.' ,'illdy' ); ?></h1>
-
-    <!-- NEWS -->
-    <hr />
+<div class="feature-section action-required demo-import-boxed" id="plugin-filter">
 
 	<?php
 	global $illdy_required_actions;
 
-	if( !empty($illdy_required_actions) ):
+	if ( ! empty( $illdy_required_actions ) ):
 
 		/* illdy_show_required_actions is an array of true/false for each required action that was dismissed */
-		$illdy_show_required_actions = get_option("illdy_show_required_actions");
-		$action_number = 1;
-		foreach( $illdy_required_actions as $illdy_required_action_key => $illdy_required_action_value ):
-			if(@$illdy_show_required_actions[$illdy_required_action_value['id']] === false) continue;
-			if(@$illdy_required_action_value['check']) continue;
+		$illdy_show_required_actions = get_option( "illdy_show_required_actions" );
+		$hooray = true;
+
+		foreach ( $illdy_required_actions as $illdy_required_action_key => $illdy_required_action_value ):
+			$hidden = false;
+			if ( @$illdy_show_required_actions[ $illdy_required_action_value['id'] ] === false ) {
+				$hidden = true;
+			}
+			if ( @$illdy_required_action_value['check'] ) {
+				continue;
+			}
 			?>
 			<div class="illdy-action-required-box">
-				<span class="dashicons dashicons-no-alt illdy-dismiss-required-action" id="<?php echo $illdy_required_action_value['id']; ?>"></span>
-				<h4><?php echo $action_number; ?>. <?php if( !empty($illdy_required_action_value['title']) ): echo $illdy_required_action_value['title']; endif; ?></h4>
-				<p><?php if( !empty($illdy_required_action_value['description']) ): echo $illdy_required_action_value['description']; endif; ?></p>
+				<?php if ( ! $hidden ): ?>
+					<span data-action="dismiss" class="dashicons dashicons-visibility illdy-required-action-button"
+					      id="<?php echo $illdy_required_action_value['id']; ?>"></span>
+				<?php else: ?>
+					<span data-action="add" class="dashicons dashicons-hidden illdy-required-action-button" id="<?php echo $illdy_required_action_value['id']; ?>"></span>
+				<?php endif; ?>
+				<h3><?php if ( ! empty( $illdy_required_action_value['title'] ) ): echo $illdy_required_action_value['title']; endif; ?></h3>
+				<p>
+					<?php if ( ! empty( $illdy_required_action_value['description'] ) ): echo $illdy_required_action_value['description']; endif; ?>
+					<?php if ( ! empty( $illdy_required_action_value['help'] ) ): echo '<br/>' . $illdy_required_action_value['help']; endif; ?>
+				</p>
 				<?php
-					if( !empty($illdy_required_action_value['plugin_slug']) ):
-						?><p><a href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin='.$illdy_required_action_value['plugin_slug'] ), 'install-plugin_'.$illdy_required_action_value['plugin_slug'] ) ); ?>" class="button button-primary"><?php if( !empty($illdy_required_action_value['title']) ): echo $illdy_required_action_value['title']; endif; ?></a></p><?php
-					endif;
-				?>
+				if ( ! empty( $illdy_required_action_value['plugin_slug'] ) ) {
+					$active = $this->check_active( $illdy_required_action_value['plugin_slug'] );
+					$url    = $this->create_action_link( $active['needs'], $illdy_required_action_value['plugin_slug'] );
+					$label  = '';
 
-				<hr />
+					switch ( $active['needs'] ) {
+						case 'install':
+							$class = 'install-now button';
+							$label = __( 'Install', 'illdy' );
+							break;
+						case 'activate':
+							$class = 'activate-now button button-primary';
+							$label = __( 'Activate', 'illdy' );
+							break;
+						case 'deactivate':
+							$class = 'deactivate-now button';
+							$label = __( 'Deactivate', 'illdy' );
+							break;
+					}
+
+					?>
+					<p class="plugin-card-<?php echo esc_attr( $illdy_required_action_value['plugin_slug'] ) ?> action_button <?php echo ( $active['needs'] !== 'install' && $active['status'] ) ? 'active' : '' ?>">
+						<a data-slug="<?php echo esc_attr( $illdy_required_action_value['plugin_slug'] ) ?>"
+						   class="<?php echo $class; ?>"
+						   href="<?php echo esc_url( $url ) ?>"> <?php echo $label ?> </a>
+					</p>
+					<?php
+				};
+				?>
 			</div>
 			<?php
-			$action_number ++;
+			$hooray = false;
 		endforeach;
 	endif;
 
-	$nr_actions_required = 0;
-
-	/* get number of required actions */
-	if( get_option('illdy_show_required_actions') ):
-		$illdy_show_required_actions = get_option('illdy_show_required_actions');
-	else:
-		$illdy_show_required_actions = array();
-	endif;
-
-	if( !empty($illdy_required_actions) ):
-		foreach( $illdy_required_actions as $illdy_required_action_value ):
-			if(( !isset( $illdy_required_action_value['check'] ) || ( isset( $illdy_required_action_value['check'] ) && ( $illdy_required_action_value['check'] == false ) ) ) && ((isset($illdy_show_required_actions[$illdy_required_action_value['id']]) && ($illdy_show_required_actions[$illdy_required_action_value['id']] == true)) || !isset($illdy_show_required_actions[$illdy_required_action_value['id']]) )) :
-				$nr_actions_required++;
-			endif;
-		endforeach;
-	endif;
-
-	if( $nr_actions_required == 0 ):
-		echo '<p>'.__( 'Hooray! There are no required actions for you right now.','illdy' ).'</p>';
+	if ( $hooray ):
+		echo '<span class="hooray">' . __( 'Hooray! There are no required actions for you right now.', 'illdy' ) . '</span>';
 	endif;
 	?>
 

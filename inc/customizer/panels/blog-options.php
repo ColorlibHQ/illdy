@@ -62,7 +62,24 @@ $wp_customize->add_control(
 /************** Blog Settings  ***************/
 /***********************************************/
 
+$wp_customize->add_section( $prefix . '_blog_featured_section', array(
+	'title'       => __( 'Blog Featured Image', 'illdy' ),
+	'description' => __( 'This section allows you to control random featured image.', 'illdy' ),
+	'panel'       => $panel_id,
+) );
 
+$wp_customize->add_setting( $prefix . '_disable_random_featured_image', array(
+	'sanitize_callback' => $prefix . '_sanitize_checkbox',
+	'default'           => 0,
+	'transport'         => 'postMessage',
+) );
+
+$wp_customize->add_control( $prefix . '_disable_random_featured_image', array(
+	'type'        => 'checkbox',
+	'label'       => __( 'Random featured image', 'illdy' ),
+	'description' => __( 'This will disable random featured image', 'illdy' ),
+	'section'     => $prefix . '_blog_featured_section',
+) );
 
 
 /***********************************************/

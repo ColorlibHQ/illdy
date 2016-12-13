@@ -143,7 +143,7 @@ $wp_customize->add_control( $prefix . '_text_logo', array(
 /***********************************************/
 $wp_customize->add_section( $prefix . '_general_footer_section', array(
 	'title'       => __( 'Copyright', 'illdy' ),
-	'description' => __( 'Change the footer copyright message from here.', 'illdy' ),
+	'description' => __( 'From this section, you\'ll be able to alter the footer settings. Manage your copyright message as well as the logo shown in the footer of the theme.', 'illdy' ),
 	'priority'    => 4,
 	'panel'       => $panel_id,
 ) );

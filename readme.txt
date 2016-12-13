@@ -60,6 +60,11 @@ The exceptions to this license are as follows:
 		https://unsplash.com/photos/eqsEZNCm4­c
 		https://pixabay.com/en/fashion­beauty­model­portrait­girl­1063100/
 		https://pixabay.com/en/home­office­notebook­home­couch­569153/
+		https://pixabay.com/en/adult-beach-enjoyment-1867618/
+		https://stocksnap.io/photo/7LQZXYOHL9
+		https://stocksnap.io/photo/PLFB4I53U4
+		https://stocksnap.io/photo/D3WN2GEYA3
+		https://pixabay.com/en/canine-cute-dog-footwear-hammock-1851504/
 
 * Font Awesome:
 	License: SIL OFL 1.1

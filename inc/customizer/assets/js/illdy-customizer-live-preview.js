@@ -93,7 +93,7 @@
 	/* Footer Copyright */
 	wp.customize( 'illdy_footer_copyright', function( value ) {
 		value.bind( function( newval ) {
-			$( '#footer .copyright' ).html( newval );
+			$( '#footer .bottom-copyright' ).html( newval );
 		} );
 	} );
 
@@ -255,6 +255,12 @@
 	// First button text
 	wp.customize( 'illdy_jumbotron_general_first_button_title', function( value ) {
 		value.bind( function( newval ) {
+			if ( newval == false ) {
+				$( '#header .bottom-header .header-button-one' ).hide();
+			}
+			if ( newval != '' ) {
+				$( '#header .bottom-header .header-button-one' ).show();
+			}
 			$( '#header .bottom-header .header-button-one' ).html( newval );
 		} );
 	} );
@@ -269,6 +275,12 @@
 	// Second button text
 	wp.customize( 'illdy_jumbotron_general_second_button_title', function( value ) {
 		value.bind( function( newval ) {
+			if ( newval == false ) {
+				$( '#header .bottom-header .header-button-two' ).hide();
+			}
+			if ( newval != '' ) {
+				$( '#header .bottom-header .header-button-two' ).show();
+			}
 			$( '#header .bottom-header .header-button-two' ).html( newval );
 		} );
 	} );

@@ -78,7 +78,7 @@ if ( get_theme_mod( $prefix . '_services_general_entry' ) ) {
             $wp_customize, $prefix . '_services_entry_text',
             array(
                 'label'             => __( 'Install Illdy Companion', 'illdy' ),
-                'description'       => sprintf(__( 'In order to edit description please install <a href="%s" target="_blank">Illdy Companion</a>', 'illdy' ), illdy_get_tgmpa_url()),
+                'description'       => sprintf(__( 'In order to edit description please install <a href="%s" target="_blank">Illdy Companion</a>', 'illdy' ), illdy_get_recommended_actions_url()),
                 'section'           => $panel_id,
                 'settings'          => $prefix . '_services_entry_text',
                 'priority'          => 3,
