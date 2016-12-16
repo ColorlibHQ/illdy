@@ -13,8 +13,10 @@
 	- Resolved #16 - Jumbotron buttons does not hide (https://github.com/puikinsh/illdy/issues/16)
 	- Resolved #21 - Remove error-styled notice (https://github.com/puikinsh/illdy/issues/21)
 	- Resolved #22 - Remove grey border around recommended plugin images (https://github.com/puikinsh/illdy/issues/22)
+	- Resolved #27 - Appereance - About Illdy - Changelog Tab (https://github.com/puikinsh/illdy/issues/27)
 	- Resolved #29 - Footer Copyright issue (https://github.com/puikinsh/illdy/issues/29)
 	- Resolved #30 - Customizer : footer panel description (https://github.com/puikinsh/illdy/issues/30)
+
 	
 ### V1.0.35
 	- Resolved #57 - Removed link attribution. (https://github.com/MachoThemes/illdy/issues/57)

@@ -390,8 +390,6 @@ class Illdy_Welcome {
 				   class="nav-tab <?php echo $active_tab == 'recommended_plugins' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Recommended Plugins', 'illdy' ); ?></a>
 				<a href="<?php echo admin_url( 'themes.php?page=illdy-welcome&tab=support' ); ?>"
 				   class="nav-tab <?php echo $active_tab == 'support' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Support', 'illdy' ); ?></a>
-				<a href="<?php echo admin_url( 'themes.php?page=illdy-welcome&tab=changelog' ); ?>"
-				   class="nav-tab <?php echo $active_tab == 'changelog' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Changelog', 'illdy' ); ?></a>
 			</h2>
 
 			<?php
@@ -407,9 +405,6 @@ class Illdy_Welcome {
 					break;
 				case 'support':
 					require_once get_template_directory() . '/inc/admin/welcome-screen/sections/support.php';
-					break;
-				case 'changelog':
-					require_once get_template_directory() . '/inc/admin/welcome-screen/sections/changelog.php';
 					break;
 				default:
 					require_once get_template_directory() . '/inc/admin/welcome-screen/sections/getting-started.php';
