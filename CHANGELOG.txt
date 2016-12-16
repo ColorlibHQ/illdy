@@ -20,6 +20,8 @@
 	- Resolved #34 - Jumbotron Section - Titles issue (https://github.com/puikinsh/illdy/issues/34)
 	- Resolved #37 - Blog Archive Header Image - Suggested image not appear (https://github.com/puikinsh/illdy/issues/37)
 	- Resolved #38 - Blog Featured Image - description isn't very clear (https://github.com/puikinsh/illdy/issues/38)
+	- Resolved #40 - Counter Section - Color Background overlay (https://github.com/puikinsh/illdy/issues/40)
+	- Resolved #41 - Contact us Section - Contact Details - Phone number design issue (https://github.com/puikinsh/illdy/issues/41)
 
 	
 ### V1.0.35
