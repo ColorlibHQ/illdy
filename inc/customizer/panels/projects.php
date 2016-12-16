@@ -38,7 +38,6 @@ $wp_customize->add_control(
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $panel_id,
         'priority'  => 1,
-        'active_callback'   => 'illdy_is_active_jetpack_projects'
     )
 );
 
@@ -57,7 +56,6 @@ $wp_customize->add_control(
         'description'   => __( 'Add the title for this section.', 'illdy'),
         'section'       => $panel_id,
         'priority'      => 2,
-        'active_callback'   => 'illdy_is_active_jetpack_projects'
     )
 );
 
@@ -78,7 +76,6 @@ if ( get_theme_mod( $prefix .'_projects_general_entry' ) ) {
             'description'   => __( 'Add the content for this section.', 'illdy'),
             'section'       => $panel_id,
             'priority'      => 3,
-            'active_callback'   => 'illdy_is_active_jetpack_projects',
             'type'          => 'textarea'
         )
     );
@@ -106,26 +103,3 @@ if ( get_theme_mod( $prefix .'_projects_general_entry' ) ) {
         )
     );
 }
-
-// Install JetPack
-$wp_customize->add_setting(
-    $prefix . '_projects_general_text',
-    array(
-        'sanitize_callback' => 'esc_html',
-        'default'           => '',
-        'transport'         => 'postMessage'
-    )
-);
-$wp_customize->add_control(
-    new Illdy_Text_Custom_Control(
-        $wp_customize, $prefix . '_projects_general_text',
-        array(
-            'label'             => __( 'Install JetPack', 'illdy' ),
-            'description'       => __( 'In order to get the Projects module working, you will have to install JetPack and enable Custom Post Type: Projects.', 'illdy' ),
-            'section'           => $panel_id,
-            'settings'          => $prefix . '_projects_general_text',
-            'priority'          => 5,
-            'active_callback'   => 'illdy_is_not_active_jetpack_projects'
-        )
-    )
-);

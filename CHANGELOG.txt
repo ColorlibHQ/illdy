@@ -1,7 +1,7 @@
 ### V1.0.36
 	- Added new Welcome Page.
 	- Remove static fronpate action from Illdy theme and added to Illdy companion
-	- Changed menu drop down design (https://github.com/puikinsh/illdy/issues/24)
+	- Implemented new design (https://github.com/puikinsh/illdy/issues/24)
 	- Resolved #5 - Add fallback image for jumbotron. (https://github.com/puikinsh/illdy/issues/5)
 	- Resolved #7 - Missing some strings in the POT-file (https://github.com/puikinsh/illdy/issues/7)
 	- Resolved #8 - Submenu not displaying as submenu in mobile version (https://github.com/puikinsh/illdy/issues/8)

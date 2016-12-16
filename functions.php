@@ -166,8 +166,7 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 
 		// Google Fonts
 		$google_fonts_args = array(
-			'family' => 'Source+Sans+Pro:400,900,700,300,300italic',
-			'family' => 'Lato:400,700',
+			'family' => 'Source+Sans+Pro:400,900,700,300,300italic|Lato:300,400,700,900|Poppins:300,400,500,600,700',
 		);
 
 		// WP Register Style
