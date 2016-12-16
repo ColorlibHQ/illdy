@@ -2471,18 +2471,8 @@ input[type=submit] {
 		padding-bottom: 0;
 	}
 }
-@media only screen and (max-width: 600px) {
-	#header .bottom-header h2 {
-	    font-size: 30px;
-	    line-height: 1.5;
-	}
-}
 
 @media only screen and (max-width: 320px) {
-	#header .bottom-header h2 {
-		font-size: 40px;
-	}
-
 	#team .section-content .person .person-image {
 		width: 100%;
 		margin-right: 0;

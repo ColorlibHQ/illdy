@@ -17,6 +17,7 @@
 	- Resolved #28 - General option - Site Logo - Cropping issue (https://github.com/puikinsh/illdy/issues/28)
 	- Resolved #29 - Footer Copyright issue (https://github.com/puikinsh/illdy/issues/29)
 	- Resolved #30 - Customizer : footer panel description (https://github.com/puikinsh/illdy/issues/30)
+	- Resolved #34 - Jumbotron Section - Titles issue (https://github.com/puikinsh/illdy/issues/34)
 
 	
 ### V1.0.35
