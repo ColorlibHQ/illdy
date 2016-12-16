@@ -37,7 +37,7 @@ The exceptions to this license are as follows:
 	License under Creative Commons Zero.
 
 
-	https://pixabay.com/en/lens­photo­photograph­camera­456638/
+	https://pixabay.com/en/bed-bedroom-door-girl-house-1850893/
 
 
 	Sources for images used:
