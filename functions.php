@@ -36,8 +36,10 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'custom-background' );
 		add_theme_support( 'custom-logo', array(
-			'flex-width'  => true,
-			'flex-height' => true,
+			'height'      => 75,
+   			'width'       => 105,
+   			'flex-height' => false,
+			'flex-width'  => false,
 		) );
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 		add_theme_support( 'custom-header', array(
