@@ -36,8 +36,10 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'custom-background' );
 		add_theme_support( 'custom-logo', array(
-			'flex-width'  => true,
-			'flex-height' => true,
+			'height'      => 75,
+   			'width'       => 105,
+   			'flex-height' => false,
+			'flex-width'  => false,
 		) );
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 		add_theme_support( 'custom-header', array(
@@ -45,8 +47,15 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			'width'          => 1920,
 			'height'         => 532,
 			'flex-height'    => true,
-			'random-default' => false,
+			'random-default' => true,
 			'header-text'    => false,
+		) );
+		register_default_headers( array(
+			'default' => array(
+				'url'           => '%s/layout/images/blog/blog-header.png',
+				'thumbnail_url' => '%s/layout/images/blog/blog-header.png',
+				'description'   => __( 'Coffe', 'twentyeleven' )
+			),
 		) );
 
 		// Add Image Size
@@ -166,8 +175,7 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 
 		// Google Fonts
 		$google_fonts_args = array(
-			'family' => 'Source+Sans+Pro:400,900,700,300,300italic',
-			'family' => 'Lato:400,700',
+			'family' => 'Source+Sans+Pro:400,900,700,300,300italic|Lato:300,400,700,900|Poppins:300,400,500,600,700',
 		);
 
 		// WP Register Style

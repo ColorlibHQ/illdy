@@ -105,7 +105,7 @@ if ( $general_title != '' || $general_entry != '' || $general_address_title != '
 												<a href="mailto:<?php echo esc_attr( $email ); ?>" title="<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></span>
 										<?php endif; ?>
 										<?php if ( $phone ): ?>
-											<span class="box-right-row" data-customizer="contact-us-phone"><?php _e( 'Phone:', 'illdy' ); ?><?php echo illdy_sanitize_html( $phone ); ?></span>
+											<span class="box-right-row" data-customizer="contact-us-phone"><?php _e( 'Phone:', 'illdy' ); ?> <?php echo illdy_sanitize_html( $phone ); ?></span>
 										<?php endif; ?>
 									</div><!--/.box-right-->
 								</div><!--/.contact-us-box-->

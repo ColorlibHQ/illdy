@@ -74,7 +74,7 @@ jQuery( document ).ready( function($) {
 				var personContentSocial = $( person ).children( '.person-content' ).children( '.person-content-social.clearfix' ).children( 'li' ).children( 'a' );
 
 				$( personPosition ).css( 'color', dataPersonColor );
-				$( personContentSocial ).css( 'background-color', dataPersonColor );
+				$( personContentSocial ).css( {'border-color': dataPersonColor, "color" : dataPersonColor} );
 			});
 		}
 	}
