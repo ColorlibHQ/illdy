@@ -18,6 +18,7 @@
 	- Resolved #29 - Footer Copyright issue (https://github.com/puikinsh/illdy/issues/29)
 	- Resolved #30 - Customizer : footer panel description (https://github.com/puikinsh/illdy/issues/30)
 	- Resolved #34 - Jumbotron Section - Titles issue (https://github.com/puikinsh/illdy/issues/34)
+	- Resolved #37 - Blog Archive Header Image - Suggested image not appear (https://github.com/puikinsh/illdy/issues/37)
 
 	
 ### V1.0.35

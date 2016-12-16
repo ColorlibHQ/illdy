@@ -47,8 +47,15 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			'width'          => 1920,
 			'height'         => 532,
 			'flex-height'    => true,
-			'random-default' => false,
+			'random-default' => true,
 			'header-text'    => false,
+		) );
+		register_default_headers( array(
+			'default' => array(
+				'url'           => '%s/layout/images/blog/blog-header.png',
+				'thumbnail_url' => '%s/layout/images/blog/blog-header.png',
+				'description'   => __( 'Coffe', 'twentyeleven' )
+			),
 		) );
 
 		// Add Image Size

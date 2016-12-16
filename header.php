@@ -33,6 +33,8 @@ if ( get_option( 'show_on_front' ) == 'page' && is_front_page() ) {
 	$style = 'background-image: url(' . get_header_image() . ');';
 }
 
+$url = get_theme_mod( 'header_image', get_theme_support( 'custom-header', 'default-image' ) );
+
 // append the parallax effect
 if ( $jumbotron_parallax_enable == true ) {
 	$style .= 'background-attachment: fixed;';
