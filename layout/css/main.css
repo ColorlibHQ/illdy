@@ -1397,7 +1397,6 @@ input {
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
-	text-transform: uppercase;
 }
 
 #blog .blog-post .blog-post-button:hover {
@@ -1566,13 +1565,13 @@ input {
 }
 
 .widget .widget-title h3 {
-	line-height: 2.55;
+	line-height: 25px;
 	margin: 0;
 	padding: 0;
 	font-weight: 700;
-	font-size: 20px;
+	font-size: 22px;
 	color: #333;
-	text-transform: uppercase;
+	font-family: "Poppins";
 }
 
 .widget a {
@@ -1747,7 +1746,6 @@ input {
 	background: transparent;
 	border: none;
 	color: #333;
-	text-transform: uppercase;
 	outline: 0;
 }
 
