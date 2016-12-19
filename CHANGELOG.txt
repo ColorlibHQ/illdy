@@ -24,6 +24,7 @@
 	- Resolved #41 - Contact us Section - Contact Details - Phone number design issue (https://github.com/puikinsh/illdy/issues/41)
 	- Resolved #46 - Search bar - Remove Uppercase (https://github.com/puikinsh/illdy/issues/46)
 	- Resolved #47 - Blog Index Page - Sidebar issue - Tablet testing (https://github.com/puikinsh/illdy/issues/47)
+	- Resolved #50 - Menu sample with dropdown issues (https://github.com/puikinsh/illdy/issues/50)
 
 	
 ### V1.0.35
