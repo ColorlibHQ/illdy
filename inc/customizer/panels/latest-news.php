@@ -41,14 +41,14 @@ $wp_customize->add_setting( $prefix . '_latest_news_general_show',
         'transport'         => 'postMessage'
     )
 );
-$wp_customize->add_control(
+$wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize,
     $prefix . '_latest_news_general_show',
     array(
-        'type'      => 'checkbox',
+        'type'      => 'mte-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_latest_news_general',
         'priority'  => 1
-    )
+    ) )
 );
 
 // Title
@@ -68,6 +68,9 @@ $wp_customize->add_control(
         'priority'      => 2
     )
 );
+$wp_customize->selective_refresh->add_partial( $prefix .'_latest_news_general_title', array(
+    'selector' => '#latest-news .section-header h3',
+) );
 
 // Entry
 if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
@@ -112,7 +115,9 @@ if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
     );
     
 }
-
+$wp_customize->selective_refresh->add_partial( $prefix .'_latest_news_general_text', array(
+    'selector' => '#latest-news .section-header p',
+) );
 
 // Button Text
 $wp_customize->add_setting( $prefix .'_latest_news_button_text',
@@ -131,6 +136,9 @@ $wp_customize->add_control(
         'priority'      => 4
     )
 );
+$wp_customize->selective_refresh->add_partial( $prefix .'_latest_news_button_text', array(
+    'selector' => '#latest-news .latest-news-button',
+) );
 
 
 // Number of posts
@@ -140,12 +148,20 @@ $wp_customize->add_setting( $prefix .'_latest_news_number_of_posts',
         'default'           => 3,
     )
 );
-$wp_customize->add_control(
+
+$wp_customize->add_control( new Epsilon_Control_Slider(
+    $wp_customize,
     $prefix .'_latest_news_number_of_posts',
     array(
-        'label'         => __( 'Number of posts', 'illdy' ),
-        'description'   => __( 'Add the number of posts to show in this section.', 'illdy'),
+        'label'       => esc_html__( 'Number of posts', 'illdy' ),
+        'description' => esc_html__( 'Add the number of posts to show in this section.', 'illdy'),
+        'choices'     => array(
+            'min'  => 3,
+            'max'  => 9,
+            'step' => 3,
+        ),
         'section'       => $prefix . '_latest_news_general',
         'priority'      => 5
     )
+)
 );

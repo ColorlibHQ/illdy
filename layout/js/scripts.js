@@ -82,9 +82,9 @@ jQuery( document ).ready( function($) {
 	// Sub Menu
 	function subMenu() {
 		$( '#header .top-header .header-navigation ul li.menu-item-has-children' ).hover( function() {
-			$( this ).children( 'ul' ).css( 'visibility', 'visible' ).fadeIn();
+			$( this ).children( 'ul' ).css( 'visibility', 'visible' );
 		}, function() {
-			$( this ).children( 'ul' ).css( 'visibility', 'hidden' ).fadeOut();
+			$( this ).children( 'ul' ).css( 'visibility', 'hidden' );
 		});
 	}
 
@@ -94,8 +94,8 @@ jQuery( document ).ready( function($) {
 			var subSubMenu = $( '#header .top-header .header-navigation ul li.menu-item-has-children ul' );
 
 			$( subSubMenu ).each( function() {
-				if( ( windowWidth - $( this ).offset()['left'] ) < 250 ) {
-					$( this ).css( 'left', '-250px' );
+				if( ( windowWidth - $( this ).offset()['left'] ) < 200 ) {
+					$( this ).css( 'left', '-200px' );
 				}
 			});
 		}

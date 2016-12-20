@@ -22,6 +22,13 @@
 	- Resolved #38 - Blog Featured Image - description isn't very clear (https://github.com/puikinsh/illdy/issues/38)
 	- Resolved #40 - Counter Section - Color Background overlay (https://github.com/puikinsh/illdy/issues/40)
 	- Resolved #41 - Contact us Section - Contact Details - Phone number design issue (https://github.com/puikinsh/illdy/issues/41)
+	- Resolved #44 - Team sidebar - Tablet testing issue (https://github.com/puikinsh/illdy/issues/44)
+	- Resolved #46 - Search bar - Remove Uppercase (https://github.com/puikinsh/illdy/issues/46)
+	- Resolved #47 - Blog Index Page - Sidebar issue - Tablet testing (https://github.com/puikinsh/illdy/issues/47)
+	- Resolved #49 - Change theme screenshot (https://github.com/puikinsh/illdy/issues/49)
+	- Resolved #50 - Menu sample with dropdown issues (https://github.com/puikinsh/illdy/issues/50)
+	- Resolved #51 - Headings issue (https://github.com/puikinsh/illdy/issues/51)
+	- Resolved #52 - 3.1 Labels - Style 2 Homepage - issue (https://github.com/puikinsh/illdy/issues/52)
 
 	
 ### V1.0.35

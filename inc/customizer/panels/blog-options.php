@@ -74,12 +74,12 @@ $wp_customize->add_setting( $prefix . '_disable_random_featured_image', array(
 	'transport'         => 'postMessage',
 ) );
 
-$wp_customize->add_control( $prefix . '_disable_random_featured_image', array(
-	'type'        => 'checkbox',
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_disable_random_featured_image', array(
+	'type'        => 'mte-toggle',
 	'label'       => __( 'Random featured image', 'illdy' ),
 	'description' => __( 'Toggling this to off will disable theme provided blog images. These images are used in the theme when users don\'t provide a featured image. It\'s purposes is merely cosmetic and meant to improve the blog layout.', 'illdy' ),
 	'section'     => $prefix . '_blog_featured_section',
-) );
+) ) );
 
 
 /***********************************************/
@@ -99,12 +99,12 @@ $wp_customize->add_setting( $prefix . '_enable_post_posted_on_blog_posts', array
 	'transport'         => 'postMessage',
 ) );
 
-$wp_customize->add_control( $prefix . '_enable_post_posted_on_blog_posts', array(
-	'type'        => 'checkbox',
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_posted_on_blog_posts', array(
+	'type'        => 'mte-toggle',
 	'label'       => __( 'Posted on meta on single blog post', 'illdy' ),
 	'description' => __( 'This will disable the posted on zone as well as the author name', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
-) );
+) ) );
 
 /* Post Category on single blog posts */
 $wp_customize->add_setting( $prefix . '_enable_post_category_blog_posts', array(
@@ -112,12 +112,12 @@ $wp_customize->add_setting( $prefix . '_enable_post_category_blog_posts', array(
 	'default'           => 1,
 	'transport'         => 'postMessage',
 ) );
-$wp_customize->add_control( $prefix . '_enable_post_category_blog_posts', array(
-	'type'        => 'checkbox',
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_category_blog_posts', array(
+	'type'        => 'mte-toggle',
 	'label'       => __( 'Category meta on single blog post', 'illdy' ),
 	'description' => __( 'This will disable the posted in zone.', 'illdy' ),
 	// 'section'       => $prefix.'_blog_global_section',
-) );
+) ) );
 
 
 /* Post Tags on single blog posts */
@@ -126,12 +126,12 @@ $wp_customize->add_setting( $prefix . '_enable_post_tags_blog_posts', array(
 	'default'           => 1,
 	'transport'         => 'postMessage',
 ) );
-$wp_customize->add_control( $prefix . '_enable_post_tags_blog_posts', array(
-	'type'        => 'checkbox',
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_tags_blog_posts', array(
+	'type'        => 'mte-toggle',
 	'label'       => __( 'Tags meta on single blog post', 'illdy' ),
 	'description' => __( 'This will disable the tagged with zone.', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
-) );
+) ) );
 
 /* Post Comments on single blog posts */
 $wp_customize->add_setting( $prefix . '_enable_post_comments_blog_posts', array(
@@ -140,12 +140,12 @@ $wp_customize->add_setting( $prefix . '_enable_post_comments_blog_posts', array(
 	'transport'         => 'postMessage',
 ) );
 
-$wp_customize->add_control( $prefix . '_enable_post_comments_blog_posts', array(
-	'type'        => 'checkbox',
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_comments_blog_posts', array(
+	'type'        => 'mte-toggle',
 	'label'       => __( 'Coments meta on single blog post', 'illdy' ),
 	'description' => __( 'This will disable the comments header zone.', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
-) );
+) ) );
 
 /* Author Info Box on single blog posts */
 $wp_customize->add_setting( $prefix . '_enable_author_box_blog_posts', array(
@@ -153,12 +153,12 @@ $wp_customize->add_setting( $prefix . '_enable_author_box_blog_posts', array(
 	'default'           => 1,
 	'transport'         => 'postMessage',
 ) );
-$wp_customize->add_control( $prefix . '_enable_author_box_blog_posts', array(
-	'type'        => 'checkbox',
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_author_box_blog_posts', array(
+	'type'        => 'mte-toggle',
 	'label'       => __( 'Author info box on single blog post', 'illdy' ),
 	'description' => __( 'Displayed right at the end of the post', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
-) );
+) ) );
 
 /***********************************************/
 /************** Title Blog Settings  ***************/

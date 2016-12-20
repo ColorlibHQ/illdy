@@ -41,14 +41,14 @@ $wp_customize->add_setting( $prefix . '_contact_us_general_show',
         'transport'         => 'postMessage'
     )
 );
-$wp_customize->add_control(
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize,
     $prefix . '_contact_us_general_show',
     array(
-        'type'      => 'checkbox',
+        'type'      => 'mte-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_contact_us_general',
         'priority'  => 1
-    )
+    ) )
 );
 
 // Title
@@ -68,7 +68,10 @@ $wp_customize->add_control(
         'priority'      => 2
     )
 );
-
+$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_general_title', array(
+    'selector' => '#contact-us .section-header h3',
+    'render_callback' => $prefix .'_contact_us_general_title',
+) );
 
 // Entry
 if ( get_theme_mod( $prefix .'_contact_us_general_entry' ) ) {
@@ -113,7 +116,10 @@ if ( get_theme_mod( $prefix .'_contact_us_general_entry' ) ) {
     );
     
 }
-
+$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_general_text', array(
+    'selector' => '#contact-us .section-header p',
+    'render_callback' => $prefix .'_contact_us_general_text',
+) );
 
 // Address Title
 $wp_customize->add_setting( $prefix .'_contact_us_general_address_title',
@@ -132,6 +138,10 @@ $wp_customize->add_control(
         'priority'      => 4
     )
 );
+$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_general_address_title', array(
+    'selector' => '#contact-us .section-content .row .col-sm-4 .box-left',
+    'render_callback' => $prefix .'_contact_us_general_address_title',
+) );
 
 // Customer Support Title
 $wp_customize->add_setting( $prefix .'_contact_us_general_customer_support_title',
@@ -150,6 +160,10 @@ $wp_customize->add_control(
         'priority'      => 5
     )
 );
+$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_general_customer_support_title', array(
+    'selector' => '#contact-us .section-content .row .col-sm-5 .box-left',
+    'render_callback' => $prefix .'_contact_us_general_customer_support_title',
+) );
 
 // Contact Form 7
 $wp_customize->add_setting( 'illdy_contact_us_general_contact_form_7',
@@ -378,6 +392,10 @@ $wp_customize->add_control(
             'priority'      => 10
         )
     );
+    $wp_customize->selective_refresh->add_partial( $prefix .'_email', array(
+        'selector' => '#contact-us .section-content .row .col-sm-5 .box-right span:first-child',
+        'render_callback' => $prefix .'_email',
+    ) );
 
 
     /* phone number */
@@ -398,6 +416,10 @@ $wp_customize->add_control(
             'priority'      => 12
         )
     );
+    $wp_customize->selective_refresh->add_partial( $prefix .'_phone', array(
+        'selector' => '#contact-us .section-content .row .col-sm-5 .box-right span:nth-child(2)',
+        'render_callback' => $prefix .'_phone',
+    ) );
 
     // Address 1
     $wp_customize->add_setting(
@@ -418,6 +440,10 @@ $wp_customize->add_control(
             'priority'      => 13
         )
     );
+    $wp_customize->selective_refresh->add_partial( $prefix .'_address1', array(
+        'selector' => '#contact-us .section-content .row .col-sm-4 .box-right span:first-child',
+        'render_callback' => $prefix .'_address1',
+    ) );
 
     // Address 2
     $wp_customize->add_setting(
@@ -438,3 +464,7 @@ $wp_customize->add_control(
             'priority'      => 13
         )
     );
+    $wp_customize->selective_refresh->add_partial( $prefix .'_address2', array(
+        'selector' => '#contact-us .section-content .row .col-sm-4 .box-right span:nth-child(2)',
+        'render_callback' => $prefix .'_address2',
+    ) );

@@ -42,15 +42,15 @@ $wp_customize->add_setting( $prefix . '_testimonials_general_show',
         'transport'         => 'postMessage'
     )
 );
-$wp_customize->add_control(
+$wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize,
     $prefix . '_testimonials_general_show',
     array(
-        'type'      => 'checkbox',
+        'type'      => 'mte-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_testimonials_general',
         'priority'  => 1,
         'active_callback'   => 'illdy_is_active_jetpack_testimonials'
-    )
+    ))
 );
 
 // Title
@@ -71,6 +71,9 @@ $wp_customize->add_control(
         'active_callback'   => 'illdy_is_active_jetpack_testimonials'
     )
 );
+$wp_customize->selective_refresh->add_partial( $prefix .'_testimonials_general_title', array(
+    'selector' => '#testimonials .section-header h3',
+) );
 
 // Background Image
 $wp_customize->add_setting(
