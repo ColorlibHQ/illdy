@@ -1116,26 +1116,27 @@ input {
 	padding: 0 20px;
 	border: 1px solid #e1e1e1;
 	outline: 0;
-	font-family: "Source Sans Pro", sans-serif;
-	font-size: 15px;
-	color: #fff;
+	font-family: "Lato", sans-serif;
+	font-size: 16px;
+	color: #8c9597;
 	display: block;
+	font-weight: 400;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-text::-webkit-input-placeholder {
-	color: #fff;
+	color: #8c9597;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-text::-moz-placeholder {
-	color: #fff;
+	color: #8c9597;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-text:-ms-input-placeholder {
-	color: #fff;
+	color: #8c9597;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-text:-moz-placeholder {
-	color: #fff;
+	color: #8c9597;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-textarea {
@@ -1148,22 +1149,26 @@ input {
 	outline: 0;
 	resize: none;
 	display: block;
+	color: #8c9597;
+	font-weight: 400;
+	font-family: "Lato", sans-serif;
+	font-size: 16px;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-textarea::-webkit-input-placeholder {
-	color: #fff;
+	color: #8c9597;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-textarea::-moz-placeholder {
-	color: #fff;
+	color: #8c9597;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-textarea:-ms-input-placeholder {
-	color: #fff;
+	color: #8c9597;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-textarea:-moz-placeholder {
-	color: #fff;
+	color: #8c9597;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-submit {
