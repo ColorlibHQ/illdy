@@ -275,9 +275,12 @@ input {
 	margin: 0 0 29px 0;
     line-height: 84px;
     font-weight: 700;
-    font-size: 70px;
+    font-size: 80px;
     color: #fff;
     font-family: "Poppins";
+}
+#header .bottom-header h2 span {
+	word-wrap: break-word;
 }
 
 #header .bottom-header span.span-dot {
