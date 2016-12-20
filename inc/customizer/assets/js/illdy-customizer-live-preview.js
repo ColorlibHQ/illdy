@@ -450,7 +450,6 @@
 	wp.customize( 'illdy_counter_background_type', function( value ) {
 		value.bind( function( newval ) {
 			if( newval == 'image' ) {
-				$( '#counter' ).css( 'background-color', '' );
 				$( '#counter' ).css( 'background-image', 'url('+ wp.customize._value.illdy_counter_background_image() +')' );
 			} else if( newval == 'color' ) {
 				$( '#counter' ).css( 'background-image', '' );
@@ -463,7 +462,7 @@
 	wp.customize( 'illdy_counter_background_image', function( value ) {
 		value.bind( function( newval ) {
 			if( newval == '' ) {
-				$( '#counter' ).removeAttr( 'style' );
+				$( '#counter' ).css( 'background-image', '' );
 			} else {
 				$( '#counter' ).css( 'background-image', 'url('+ newval +')' );
 			}
