@@ -27,12 +27,12 @@ $wp_customize->add_setting( $prefix . '_services_general_show', array(
 		'default'           => 1,
 		'transport'         => 'postMessage',
 	) );
-$wp_customize->add_control( $prefix . '_services_general_show', array(
-		'type'     => 'checkbox',
+$wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, $prefix . '_services_general_show', array(
+		'type'     => 'mte-toggle',
 		'label'    => __( 'Show this section?', 'illdy' ),
 		'section'  => $panel_id,
 		'priority' => 1,
-	) );
+	) ) );
 
 // Title
 $wp_customize->add_setting( $prefix . '_services_general_title', array(
@@ -46,6 +46,9 @@ $wp_customize->add_control( $prefix . '_services_general_title', array(
 		'section'     => $panel_id,
 		'priority'    => 2,
 	) );
+$wp_customize->selective_refresh->add_partial( $prefix .'_services_general_title', array(
+    'selector' => '#services .section-header h3',
+) );
 
 // Entry
 if ( get_theme_mod( $prefix . '_services_general_entry' ) ) {
@@ -62,6 +65,9 @@ if ( get_theme_mod( $prefix . '_services_general_entry' ) ) {
 			'priority'    => 3,
 			'type'        => 'textarea',
 		) );
+	$wp_customize->selective_refresh->add_partial( $prefix .'_services_general_entry', array(
+	    'selector' => '#services .section-header p',
+	) );
 
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
     

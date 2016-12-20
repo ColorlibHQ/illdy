@@ -62,12 +62,12 @@ $wp_customize->add_setting( $prefix . '_preloader_enable', array(
 	'sanitize_callback' => $prefix . '_value_checkbox_helper',
 	'default'           => 1,
 ) );
-$wp_customize->add_control( $prefix . '_preloader_enable', array(
-	'type'     => 'checkbox',
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_preloader_enable', array(
+	'type'     => 'mte-toggle',
 	'label'    => __( 'Enable the site preloader?', 'illdy' ),
 	'section'  => $prefix . '_preloader_section',
 	'priority' => 1,
-) );
+) ) );
 
 // Background Color
 $wp_customize->add_setting( $prefix . '_preloader_background_color', array(
@@ -121,7 +121,10 @@ $wp_customize->add_section( $prefix . '_general_logo_section', array(
 /***********************************************/
 /*********** General Site Settings  ************/
 /***********************************************/
-
+$wp_customize->selective_refresh->add_partial( 'custom_logo', array(
+    'selector' => '#header .col-sm-2 a:not(.header-logo)',
+    'render_callback' => $prefix .'_custom_logo',
+) );
 
 /* Company text logo */
 $wp_customize->add_setting( $prefix . '_text_logo', array(
@@ -136,6 +139,10 @@ $wp_customize->add_control( $prefix . '_text_logo', array(
 	'section'     => $prefix . '_general_logo_section',
 	'priority'    => 2,
 ) );
+$wp_customize->selective_refresh->add_partial( $prefix .'_text_logo', array(
+    'selector' => '#header a.header-logo',
+) );
+
 
 
 /***********************************************/
@@ -162,6 +169,10 @@ $wp_customize->add_control( $prefix . '_footer_copyright', array(
 	'priority'    => 2,
 ) );
 
+$wp_customize->selective_refresh->add_partial( $prefix .'_footer_copyright', array(
+    'selector' => '#footer .bottom-copyright',
+) );
+
 /* Footer Image Logo */
 $wp_customize->add_setting( $prefix . '_img_footer_logo', array(
 	'sanitize_callback' => 'esc_url_raw',
@@ -176,3 +187,7 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $pref
 	'settings'    => $prefix . '_img_footer_logo',
 	'priority'    => 3,
 ) ) );
+$wp_customize->selective_refresh->add_partial( $prefix .'_img_footer_logo', array(
+    'selector' => '#footer .footer-logo',
+    'render_callback' => $prefix .'_img_footer_logo',
+) );

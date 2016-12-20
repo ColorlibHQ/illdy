@@ -31,14 +31,14 @@ $wp_customize->add_setting( $prefix . '_projects_general_show',
         'transport'         => 'postMessage'
     )
 );
-$wp_customize->add_control(
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize,
     $prefix . '_projects_general_show',
     array(
-        'type'      => 'checkbox',
+        'type'      => 'mte-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $panel_id,
         'priority'  => 1,
-    )
+    ) )
 );
 
 // Title
@@ -58,6 +58,9 @@ $wp_customize->add_control(
         'priority'      => 2,
     )
 );
+$wp_customize->selective_refresh->add_partial( $prefix .'_projects_general_title', array(
+    'selector' => '#projects .section-header h3',
+) );
 
 // Entry
 if ( get_theme_mod( $prefix .'_projects_general_entry' ) ) {
@@ -79,6 +82,10 @@ if ( get_theme_mod( $prefix .'_projects_general_entry' ) ) {
             'type'          => 'textarea'
         )
     );
+
+    $wp_customize->selective_refresh->add_partial( $prefix .'_projects_general_entry', array(
+        'selector' => '#projects .section-header p',
+    ) );
     
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
     

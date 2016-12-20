@@ -50,6 +50,7 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			'random-default' => true,
 			'header-text'    => false,
 		) );
+		add_theme_support( 'customize-selective-refresh-widgets' );
 		register_default_headers( array(
 			'default' => array(
 				'url'           => '%s/layout/images/blog/blog-header.png',

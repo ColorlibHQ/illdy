@@ -37,14 +37,14 @@ $wp_customize->add_setting( $prefix . '_counter_general_show',
         'transport'         => 'postMessage'
     )
 );
-$wp_customize->add_control(
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize,
     $prefix . '_counter_general_show',
     array(
-        'type'      => 'checkbox',
+        'type'      => 'mte-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_counter_general',
         'priority'  => 1
-    )
+    ) )
 );
 
 

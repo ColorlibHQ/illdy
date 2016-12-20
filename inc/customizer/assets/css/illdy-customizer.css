@@ -6,3 +6,270 @@
 	font-style: italic;
 	line-height: 1.5;
 }
+.wp-admin .checkbox_switch {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.customize-control-title.onoffswitch_label {
+    width: 71%;
+}
+
+.onoffswitch_label {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 21px;
+    margin-top: -1px;
+}
+
+.onoffswitch {
+    position: relative;
+    width: 52px;
+    display: inline-block;
+    float: right;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none !important;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 22px;
+    padding: 0;
+    line-height: 19px;
+    transition: background-color 0.2s ease-in;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 30px;
+    background-color: #c4c4c4;
+    -webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, .11);
+    -moz-box-shadow: inset 0 2px 1px rgba(0, 0, 0, .11);
+    box-shadow: inset 0 2px 1px rgba(0, 0, 0, .11);
+}
+
+.onoffswitch-label:before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    position: absolute;
+    top: 2px;
+    bottom: 0;
+    right: 32px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in 0s;
+}
+
+.onoffswitch-label:after {
+    content: "OFF";
+    display: block;
+    color: #FFF;
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    right: 6px;
+    font-size: 11px;
+    font-family: 'Arial';
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #3caf0e;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label,
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    border-color: #3caf0e;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 2px;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label:after {
+    content: "ON";
+    display: block;
+    color: #FFF;
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    right: 27px;
+    font-size: 11px;
+    font-family: 'Arial';
+}
+
+.widget-content .customize-control-title {
+    font-weight: 400;
+}
+
+.widget-content .customize-control-title.onoffswitch_label {
+    width: 65%;
+    margin-right: 26px;
+}
+
+.mte-tooltip {
+    width: 150px;
+    position: absolute;
+    background: #55AAD3;
+    color: #EEE;
+    font-size: 12px;
+    min-height: 50px;
+    border-radius: 5px;
+    left: -75px; /* half of its width */
+    top: 25px;
+    z-index: 10;
+    display: none;
+    padding: 12px;
+    line-height: 1.5;
+    font-family: 'Arial', sans-serif;
+}
+
+.dashicons.dashicons-editor-help {
+    cursor: pointer;
+    color: #55AAD3;
+}
+
+.dashicons.dashicons-editor-help:hover > .mte-tooltip {
+    display: block;
+}
+.customize-control-mte-slider input[type="text"] {
+    border: none;
+    text-align: center;
+    padding: 2px;
+    margin: 0;
+    font-size: 12px;
+    color: #333;
+    border-radius: 10px;
+    background-color: rgb(248, 248, 248);
+    -webkit-box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    width: 42px;
+    height: 22px;
+}
+
+.customize-control-mte-slider .ui-slider {
+    position: relative;
+    text-align: left;
+    height: 2px;
+    border-radius: 3px;
+    border: none;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    width: 202px;
+    background: #d6d6d6;
+}
+
+.customize-control-mte-slider .ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    top: -10px;
+    cursor: default;
+    -ms-touch-action: none;
+    touch-action: none;
+    width: 18px;
+    height: 18px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    border: solid 1px #d7d7d7;
+    transform: translateX(-50%);
+}
+
+.customize-control-mte-slider .ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: 0.7em;
+    display: block;
+    border: 0;
+    background-position: 0 0;
+    background: #E04D43;
+    top: 0;
+    bottom: 0;
+}
+
+.widget-content label.block {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.widget-content input.rl-slider {
+    border: none;
+    text-align: center;
+    padding: 2px;
+    margin: 0 0 15px;
+    font-size: 12px;
+    color: #333;
+    border-radius: 10px;
+    background-color: rgb(248, 248, 248);
+    -webkit-box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    width: 42px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.widget-content .ui-slider {
+    position: relative;
+    text-align: left;
+    height: 2px;
+    border-radius: 3px;
+    border: none;
+    margin-top: 10px;
+    margin-left: 15px;
+    display: inline-block;
+    width: 175px;
+    float: right;
+    background: #d6d6d6;
+}
+
+.widget-content .ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    top: -10px;
+    cursor: default;
+    -ms-touch-action: none;
+    touch-action: none;
+    width: 18px;
+    height: 18px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    border: solid 1px #d7d7d7;
+    transform: translateX(-50%);
+}
+
+.widget-content .ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: 0.7em;
+    display: block;
+    border: 0;
+    background-position: 0 0;
+    background: #E04D43;
+    top: 0;
+    bottom: 0;
+}

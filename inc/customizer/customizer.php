@@ -240,3 +240,104 @@ if ( ! function_exists( 'illdy_sanitize_select' ) ) {
 		}
 	}
 }
+
+if ( ! function_exists( 'illdy_about_general_title' ) ) {
+	function illdy_about_general_title() {
+		return get_theme_mode( 'illdy_about_general_title' );
+	}
+}
+
+if ( ! function_exists( 'illdy_about_general_entry' ) ) {
+	function illdy_about_general_entry() {
+		return get_theme_mode( 'illdy_about_general_entry' );
+	}
+}
+
+if ( ! function_exists( 'illdy_contact_us_general_title' ) ) {
+	function illdy_contact_us_general_title() {
+		return get_theme_mode( 'illdy_contact_us_general_title' );
+	}
+}
+
+if ( ! function_exists( 'illdy_contact_us_general_text' ) ) {
+	function illdy_contact_us_general_text() {
+		return get_theme_mode( 'illdy_contact_us_general_text' );
+	}
+}
+
+if ( ! function_exists( 'illdy_contact_us_general_address_title' ) ) {
+	function illdy_contact_us_general_address_title() {
+		return get_theme_mode( 'illdy_contact_us_general_address_title' );
+	}
+}
+
+if ( ! function_exists( 'illdy_contact_us_general_customer_support_title' ) ) {
+	function illdy_contact_us_general_customer_support_title() {
+		return get_theme_mode( 'illdy_contact_us_general_customer_support_title' );
+	}
+}
+
+if ( ! function_exists( 'illdy_address2' ) ) {
+	function illdy_address2() {
+		return get_theme_mode( 'illdy_address2' );
+	}
+}
+
+if ( ! function_exists( 'illdy_address1' ) ) {
+	function illdy_address1() {
+		return get_theme_mode( 'illdy_address1' );
+	}
+}
+
+if ( ! function_exists( 'illdy_phone' ) ) {
+	function illdy_phone() {
+		return get_theme_mode( 'illdy_phone' );
+	}
+}
+
+if ( ! function_exists( 'illdy_email' ) ) {
+	function illdy_email() {
+		return get_theme_mode( 'illdy_email' );
+	}
+}
+
+if ( ! function_exists( 'illdy_footer_copyright' ) ) {
+	function illdy_footer_copyright() {
+		return get_theme_mode( 'illdy_footer_copyright' );
+	}
+}
+
+if ( ! function_exists( 'illdy_jumbotron_general_first_row_from_title' ) ) {
+	function illdy_jumbotron_general_first_row_from_title() {
+		return get_theme_mode( 'illdy_jumbotron_general_first_row_from_title' );
+	}
+}
+
+if ( ! function_exists( 'illdy_jumbotron_general_second_row_from_title' ) ) {
+	function illdy_jumbotron_general_second_row_from_title() {
+		return get_theme_mode( 'illdy_jumbotron_general_second_row_from_title' );
+	}
+}
+
+// New
+if ( ! function_exists( 'illdy_img_footer_logo' ) ) {
+	function illdy_img_footer_logo() {
+		$img_footer_logo   = get_theme_mod( 'illdy_img_footer_logo' );
+		if ( $img_footer_logo ) {
+			$html = '<img src="'.esc_url( $img_footer_logo ).'" alt="'.esc_attr( get_bloginfo( 'name' ) ).'" title="'.esc_attr( get_bloginfo( 'name' ) ).'" />';
+		}else{
+			$html = '';
+		}
+		
+		return $html;
+	}
+}
+
+if ( ! function_exists( 'illdy_custom_logo' ) ) {
+	function illdy_custom_logo() {
+		$logo_id                   = get_theme_mod( 'custom_logo' );
+		$logo_image                = wp_get_attachment_image_src( $logo_id, 'full' );
+		
+		return '<img src="' . esc_url( $logo_image[0] ) . '" />';
+	}
+}
