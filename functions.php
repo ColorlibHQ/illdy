@@ -23,7 +23,6 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		require_once trailingslashit( get_template_directory() ) . 'inc/components/entry-meta/class.mt-entry-meta.php';
 		require_once trailingslashit( get_template_directory() ) . 'inc/components/author-box/class.mt-author-box.php';
 		require_once trailingslashit( get_template_directory() ) . 'inc/components/related-posts/class.mt-related-posts.php';
-		require_once trailingslashit( get_template_directory() ) . 'inc/components/nav-walker/class.mt-nav-walker.php';
 
 
 		// Load Theme Textdomain
