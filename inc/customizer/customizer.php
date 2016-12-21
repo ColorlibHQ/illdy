@@ -81,6 +81,14 @@ if ( ! function_exists( 'illdy_customizer_css_load' ) ) {
 	add_action( 'customize_controls_print_styles', 'illdy_customizer_css_load' );
 }
 
+if ( ! function_exists( 'illdy_customizer_js_load' ) ) {
+	function illdy_customizer_js_load() {
+		wp_enqueue_script( 'illdy-customizer-live-preview', get_template_directory_uri() . '/inc/customizer/assets/js/illdy-customizer.js', array( 'customize-controls' ), '1.0', true );
+	}
+
+	add_action( 'customize_controls_enqueue_scripts', 'illdy_customizer_js_load' );
+}
+
 /**
  *  Sanitize Radio Buttons
  */
