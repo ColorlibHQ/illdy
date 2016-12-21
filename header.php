@@ -103,8 +103,6 @@ else: echo 'header-blog'; endif; ?>" style="<?php echo $style ?>">
 				'menu_class'      => '',
 				'menu_id'         => '',
 				'items_wrap'      => '%3$s',
-				'walker'          => new Illdy_Extended_Menu_Walker(),
-				'fallback_cb'     => 'Illdy_Extended_Menu_Walker::fallback',
 			) );
 			?>
 		</ul>
