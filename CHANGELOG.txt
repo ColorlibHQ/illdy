@@ -29,6 +29,7 @@
 	- Resolved #50 - Menu sample with dropdown issues (https://github.com/puikinsh/illdy/issues/50)
 	- Resolved #51 - Headings issue (https://github.com/puikinsh/illdy/issues/51)
 	- Resolved #52 - 3.1 Labels - Style 2 Homepage - issue (https://github.com/puikinsh/illdy/issues/52)
+	- Resolved #57 - Quick editing icon for nav menu (https://github.com/puikinsh/illdy/issues/57)
 
 	
 ### V1.0.35

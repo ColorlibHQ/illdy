@@ -47,6 +47,7 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			'width'          => 1920,
 			'height'         => 532,
 			'flex-height'    => true,
+			'flex-width'    => true,
 			'random-default' => true,
 			'header-text'    => false,
 		) );
