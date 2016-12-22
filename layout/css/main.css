@@ -1122,6 +1122,7 @@ input {
 	color: #8c9597;
 	display: block;
 	font-weight: 400;
+	line-height: 26px;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-text::-webkit-input-placeholder {
