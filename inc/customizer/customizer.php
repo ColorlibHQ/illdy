@@ -20,6 +20,7 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 
 		// Custom Controls
 		require_once get_template_directory() . '/inc/customizer/custom-controls.php';
+		$wp_customize->register_control_type( 'Epsilon_Control_Tab' );
 
 		// General Options
 		require_once get_template_directory() . '/inc/customizer/panels/general-options.php';

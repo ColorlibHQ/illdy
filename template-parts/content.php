@@ -12,7 +12,7 @@
 		<div class="blog-post-image">
 			<a href="<?php echo get_the_permalink(); ?>"><?php the_post_thumbnail( 'illdy-blog-list' ); ?></a>
 		</div><!--/.blog-post-image-->
-	<?php }elseif ( !get_theme_mod( 'illdy_disable_random_featured_image' ) ) { ?>
+	<?php }elseif ( get_theme_mod( 'illdy_disable_random_featured_image' ) ) { ?>
 		<div class="blog-post-image">
 			<a href="<?php echo get_the_permalink(); ?>"><img src="<?php echo illdy_get_random_featured_image(); ?>"></a>
 		</div><!--/.blog-post-image-->

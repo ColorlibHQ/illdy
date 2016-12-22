@@ -6,15 +6,6 @@ $panel_id = 'illdy_panel_general';
 $prefix = 'illdy';
 
 
-// Change panel for Colors
-$site_colors        = $wp_customize->get_section( 'colors' );
-$site_colors->panel = $panel_id;
-$site_colors->title = __( 'Background Color', 'illdy' );
-
-// Change panel for Background Image
-$site_title        = $wp_customize->get_section( 'background_image' );
-$site_title->panel = $panel_id;
-
 // Change panel for Static Front Page
 $site_title        = $wp_customize->get_section( 'static_front_page' );
 $site_title->panel = $panel_id;
