@@ -17,6 +17,7 @@
 	- Resolved #28 - General option - Site Logo - Cropping issue (https://github.com/puikinsh/illdy/issues/28)
 	- Resolved #29 - Footer Copyright issue (https://github.com/puikinsh/illdy/issues/29)
 	- Resolved #30 - Customizer : footer panel description (https://github.com/puikinsh/illdy/issues/30)
+	- Resolved #32 - Background Image - remove functionality (https://github.com/puikinsh/illdy/issues/32)
 	- Resolved #34 - Jumbotron Section - Titles issue (https://github.com/puikinsh/illdy/issues/34)
 	- Resolved #37 - Blog Archive Header Image - Suggested image not appear (https://github.com/puikinsh/illdy/issues/37)
 	- Resolved #38 - Blog Featured Image - description isn't very clear (https://github.com/puikinsh/illdy/issues/38)
