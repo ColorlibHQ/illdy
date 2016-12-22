@@ -273,3 +273,59 @@
     top: 0;
     bottom: 0;
 }
+
+/* Tab Custom Control */
+.epsilon-tabs {
+    margin-left: -12px;
+    margin-right: -12px;
+    padding: 0 12px;
+}
+.epsilon-after-tab {
+    margin-left: -12px;
+    margin-right: -12px;
+}
+.epsilon-after-tab > div {
+    background: #f4f4f4;
+    height: 30px;
+    width: 100%;
+}
+.epsilon-tabs .tabs {
+    text-align: center;
+    padding-top: 5px;
+    overflow: hidden;
+}
+/*a.epsilon-tab:first-child {
+    border-left: 1px solid #CCC;
+}*/
+a.epsilon-tab {
+    width: 120px;
+    text-align: center;
+    display: inline-block;
+    background: #efefef;
+    font-size: 13px;
+    color: #333333;
+    text-decoration: none;
+    position: relative;
+    top: 1px;
+    text-decoration: none;
+    box-shadow: 0px 0px 12px -2px rgba( 0,0,0,.5 );
+    margin-right: 5px;
+    line-height: 32px;
+}
+a.epsilon-tab:focus {
+    outline: none;
+}
+a.epsilon-tab.active {
+    /*border-bottom-color: #f1f1f1;*/
+    background-color: #f4f4f4;
+}
+.customize-control.tab-element {
+    margin-left: -12px;
+    margin-right: -12px;
+    padding: 0 12px 12px;
+    background: #f4f4f4;
+    margin-bottom: 0;
+}
+.customize-control.customize-control-epsilon-tab {
+    margin-bottom: 0;
+}
