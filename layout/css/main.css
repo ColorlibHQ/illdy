@@ -228,13 +228,14 @@ input {
 #header .top-header .header-navigation ul li.menu-item-has-children .sub-menu li a {
 	width: 100%;
 	margin: 0;
-	padding: 10px 10px;
-	line-height: 26px;
-	font-weight: 300;
+	padding: 0 10px;
+	line-height: 40px;
+	font-weight: 400;
 	font-size: 14px;
 	color: #8c9597;
 	text-transform: none;
 	display: block;
+	font-family: "Lato";
 }
 
 #header .top-header .header-navigation ul li.menu-item-has-children .sub-menu li:hover > a {
@@ -271,7 +272,7 @@ input {
 	margin-bottom: 0;
 }
 
-#header .bottom-header h2 {
+#header .bottom-header h1 {
 	margin: 0 0 29px 0;
     line-height: 84px;
     font-weight: 700;
@@ -279,7 +280,7 @@ input {
     color: #fff;
     font-family: "Poppins";
 }
-#header .bottom-header h2 span {
+#header .bottom-header h1 span {
 	word-wrap: break-word;
 }
 
@@ -1121,6 +1122,7 @@ input {
 	color: #8c9597;
 	display: block;
 	font-weight: 400;
+	line-height: 26px;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-text::-webkit-input-placeholder {
