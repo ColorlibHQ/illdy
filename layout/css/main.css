@@ -295,6 +295,8 @@ a:hover, a:focus {
 
 #header .top-header .header-navigation ul li a {
 	color: #fff;
+	font-size: 16px;
+	line-height: 26px;
 }
 
 #header .top-header .header-navigation ul li:hover a {
