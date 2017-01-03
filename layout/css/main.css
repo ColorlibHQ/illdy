@@ -1646,26 +1646,26 @@ a:hover, a:focus {
 	border-bottom: none;
 }
 
-.widget:not(.widget_rss):not(.widget_recent_comments)  ul li {
+.widget:not(.widget_rss):not(.widget_recent_comments):not(.widget_recent_entries) ul li {
 	width: 100%;
 	padding-left: 20px;
 	position: relative;
 }
 
-.widget:not(.widget_rss):not(.widget_recent_comments) ul li:before {
+.widget:not(.widget_rss):not(.widget_recent_comments):not(.widget_recent_entries) ul li:before {
 	content: "\f105";
 	font-family: "FontAwesome";
 	color: #8c979e;
 	position: absolute;
 	left: 0;
-	line-height: 32px;
+	line-height: 38px;
 }
-.widget:not(.widget_rss):not(.widget_recent_comments) ul li:hover:before {
+.widget:not(.widget_rss):not(.widget_recent_comments):not(.widget_recent_entries) ul li:hover:before {
 	color: #6a4d8a;
 }
 
 .widget ul li a {
-	line-height: 32px;
+	line-height: 33px;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
@@ -1872,12 +1872,16 @@ a:hover, a:focus {
 	border-radius: 50%;
 }
 
-.widget .widget-recent-post .recent-post-title {
+.widget .widget-recent-post .recent-post-title,
+.widget.widget_recent_entries ul li a {
 	width: 100%;
-	line-height: 33px;
+	line-height: 20px;
 	font-size: 16px;
 	display: block;
 	font-weight: 400;
+}
+.widget.widget_recent_entries ul li {
+	margin-bottom: 35px;
 }
 
 .widget .widget-recent-post .recent-post-button {
@@ -1891,25 +1895,29 @@ a:hover, a:focus {
     border-collapse: separate;
 }
 
-li a.rsswidget {
+.widget ul li a.rsswidget {
     display: block;
     font-size: 18px;
     font-weight: 700;
     font-family: "Poppins";
     line-height: 25px;
+    color: #fff;
 }
 
 .widget_rss ul li {
 	padding: 0;
 	margin-bottom: 40px;
 }
-span.rss-date {
+span.rss-date,
+.post-date {
     font-size: 12px;
     font-weight: 400;
     font-family: "Lato";
     line-height: 24px;
+    display: block;
 }
-span.rss-date:before {
+span.rss-date:before,
+.post-date:before {
 	content: "\f017";
     font-family: "FontAwesome";
     color: #f1d204;
@@ -1925,6 +1933,7 @@ span.rss-date:before {
 .widget_archive ul li a {
 	float: left;
 	clear: left;
+	line-height: 38px;
 }
 .widget_categories ul li:after,
 .widget_archive ul li:after {
