@@ -1891,12 +1891,13 @@ a:hover, a:focus {
     border-collapse: separate;
 }
 
-li a.rsswidget {
+.widget ul li a.rsswidget {
     display: block;
     font-size: 18px;
     font-weight: 700;
     font-family: "Poppins";
     line-height: 25px;
+    color: #fff;
 }
 
 .widget_rss ul li {
