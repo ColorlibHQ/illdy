@@ -1646,13 +1646,13 @@ a:hover, a:focus {
 	border-bottom: none;
 }
 
-.widget:not(.widget_rss):not(.widget_recent_comments)  ul li {
+.widget:not(.widget_rss):not(.widget_recent_comments):not(.widget_recent_entries) ul li {
 	width: 100%;
 	padding-left: 20px;
 	position: relative;
 }
 
-.widget:not(.widget_rss):not(.widget_recent_comments) ul li:before {
+.widget:not(.widget_rss):not(.widget_recent_comments):not(.widget_recent_entries) ul li:before {
 	content: "\f105";
 	font-family: "FontAwesome";
 	color: #8c979e;
@@ -1660,7 +1660,7 @@ a:hover, a:focus {
 	left: 0;
 	line-height: 32px;
 }
-.widget:not(.widget_rss):not(.widget_recent_comments) ul li:hover:before {
+.widget:not(.widget_rss):not(.widget_recent_comments):not(.widget_recent_entries) ul li:hover:before {
 	color: #6a4d8a;
 }
 
@@ -1872,12 +1872,16 @@ a:hover, a:focus {
 	border-radius: 50%;
 }
 
-.widget .widget-recent-post .recent-post-title {
+.widget .widget-recent-post .recent-post-title,
+.widget.widget_recent_entries ul li a {
 	width: 100%;
-	line-height: 33px;
+	line-height: 20px;
 	font-size: 16px;
 	display: block;
 	font-weight: 400;
+}
+.widget.widget_recent_entries ul li {
+	margin-bottom: 35px;
 }
 
 .widget .widget-recent-post .recent-post-button {
@@ -1904,13 +1908,16 @@ a:hover, a:focus {
 	padding: 0;
 	margin-bottom: 40px;
 }
-span.rss-date {
+span.rss-date,
+.post-date {
     font-size: 12px;
     font-weight: 400;
     font-family: "Lato";
     line-height: 24px;
+    display: block;
 }
-span.rss-date:before {
+span.rss-date:before,
+.post-date:before {
 	content: "\f017";
     font-family: "FontAwesome";
     color: #f1d204;
