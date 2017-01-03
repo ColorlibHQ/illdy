@@ -27,20 +27,64 @@ body {
 }
 
 body {
-	line-height: 1.5;
+	line-height: 26px;
 	background-color: #fff;
 	font-family: "Lato", sans-serif;
 	font-weight: 400;
 	font-size: 16px;
-	color: #888;
+	color: #8c9597;
 }
 h1,h2,h3,h4,h5,h6 {
 	font-family: "Poppins";
+}
+h1 {
+	font-size: 80px;
+	line-height: 84px;
+	font-weight: 700;
+}
+h2 {
+	font-size: 50px;
+	line-height: 52px;
+	font-weight: 700;
+}
+h3 {
+	font-size: 35px;
+	line-height: 38px;
+	font-weight: 700;
+}
+h4 {
+	font-size: 25px;
+	line-height: 32px;
+	font-weight: 700;
+}
+h5 {
+	font-size: 22px;
+	line-height: 28px;
+	font-weight: 700;
+}
+h6 {
+	font-size: 18px;
+	line-height: 25px;
+	font-weight: 700;
 }
 textarea,
 input {
 	-webkit-appearance: none;
 	border-radius: 0;
+}
+ul,
+ol {
+	font-size: 16px;
+	font-family: "Lato";
+	line-height: 26px;
+	font-weight: 400;
+}
+a {
+	color: #8c979e;
+}
+a:hover, a:focus {
+	color: #6a4d8a;
+	text-decoration: none;
 }
 
 .front-page-section {
@@ -53,16 +97,17 @@ input {
 
 .front-page-section .section-header h3 {
 	margin: 0 0 5px 0;
-	line-height: 1.3;
+	line-height: 35px;
 	font-weight: 900;
 	font-size: 35px;
 	color: #545454;
 	font-family: "Poppins";
+	
 }
 
 .front-page-section .section-header p {
 	margin-bottom: 0;
-	line-height: 1.6;
+	line-height: 35px;
 	font-size: 16px;
 	color: #8c9597;
 	font-family: "Lato";
@@ -144,9 +189,9 @@ input {
 
 #header .top-header .header-navigation ul li {
 	margin-left: 40px;
-	line-height: 1.375;
-	font-weight: 700;
-	font-size: 16px;
+	line-height: 40px;
+	font-weight: 400;
+	font-size: 14px;
 	color: #fff;
 	position: relative;
 	float: left;
@@ -289,7 +334,7 @@ input {
 }
 
 #header .bottom-header p {
-	line-height: 1.6;
+	line-height: 26px;
     margin-bottom: 60px;
     font-size: 16px;
     color: #fff;
@@ -315,6 +360,7 @@ input {
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 	font-family: "Lato";
+	min-width: 242px;
 }
 
 #header .bottom-header .header-button-one:hover {
@@ -339,6 +385,7 @@ input {
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 	font-family: "Lato";
+	min-width: 242px;
 }
 
 #header .bottom-header .header-button-two:hover {
@@ -357,6 +404,9 @@ input {
 
 #about .section-header {
 	margin-bottom: 110px;
+}
+#about .section-header h3 {
+	margin-bottom: 55px;
 }
 
 #about .skill {
@@ -427,13 +477,9 @@ input {
 	text-align: left;
 }
 
-#about .skill .skill-bottom .fa {
-	font-size: 22px;
-}
-
 #about .skill .skill-bottom span {
 	margin-left: 8px;
-	line-height: 1.294;
+	line-height: 22px;
 	font-size: 16px;
 	font-family: "Lato";
 }
@@ -449,7 +495,7 @@ input {
 /* 04. Projects */
 #projects {
 	width: 100%;
-	background-color: #fbfbfb;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQALXr1/3YYTxQRxNTc0tYAEYB8RmROaABADURw7WwN5h2QAAAABJRU5ErkJggg==);
 	padding: 65px 0 0 0;
 	text-align: center;
 }
@@ -545,7 +591,7 @@ input {
 	width: 100%;
 	background-color: #6a4d8a;
 	margin-bottom: 48px;
-	padding: 25px 50px;
+	padding: 50px 35px 25px;;
 	position: relative;
 }
 
@@ -713,7 +759,7 @@ input {
 	width: 100%;
     line-height: 32px;
     padding: 0 30px;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 23px;
     color: #5e5e5e;
     -webkit-transition: all 0.3s;
@@ -721,7 +767,7 @@ input {
     -o-transition: all 0.3s;
     transition: all 0.3s;
     display: block;
-    font-family: "Poppins";
+    font-family: "Lato";
 }
 
 #latest-news .section-content .post .post-title:hover {
@@ -747,6 +793,7 @@ input {
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
+	margin-left: 10px;
 }
 
 #latest-news .section-content .post .post-button:hover {
@@ -755,19 +802,19 @@ input {
 }
 
 #latest-news .section-content .post .post-button .fa {
-	margin-right: 13px;
+	margin-right: 10px;
 }
 
 #latest-news .latest-news-button {
 	width: auto;
-	height: 56px;
-	line-height: 56px;
+	height: 45px;
+	line-height: 45px;
 	background: #f1d204;
 	margin-bottom: 50px;
-	padding: 0 70px;
+	padding: 0 35px;
 	display: inline-block;
-	font-weight: 900;
-	font-size: 18px;
+	font-weight: 700;
+	font-size: 16px;
 	color: #f7f7f7;
 	border-radius: 3px;
 	-webkit-transition: all 0.3s;
@@ -853,7 +900,7 @@ input {
 	background: #fff;
 	padding: 80px 0 100px 0;
 	text-align: center;
-	background: url('../images/front-page/pattern.png');
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQALXr1/3YYTxQRxNTc0tYAEYB8RmROaABADURw7WwN5h2QAAAABJRU5ErkJggg==);
 }
 
 #team .section-header {
@@ -890,23 +937,25 @@ input {
 #team .section-content .person .person-content h4 {
 	width: 100%;
 	margin: 12px 0 5px 0;
-	line-height: 1.25;
+	line-height: 24px;
 	font-size: 20px;
 	color: #5e5e5e;
-	font-family: "Poppins";
+	font-weight: 400;
 }
 
 #team .section-content .person .person-content h5 {
 	width: 100%;
 	margin: 0 0 20px 0;
 	font-size: 16px;
-	font-family: "Poppins";
+	font-family: "Lato";
+	line-height: 24px;
+	font-weight: 400;
 }
 
 #team .section-content .person .person-content p {
 	width: 100%;
 	margin: 0 0 10px 0;
-	line-height: 1.5;
+	line-height: 20px;
 	font-size: 16px;
 	color: #8c9597;
 	font-family: "Lato";
@@ -929,12 +978,12 @@ input {
 }
 
 #team .section-content .person .person-content .person-content-social li a {
-	width: 22px;
-	height: 22px;
-	line-height: 22px;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
 	display: inline-block;
 	border-radius: 50%;
-	font-size: 12px;
+	font-size: 13px;
 	color: #fff;
 	text-align: center;
 	-webkit-transition: all 0.3s;
@@ -1049,10 +1098,6 @@ input {
 	text-align: left;
 }
 
-#contact-us .section-content .wpcf7-form p {
-	color: #fff;
-}
-
 #contact-us .section-content .wpcf7-form p span {
 	width: 100%;
 	display: block;
@@ -1112,7 +1157,7 @@ input {
 
 #contact-us .section-content .wpcf7-form p .wpcf7-text {
 	width: 100%;
-	height: 46px;
+	height: 35px;
 	background-color: #fcfcfc;
 	padding: 0 20px;
 	border: 1px solid #e1e1e1;
@@ -1122,7 +1167,7 @@ input {
 	color: #8c9597;
 	display: block;
 	font-weight: 400;
-	line-height: 26px;
+	line-height: 25px;
 }
 
 #contact-us .section-content .wpcf7-form p .wpcf7-text::-webkit-input-placeholder {
@@ -1211,7 +1256,13 @@ input {
 #footer {
 	width: 100%;
 	background-color: #292825;
-	padding: 40px 0;
+	padding: 40px 0 0;
+}
+#footer .bottom-footer {
+	margin-top: 50px;
+	padding: 30px 0;
+	text-align: center;
+	background-color: #242320;
 }
 
 #footer .footer-logo {
@@ -1228,12 +1279,17 @@ input {
 
 #footer .copyright {
 	width: 100%;
-	line-height: 0.933;
-	color: #888;
+	line-height: 1.2;
+	color: #8c9597;
+	margin-bottom: 0;
+	font-size: 15px;
+}
+#footer .bottom-copyright {
+	color: #fff;
 }
 
 #footer .copyright a {
-	color: #888;
+	color: #8c9597;
 	text-decoration: none;
 }
 
@@ -1244,6 +1300,11 @@ input {
 #footer .widget .widget-title {
 	margin: 0 0 20px 0;
 	padding: 0;
+	color: #fff;
+}
+#footer .widget .widget-title h5,
+#footer .widget .widget-title h5 a {
+	color: #fff;
 }
 
 #footer .widget .widget-title:before {
@@ -1257,33 +1318,41 @@ input {
 	font-family: "Lato";
 	text-transform: initial;
 }
+#footer .widget table#wp-calendar tbody tr td a {
+	width: calc( 100% + 8px );	
+	height: calc( 100% + 8px );
+	left: -4px;
+	top: -4px;
+}
 
-#footer .widget ul li {
-	margin: 0 0 10px 0;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-	border-bottom: none;
+.widget_rss cite {
+	color: #545454;
+}
+#footer .widget_rss cite {
+	color: #fff;
+}
+.recentcomments > a {
+	color: #f1d204;
+}
+.recentcomments a:hover {
+	color: #6a4d8a;
 }
 
 #footer .widget ul li:last-child {
 	margin-bottom: 0;
 }
 
-#footer .widget ul li a {
-	line-height: 1.5;
-	color: #8c9597;
-	font-size: 15px;
-	font-family: "Lato";
+#footer .widget table thead th {
+	color: #fff;
+}
+#footer .widget table tbody tr td:not(.pad) {
+    color: #eeeeee;
+    padding: 0;
+    border: 4px solid #363636;
+    background-color: transparent;
 }
 
-#footer .widget ul li a:hover {
-	color: #f1d204;
-}
 
-#footer .widget ul li:before {
-	color: #888;
-}
 
 /* 12. Blog */
 #blog {
@@ -1382,11 +1451,6 @@ input {
 #blog .blog-post .blog-post-entry {
 	width: 100%;
 	margin-bottom: 40px;
-}
-
-#blog .blog-post .blog-post-entry p {
-	line-height: 1.6;
-	color: #888;
 }
 
 #blog .blog-post .blog-post-button {
@@ -1556,32 +1620,12 @@ input {
 .widget .widget-title {
 	width: 100%;
 	margin-bottom: 20px;
-	padding-bottom: 12px;
 	position: relative;
 }
 
-.widget .widget-title:before {
-	content: "";
-	width: 41px;
-	height: 3px;
-	background-color: #f1d204;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-}
-
-.widget .widget-title h3 {
-	line-height: 25px;
+.widget .widget-title h5 {
 	margin: 0;
 	padding: 0;
-	font-weight: 700;
-	font-size: 22px;
-	color: #333;
-	font-family: "Poppins";
-}
-
-.widget a {
-	color: #333;
 }
 
 .widget img {
@@ -1600,33 +1644,36 @@ input {
 	border-bottom: none;
 }
 
-.widget ul li {
+.widget:not(.widget_rss):not(.widget_recent_comments)  ul li {
 	width: 100%;
-	padding: 20px 0 20px 20px;
-	border-bottom: 1px solid #ebebeb;
+	padding-left: 20px;
 	position: relative;
 }
 
-.widget ul li:before {
+.widget:not(.widget_rss):not(.widget_recent_comments) ul li:before {
 	content: "\f105";
 	font-family: "FontAwesome";
-	color: #f1d204;
+	color: #8c979e;
 	position: absolute;
 	left: 0;
+	line-height: 32px;
+}
+.widget:not(.widget_rss):not(.widget_recent_comments) ul li:hover:before {
+	color: #6a4d8a;
 }
 
 .widget ul li a {
-	line-height: 1.6;
-	color: #888;
+	line-height: 32px;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 }
 
-.widget ul li a:hover {
-	color: #f1d204;
+.widget:not(.widget_recent_comments) ul li:hover a,
+.widget.widget_recent_comments ul li a:hover {
 	text-decoration: none;
+	color: #6a4d8a;
 }
 
 .widget .screen-reader-text {
@@ -1640,11 +1687,20 @@ input {
 .widget table {
 	width: 100%;
 }
-
+.widget #wp-calendar {
+	position: relative;
+}
 .widget table caption {
-	color: #888;
+	color: #fff;
 	margin-bottom: 10px;
 	font-weight: 700;
+	font-size: 18px;
+	line-height: 25px;
+	font-family: "Poppins";
+	width: 100%;
+	background-color: #f1d204;
+	text-align: center;
+	margin-bottom: 30px;
 }
 
 .widget table thead {
@@ -1653,9 +1709,8 @@ input {
 
 .widget table thead th {
 	padding-bottom: 5px;
-	border-right: 1px solid #eee;
-	border-bottom: 1px solid #eee;
 	text-align: center;
+	color: #333333;
 }
 
 .widget table thead th:last-child {
@@ -1663,27 +1718,34 @@ input {
 }
 
 .widget table tbody {
-	color: #888;
+	color: #8c9597;
 	text-align: center;
-	font-size: 12px;
-	font-weight: 300;
+	font-size: 14px;
+	font-weight: 400;
 }
-
-.widget table tbody a {
-	font-weight: 700;
-}
-
-.widget table tbody tr {
-	border-bottom: 1px solid #eee;
-}
-
 .widget table tbody tr:last-child {
 	border-bottom: none;
 }
 
-.widget table tbody tr td {
-	border-right: 1px solid #eee;
-	padding: 7px;
+.widget table tbody tr td:not(.pad) {
+	padding: 4px;
+	background-color: #f6f6f6;
+	position: relative;
+}
+.widget table#wp-calendar tbody tr td a {
+	display: block;
+    background-color: #f1d204;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 4px;
+    text-decoration: none;
+    color: #fff;
+}
+.widget table#wp-calendar tbody tr td a:hover {
+	background-color: #6a4d8a;
 }
 
 .widget table tbody tr td:last-child {
@@ -1691,8 +1753,12 @@ input {
 }
 
 .widget table tfoot {
-	font-size: 14px;
-	color: #888;
+	font-size: 16px;
+	color: #FFF;
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .widget table tfoot #next {
@@ -1700,28 +1766,35 @@ input {
 }
 
 .widget table a {
-	color: #888;
 	text-decoration: underline;
 }
-
+.widget table tfoot tr {
+	height: 32px;
+}
 .widget table a:hover {
 	text-decoration: none;
 }
-
-.widget table td#prev {
-	padding-top: 10px;
-}
-
-.widget table td#prev a {
-	color: #888;
-}
-
-.widget table td#next {
-	padding-top: 10px;
-}
-
+.widget table td#prev a,
 .widget table td#next a {
-	color: #888;
+	color: #f1d204;
+	padding: 0 10px;
+}
+.widget table td#prev a:before,
+.widget table td#next a:before {
+	font-family: "FontAwesome";
+	color: #fff;
+	display: inline-block;
+	font-size: 16px;
+}
+.widget table td#prev a:before {
+	content: "\f104";
+}
+.widget table td#next a:before {
+	content: "\f105";
+}
+.widget table td#prev a:hover:before,
+.widget table td#next a:hove:before {
+	color: #6a4d8a;
 }
 
 .widget .search-form {
@@ -1730,9 +1803,21 @@ input {
 
 .widget .search-form .search-form-box {
 	width: 100%;
-	height: 39px;
-	padding: 0 20px;
-	border: 1px solid #000;
+	position: relative;
+}
+.widget .search-form .search-form-box:after {
+	content: "\f002";
+	position: absolute;
+	right: 20px;
+	top: 5px;
+	color: #a9afb1;
+	font-family: "FontAwesome";
+	font-size: 15px;
+}
+.widget .search-form .search-form-box #s {
+	padding-right: 40px;
+	background-color: transparent;
+	border-radius: 5px;
 }
 
 .widget .search-form .search-form-box #searchsubmit {
@@ -1747,28 +1832,21 @@ input {
 	float: left;
 }
 
-.widget .search-form .search-form-box #s {
-	height: 37px;
-	background: transparent;
-	border: none;
-	color: #333;
-	outline: 0;
-}
 
 .widget .search-form .search-form-box #s::-webkit-input-placeholder {
-	color: #000;
+	color: #a9afb1;
 }
 
 .widget .search-form .search-form-box #s::-moz-placeholder {
-	color: #000;
+	color: #a9afb1;
 }
 
 .widget .search-form .search-form-box #s:-ms-input-placeholder {
-	color: #000;
+	color: #a9afb1;
 }
 
 .widget .search-form .search-form-box #s:-moz-placeholder {
-	color: #000;
+	color: #a9afb1;
 }
 
 .widget .widget-recent-post {
@@ -1794,10 +1872,10 @@ input {
 
 .widget .widget-recent-post .recent-post-title {
 	width: 100%;
-	line-height: 1.466;
+	line-height: 33px;
+	font-size: 16px;
 	display: block;
-	color: #333;
-	text-transform: uppercase;
+	font-weight: 400;
 }
 
 .widget .widget-recent-post .recent-post-button {
@@ -1805,6 +1883,56 @@ input {
 	line-height: 1.466;
 	color: #f1d204;
 	text-transform: lowercase;
+}
+.widget table#wp-calendar {
+	border-spacing: 4px;
+    border-collapse: separate;
+}
+
+li a.rsswidget {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Poppins";
+    line-height: 25px;
+}
+
+.widget_rss ul li {
+	padding: 0;
+	margin-bottom: 40px;
+}
+span.rss-date {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "Lato";
+    line-height: 24px;
+}
+span.rss-date:before {
+	content: "\f017";
+    font-family: "FontAwesome";
+    color: #f1d204;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.widget_categories ul li,
+.widget_archive ul li {
+	text-align: right;
+}
+.widget_categories ul li a,
+.widget_archive ul li a {
+	float: left;
+	clear: left;
+}
+.widget_categories ul li:after,
+.widget_archive ul li:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.widget_categories ul li:hover,
+.widget_archive ul li:hover {
+	color: #6a4d8a;
 }
 
 /* 14. Markup Format */
@@ -1817,33 +1945,7 @@ input {
 	margin: 30px 0;
 }
 
-.markup-format h1 {
-	line-height: 92px;
-}
-
-.markup-format h2 {
-	line-height: 32px;
-}
-
-.markup-format h3 {
-	line-height: 30px;
-	font-weight: 500;
-}
-
-.markup-format h4 {
-	line-height: 18px;
-}
-
-.markup-format h5 {
-	line-height: 16px;
-}
-
-.markup-format h6 {
-	line-height: 14px;
-}
-
 .markup-format p {
-	line-height: 25px;
 	margin: 30px 0;
 }
 
@@ -1902,16 +2004,6 @@ input {
 
 .markup-format .post-password-form label {
 	float: left;
-}
-
-.markup-format .post-password-form label input[type="password"] {
-	height: 40px;
-	margin: 0 10px 0 5px;
-	padding: 0 20px;
-	border: 1px solid #e6e6e6;
-	border-radius: 0;
-	outline: 0;
-	appearance: none;
 }
 
 .markup-format .post-password-form input[type="submit"] {
@@ -2244,22 +2336,30 @@ input {
 	padding: 10px;
 	border: 1px solid #d7d7d7;
 	outline: 0;
-	font-family: "Source Sans Pro", sans-serif;
+	font-family: "Lato", sans-serif;
 	font-weight: 400;
 	color: #888;
 	resize: none;
 	display: block;
 }
-input {
+input,
+textarea {
 	width: 100%;
-	padding: 10px;
-	border: 1px solid rgb(169, 169, 169);;
+	padding: 5px 10px;
+	border: 1px solid #d7d7d7;
 	outline: 0;
-	font-family: "Source Sans Pro", sans-serif;
+	font-family: "Lato", sans-serif;
 	font-weight: 400;
-	color: #888;
+	color: #8c9597;
 	resize: none;
 	display: block;
+	font-size: 16px;
+	line-height: 26px;
+	background-color: transparent;
+}
+input:focus,
+textarea:focus {
+	border-color: #6a4d8a;
 }
 
 #comments #respond .comment-form #input-submit,
@@ -2525,6 +2625,7 @@ input[type=submit] {
 .inline-columns > div {
 	display: inline-block;
 	float: none;
+	vertical-align: top;
 }
 
 /*# sourceMappingURL=main.css.map */

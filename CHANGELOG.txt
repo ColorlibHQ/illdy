@@ -1,7 +1,6 @@
 ### V1.0.36
 	- Added new Welcome Page.
 	- Remove static fronpate action from Illdy theme and added to Illdy companion
-	- Implemented new design (https://github.com/puikinsh/illdy/issues/24)
 	- Resolved #5 - Add fallback image for jumbotron. (https://github.com/puikinsh/illdy/issues/5)
 	- Resolved #7 - Missing some strings in the POT-file (https://github.com/puikinsh/illdy/issues/7)
 	- Resolved #8 - Submenu not displaying as submenu in mobile version (https://github.com/puikinsh/illdy/issues/8)
@@ -13,6 +12,7 @@
 	- Resolved #16 - Jumbotron buttons does not hide (https://github.com/puikinsh/illdy/issues/16)
 	- Resolved #21 - Remove error-styled notice (https://github.com/puikinsh/illdy/issues/21)
 	- Resolved #22 - Remove grey border around recommended plugin images (https://github.com/puikinsh/illdy/issues/22)
+	- Resolved #24 - Implemented new design (https://github.com/puikinsh/illdy/issues/24)
 	- Resolved #27 - Appereance - About Illdy - Changelog Tab (https://github.com/puikinsh/illdy/issues/27)
 	- Resolved #28 - General option - Site Logo - Cropping issue (https://github.com/puikinsh/illdy/issues/28)
 	- Resolved #29 - Footer Copyright issue (https://github.com/puikinsh/illdy/issues/29)
@@ -30,7 +30,11 @@
 	- Resolved #50 - Menu sample with dropdown issues (https://github.com/puikinsh/illdy/issues/50)
 	- Resolved #51 - Headings issue (https://github.com/puikinsh/illdy/issues/51)
 	- Resolved #52 - 3.1 Labels - Style 2 Homepage - issue (https://github.com/puikinsh/illdy/issues/52)
+	- Resolved #53 - Widget - Archive and Categories issues (https://github.com/puikinsh/illdy/issues/53)
+	- Resolved #54 - Widgets - Recent comments issue (https://github.com/puikinsh/illdy/issues/54)
+	- Resolved #55 - Widget - Recent Posts issue (https://github.com/puikinsh/illdy/issues/55)
 	- Resolved #57 - Quick editing icon for nav menu (https://github.com/puikinsh/illdy/issues/57)
+	- Resolved #60 - Widget - Footer Sidebar 3 - RSS issues (https://github.com/puikinsh/illdy/issues/60)
 
 	
 ### V1.0.35

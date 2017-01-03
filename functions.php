@@ -238,8 +238,8 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			'description'   => __( 'The widgets added in this sidebar will appear in blog page.', 'illdy' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget-title"><h3>',
-			'after_title'   => '</h3></div>',
+			'before_title'  => '<div class="widget-title"><h5>',
+			'after_title'   => '</h5></div>',
 		) );
 
 		// Page Sidebar
@@ -249,8 +249,8 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			'description'   => __( 'The widgets added in this sidebar will appear on single pages.', 'illdy' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget-title"><h3>',
-			'after_title'   => '</h3></div>',
+			'before_title'  => '<div class="widget-title"><h5>',
+			'after_title'   => '</h5></div>',
 		) );
 
 		// Footer Sidebar 1
@@ -260,8 +260,8 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			'description'   => __( 'The widgets added in this sidebar will appear in first block from footer.', 'illdy' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget-title"><h3>',
-			'after_title'   => '</h3></div>',
+			'before_title'  => '<div class="widget-title"><h5>',
+			'after_title'   => '</h5></div>',
 		) );
 
 		// Footer Sidebar 2
@@ -271,8 +271,8 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			'description'   => __( 'The widgets added in this sidebar will appear in second block from footer.', 'illdy' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget-title"><h3>',
-			'after_title'   => '</h3></div>',
+			'before_title'  => '<div class="widget-title"><h5>',
+			'after_title'   => '</h5></div>',
 		) );
 
 		// Footer Sidebar 3
@@ -282,8 +282,19 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			'description'   => __( 'The widgets added in this sidebar will appear in third block from footer.', 'illdy' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget-title"><h3>',
-			'after_title'   => '</h3></div>',
+			'before_title'  => '<div class="widget-title"><h5>',
+			'after_title'   => '</h5></div>',
+		) );
+
+		// Footer Sidebar 4
+		register_sidebar( array(
+			'name'          => __( 'Footer Sidebar 4', 'illdy' ),
+			'id'            => 'footer-sidebar-4',
+			'description'   => __( 'The widgets added in this sidebar will appear in fourth block from footer.', 'illdy' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget-title"><h5>',
+			'after_title'   => '</h5></div>',
 		) );
 
 		// About Sidebar
@@ -349,8 +360,8 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 				'description'   => __( 'The widgets added in this sidebar will appear in WooCommerce pages.', 'illdy' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<div class="widget-title"><h3>',
-				'after_title'   => '</h3></div>',
+				'before_title'  => '<div class="widget-title"><h5>',
+				'after_title'   => '</h5></div>',
 			) );
 		}
 	}
