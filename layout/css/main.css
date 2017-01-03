@@ -182,7 +182,7 @@ a:hover, a:focus {
 
 #header .top-header .header-navigation ul {
 	width: 100%;
-	margin: 25px 0 0 0;
+	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
@@ -1248,8 +1248,8 @@ a:hover, a:focus {
 #contact-us .section-content .wpcf7-form .wpcf7-response-output.wpcf7-display-none.wpcf7-validation-errors {
 	margin: 0;
 	padding: 10px 20px;
-	color: #fff;
 	float: left;
+	border-color: #f3c3c3;
 }
 
 /* 11. Footer */
@@ -2626,6 +2626,22 @@ input[type=submit] {
 	display: inline-block;
 	float: none;
 	vertical-align: top;
+}
+
+
+.wpcf7-form p .wpcf7-form-control:hover,
+.wpcf7-form p .wpcf7-form-control:focus,
+#contact-us .section-content .wpcf7-form p .wpcf7-textarea:hover,
+#contact-us .section-content .wpcf7-form p .wpcf7-textarea:focus,
+#contact-us .section-content .wpcf7-form p .wpcf7-text:hover,
+#contact-us .section-content .wpcf7-form p .wpcf7-text:focus {
+	border-color: #d2c9dc;
+}
+
+.wpcf7-form p .wpcf7-form-control.wpcf7-not-valid,
+#contact-us .section-content .wpcf7-form p .wpcf7-textarea.wpcf7-not-valid,
+#contact-us .section-content .wpcf7-form p .wpcf7-text.wpcf7-not-valid {
+	border-color: #f3c3c3;
 }
 
 /*# sourceMappingURL=main.css.map */
