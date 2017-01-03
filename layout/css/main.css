@@ -1658,7 +1658,7 @@ a:hover, a:focus {
 	color: #8c979e;
 	position: absolute;
 	left: 0;
-	line-height: 32px;
+	line-height: 38px;
 }
 .widget:not(.widget_rss):not(.widget_recent_comments):not(.widget_recent_entries) ul li:hover:before {
 	color: #6a4d8a;
@@ -1933,6 +1933,7 @@ span.rss-date:before,
 .widget_archive ul li a {
 	float: left;
 	clear: left;
+	line-height: 38px;
 }
 .widget_categories ul li:after,
 .widget_archive ul li:after {
