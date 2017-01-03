@@ -1,24 +1,7 @@
 <?php
-// Set Panel ID
-$panel_id = 'illdy_latest_news_general';
 
 // Set prefix
 $prefix = 'illdy';
-
-/***********************************************/
-/*************** LATEST NEWS  ******************/
-/***********************************************/
-/*
-$wp_customize->add_panel( $panel_id,
-    array(
-        'priority'          => 101,
-        'capability'        => 'edit_theme_options',
-        'theme_supports'    => '',
-        'title'             => __( 'Latest News', 'illdy' ),
-        'description'       => __( 'Control various options for latest news section from front page.', 'illdy' ),
-    )
-);
-*/
 
 /***********************************************/
 /******************* General *******************/
@@ -27,9 +10,8 @@ $wp_customize->add_section( $prefix . '_latest_news_general' ,
     array(
         'title'         => __( 'Latest News Section', 'illdy' ),
         'description'   => __( 'Control various options for latest news section from front page.', 'illdy' ),
-        'priority'      => 106
-        // 'title'       => __( 'General', 'illdy' ),
-        // 'panel' 	  => $panel_id
+        'priority'      => 106,
+        'panel' 	    => 'illdy_frontpage_panel'
     )
 );
 

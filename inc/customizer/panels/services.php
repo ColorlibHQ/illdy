@@ -14,6 +14,7 @@ $wp_customize->add_section( $panel_id, array(
 		'theme_supports' => '',
 		'title'          => __( 'Services Section', 'illdy' ),
 		'description'    => __( 'Control various options for services section from front page.', 'illdy' ),
+		'panel'			 => 'illdy_frontpage_panel'
 	) );
 
 /***********************************************/

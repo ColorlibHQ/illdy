@@ -1,24 +1,6 @@
 <?php
-// Set Panel ID
-$panel_id = 'illdy_panel_testimonials';
-
 // Set prefix
 $prefix = 'illdy';
-
-/***********************************************/
-/****************** TESTIMONIALS  **************/
-/***********************************************/
-/*
-$wp_customize->add_panel( $panel_id,
-    array(
-        'priority'          => 101,
-        'capability'        => 'edit_theme_options',
-        'theme_supports'    => '',
-        'title'             => __( 'Testimonials', 'illdy' ),
-        'description'       => __( 'Control various options for testimonials section from front page.', 'illdy' ),
-    )
-);
-*/
 
 /***********************************************/
 /******************* General *******************/
@@ -27,10 +9,8 @@ $wp_customize->add_section( $prefix . '_testimonials_general' ,
     array(
         'title'         => __( 'Testimonials Section', 'illdy' ),
         'description'   => __( 'Control various options for testimonials section from front page.', 'illdy' ),
-        'priority'      => 104
-        // 'title'     => __( 'General', 'illdy' ),
-        // 'panel'     => $panel_id,
-        // 'priority'  => 1
+        'priority'      => 104,
+        'panel'     => 'illdy_frontpage_panel',
     )
 );
 

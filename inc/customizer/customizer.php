@@ -22,6 +22,12 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		require_once get_template_directory() . '/inc/customizer/custom-controls.php';
 		$wp_customize->register_control_type( 'Epsilon_Control_Tab' );
 
+		// Front Page sections panel
+		$wp_customize->add_panel( 'illdy_frontpage_panel', array(
+		    'priority'       => 100,
+		    'title'          => 'Front Page Sections',
+		) );
+
 		// General Options
 		require_once get_template_directory() . '/inc/customizer/panels/general-options.php';
 

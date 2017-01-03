@@ -1,24 +1,7 @@
 <?php
-// Set Panel ID
-$panel_id = 'illdy_panel_jumbotron';
-
 // Set prefix
 $prefix = 'illdy';
 
-/***********************************************/
-/***************** JUMBOTRON  ******************/
-/***********************************************/
-/*
-$wp_customize->add_panel( $panel_id,
-    array(
-        'priority'          => 100,
-        'capability'        => 'edit_theme_options',
-        'theme_supports'    => '',
-        'title'             => __( 'Jumbotron', 'illdy' ),
-        'description'       => __( 'Control various options for header image from front page.', 'illdy' ),
-    )
-);
-*/
 
 /***********************************************/
 /******************* General *******************/
@@ -26,9 +9,8 @@ $wp_customize->add_panel( $panel_id,
 $wp_customize->add_section( $prefix . '_jumbotron_general', array(
 	'title'       => __( 'Jumbotron Section', 'illdy' ),
 	'description' => __( 'Control various jumbotron related settings. Will only be displayed if a <strong>custom front-page is set in Settings -> Reading.</strong>', 'illdy' ),
-	'priority'    => 100
-	// 'title'     => __( 'General', 'illdy' ),
-	// 'panel'     => $panel_id
+	'priority'    => 100,
+	'panel'       => 'illdy_frontpage_panel'
 ) );
 
 // Image
