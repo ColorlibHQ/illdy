@@ -20,7 +20,23 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 
 		// Custom Controls
 		require_once get_template_directory() . '/inc/customizer/custom-controls.php';
+		require_once get_template_directory() . '/inc/customizer/custom-section.php';
 		$wp_customize->register_control_type( 'Epsilon_Control_Tab' );
+		$wp_customize->register_section_type( 'Illdy_Customize_Section_Pro' );
+
+		// Pro Section
+		$wp_customize->add_section(
+			new Illdy_Customize_Section_Pro(
+				$wp_customize,
+				'illdy-pro-section',
+				array(
+					'title'    => esc_html__( 'Illdy', 'illdy' ),
+					'pro_text' => esc_html__( 'Documentation',         'illdy' ),
+					'pro_url'  => 'https://colorlib.com/wp/support/illdy/',
+					'priority' => 0
+				)
+			)
+		);
 
 		// Front Page sections panel
 		$wp_customize->add_panel( 'illdy_frontpage_panel', array(
