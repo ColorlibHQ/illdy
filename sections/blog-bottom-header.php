@@ -12,7 +12,7 @@
 		<div class="row">
 			<?php if ( is_page_template( 'page-templates/blog.php' ) || is_singular() ): ?>
 				<div class="col-sm-12">
-					<h2><?php the_title(); ?><span class="span-dot">.</span></h2>
+					<h1><?php the_title(); ?><span class="span-dot">.</span></h1>
 				</div><!--/.col-sm-12-->
 			<?php else: ?>
 				<div class="col-sm-12">

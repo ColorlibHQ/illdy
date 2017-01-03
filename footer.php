@@ -10,10 +10,8 @@
 
 if ( current_user_can( 'edit_theme_options' ) ) {
 	$footer_copyright  = get_theme_mod( 'illdy_footer_copyright', __( '&copy; Copyright 2016. All Rights Reserved.', 'illdy' ) );
-	$img_footer_logo   = get_theme_mod( 'illdy_img_footer_logo', esc_url( get_template_directory_uri() . '/layout/images/footer-logo.png' ) );
 } else {
 	$footer_copyright  = get_theme_mod( 'illdy_footer_copyright' );
-	$img_footer_logo   = get_theme_mod( 'illdy_img_footer_logo' );
 }
 ?>
 <footer id="footer">
@@ -23,8 +21,8 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 			$the_widget_args = array(
 				'before_widget' => '<div class="widget">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<div class="widget-title"><h3>',
-				'after_title'   => '</h3></div>',
+				'before_title'  => '<div class="widget-title"><h5>',
+				'after_title'   => '</h5></div>',
 			);
 			?>
 			<div class="col-sm-3">
@@ -55,16 +53,24 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 				?>
 			</div><!--/.col-sm-3-->
 			<div class="col-sm-3">
-				<?php if ( $img_footer_logo ): ?>
-					<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="footer-logo"><img src="<?php echo esc_url( $img_footer_logo ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" /></a>
-				<?php endif; ?>
-				<p class="copyright">
-					<span><?php printf( '%s <a href="%s" title="%s" target="_blank">%s</a>.', __( 'Theme:', 'illdy' ), esc_url( 'http://colorlib.com/wp/themes/illdy' ), __( 'Illdy', 'illdy' ), __( 'Illdy', 'illdy' ) ); ?></span>
-				</p>
-				<span class="bottom-copyright" data-customizer="copyright-credit"><?php echo illdy_sanitize_html( $footer_copyright ); ?></span>
+				<?php
+				if ( is_active_sidebar( 'footer-sidebar-4' ) ):
+					dynamic_sidebar( 'footer-sidebar-4' );
+				elseif ( current_user_can( 'edit_theme_options' ) ):
+					the_widget( 'WP_Widget_Text', 'title=' . __( 'Support', 'illdy' ) . '&text=<ul><li><a href="' . esc_url( '#' ) . '" title="' . __( 'Documentation', 'illdy' ) . '">' . __( 'Documentation', 'illdy' ) . '</a></li><li><a href="' . esc_url( '#' ) . '" title="' . __( 'FAQs', 'illdy' ) . '">' . __( 'FAQs', 'illdy' ) . '</a></li><li><a href="' . esc_url( '#' ) . '" title="' . __( 'Forums', 'illdy' ) . '">' . __( 'Forums', 'illdy' ) . '</a></li><li><a href="' . esc_url( '#' ) . '" title="' . __( 'Contact', 'illdy' ) . '">' . __( 'Contact', 'illdy' ) . '</a></li></ul>', $the_widget_args );
+				endif;
+				?>
 			</div><!--/.col-sm-3-->
 		</div><!--/.row-->
 	</div><!--/.container-->
+	<div class="bottom-footer">
+		<div class="container">
+			<p class="copyright">
+				<span><?php printf( '%s <a href="%s" title="%s" target="_blank">%s</a>.', __( 'Theme:', 'illdy' ), esc_url( 'http://colorlib.com/wp/themes/illdy' ), __( 'Illdy', 'illdy' ), __( 'Illdy', 'illdy' ) ); ?></span>
+				<span class="bottom-copyright" data-customizer="copyright-credit"><?php echo illdy_sanitize_html( $footer_copyright ); ?></span>
+			</p>
+		</div>
+	</div>
 </footer><!--/#footer-->
 <?php wp_footer(); ?>
 </body>
