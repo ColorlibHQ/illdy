@@ -1665,7 +1665,7 @@ a:hover, a:focus {
 }
 
 .widget ul li a {
-	line-height: 32px;
+	line-height: 33px;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
