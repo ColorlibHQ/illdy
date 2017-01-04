@@ -1675,6 +1675,9 @@ a:hover, a:focus {
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 }
+.widget_recent_comments .recentcomments .comment-author-link {
+	line-height: 33px;
+}
 
 .widget:not(.widget_recent_comments) ul li:hover a,
 .widget.widget_recent_comments ul li a:hover {
