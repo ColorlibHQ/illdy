@@ -1654,6 +1654,7 @@ a:hover, a:focus {
 	width: 100%;
 	padding-left: 20px;
 	position: relative;
+	line-height: 38px;
 }
 
 .widget:not(.widget_rss):not(.widget_recent_comments):not(.widget_recent_entries) ul li:before {
