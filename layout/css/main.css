@@ -2381,7 +2381,9 @@ textarea {
 	background-color: transparent;
 }
 input:focus,
-textarea:focus {
+input:hover,
+textarea:focus,
+textarea:hover {
 	border-color: #6a4d8a;
 }
 
