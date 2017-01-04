@@ -1,6 +1,4 @@
 <?php
-// Set Panel ID
-
 // Set prefix
 $prefix = 'illdy';
 
@@ -13,6 +11,7 @@ $wp_customize->add_section( $prefix . '_contact_us' ,
         'title'         => __( 'Contact us Section', 'illdy' ),
         'description'   => __( 'Control various options for contact us section from front page.', 'illdy' ),
         'priority'      => 109,
+        'panel'         => 'illdy_frontpage_panel'
     )
 );
 

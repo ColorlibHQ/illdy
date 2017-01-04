@@ -2,14 +2,29 @@
  * File customizer.js.
  *
  */
+
+( function( api ) {
+
+	// Extends our custom "illdy-pro-section" section.
+	api.sectionConstructor['illdy-pro-section'] = api.Section.extend( {
+
+		// No events for this type of section.
+		attachEvents: function () {},
+
+		// Always make the section active.
+		isContextuallyActive: function () {
+			return true;
+		}
+	} );
+
+} )( wp.customize );
+
  jQuery( document ).ready( function( $ ) {
 
 	wp.customize.section.each( function ( section ) {
 
 		var sectionID = '#sub-accordion-section-'+section.id;
-		console.log(section.id);
 		if ( $(sectionID).find('.epsilon-tabs').length > 0 ) {
-			console.log('here');
 			var current_tab = $(sectionID).find('.epsilon-tabs a.epsilon-tab.active');
 			var current_control = current_tab.parent().parent().parent();
 			var current_controlID = current_control.attr('id');
@@ -26,7 +41,6 @@
 				$(this).addClass('active');
 				var field = $(this).parent().parent().parent();
 				var fieldID = field.attr('id');
-				console.log(sectionID+' '+fieldID);
 				$('#'+sectionID+' #'+fieldID).nextAll().hide();
 				var fields = $(this).data('fields');
 				section.find(fields).show();

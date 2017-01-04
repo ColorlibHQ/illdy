@@ -15,6 +15,7 @@ $wp_customize->add_section( $panel_id,
         'theme_supports'    => '',
         'title'             => __( 'Projects Section', 'illdy' ),
         'description'       => __( 'Control various options for projects section from front page.', 'illdy' ),
+        'panel'             => 'illdy_frontpage_panel'
     )
 );
 

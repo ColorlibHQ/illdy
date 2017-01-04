@@ -1,22 +1,6 @@
 <?php
-// Set Panel ID
-$panel_id = 'illdy_panel_counter';
-
 // Set prefix
 $prefix = 'illdy';
-
-/***********************************************/
-/******************* COUNTER  ******************/
-/***********************************************/
-// $wp_customize->add_panel( $panel_id,
-//     array(
-//         'priority'          => 107,
-//         'capability'        => 'edit_theme_options',
-//         'theme_supports'    => '',
-//         'title'             => __( 'Counter Section', 'illdy' ),
-//         'description'       => __( 'Control various options for counter section from front page.', 'illdy' ),
-//     )
-// );
 
 /***********************************************/
 /******************* General *******************/
@@ -26,6 +10,7 @@ $wp_customize->add_section( $prefix . '_counter_general' ,
         'priority'      => 107,
         'title'         => __( 'Counter Section', 'illdy' ),
         'description'   => __( '*In order to get this section to show up on the front-page, make sure you have: 1) enabled static front-page & 2) have a widget placed in this sidebar. More specifically go to Widgets -> Front page - counter sidebar & place the [Illdy] - Counter widget in here.', 'illdy' ),
+        'panel'         => 'illdy_frontpage_panel'
     )
 );
 
