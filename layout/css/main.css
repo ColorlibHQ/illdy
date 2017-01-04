@@ -1350,12 +1350,14 @@ a:hover, a:focus {
 
 #footer .widget table thead th {
 	color: #fff;
+	font-weight: normal;
 }
 #footer .widget table tbody tr td:not(.pad) {
     color: #eeeeee;
     padding: 0;
-    border: 4px solid #363636;
+    border: 3px solid #363636;
     background-color: transparent;
+    line-height: 24px;
 }
 
 
@@ -1803,7 +1805,9 @@ a:hover, a:focus {
 	content: "\f105";
 }
 .widget table td#prev a:hover:before,
-.widget table td#next a:hove:before {
+.widget table td#next a:hover:before,
+.widget table td#prev a:focus:before,
+.widget table td#next a:focus:before {
 	color: #6a4d8a;
 }
 
