@@ -43,8 +43,8 @@ h1 {
 	font-weight: 700;
 }
 h2 {
-	font-size: 50px;
-	line-height: 52px;
+	font-size: 65px;
+	line-height: 70px;
 	font-weight: 700;
 }
 h3 {
@@ -58,13 +58,13 @@ h4 {
 	font-weight: 700;
 }
 h5 {
-	font-size: 22px;
-	line-height: 28px;
+	font-size: 23px;
+	line-height: 32px;
 	font-weight: 700;
 }
 h6 {
-	font-size: 18px;
-	line-height: 25px;
+	font-size: 20px;
+	line-height: 24px;
 	font-weight: 700;
 }
 textarea,
@@ -1706,8 +1706,8 @@ a:hover, a:focus {
 	color: #fff;
 	margin-bottom: 10px;
 	font-weight: 700;
-	font-size: 18px;
-	line-height: 25px;
+	font-size: 20px;
+	line-height: 24px;
 	font-family: "Poppins";
 	width: 100%;
 	background-color: #f1d204;
@@ -1909,10 +1909,10 @@ a:hover, a:focus {
 
 .widget ul li a.rsswidget {
     display: block;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     font-family: "Poppins";
-    line-height: 25px;
+    line-height: 24px;
     color: #fff;
 }
 

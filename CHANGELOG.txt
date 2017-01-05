@@ -37,6 +37,7 @@
 	- Resolved #60 - Widget - Footer Sidebar 3 - RSS issues (https://github.com/puikinsh/illdy/issues/60)
 	- Resolved #66 - Widget - Calendar issues (https://github.com/puikinsh/illdy/issues/66)
 	- Resolved #67 - Widget - Search (https://github.com/puikinsh/illdy/issues/67)
+	- Resolved #73 - Typography - Headings 2,5 and 6 modified (https://github.com/puikinsh/illdy/issues/73)
 
 	
 ### V1.0.35
