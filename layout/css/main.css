@@ -761,7 +761,7 @@ a:hover, a:focus {
 	width: 100%;
     line-height: 32px;
     padding: 0 30px;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 23px;
     color: #5e5e5e;
     -webkit-transition: all 0.3s;
@@ -798,9 +798,13 @@ a:hover, a:focus {
 	margin-left: 10px;
 }
 
-#latest-news .section-content .post .post-button:hover {
+#latest-news .section-content .post .post-button:hover,
+#latest-news .section-content .post .post-button:focus {
 	text-decoration: none;
-	color: #333;
+	color: #6a4d8a;
+}
+#latest-news .section-content .post .post-button:active {
+	color: #545454;
 }
 
 #latest-news .section-content .post .post-button .fa {
