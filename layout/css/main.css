@@ -682,7 +682,7 @@ a:hover, a:focus {
 #services .section-content .service .service-icon {
 	width: 100%;
 	margin-bottom: 10px;
-	font-size: 34px;
+	font-size: 35px;
 }
 
 #services .section-content .service .service-icon .fa {
@@ -692,9 +692,10 @@ a:hover, a:focus {
 #services .section-content .service .service-title {
 	width: 100%;
 	margin-bottom: 20px;
-	line-height: 38px;
+	line-height: 32px;
 	font-size: 23px;
-	font-family: "Poppins"
+	font-family: "Poppins";
+	font-weight: 700;
 }
 
 #services .section-content .service .service-entry {

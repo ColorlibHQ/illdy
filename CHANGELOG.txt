@@ -41,6 +41,7 @@
 	- Resolved #74 - About Us section - Improvements (https://github.com/puikinsh/illdy/issues/74)
 	- Resolved #75 - Logo text - improvement (https://github.com/puikinsh/illdy/issues/75)
 	- Resolved #77 - Testimonials Section Improvements (https://github.com/puikinsh/illdy/issues/77)
+	- Resolved #78 - Services Improvements (https://github.com/puikinsh/illdy/issues/78)
 
 	
 ### V1.0.35
