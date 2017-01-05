@@ -97,17 +97,12 @@ a:hover, a:focus {
 
 .front-page-section .section-header h3 {
 	margin: 0 0 5px 0;
-	line-height: 35px;
-	font-weight: 900;
-	font-size: 35px;
 	color: #545454;
-	font-family: "Poppins";
-	
 }
 
 .front-page-section .section-header p {
 	margin-bottom: 0;
-	line-height: 35px;
+	line-height: 26px;
 	font-size: 16px;
 	color: #8c9597;
 	font-family: "Lato";
@@ -448,7 +443,7 @@ a:hover, a:focus {
 	content: "";
 	width: 64px;
 	height: 29px;
-	line-height: 29px;
+	line-height: 26px;
 	background-color: #000;
 	position: absolute;
 	top: -45px;
@@ -481,7 +476,7 @@ a:hover, a:focus {
 
 #about .skill .skill-bottom span {
 	margin-left: 8px;
-	line-height: 22px;
+	line-height: 26px;
 	font-size: 16px;
 	font-family: "Lato";
 }
