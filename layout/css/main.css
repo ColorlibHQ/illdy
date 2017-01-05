@@ -624,11 +624,8 @@ a:hover, a:focus {
 
 #testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-meta {
 	width: 100%;
-    font-weight: 700;
-    font-size: 20px;
     color: #fff;
     font-family: "Poppins";
-    line-height: 24px;
 }
 
 #testimonials .section-content .testimonials-carousel .owl-controls {
@@ -692,10 +689,6 @@ a:hover, a:focus {
 #services .section-content .service .service-title {
 	width: 100%;
 	margin-bottom: 20px;
-	line-height: 32px;
-	font-size: 23px;
-	font-family: "Poppins";
-	font-weight: 700;
 }
 
 #services .section-content .service .service-entry {
@@ -759,10 +752,7 @@ a:hover, a:focus {
 
 #latest-news .section-content .post .post-title {
 	width: 100%;
-    line-height: 32px;
     padding: 0 30px;
-    font-weight: 700;
-    font-size: 23px;
     color: #5e5e5e;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
@@ -786,7 +776,7 @@ a:hover, a:focus {
 }
 
 #latest-news .section-content .post .post-button {
-	line-height: 1.388;
+	line-height: 26px;
 	padding: 0 30px;
 	font-size: 16px;
 	font-family: "Lato";
@@ -942,31 +932,21 @@ a:hover, a:focus {
     float: right;
 }
 
-#team .section-content .person .person-content h4 {
+#team .section-content .person .person-content h6 {
 	width: 100%;
 	margin: 12px 0 5px 0;
-	line-height: 24px;
-	font-size: 20px;
 	color: #5e5e5e;
-	font-weight: 400;
-}
-
-#team .section-content .person .person-content h5 {
-	width: 100%;
-	margin: 0 0 20px 0;
-	font-size: 16px;
-	font-family: "Lato";
-	line-height: 24px;
-	font-weight: 400;
 }
 
 #team .section-content .person .person-content p {
 	width: 100%;
 	margin: 0 0 10px 0;
-	line-height: 20px;
-	font-size: 16px;
 	color: #8c9597;
-	font-family: "Lato";
+	line-height: 20px;
+}
+#team .section-content .person .person-content p.person-position {
+	margin: 0 0 20px 0;
+	line-height: 26px;
 }
 
 #team .section-content .person .person-content .person-content-social {
@@ -2650,7 +2630,6 @@ input[type=submit] {
 
 .inline-columns {
 	text-align: center;
-	font-size: 0;
 }
 
 .inline-columns > div {

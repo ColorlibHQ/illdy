@@ -79,7 +79,7 @@ if ( $post_query->have_posts() || $general_title != '' || $general_entry != '' |
 									<?php }elseif ( get_theme_mod( 'illdy_disable_random_featured_image' ) ) { ?>
 										<div class="post-image"  style="background-image: url('<?php echo illdy_get_random_featured_image(); ?>');"></div><!--/.blog-post-image-->
 									<?php } ?>
-									<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="post-title"><?php the_title(); ?></a>
+									<h5><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="post-title"><?php the_title(); ?></a></h5>
 									<div class="post-entry">
 										<?php the_excerpt(); ?>
 									</div><!--/.post-entry-->
