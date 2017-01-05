@@ -1025,12 +1025,12 @@ a:hover, a:focus {
 	margin: 0;
 	padding: 0 20px 0 0;
 	border-right: 1px solid #e1e1e1;
-	line-height: normal;
 	display: table-cell;
 	font-weight: 400;
 	font-size: 16px;
 	color: #f1d204;
 	font-family: "Lato";
+	line-height: 26px;
 }
 
 #contact-us .section-content .contact-us-box .box-right {
@@ -1065,7 +1065,7 @@ a:hover, a:focus {
 
 #contact-us .section-content .contact-us-social a {
 	margin-left: 15px;
-	font-size: 17px;
+	font-size: 15px;
 	color: #8c9597;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
@@ -1242,6 +1242,12 @@ a:hover, a:focus {
 	padding: 10px 20px;
 	float: left;
 	border-color: #f3c3c3;
+}
+.wpcf7 label {
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: 400;
+	font-family: "Lato";
 }
 
 /* 11. Footer */
