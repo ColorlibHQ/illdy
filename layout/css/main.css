@@ -624,11 +624,11 @@ a:hover, a:focus {
 
 #testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-meta {
 	width: 100%;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 20px;
     color: #fff;
     font-family: "Poppins";
-    line-height: 26px;
+    line-height: 24px;
 }
 
 #testimonials .section-content .testimonials-carousel .owl-controls {
