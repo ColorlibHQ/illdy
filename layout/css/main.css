@@ -876,20 +876,22 @@ a:hover, a:focus {
     display: block;
     margin-bottom: 10px;
     line-height: 1;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 65px;
     color: #fff;
     font-family: "Poppins";
+    line-height: 70px;
 }
 
 #counter .counter-description {
 	width: 100%;
-	line-height: 45px;
+	line-height: 24px;
 	display: block;
 	font-size: 20px;
 	color: #fff;
 	text-transform: uppercase;
 	font-family: "Poppins";
+	font-weight: 700;
 }
 
 #counter .widget_illdy_counter {

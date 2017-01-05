@@ -43,6 +43,7 @@
 	- Resolved #77 - Testimonials Section Improvements (https://github.com/puikinsh/illdy/issues/77)
 	- Resolved #78 - Services Improvements (https://github.com/puikinsh/illdy/issues/78)
 	- Resolved #79 - Latest News Improvements (https://github.com/puikinsh/illdy/issues/79)
+	- Resolved #80 - Counter Section Improvements (https://github.com/puikinsh/illdy/issues/80)
 
 	
 ### V1.0.35
