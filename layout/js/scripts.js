@@ -70,7 +70,7 @@ jQuery( document ).ready( function($) {
 			$( '#team .section-content .person' ).each( function() {
 				var person = $( this );
 				var dataPersonColor = $( person ).data( 'person-color' );
-				var personPosition = $( person ).children( '.person-content' ).children( 'h5' );
+				var personPosition = $( person ).children( '.person-content' ).children( '.person-position' );
 				var personContentSocial = $( person ).children( '.person-content' ).children( '.person-content-social.clearfix' ).children( 'li' ).children( 'a' );
 
 				$( personPosition ).css( 'color', dataPersonColor );

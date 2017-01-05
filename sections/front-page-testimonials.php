@@ -65,7 +65,7 @@ $jetpack_testimonial_query = new WP_Query( $jetpack_testimonial_query_args );
 											<blockquote><q><?php echo esc_html( get_the_content() ); ?></q></blockquote>
 										</div><!--/.testimonial-content-->
 										<div class="testimonial-meta">
-											<?php the_title(); ?>
+											<h6><?php the_title(); ?></h6>
 										</div><!--/.testimonial-meta-->
 									</div><!--/.carousel-testimonial-->
 								<?php endwhile; ?>
