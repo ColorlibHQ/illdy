@@ -39,6 +39,7 @@
 	- Resolved #67 - Widget - Search (https://github.com/puikinsh/illdy/issues/67)
 	- Resolved #73 - Typography - Headings 2,5 and 6 modified (https://github.com/puikinsh/illdy/issues/73)
 	- Resolved #74 - About Us section - Improvements (https://github.com/puikinsh/illdy/issues/74)
+	- Resolved #75 - Logo text - improvement (https://github.com/puikinsh/illdy/issues/75)
 
 	
 ### V1.0.35

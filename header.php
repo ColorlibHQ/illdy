@@ -61,7 +61,7 @@ else: echo 'header-blog'; endif; ?>" style="<?php echo $style ?>">
 	<div class="top-header">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-2 col-xs-8">
+				<div class="col-sm-4 col-xs-8">
 
 					<?php if ( ! empty( $logo_image ) ) { ?>
 						<?php echo '<a href="' . esc_url( home_url() ) . '"><img src="' . esc_url( $logo_image[0] ) . '" /></a>'; ?>
@@ -74,7 +74,7 @@ else: echo 'header-blog'; endif; ?>" style="<?php echo $style ?>">
 					<?php } ?>
 
 				</div><!--/.col-sm-2-->
-				<div class="col-sm-10 col-xs-4">
+				<div class="col-sm-8 col-xs-4">
 					<?php
 						wp_nav_menu( array(
 							'theme_location'  => 'primary-menu',
