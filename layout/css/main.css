@@ -190,7 +190,7 @@ a:hover, a:focus {
 #header .top-header .header-navigation ul li {
 	margin-left: 40px;
 	line-height: 40px;
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 14px;
 	color: #fff;
 	position: relative;
@@ -1682,7 +1682,7 @@ a:hover, a:focus {
 	line-height: 33px;
 }
 
-.widget:not(.widget_recent_comments) ul li:hover a,
+.widget:not(.widget_recent_comments) ul li:hover > a,
 .widget.widget_recent_comments ul li a:hover {
 	text-decoration: none;
 	color: #6a4d8a;
