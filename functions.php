@@ -62,7 +62,7 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		add_image_size( 'illdy-blog-list', 750, 500, true );
 		add_image_size( 'illdy-widget-recent-posts', 70, 70, true );
 		add_image_size( 'illdy-blog-post-related-articles', 240, 206, true );
-		add_image_size( 'illdy-front-page-latest-news', 360, 213, true );
+		add_image_size( 'illdy-front-page-latest-news', 250, 213, true );
 		add_image_size( 'illdy-front-page-testimonials', 127, 127, true );
 		add_image_size( 'illdy-front-page-projects', 476, 476, true );
 		add_image_size( 'illdy-front-page-person', 125, 125, true );

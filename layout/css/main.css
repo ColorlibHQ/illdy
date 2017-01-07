@@ -759,7 +759,6 @@ a:hover, a:focus {
     -o-transition: all 0.3s;
     transition: all 0.3s;
     display: block;
-    font-family: "Lato";
 }
 
 #latest-news .section-content .post .post-title:hover {
@@ -1905,7 +1904,10 @@ a:hover, a:focus {
     font-weight: 700;
     font-family: "Poppins";
     line-height: 24px;
-    color: #fff;
+}
+
+footer .widget ul li a.rsswidget {
+	color: #fff;
 }
 
 .widget_rss ul li {
@@ -2387,15 +2389,26 @@ input[type=submit] {
 	padding: 0 40px;
 	display: inline-block;
 	color: #fff;
-	border: 1px solid #d7d7d7;
-	font-family: "Source Sans Pro", sans-serif;
+	border: 0 none;
+	font-family: "Lato", sans-serif;
 	font-weight: 700;
 	color: #fff;
-	text-transform: uppercase;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
+	border-radius: 3px;
+}
+#comments #respond .comment-form #input-submit:hover,
+input[type=submit]:hover,
+#latest-news .latest-news-button:hover,
+#contact-us .section-content .wpcf7-form p .wpcf7-submit:hover,
+#header .bottom-header .header-button-two:hover,
+#blog .blog-post .blog-post-button:hover {
+	background-color: #6a4d8a;
+}
+.bottom-header h2 {
+	color: #fff;
 }
 
 #comments #respond .comment-form #input-submit:hover {
