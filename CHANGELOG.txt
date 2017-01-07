@@ -44,6 +44,10 @@
 	- Resolved #78 - Services Improvements (https://github.com/puikinsh/illdy/issues/78)
 	- Resolved #79 - Latest News Improvements (https://github.com/puikinsh/illdy/issues/79)
 	- Resolved #80 - Counter Section Improvements (https://github.com/puikinsh/illdy/issues/80)
+	- Resolved #91 - Blog Post - Comment section improvements (https://github.com/puikinsh/illdy/issues/91)
+	- Resolved #93 - Blog Index issue (https://github.com/puikinsh/illdy/issues/93)
+	- Resolved #94 - Button Style improvements (https://github.com/puikinsh/illdy/issues/94)
+	- Resolved #95 - Latest News Section Improvements (https://github.com/puikinsh/illdy/issues/95)
 
 	
 ### V1.0.35
