@@ -539,4 +539,34 @@
 			$( '#contact-us .section-content .contact-us-box .box-left[data-customizer="box-left-customer-support-title"]' ).html( newval );
 		} );
 	} );
+
+	// Color scheme
+	wp.customize.bind('preview-ready', function () {
+		wp.customize.preview.bind('update-inline-css', function (object) {
+
+			var data = {
+				'action': object.action,
+				'args'  : object.data,
+				'id'    : object.id
+			};
+
+			jQuery.ajax({
+				dataType: 'json',
+				type    : 'POST',
+				url     : WPUrls.ajaxurl,
+				data    : data,
+				complete: function (json) {
+					var sufix = object.action + object.id;
+					var style = $('#illdy-main-inline-css');
+
+					if ( !style.length ) {
+						style = $('head').append('<style type="text/css" id="illdy-main-inline-css" />').find('#nilldy-main-inline-css');
+					}
+
+					style.html(json.responseText);
+				}
+			});
+		});
+	});
+
 } )( jQuery );

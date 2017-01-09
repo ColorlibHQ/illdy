@@ -32,11 +32,9 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
                     $prefix . '_contact_us_show',
                     $prefix . '_contact_us_title',
                     $prefix . '_contact_us_entry',
-                    // $prefix . '_contact_us_text',
                     $prefix . '_contact_us_address_title',
                     $prefix . '_contact_us_customer_support_title',
                     $prefix . '_contact_us_contact_form_7',
-                    // $prefix . '_contact_us_install_contact_form_7',
                     ),
                 'active' => true
                 ),
@@ -259,6 +257,11 @@ $wp_customize->add_control(
             'priority'       => 10
         )
     );
+
+    $wp_customize->selective_refresh->add_partial( $prefix .'_contact_bar_facebook_url', array(
+        'selector' => '#contact-us .contact-us-social',
+        'render_callback' => $prefix .'_contact_us_social',
+    ) );
 
     /* Twitter URL */
     $wp_customize->add_setting( $prefix.'_contact_bar_twitter_url',

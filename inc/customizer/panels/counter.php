@@ -92,3 +92,21 @@ $wp_customize->add_control(
         'priority'  => 3
     ) ) 
 );
+$wp_customize->add_setting( $prefix .'_counters_widget_button',
+    array(
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control(
+    new Epsilon_Control_Button(
+        $wp_customize,
+        $prefix .'_counters_widget_button',
+        array(
+            'text'         => __( 'Add & Edit Counters', 'illdy' ),
+            'section_id'    => 'sidebar-widgets-front-page-counter-sidebar',
+            'icon'          => 'dashicons-plus',
+            'section'       => $prefix .'_counter_general',
+            'priority'      => 5
+        )
+    )
+);

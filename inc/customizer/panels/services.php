@@ -93,3 +93,21 @@ if ( get_theme_mod( $prefix . '_services_general_entry' ) ) {
         )
     );
 }
+$wp_customize->add_setting( $prefix .'_services_widget_button',
+    array(
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control(
+    new Epsilon_Control_Button(
+        $wp_customize,
+        $prefix .'_services_widget_button',
+        array(
+            'text'         => __( 'Add & Edit Services', 'illdy' ),
+            'section_id'    => 'sidebar-widgets-front-page-services-sidebar',
+            'icon'          => 'dashicons-plus',
+            'section'       => $panel_id,
+            'priority'      => 5
+        )
+    )
+);
