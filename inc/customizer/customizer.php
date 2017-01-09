@@ -2,6 +2,9 @@
 /**
  *  Customizer
  */
+
+require_once get_template_directory() . '/inc/customizer/class-epsilon-color-scheme.php';
+
 if ( ! function_exists( 'illdy_customize_register' ) ) {
 	function illdy_customize_register( $wp_customize ) {
 
@@ -21,7 +24,11 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		// Custom Controls
 		require_once get_template_directory() . '/inc/customizer/custom-controls.php';
 		require_once get_template_directory() . '/inc/customizer/custom-section.php';
+		require_once get_template_directory() . '/inc/customizer/control-epsilon-color-scheme.php';
+		
 		$wp_customize->register_control_type( 'Epsilon_Control_Tab' );
+		$wp_customize->register_control_type( 'Epsilon_Control_Button' );
+		// $wp_customize->register_control_type( 'Epsilon_Control_Color_Scheme' );
 		$wp_customize->register_section_type( 'Illdy_Customize_Section_Pro' );
 
 		// Pro Section
@@ -43,6 +50,94 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		    'priority'       => 100,
 		    'title'          => 'Front Page Sections',
 		) );
+
+		// Color Scheme
+		$wp_customize->add_setting( 'illdy_color_scheme',
+	                    array(
+	                        'sanitize_callback' => 'esc_html',
+	                        'default'           => 'default',
+	                        'transport'         => 'postMessage',
+	                    ) );
+		$wp_customize->add_control( new Epsilon_Control_Color_Scheme(
+                        $wp_customize,
+                        'illdy_color_scheme',
+                        array(
+                            'label'       => esc_html__( 'Color scheme', 'newsmag-pro' ),
+                            'description' => esc_html__( 'Select a color scheme', 'newsmag-pro' ),
+                            'choices'     => array(
+	                            array(
+		                            'id'     => 'Illdy',
+		                            'name'   => 'Default',
+		                            'colors' => array(
+			                            'accent'        		=> '#f1d204',
+			                            'secondary_accent'		=> '#f18b6d',
+			                            'text' 					=> '#545454',
+			                            'contrast'            	=> '#8c9597',
+			                            'hover'  				=> '#6a4d8a',
+		                            ),
+	                            ),
+	                            array(
+		                            'id'     => 'palette-1',
+		                            'name'   => 'Palette 1',
+		                            'colors' => array(
+			                            'accent'        		=> '#ff004f',
+			                            'secondary_accent'		=> '#f18b6d',
+			                            'text' 					=> '#545454',
+			                            'contrast'            	=> '#8c9597',
+			                            'hover'  				=> '#482c54',
+		                            ),
+	                            ),
+	                            array(
+		                            'id'     => 'palette-2',
+		                            'name'   => 'Palette 2',
+		                            'colors' => array(
+			                            'accent'        		=> '#f66f6d',
+			                            'secondary_accent'		=> '#f18b6d',
+			                            'text' 					=> '#545454',
+			                            'contrast'            	=> '#8c9597',
+			                            'hover'  				=> '#195962',
+		                            ),
+	                            ),
+	                            array(
+		                            'id'     => 'palette-3',
+		                            'name'   => 'Palette 3',
+		                            'colors' => array(
+			                            'accent'        		=> '#f79e27',
+			                            'secondary_accent'		=> '#f18b6d',
+			                            'text' 					=> '#545454',
+			                            'contrast'            	=> '#8c9597',
+			                            'hover'  				=> '#e95e4e',
+		                            ),
+	                            ),
+	                            array(
+		                            'id'     => 'palette-4',
+		                            'name'   => 'Palette 4',
+		                            'colors' => array(
+			                            'accent'        		=> '#6ebbdc',
+			                            'secondary_accent'		=> '#f18b6d',
+			                            'text' 					=> '#545454',
+			                            'contrast'            	=> '#8c9597',
+			                            'hover'  				=> '#2e3d51',
+		                            ),
+	                            ),
+	                            array(
+		                            'id'     => 'palette-5',
+		                            'name'   => 'Palette 5',
+		                            'colors' => array(
+			                            'accent'        		=> '#507fe2',
+			                            'secondary_accent'		=> '#f18b6d',
+			                            'text' 					=> '#545454',
+			                            'contrast'            	=> '#8c9597',
+			                            'hover'  				=> '#1acdcb',
+		                            ),
+	                            ),
+                            ),
+                            'priority'    => 0,
+                            'default'     => 'red',
+                            'section'     => 'colors',
+                        )
+                    )
+		);
 
 		// General Options
 		require_once get_template_directory() . '/inc/customizer/panels/general-options.php';
@@ -92,6 +187,13 @@ if ( ! function_exists( 'illdy_customizer_live_preview' ) ) {
 
 	function illdy_customizer_live_preview() {
 		wp_enqueue_script( 'illdy-customizer-live-preview', get_template_directory_uri() . '/inc/customizer/assets/js/illdy-customizer-live-preview.js', array( 'customize-preview' ), '1.0', true );
+
+		wp_localize_script( 'illdy-customizer-live-preview', 'WPUrls', array(
+			'siteurl' => get_option( 'siteurl' ),
+			'theme'   => get_template_directory_uri(),
+			'ajaxurl' => admin_url( 'admin-ajax.php' )
+		) );
+
 	}
 
 }
@@ -106,7 +208,7 @@ if ( ! function_exists( 'illdy_customizer_css_load' ) ) {
 
 if ( ! function_exists( 'illdy_customizer_js_load' ) ) {
 	function illdy_customizer_js_load() {
-		wp_enqueue_script( 'illdy-customizer-live-preview', get_template_directory_uri() . '/inc/customizer/assets/js/illdy-customizer.js', array( 'customize-controls' ), '1.0', true );
+		wp_enqueue_script( 'illdy-customizer', get_template_directory_uri() . '/inc/customizer/assets/js/illdy-customizer.js', array( 'customize-controls' ), '1.0', true );
 	}
 
 	add_action( 'customize_controls_enqueue_scripts', 'illdy_customizer_js_load' );
@@ -370,5 +472,46 @@ if ( ! function_exists( 'illdy_custom_logo' ) ) {
 		$logo_image                = wp_get_attachment_image_src( $logo_id, 'full' );
 		
 		return '<img src="' . esc_url( $logo_image[0] ) . '" />';
+	}
+}
+if ( ! function_exists( 'illdy_contact_us_social' ) ) {
+	function illdy_contact_us_social() {
+
+		$contact_bar_facebook_url  = get_theme_mod( 'illdy_contact_bar_facebook_url' );
+		$contact_bar_twitter_url   = get_theme_mod( 'illdy_contact_bar_twitter_url' );
+		$contact_bar_linkedin_url  = get_theme_mod( 'illdy_contact_bar_linkedin_url' );
+		$contact_bar_googlep_url   = get_theme_mod( 'illdy_contact_bar_googlep_url' );
+		$contact_bar_youtube_url   = get_theme_mod( 'illdy_contact_bar_youtube_url' );
+		$contact_bar_vimeo_url     = get_theme_mod( 'illdy_contact_bar_vimeo_url' );
+		$contact_bar_pinterest_url = get_theme_mod( 'illdy_contact_bar_pinterest_url' );
+		$contact_bar_instagram_url = get_theme_mod( 'illdy_contact_bar_instagram_url' );
+
+		$html = '';
+		if ( $contact_bar_twitter_url ):
+			$html .= '<a href="'.esc_url( $contact_bar_twitter_url ).'" title="'.__( 'Twitter', 'illdy' ).'" target="_blank"><i class="fa fa-twitter"></i></a>';
+		endif;
+		if ( $contact_bar_facebook_url ):
+			$html .= '<a href="'.esc_url( $contact_bar_facebook_url ).'" title="'.__( 'Facebook', 'illdy' ).'" target="_blank"><i class="fa fa-facebook"></i></a>';
+		endif;
+		if ( $contact_bar_linkedin_url ):
+			$html .= '<a href="'.esc_url( $contact_bar_linkedin_url ).'" title="'.__( 'LinkedIn', 'illdy' ).'" target="_blank"><i class="fa fa-linkedin"></i></a>';
+		endif;
+		if ( $contact_bar_googlep_url ):
+			$html .= '<a href="'.esc_url( $contact_bar_googlep_url ).'" title="'.__( 'Google+', 'illdy' ).'" target="_blank"><i class="fa fa-google-plus"></i></a>';
+		endif;
+		if ( $contact_bar_pinterest_url ):
+			$html .= '<a href="'.esc_url( $contact_bar_pinterest_url ).'" title="'.__( 'Pinterest', 'illdy' ).'" target="_blank"><i class="fa fa-pinterest"></i></a>';
+		endif;
+		if ( $contact_bar_instagram_url ):
+			$html .= '<a href="'.esc_url( $contact_bar_instagram_url ).'" title="'.__( 'Instagram', 'illdy' ).'" target="_blank"><i class="fa fa-instagram"></i></a>';
+		endif;
+		if ( $contact_bar_youtube_url ):
+			$html .= '<a href="'.esc_url( $contact_bar_youtube_url ).'" title="'.__( 'YouTube', 'illdy' ).'" target="_blank"><i class="fa fa-youtube"></i></a>';
+		endif;
+		if ( $contact_bar_vimeo_url ):
+			$html .= '<a href="'.esc_url( $contact_bar_vimeo_url ).'" title="'.__( 'Vimeo', 'illdy' ).'" target="_blank"><i class="fa fa-vimeo"></i></a>';
+		endif;
+
+		return $html;
 	}
 }

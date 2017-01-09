@@ -111,3 +111,22 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_about_general_entry', 
     'selector' => '#about .section-header p',
     'render_callback' => $prefix .'_about_general_entry',
 ) );
+
+$wp_customize->add_setting( $prefix .'_about_widget_button',
+    array(
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control(
+    new Epsilon_Control_Button(
+        $wp_customize,
+        $prefix .'_about_widget_button',
+        array(
+            'text'         => __( 'Add & Edit skill bars', 'illdy' ),
+            'section_id'    => 'sidebar-widgets-front-page-about-sidebar',
+            'icon'          => 'dashicons-plus',
+            'section'       => $panel_id,
+            'priority'      => 5
+        )
+    )
+);

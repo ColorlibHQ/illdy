@@ -54,6 +54,7 @@
 
 (function ($) {
 	jQuery(document).ready(function ($) {
+
 		/**
 		 * Bind an event for the add new widget
 		 */
@@ -133,7 +134,7 @@
 					$.each(widgetList, function ($k, $v) {
 						search.removeAttr('disabled');
 						var individualId = $(this).attr('data-widget-id');
-						if ( individualId.search('illdy_person') != -1 || individualId.search('illdy_counter') != -1 || individualId.search('illdy_service') != -1 || individualId.search('illdy_skill') != -1 || individualId.search('illdy_project') != -1 ) {
+						if ( individualId.search('illdy_person') != -1 || individualId.search('illdy_counter') != -1 || individualId.search('illdy_service') != -1 || individualId.search('illdy_skill') != -1 || individualId.search('illdy_project') != -1 || individualId.search('illdy_recent_posts') != -1 ) {
 							$(this).hide();
 						} else {
 							$(this).show();
@@ -142,5 +143,99 @@
 					break;
 			}
 		});
+
+		$('.epsilon-button').on( 'click', function( evt ){
+			evt.preventDefault();
+			section = $(this).data('section');
+			if ( section ) {
+				wp.customize.section( section ).focus();
+			}
+		});
+
 	});
+
+
+	// Color Scheme
+	var EpsilonFramework = {};
+	EpsilonFramework.colorSchemes = function (selector) {
+		/**
+		 * Set variables
+		 */
+		var context = $(selector),
+				options = context.find('.mte-color-option'),
+				input = context.parent().find('.mte-color-scheme-input'),
+				json = $.parseJSON(options.first().find('input').val()),
+				api = wp.customize,
+				colorSettings = [],
+				css = {
+					action: 'epsilon_generate_css',
+					data  : {}
+				};
+
+		$.each(json, function (index, value) {
+			index = index.replace(/-/g, '_');
+			colorSettings.push('epsilon_' + index + '_color');
+		});
+
+		function updateCSS() {
+			_.each(colorSettings, function (setting) {
+				css.data[ setting ] = api(setting)();
+			});
+			api.previewer.send('update-inline-css', css)
+		}
+
+		_.each(colorSettings, function (setting) {
+			api(setting, function (setting) {
+				setting.bind(updateCSS);
+			});
+		});
+
+		/**
+		 * On clicking a color scheme, update the color pickers
+		 */
+		$('.mte-color-option').on('click', function () {
+			var val = $(this).attr('data-color-id'),
+					json = $.parseJSON($(this).find('input').val());
+
+			/**
+			 * find the customizer options
+			 */
+			$.each(json, function (index, value) {
+				index = index.replace(/-/g, '_');
+				colorSettings.push('epsilon_' + index + '_color');
+				/**
+				 * Set values
+				 */
+				wp.customize('epsilon_' + index + '_color').set(value);
+			});
+
+			/**
+			 * Remove the selected class from siblings
+			 */
+			$(this).siblings('.mte-color-option').removeClass('selected');
+			/**
+			 * Make active the current selection
+			 */
+			$(this).addClass('selected');
+			/**
+			 * Trigger change
+			 */
+			input.val(val).change();
+
+			_.each(colorSettings, function (setting) {
+				api(setting, function (setting) {
+					setting.bind(updateCSS());
+				});
+			});
+		});
+	};
+
+	if ( typeof(wp) !== 'undefined' ) {
+		if ( typeof(wp.customize) !== 'undefined' ) {
+			wp.customize.bind('ready', function () {
+				EpsilonFramework.colorSchemes('.mte-color-scheme');
+			});
+		}
+	}
+	
 })(jQuery);
