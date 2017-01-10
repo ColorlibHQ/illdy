@@ -160,7 +160,6 @@ $wp_customize->add_control(
     $prefix .'_contact_us_address_title',
     array(
         'label'         => __( 'Address Title', 'illdy' ),
-        'description'   => __( 'Add the title for address block from this section.', 'illdy'),
         'section'       => $prefix . '_contact_us',
         'priority'      => 4
     )
@@ -182,7 +181,6 @@ $wp_customize->add_control(
     $prefix .'_contact_us_customer_support_title',
     array(
         'label'         => __( 'Customer Support Title', 'illdy' ),
-        'description'   => __( 'Add the title for customer support block from this section.', 'illdy'),
         'section'       => $prefix . '_contact_us',
         'priority'      => 5
     )
@@ -251,7 +249,6 @@ $wp_customize->add_control(
     $wp_customize->add_control( 'illdy_contact_bar_facebook_url',
         array(
             'label'          => __( 'Facebook URL', 'illdy' ),
-            'description'    => __( 'Will be displayed in the contact section from front page.', 'illdy' ),
             'section'        => $prefix.'_contact_us',
             'settings'       => 'illdy_contact_bar_facebook_url',
             'priority'       => 10
@@ -275,7 +272,6 @@ $wp_customize->add_control(
     $wp_customize->add_control( $prefix.'_contact_bar_twitter_url',
         array(
             'label'          => __( 'Twitter URL', 'illdy' ),
-            'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
             'section'        => $prefix.'_contact_us',
             'settings'       => $prefix.'_contact_bar_twitter_url',
             'priority'       => 10
@@ -294,7 +290,6 @@ $wp_customize->add_control(
     $wp_customize->add_control( $prefix.'_contact_bar_linkedin_url',
         array(
             'label'          => __( 'LinkedIN URL', 'illdy' ),
-            'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
             'section'        => $prefix.'_contact_us',
             'settings'       => $prefix.'_contact_bar_linkedin_url',
             'priority'       => 10
@@ -313,7 +308,6 @@ $wp_customize->add_control(
 	$wp_customize->add_control( $prefix.'_contact_bar_googlep_url',
 		array(
 			'label'          => __( 'Google+ URL', 'illdy' ),
-			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
 			'section'        => $prefix.'_contact_us',
 			'settings'       => $prefix.'_contact_bar_googlep_url',
 			'priority'       => 10
@@ -332,7 +326,6 @@ $wp_customize->add_control(
 	$wp_customize->add_control( $prefix.'_contact_bar_pinterest_url',
 		array(
 			'label'          => __( 'Pinterest URL', 'illdy' ),
-			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
 			'section'        => $prefix.'_contact_us',
 			'settings'       => $prefix.'_contact_bar_pinterest_url',
 			'priority'       => 10
@@ -351,7 +344,6 @@ $wp_customize->add_control(
 	$wp_customize->add_control( $prefix.'_contact_bar_instagram_url',
 		array(
 			'label'          => __( 'Instagram URL', 'illdy' ),
-			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
 			'section'        => $prefix.'_contact_us',
 			'settings'       => $prefix.'_contact_bar_instagram_url',
 			'priority'       => 10
@@ -370,7 +362,6 @@ $wp_customize->add_control(
 	$wp_customize->add_control( $prefix.'_contact_bar_youtube_url',
 		array(
 			'label'          => __( 'YouTube URL', 'illdy' ),
-			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
 			'section'        => $prefix.'_contact_us',
 			'settings'       => $prefix.'_contact_bar_youtube_url',
 			'priority'       => 10
@@ -389,7 +380,6 @@ $wp_customize->add_control(
 	$wp_customize->add_control( $prefix.'_contact_bar_vimeo_url',
 		array(
 			'label'          => __( 'Vimeo URL', 'illdy' ),
-			'description'    => __('Will be displayed in the contact section from front page.', 'illdy'),
 			'section'        => $prefix.'_contact_us',
 			'settings'       => $prefix.'_contact_bar_vimeo_url',
 			'priority'       => 10
@@ -410,7 +400,6 @@ $wp_customize->add_control(
     $wp_customize->add_control( $prefix.'_email',
         array(
             'label'         => __( 'Email addr.', 'illdy' ),
-            'description'   => __( 'Will be displayed in the contact section from front page.', 'illdy'),
             'section'       => $prefix.'_contact_us',
             'settings'      => $prefix.'_email',
             'priority'      => 10
@@ -434,7 +423,6 @@ $wp_customize->add_control(
     $wp_customize->add_control( $prefix.'_phone',
         array(
             'label'         => __( 'Phone number', 'illdy' ),
-            'description'   => __( 'Will be displayed in the contact section from front page.', 'illdy'),
             'section'       => $prefix.'_contact_us',
             'settings'      => $prefix.'_phone',
             'priority'      => 12
@@ -459,7 +447,6 @@ $wp_customize->add_control(
         $prefix . '_address1',
         array(
             'label'         => __( 'Address 1', 'illdy' ),
-            'description'   => __( 'Will be displayed in the contact section from front page.', 'illdy'),
             'section'       => $prefix . '_contact_us',
             'priority'      => 13
         )
@@ -483,7 +470,6 @@ $wp_customize->add_control(
         $prefix . '_address2',
         array(
             'label'         => __( 'Address 2', 'illdy' ),
-            'description'   => __( 'Will be displayed in the contact section from front page.', 'illdy'),
             'section'       => $prefix . '_contact_us',
             'priority'      => 13
         )
