@@ -1463,7 +1463,7 @@ a:hover, a:focus {
 	display: inline-block;
 	border-radius: 3px;
 	font-weight: 700;
-	font-size: 18px;
+	font-size: 16px;
 	color: #fff;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
@@ -2344,7 +2344,7 @@ span.rss-date:before,
 	padding: 0 10px;
 	border: 1px solid #d7d7d7;
 	outline: 0;
-	font-family: "Source Sans Pro", sans-serif;
+	font-family: "Lato", sans-serif;
 	font-weight: 400;
 	color: #888;
 }
