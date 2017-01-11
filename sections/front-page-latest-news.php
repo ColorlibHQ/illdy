@@ -25,6 +25,8 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$number_of_posts = get_theme_mod( 'illdy_latest_news_number_of_posts', absint( 3 ) );
 }
 
+$number_of_words = get_theme_mod( 'illdy_latest_news_words_number', absint( 20 ));
+
 $post_query_args = array(
 	'post_type'              => array( 'post' ),
 	'nopaging'               => false,
@@ -81,7 +83,7 @@ if ( $post_query->have_posts() || $general_title != '' || $general_entry != '' |
 									<?php } ?>
 									<h5><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="post-title"><?php the_title(); ?></a></h5>
 									<div class="post-entry">
-										<?php the_excerpt(); ?>
+										<?php echo wp_trim_words( get_the_content(), $number_of_words ); ?>
 									</div><!--/.post-entry-->
 									<a href="<?php the_permalink(); ?>" title="<?php _e( 'Read more', 'illdy' ); ?>" class="post-button"><i class="fa fa-chevron-circle-right"></i><?php _e( 'Read more', 'illdy' ); ?>
 									</a>

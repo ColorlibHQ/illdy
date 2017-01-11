@@ -147,3 +147,26 @@ $wp_customize->add_control( new Epsilon_Control_Slider(
     )
 )
 );
+
+$wp_customize->add_setting( $prefix .'_latest_news_words_number',
+    array(
+        'sanitize_callback' => 'sanitize_text_field',
+        'default'           => 20,
+    )
+);
+
+$wp_customize->add_control( new Epsilon_Control_Slider(
+    $wp_customize,
+    $prefix .'_latest_news_words_number',
+    array(
+        'label'       => esc_html__( 'Number of words in post entry', 'illdy' ),
+        'choices'     => array(
+            'min'  => 20,
+            'max'  => 100,
+            'step' => 10,
+        ),
+        'section'       => $prefix . '_latest_news_general',
+        'priority'      => 6
+    )
+)
+);

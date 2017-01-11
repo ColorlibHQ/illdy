@@ -733,10 +733,12 @@ a:hover, a:focus {
 	background-color: #fff;
 	padding-bottom: 40px;
 	text-align: left;
+	min-height: 547px;
 }
 
 #latest-news .illdy-blog-post {
 	margin-top: 30px;
+	min-height: 540px;
 }
 
 #latest-news .section-content .post .post-image {
