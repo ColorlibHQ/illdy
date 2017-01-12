@@ -24,13 +24,25 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		// Custom Controls
 		require_once get_template_directory() . '/inc/customizer/custom-controls.php';
 		require_once get_template_directory() . '/inc/customizer/custom-section.php';
+		require_once get_template_directory() . '/inc/customizer/custom-recommend-action-section.php';
 		require_once get_template_directory() . '/inc/customizer/control-epsilon-color-scheme.php';
 		
 		$wp_customize->register_control_type( 'Epsilon_Control_Tab' );
 		$wp_customize->register_control_type( 'Epsilon_Control_Button' );
-		// $wp_customize->register_control_type( 'Epsilon_Control_Color_Scheme' );
 		$wp_customize->register_section_type( 'Illdy_Customize_Section_Pro' );
+		$wp_customize->register_section_type( 'Illdy_Customize_Section_Recommend' );
 
+		// Recomended Actions
+		$wp_customize->add_section(
+			new Illdy_Customize_Section_Recommend(
+				$wp_customize,
+				'illdy-recomended-section',
+				array(
+					'title'    => esc_html__( 'Recomended Actions', 'illdy' ),
+					'priority' => 0
+				)
+			)
+		);
 		// Pro Section
 		$wp_customize->add_section(
 			new Illdy_Customize_Section_Pro(
@@ -208,6 +220,10 @@ if ( ! function_exists( 'illdy_customizer_css_load' ) ) {
 
 if ( ! function_exists( 'illdy_customizer_js_load' ) ) {
 	function illdy_customizer_js_load() {
+		wp_enqueue_style( 'plugin-install' );
+		wp_enqueue_script( 'plugin-install' );
+		wp_enqueue_script( 'updates' );
+		wp_add_inline_script( 'plugin-install', 'var pagenow = "customizer";' );
 		wp_enqueue_script( 'illdy-customizer', get_template_directory_uri() . '/inc/customizer/assets/js/illdy-customizer.js', array( 'customize-controls' ), '1.0', true );
 	}
 
