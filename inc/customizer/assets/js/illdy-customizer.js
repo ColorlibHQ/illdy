@@ -16,10 +16,37 @@
 			return true;
 		}
 	} );
+	// Extends our custom "illdy-pro-section" section.
+	api.sectionConstructor['illdy-recomended-section'] = api.Section.extend( {
+
+		// No events for this type of section.
+		attachEvents: function () {},
+
+		// Always make the section active.
+		isContextuallyActive: function () {
+			return true;
+		}
+	} );
 
 } )( wp.customize );
 
  jQuery( document ).ready( function( $ ) {
+
+ 	$('.recomended-actions_container').on( 'actions_complete', function( evt,  element ){
+ 		console.log($(element).next( '.epsilon-recommeded-actions-container' ));
+ 		if ( $(element).next( '.epsilon-recommeded-actions-container' ).length > 0 ) {
+ 			var nex_actions = $(element).next( '.epsilon-recommeded-actions-container' );
+ 			var next_index = nex_actions.data('index');
+ 			$('.control-section-illdy-recomended-section .illdy-actions-count .current-index').text( next_index );
+ 			$(element).remove();
+ 		}else{
+ 			$(element).remove();
+ 			$('.control-section-illdy-recomended-section .illdy-actions-count').addClass('complete');
+ 			$('.recomended-actions_container .succes').show();
+ 		}
+ 		console.log('custom trigger');
+
+ 	});
 
 	wp.customize.section.each( function ( section ) {
 

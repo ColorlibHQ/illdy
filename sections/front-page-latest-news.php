@@ -68,7 +68,7 @@ if ( $post_query->have_posts() || $general_title != '' || $general_entry != '' |
 		<?php if ( $post_query->have_posts() ): ?>
 			<div class="section-content">
 				<div class="container">
-					<div class="row">
+					<div class="row blog-carousel">
 						<?php $counter = 0; ?>
 						<?php while ( $post_query->have_posts() ): ?>
 							<?php $post_query->the_post(); ?>
@@ -90,9 +90,6 @@ if ( $post_query->have_posts() || $general_title != '' || $general_entry != '' |
 								</div><!--/.post-->
 							</div><!--/.col-sm-4-->
 							<?php $counter ++; ?>
-							<?php if ( $counter % 3 == 0 ) { ?>
-								<div class="clearfix"></div>
-							<?php } ?>
 						<?php endwhile; ?>
 					</div><!--/.row-->
 				</div><!--/.container-->

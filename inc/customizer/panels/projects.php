@@ -41,6 +41,22 @@ $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize,
         'priority'  => 1,
     ) )
 );
+$wp_customize->add_setting( $prefix . '_projects_lightbox',
+    array(
+        'sanitize_callback' => $prefix . '_sanitize_checkbox',
+        'default'           => 0,
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize,
+    $prefix . '_projects_lightbox',
+    array(
+        'type'      => 'mte-toggle',
+        'label'     => __( 'Enable Lightbox ?', 'illdy' ),
+        'section'   => $panel_id,
+        'priority'  => 1,
+    ) )
+);
 
 // Title
 $wp_customize->add_setting( $prefix .'_projects_general_title',
