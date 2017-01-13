@@ -159,14 +159,7 @@ class Illdy_Welcome {
 	public function illdy_welcome_scripts_for_customizer() {
 
 		wp_enqueue_style( 'illdy-welcome-screen-customizer-css', get_template_directory_uri() . '/inc/admin/welcome-screen/css/welcome_customizer.css' );
-		wp_enqueue_script( 'illdy-welcome-screen-customizer-js', get_template_directory_uri() . '/inc/admin/welcome-screen/js/welcome_customizer.js', array( 'jquery' ), '20120206', true );
-
-		wp_localize_script( 'illdy-welcome-screen-customizer-js', 'illdyWelcomeScreenCustomizerObject', array(
-			'nr_actions_required' => $this->count_actions(),
-			'aboutpage'           => esc_url( admin_url( 'themes.php?page=illdy-welcome&tab=recommended_actions' ) ),
-			'customizerpage'      => esc_url( admin_url( 'customize.php#recommended_actions' ) ),
-			'themeinfo'           => __( 'View Theme Info', 'illdy' ),
-		) );
+		
 	}
 
 	/**

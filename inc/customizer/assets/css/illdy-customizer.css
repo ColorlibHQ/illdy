@@ -432,3 +432,12 @@ div.recomended-actions_container {
     margin-bottom: 1em;
     text-align: center;
 }
+.recomended-actions_container .succes a {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+.recomended-actions_container .succes a.social {
+    width: 49%;
+    margin-bottom: 1em;
+}

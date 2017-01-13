@@ -39,6 +39,10 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 				'illdy-recomended-section',
 				array(
 					'title'    => esc_html__( 'Recomended Actions', 'illdy' ),
+					'succes_text'	=> esc_html__( 'Follow us on :', 'illdy' ),
+					'facebook' => 'https://www.facebook.com/colorlib',
+					'twitter' => 'https://twitter.com/colorlib',
+					'wp_review' => true,
 					'priority' => 0
 				)
 			)
