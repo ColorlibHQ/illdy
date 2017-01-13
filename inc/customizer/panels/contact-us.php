@@ -28,14 +28,7 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
         'buttons'   => array(
             array(
                 'name' => __( 'General', 'illdy' ),
-                'fields'    => array(
-                    $prefix . '_contact_us_show',
-                    $prefix . '_contact_us_title',
-                    $prefix . '_contact_us_entry',
-                    $prefix . '_contact_us_address_title',
-                    $prefix . '_contact_us_customer_support_title',
-                    $prefix . '_contact_us_contact_form_7',
-                    ),
+                'fields'    => illdy_create_contact_tab_sections(),
                 'active' => true
                 ),
             array(
@@ -227,6 +220,28 @@ $wp_customize->add_control(
             'settings'          => $prefix . '_contact_us_install_contact_form_7',
             'priority'          => 7,
             'active_callback'   => 'illdy_is_not_active_contact_form_7'
+        )
+    )
+);
+
+$wp_customize->add_setting(
+    $prefix . '_contact_us_create_contact_form_7',
+    array(
+        'sanitize_callback' => 'esc_html',
+        'default'           => '',
+        'transport'         => 'refresh'
+    )
+);
+$wp_customize->add_control(
+    new Illdy_Text_Custom_Control(
+        $wp_customize, $prefix . '_contact_us_create_contact_form_7',
+        array(
+            'label'             => __( 'Contact Form Creation', 'illdy' ),
+            'description'       => sprintf( '%s %s', __( 'Create a contact form from ', 'illdy' ), '<a href="'.admin_url('admin.php?page=wpcf7-new').'" title="Contact Form 7" target="_blank">here</a>' ),
+            'section'           => $prefix .'_contact_us',
+            'settings'          => $prefix . '_contact_us_create_contact_form_7',
+            'priority'          => 7,
+            'active_callback'   => 'illdy_have_not_contact_form_7'
         )
     )
 );
