@@ -157,12 +157,6 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 						/
 						{{ data.total_actions }}
 					</span>
-				<# }else{ #>
-					<span class="illdy-actions-count complete">
-						<span class="current-index">{{ data.total_actions }}</span>
-						/
-						{{ data.total_actions }}
-					</span>
 				<# } #>
 			</h3>
 			<div class="recomended-actions_container" id="">

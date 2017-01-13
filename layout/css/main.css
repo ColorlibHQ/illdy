@@ -2539,6 +2539,9 @@ input[type=submit]:hover,
 		float: none;
 		width: 100%;
 	}
+	.row.blog-carousel.owl-carousel {
+		margin: 0;
+	}
 }
 @media only screen and (max-width: 767px) {
 	#header .top-header .header-logo img {
@@ -2647,6 +2650,9 @@ input[type=submit]:hover,
 
 	#blog {
 		padding-bottom: 0;
+	}
+	.row.blog-carousel.owl-carousel {
+	    margin: 0;
 	}
 }
 

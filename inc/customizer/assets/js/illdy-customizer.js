@@ -40,7 +40,7 @@
  			$(element).remove();
  		}else{
  			$(element).remove();
- 			$('.control-section-illdy-recomended-section .illdy-actions-count').addClass('complete');
+ 			$('.control-section-illdy-recomended-section .illdy-actions-count').remove();
  			$('.control-section-illdy-recomended-section .accordion-section-title .section-title').text( $('.control-section-illdy-recomended-section .accordion-section-title .section-title').data('succes') )
  			$('.recomended-actions_container .succes').show();
  		}

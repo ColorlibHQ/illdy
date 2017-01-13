@@ -356,6 +356,51 @@ if ( ! function_exists( 'illdy_is_not_active_contact_form_7' ) ) {
 }
 
 /**
+ *  Active Callback: Without Contact Form 7
+ */
+if ( ! function_exists( 'illdy_have_not_contact_form_7' ) ) {
+	function illdy_have_not_contact_form_7() {
+		if ( class_exists( 'WPCF7' ) ) {
+			$args = array(
+					'post_type' => 'wpcf7_contact_form',
+					'post_status' => 'publish',
+					'posts_per_page' => -1
+				);
+			$posts = get_posts($args);
+			if ( count($posts) > 0 ) {
+				return false;
+			}else{
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+}
+
+if ( ! function_exists( 'illdy_create_contact_tab_sections' ) ) {
+	function illdy_create_contact_tab_sections() {
+		$prefix = 'illdy';
+		$sections = array(
+            $prefix . '_contact_us_show',
+            $prefix . '_contact_us_title',
+            $prefix . '_contact_us_entry',
+            $prefix . '_contact_us_address_title',
+            $prefix . '_contact_us_customer_support_title',
+        );
+
+		if ( illdy_is_not_active_contact_form_7() ) {
+			$sections[] = $prefix . '_contact_us_install_contact_form_7';
+		}elseif ( illdy_have_not_contact_form_7() ) {
+			$sections[] = $prefix . '_contact_us_create_contact_form_7';
+		}else{
+			$sections[] = $prefix . '_contact_us_contact_form_7';
+		}
+		return $sections;
+	}
+}
+
+/**
  *  Sanitize HTML
  */
 if ( ! function_exists( 'illdy_sanitize_html' ) ) {
