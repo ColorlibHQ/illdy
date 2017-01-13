@@ -1926,6 +1926,17 @@ a:hover, a:focus {
     font-family: "Poppins";
     line-height: 24px;
 }
+.widget_tag_cloud .tagcloud a {
+	font-size: 16px !important;
+	line-height: 26px;
+	font-weight: 400;
+}
+.widget_tag_cloud .tagcloud a:after {
+	display: inline-block;
+	content: "/";
+	color: #8c9597;
+	margin-left: 5px;
+}
 
 footer .widget ul li a.rsswidget {
 	color: #fff;

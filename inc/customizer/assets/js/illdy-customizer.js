@@ -33,7 +33,6 @@
  jQuery( document ).ready( function( $ ) {
 
  	$('.recomended-actions_container').on( 'actions_complete', function( evt,  element ){
- 		console.log($(element).next( '.epsilon-recommeded-actions-container' ));
  		if ( $(element).next( '.epsilon-recommeded-actions-container' ).length > 0 ) {
  			var nex_actions = $(element).next( '.epsilon-recommeded-actions-container' );
  			var next_index = nex_actions.data('index');
@@ -42,9 +41,9 @@
  		}else{
  			$(element).remove();
  			$('.control-section-illdy-recomended-section .illdy-actions-count').addClass('complete');
+ 			$('.control-section-illdy-recomended-section .accordion-section-title .section-title').text( $('.control-section-illdy-recomended-section .accordion-section-title .section-title').data('succes') )
  			$('.recomended-actions_container .succes').show();
  		}
- 		console.log('custom trigger');
 
  	});
 

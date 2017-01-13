@@ -24,6 +24,9 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 	public $required_actions = '';
 	public $total_actions = '';
 	public $succes_text = '';
+	public $facebook = '';
+	public $twitter = '';
+	public $wp_review = false;
 
 	public function check_active( $slug ) {
 		if ( file_exists( ABSPATH . 'wp-content/plugins/' . $slug . '/' . $slug . '.php' ) ) {
@@ -118,8 +121,14 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 			$formatted_array[] = $illdy_required_action;
 		}
 		$json['required_actions'] = $formatted_array;
-		$json['succes_text'] = __( 'Hooray! There are no required actions for you right now.', 'illdy' );
 		$json['total_actions'] = count($illdy_required_actions);
+		$json['succes_text'] = $this->succes_text;
+		$json['facebook'] = $this->facebook;
+		$json['twitter'] = $this->twitter;
+		$json['wp_review'] = $this->wp_review;
+		if ( $this->wp_review ) {
+			$json['theme_slug'] = get_template();
+		}
 		return $json;
 
 	}
@@ -135,7 +144,13 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 		<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }} cannot-expand">
 
 			<h3 class="accordion-section-title">
-				{{ data.title }}
+				<span class="section-title" data-succes="{{ data.succes_text }}">
+					<# if( data.required_actions.length > 0 ){ #>
+						{{ data.title }}
+					<# }else{ #>
+						{{ data.succes_text }}
+					<# } #>
+				</span>
 				<# if( data.required_actions.length > 0 ){ #>
 					<span class="illdy-actions-count">
 						<span class="current-index">{{ data.required_actions[0].index }}</span>
@@ -176,9 +191,31 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 					<# } #>
 				<# } #>
 				<# if( data.required_actions.length == 0 ){ #>
-					<p class="succes">{{ data.succes_text }}</p>
+					<p class="succes">
+						<# if( data.facebook ){ #>
+							<a href="{{ data.facebook }}" class="button social">Facebook</a>
+						<# } #>
+
+						<# if( data.twitter ){ #>
+							<a href="{{ data.twitter }}" class="button social">Twitter</a>
+						<# } #>
+						<# if( data.wp_review ){ #>
+							<a href="https://wordpress.org/support/theme/{{ data.theme_slug }}/reviews/#new-post" class="button button-primary">Review this theme on w.org</a>
+						<# } #>
+					</p>
 				<# }else{ #>
-					<p class="succes hide">{{ data.succes_text }}</p>
+					<p class="succes hide">
+						<# if( data.facebook ){ #>
+							<a href="{{ data.facebook }}" class="button social">Facebook</a>
+						<# } #>
+
+						<# if( data.twitter ){ #>
+							<a href="{{ data.twitter }}" class="button social">Twitter</a>
+						<# } #>
+						<# if( data.wp_review ){ #>
+							<a href="https://wordpress.org/support/theme/{{ data.theme_slug }}/reviews/#new-post" class="button button-primary">Review this theme on w.org</a>
+						<# } #>
+					</p>
 				<# } #>
 			</div>
 		</li>
