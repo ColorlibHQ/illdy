@@ -51,7 +51,6 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 						'before_title'	=> '',
 						'after_title'	=> ''
 					);
-
 					the_widget( 'Illdy_Widget_Project', 'title='. __( 'Project 1', 'illdy' ) .'&image='. get_template_directory_uri().esc_url( '/layout/images/front-page/front-page-project-1.png' ) .'&url='. esc_url( '#' ), $the_widget_args );
 					the_widget( 'Illdy_Widget_Project', 'title='. __( 'Project 2', 'illdy' ) .'&image='. get_template_directory_uri().esc_url( '/layout/images/front-page/front-page-project-2.png' ) .'&url='. esc_url( '#' ), $the_widget_args );
 					the_widget( 'Illdy_Widget_Project', 'title='. __( 'Project 3', 'illdy' ) .'&image='. get_template_directory_uri().esc_url( '/layout/images/front-page/front-page-project-3.png' ) .'&url='. esc_url( '#' ), $the_widget_args );

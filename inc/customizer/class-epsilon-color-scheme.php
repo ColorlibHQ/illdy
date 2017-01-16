@@ -171,7 +171,7 @@ if ( ! class_exists( 'Epsilon_Color_Scheme' ) ) {
 				#blog .blog-post .blog-post-button,
 				.widget table caption,
 				.widget table#wp-calendar tbody tr td a { background-color: %1$s; }
-				@media only screen and (max-width: 992px) { ul.sub-menu { background-color: %1$s; } }
+				@media only screen and (max-width: 992px) { .header-front-page nav ul.sub-menu { background-color: %1$s; } }
 				a:hover,
 				a:focus,
 				#latest-news .section-content .post .post-button:hover,

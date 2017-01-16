@@ -22,7 +22,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$address1               = get_theme_mod( 'illdy_address1', __( 'Street 221B Baker Street, ', 'illdy' ) );
 	$address2               = get_theme_mod( 'illdy_address2', __( 'London, UK', 'illdy' ) );
 	$general_title          = get_theme_mod( 'illdy_contact_us_general_title', __( 'Contact us', 'illdy' ) );
-	$general_entry          = get_theme_mod( 'illdy_contact_us_general_entry', __( 'And we will get in touch as soon as possible.', 'illdy' ) );
+	$general_entry          = get_theme_mod( 'illdy_contact_us_entry', __( 'And we will get in touch as soon as possible.', 'illdy' ) );
 	$general_contact_form_7 = get_theme_mod( 'illdy_contact_us_general_contact_form_7' );
 	$general_address_title  = get_theme_mod( 'illdy_contact_us_general_address_title', __( 'Address', 'illdy' ) );
 	$customer_support_title = get_theme_mod( 'illdy_contact_us_general_customer_support_title', __( 'Customer Support', 'illdy' ) );
@@ -40,7 +40,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$address1                  = get_theme_mod( 'illdy_address1' );
 	$address2                  = get_theme_mod( 'illdy_address2' );
 	$general_title             = get_theme_mod( 'illdy_contact_us_general_title' );
-	$general_entry             = get_theme_mod( 'illdy_contact_us_general_entry' );
+	$general_entry             = get_theme_mod( 'illdy_contact_us_entry' );
 	$general_contact_form_7    = get_theme_mod( 'illdy_contact_us_general_contact_form_7' );
 	$general_address_title     = get_theme_mod( 'illdy_contact_us_general_address_title' );
 	$customer_support_title    = get_theme_mod( 'illdy_contact_us_general_customer_support_title' );

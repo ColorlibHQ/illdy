@@ -107,7 +107,7 @@ if( !function_exists( 'illdy_sections_order' ) ) {
         $contact_us_general_show = get_theme_mod( 'illdy_contact_us_general_show', 1 );
         if( $input == 1 && $about_general_show == 1 ) {
             get_template_part( 'sections/front-page', 'about' );
-        } elseif( $input == 2 && $projects_general_show == 1 && illdy_is_active_jetpack_projects() ) {
+        } elseif( $input == 2 && $projects_general_show == 1 ) {
             get_template_part( 'sections/front-page', 'projects' );
         } elseif( $input == 3 && $testimonials_general_show == 1 && illdy_is_active_jetpack_testimonials() ) {
             get_template_part( 'sections/front-page', 'testimonials' );
