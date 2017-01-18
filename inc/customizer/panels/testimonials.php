@@ -9,7 +9,7 @@ $wp_customize->add_section( $prefix . '_testimonials_general' ,
     array(
         'title'         => __( 'Testimonials Section', 'illdy' ),
         'description'   => __( 'Control various options for testimonials section from front page.', 'illdy' ),
-        'priority'      => 104,
+        'priority'      => illdy_get_section_position($prefix . '_testimonials_general'),
         'panel'     => 'illdy_frontpage_panel',
     )
 );

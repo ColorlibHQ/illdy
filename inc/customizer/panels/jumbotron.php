@@ -9,7 +9,7 @@ $prefix = 'illdy';
 $wp_customize->add_section( $prefix . '_jumbotron_general', array(
 	'title'       => __( 'Jumbotron Section', 'illdy' ),
 	'description' => __( 'Control various jumbotron related settings. Will only be displayed if a <strong>custom front-page is set in Settings -> Reading.</strong>', 'illdy' ),
-	'priority'    => 100,
+	'priority'    => 10,
 	'panel'       => 'illdy_frontpage_panel'
 ) );
 

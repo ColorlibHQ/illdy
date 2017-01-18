@@ -9,7 +9,7 @@ $prefix = 'illdy';
 /****************** SERVICES  ******************/
 /***********************************************/
 $wp_customize->add_section( $panel_id, array(
-		'priority'       => 105,
+		'priority'       => illdy_get_section_position($panel_id),
 		'capability'     => 'edit_theme_options',
 		'theme_supports' => '',
 		'title'          => __( 'Services Section', 'illdy' ),

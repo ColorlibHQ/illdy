@@ -10,7 +10,7 @@ $wp_customize->add_section( $prefix . '_latest_news_general' ,
     array(
         'title'         => __( 'Latest News Section', 'illdy' ),
         'description'   => __( 'Control various options for latest news section from front page.', 'illdy' ),
-        'priority'      => 106,
+        'priority'      => illdy_get_section_position($prefix . '_latest_news_general'),
         'panel' 	    => 'illdy_frontpage_panel'
     )
 );

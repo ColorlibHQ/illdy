@@ -95,32 +95,50 @@ if( !function_exists( 'illdy_get_image_id_from_image_url' ) ) {
 /**
  *  Sections order
  */
-if( !function_exists( 'illdy_sections_order' ) ) {
-    function illdy_sections_order( $input ) {
-        $about_general_show = get_theme_mod( 'illdy_about_general_show', 1 );
-        $projects_general_show = get_theme_mod( 'illdy_projects_general_show', 1 );
-        $testimonials_general_show = get_theme_mod( 'illdy_testimonials_general_show', 1 );
-        $services_general_show = get_theme_mod( 'illdy_services_general_show', 1 );
-        $latest_news_general_show = get_theme_mod( 'illdy_latest_news_general_show', 1 );
-        $counter_general_show = get_theme_mod( 'illdy_counter_general_show', 1 );
-        $team_general_show = get_theme_mod( 'illdy_team_general_show', 1 );
-        $contact_us_general_show = get_theme_mod( 'illdy_contact_us_general_show', 1 );
-        if( $input == 1 && $about_general_show == 1 ) {
-            get_template_part( 'sections/front-page', 'about' );
-        } elseif( $input == 2 && $projects_general_show == 1 ) {
-            get_template_part( 'sections/front-page', 'projects' );
-        } elseif( $input == 3 && $testimonials_general_show == 1 && illdy_is_active_jetpack_testimonials() ) {
-            get_template_part( 'sections/front-page', 'testimonials' );
-        } elseif( $input == 4 && $services_general_show == 1 ) {
-            get_template_part( 'sections/front-page', 'services' );
-        } elseif( $input == 5 && $latest_news_general_show == 1 ) {
-            get_template_part( 'sections/front-page', 'latest-news' );
-        } elseif( $input == 6 && $counter_general_show == 1 ) {
-            get_template_part( 'sections/front-page', 'counter' );
-        } elseif( $input == 7 && $team_general_show == 1 ) {
-            get_template_part( 'sections/front-page', 'team' );
-        } elseif( $input == 8 && $contact_us_general_show == 1 ) {
-            get_template_part( 'sections/front-page', 'contact-us' );
+if( !function_exists( 'illdy_sections_show' ) ) {
+    function illdy_sections_order( $section ) {
+
+        $controls = array(
+                'illdy_panel_about' => 'illdy_about_general_show',
+                'illdy_panel_projects' => 'illdy_projects_general_show',
+                'illdy_testimonials_general' => 'illdy_testimonials_general_show',
+                'illdy_panel_services' => 'illdy_services_general_show',
+                'illdy_latest_news_general' => 'illdy_latest_news_general_show',
+                'illdy_counter_general' => 'illdy_counter_general_show',
+                'illdy_panel_team' => 'illdy_team_general_show',
+                'illdy_contact_us' => 'illdy_contact_us_general_show'
+            );
+
+        if ( in_array( $section , $controls) ) {
+            return get_theme_mod( $controls[$section], 1 );
+        }else{
+            return true;
         }
+
+    }
+}
+
+if( !function_exists( 'illdy_sections' ) ) {
+    function illdy_sections() {
+
+        $templates = array(
+                'illdy_panel_about' => 'about',
+                'illdy_panel_projects' => 'projects',
+                'illdy_testimonials_general' => 'testimonials',
+                'illdy_panel_services' => 'services',
+                'illdy_latest_news_general' => 'latest-news',
+                'illdy_counter_general' => 'counter',
+                'illdy_panel_team' => 'team',
+                'illdy_contact_us' => 'contact-us'
+            );
+
+        $sections = illdy_get_sections_position();
+
+        foreach ( $sections as $s_id ) {
+            if ( illdy_sections_order($s_id) ) {
+                get_template_part( 'sections/front-page', $templates[$s_id] );
+            }
+        }
+
     }
 }

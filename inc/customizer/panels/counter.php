@@ -7,7 +7,7 @@ $prefix = 'illdy';
 /***********************************************/
 $wp_customize->add_section( $prefix . '_counter_general' ,
     array(
-        'priority'      => 107,
+        'priority'      => illdy_get_section_position($prefix . '_counter_general'),
         'title'         => __( 'Counter Section', 'illdy' ),
         'description'   => __( '*In order to get this section to show up on the front-page, make sure you have: 1) enabled static front-page & 2) have a widget placed in this sidebar. More specifically go to Widgets -> Front page - counter sidebar & place the [Illdy] - Counter widget in here.', 'illdy' ),
         'panel'         => 'illdy_frontpage_panel'

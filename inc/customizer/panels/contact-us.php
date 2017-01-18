@@ -10,7 +10,7 @@ $wp_customize->add_section( $prefix . '_contact_us' ,
     array(
         'title'         => __( 'Contact us Section', 'illdy' ),
         'description'   => __( 'Control various options for contact us section from front page.', 'illdy' ),
-        'priority'      => 109,
+        'priority'      => illdy_get_section_position($prefix . '_contact_us'),
         'panel'         => 'illdy_frontpage_panel'
     )
 );

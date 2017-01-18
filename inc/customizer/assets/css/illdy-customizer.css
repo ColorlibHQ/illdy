@@ -441,3 +441,26 @@ div.recomended-actions_container {
     width: 49%;
     margin-bottom: 1em;
 }
+
+/* Reorder */
+#sub-accordion-panel-illdy_frontpage_panel > li.control-section > h3:before {
+    content: "\f156";
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    opacity: 0.5;
+    margin-top: -11px;
+    display: inline-block;
+    font: 400 20px/1 dashicons;
+    speak: none;
+    display: block;
+    padding: 0;
+    text-indent: 0;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: none!important;
+}
+#sub-accordion-panel-illdy_frontpage_panel > li.control-section#accordion-section-illdy_jumbotron_general > h3:before{
+    content: ""
+}
