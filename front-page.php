@@ -74,37 +74,8 @@ else:
 		endwhile;
 	endif;
 
-	if( $sections_order_first_section ):
-		illdy_sections_order( $sections_order_first_section );
-	endif;
+	illdy_sections();
 
-	if( $sections_order_second_section ):
-		illdy_sections_order( $sections_order_second_section );
-	endif;
-
-	if( $sections_order_third_section ):
-		illdy_sections_order( $sections_order_third_section );
-	endif;
-
-	if( $sections_order_fourth_section ):
-		illdy_sections_order( $sections_order_fourth_section );
-	endif;
-
-	if( $sections_order_fifth_section ):
-		illdy_sections_order( $sections_order_fifth_section );
-	endif;
-
-	if( $sections_order_sixth_section ):
-		illdy_sections_order( $sections_order_sixth_section );
-	endif;
-	
-	if( $sections_order_seventh_section ):
-		illdy_sections_order( $sections_order_seventh_section );
-	endif;
-
-	if( $sections_order_eighth_section ):
-		illdy_sections_order( $sections_order_eighth_section );
-	endif;
 endif;
 
 get_footer(); ?>

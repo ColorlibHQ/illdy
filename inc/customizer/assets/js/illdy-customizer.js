@@ -32,6 +32,29 @@
 
  jQuery( document ).ready( function( $ ) {
 
+ 	function illdy_sections_order( container ){
+ 		var sections = $('#sub-accordion-panel-illdy_frontpage_panel').sortable('toArray');
+ 		var s_ordered = [];
+ 		$.each(sections, function( index, s_id ) {
+ 			s_id = s_id.replace( "accordion-section-", "");
+ 			s_ordered.push(s_id);
+		});
+
+ 		$.ajax({
+			url: IlldyCustomizer.ajax_url,
+			type: 'post',
+			dataType: 'html',
+			data: {
+				'action': 'illdy_order_sections',
+				'sections': s_ordered,
+			}
+		})
+		.done( function( data ) {
+			wp.customize.previewer.refresh();
+		});
+
+ 	}
+
  	$('.recomended-actions_container').on( 'actions_complete', function( evt,  element ){
  		if ( $(element).next( '.epsilon-recommeded-actions-container' ).length > 0 ) {
  			var nex_actions = $(element).next( '.epsilon-recommeded-actions-container' );
@@ -72,6 +95,19 @@
 				section.find(fields).show();
 			});
 		}
+
+	});
+
+	$('#sub-accordion-panel-illdy_frontpage_panel').sortable({
+		helper: 'clone',
+		items: '> li.control-section:not(#accordion-section-illdy_jumbotron_general)',
+		cancel: 'li.ui-sortable-handle.open',
+		delay: 150,
+		update: function( event, ui ) {
+
+			illdy_sections_order( $('#sub-accordion-panel-illdy_frontpage_panel') );
+
+		},
 
 	});
 

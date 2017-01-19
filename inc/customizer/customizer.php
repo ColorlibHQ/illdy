@@ -64,7 +64,8 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		// Front Page sections panel
 		$wp_customize->add_panel( 'illdy_frontpage_panel', array(
 		    'priority'       => 100,
-		    'title'          => 'Front Page Sections',
+		    'title'          => esc_html__( 'Front Page Sections', 'illdy' ),
+		    'description'	 => esc_html__( 'Drag & drop to reorder front-page sections', 'illdy' ),
 		) );
 
 		// Color Scheme
@@ -229,6 +230,13 @@ if ( ! function_exists( 'illdy_customizer_js_load' ) ) {
 		wp_enqueue_script( 'updates' );
 		wp_add_inline_script( 'plugin-install', 'var pagenow = "customizer";' );
 		wp_enqueue_script( 'illdy-customizer', get_template_directory_uri() . '/inc/customizer/assets/js/illdy-customizer.js', array( 'customize-controls' ), '1.0', true );
+
+		$IlldyCustomizer = array();
+		$IlldyCustomizer['sections'] = illdy_get_sections_position();
+		$IlldyCustomizer['ajax_url'] = admin_url( 'admin-ajax.php' );
+
+		wp_localize_script( 'illdy-customizer', 'IlldyCustomizer', $IlldyCustomizer );
+
 	}
 
 	add_action( 'customize_controls_enqueue_scripts', 'illdy_customizer_js_load' );
@@ -578,5 +586,45 @@ if ( ! function_exists( 'illdy_contact_us_social' ) ) {
 		endif;
 
 		return $html;
+	}
+}
+
+add_action( 'wp_ajax_illdy_order_sections', 'illdy_order_sections' );
+
+function illdy_order_sections() {
+
+	if ( isset($_POST['sections']) ) {
+		
+		set_theme_mod( 'illdy_frontpage_sections', $_POST['sections'] );
+		echo 'succes';
+
+	}
+
+	wp_die(); // this is required to terminate immediately and return a proper response
+}
+
+if ( ! function_exists( 'illdy_get_sections_position' ) ) {
+	function illdy_get_sections_position() {
+		$defaults = array(
+				'illdy_panel_about',
+				'illdy_panel_projects',
+				'illdy_testimonials_general',
+				'illdy_panel_services',
+				'illdy_latest_news_general',
+				'illdy_counter_general',
+				'illdy_panel_team',
+				'illdy_contact_us'
+			);
+		$sections = get_theme_mod( 'illdy_frontpage_sections', $defaults );
+		return $sections;
+	}
+}
+
+if ( ! function_exists( 'illdy_get_section_position' ) ) {
+	function illdy_get_section_position( $key ) {
+		$sections = illdy_get_sections_position();
+		$position = array_search( $key, $sections );
+		$return = ($position+1)*10;
+		return $return;
 	}
 }

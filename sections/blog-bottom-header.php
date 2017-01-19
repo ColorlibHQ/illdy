@@ -24,7 +24,7 @@
 
 					?>
 				</div><!--/.col-sm-12-->
-			<?php }elseif ( is_shop() ) {
+			<?php }elseif ( class_exists( 'WooCommerce' ) && is_shop() ) {
 				$title = get_the_title(woocommerce_get_page_id( 'shop' ));
 				$count = str_word_count( strip_tags( $title ) );
 				if ( $count > 1 ) {
