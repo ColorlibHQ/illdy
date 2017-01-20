@@ -461,3 +461,11 @@ div.recomended-actions_container {
 #sub-accordion-panel-illdy_frontpage_panel > li.control-section#accordion-section-illdy_jumbotron_general > h3:before{
     content: ""
 }
+#sub-accordion-panel-illdy_frontpage_panel .description {
+    display: block !important;
+    background: transparent !important;
+}
+#sub-accordion-panel-illdy_frontpage_panel .panel-meta{
+    margin-bottom: 0;
+    border-bottom: 0 none;
+}
