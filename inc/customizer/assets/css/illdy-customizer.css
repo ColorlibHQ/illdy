@@ -444,23 +444,28 @@ div.recomended-actions_container {
 
 /* Reorder */
 #sub-accordion-panel-illdy_frontpage_panel > li.control-section > h3:before {
-    content: "\f156";
-    position: absolute;
-    top: 50%;
-    right: 40px;
+    content: "\f545";
     opacity: 0.5;
-    margin-top: -11px;
-    display: inline-block;
-    font: 400 20px/1 dashicons;
+    font: 400 20px/21px dashicons;
     speak: none;
-    display: block;
+    display: inline-block;
     padding: 0;
     text-indent: 0;
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-decoration: none!important;
+    vertical-align: middle;
+    margin-right: 10px;
 }
 #sub-accordion-panel-illdy_frontpage_panel > li.control-section#accordion-section-illdy_jumbotron_general > h3:before{
     content: ""
+}
+#sub-accordion-panel-illdy_frontpage_panel .description {
+    display: block !important;
+    background: transparent !important;
+}
+#sub-accordion-panel-illdy_frontpage_panel .panel-meta{
+    margin-bottom: 0;
+    border-bottom: 0 none;
 }
