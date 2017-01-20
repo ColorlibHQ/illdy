@@ -821,7 +821,8 @@ a:hover, a:focus {
 	margin-right: 10px;
 }
 
-#latest-news .latest-news-button {
+#latest-news .latest-news-button,
+a.button {
 	width: auto;
 	height: 45px;
 	line-height: 45px;
@@ -840,11 +841,15 @@ a:hover, a:focus {
 	font-family: "Lato";
 }
 
-#latest-news .latest-news-button:hover {
+#latest-news .latest-news-button:hover,
+a.button:hover {
 	text-decoration: none;
 	opacity: 0.9;
+	color: #fff;
 }
-
+.right-button {
+	margin-left: 15px;
+}
 #latest-news .latest-news-button .fa {
 	margin-right: 12px;
 }
@@ -2445,7 +2450,8 @@ input[type=submit]:hover,
 #latest-news .latest-news-button:hover,
 #contact-us .section-content .wpcf7-form p .wpcf7-submit:hover,
 #header .bottom-header .header-button-two:hover,
-#blog .blog-post .blog-post-button:hover {
+#blog .blog-post .blog-post-button:hover,
+a.button:hover {
 	background-color: #6a4d8a;
 }
 .bottom-header h2 {
@@ -2458,6 +2464,40 @@ input[type=submit]:hover,
 
 .widget .search-form .search-form-box #searchsubmit {
 	display: none;
+}
+
+/* Parallax Widget */
+.align-children {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.top-parallax-section {
+    overflow: hidden;
+    padding: 96px 0;
+}
+p.mb32 {
+	margin-bottom: 32px;
+}
+.illdy_home_parallax .parallax-window h1,
+.illdy_home_parallax .parallax-window p {
+	color: #fff;
+}
+.illdy_home_parallax .row {
+	margin: 0;
+}
+.bg-secondary {
+    background: #f5f5f5;
+}
+.border-bottom {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 @media only screen and (max-width: 1024px) {

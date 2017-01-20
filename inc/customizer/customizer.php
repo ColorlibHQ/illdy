@@ -191,6 +191,9 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 
 		// Contact Us
 		require_once get_template_directory() . '/inc/customizer/panels/contact-us.php';
+
+		// Full Width
+		require_once get_template_directory() . '/inc/customizer/panels/full-width.php';
 	}
 
 	add_action( 'customize_register', 'illdy_customize_register' );
@@ -613,7 +616,8 @@ if ( ! function_exists( 'illdy_get_sections_position' ) ) {
 				'illdy_latest_news_general',
 				'illdy_counter_general',
 				'illdy_panel_team',
-				'illdy_contact_us'
+				'illdy_contact_us',
+				'illdy_full_width'
 			);
 		$sections = get_theme_mod( 'illdy_frontpage_sections', $defaults );
 		return $sections;

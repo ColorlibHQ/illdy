@@ -222,6 +222,7 @@ if ( ! function_exists( 'illdy_enqueue_javascripts' ) ) {
 			wp_enqueue_script( 'illdy-fancybox', get_template_directory_uri() . '/layout/js/jquery.fancybox.js', array( 'jquery' ), '', true );
 			wp_add_inline_script( 'illdy-fancybox', 'jQuery(".fancybox").fancybox();' );
 		}
+		wp_enqueue_script( 'illdy-parallax', get_template_directory_uri() . '/layout/js/parallax.min.js', array( 'jquery' ), '1.0.16', true );
 		wp_enqueue_script( 'illdy-plugins', get_template_directory_uri() . '/layout/js/plugins.min.js', array( 'jquery' ), '1.0.16', true );
 		wp_enqueue_script( 'illdy-scripts', get_template_directory_uri() . '/layout/js/scripts.min.js', array( 'jquery' ), '1.0.16', true );
 		if ( is_front_page() ) {\
@@ -362,6 +363,17 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			'after_widget'  => '</div>',
 			'before_title'  => '',
 			'after_title'   => '',
+		) );
+
+		// Full Width
+		register_sidebar( array(
+			'name'          => __( 'Front page - Full Width Section', 'illdy' ),
+			'id'            => 'front-page-full-width-sidebar',
+			'description'   => __( 'The widgets added in this sidebar will appear in full width section from front page.', 'illdy' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget-title"><h5>',
+			'after_title'   => '</h5></div>',
 		) );
 
 		// WooCommerce Sidebar
