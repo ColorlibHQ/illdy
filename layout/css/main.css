@@ -90,8 +90,14 @@ a:hover, a:focus {
 
 .front-page-section {
 	width: 100%;
+	text-align: center;
 }
-
+.front-page-section .section-header {
+	margin-bottom: 65px;
+}
+#full-width.width-padding {
+	padding-top: 130px;
+}
 .front-page-section .section-header {
 	width: 100%;
 }
@@ -313,7 +319,26 @@ a:hover, a:focus {
 #header .bottom-header.blog {
 	padding: 130px 0;
 }
-
+.error404 #header .bottom-header.blog {
+	padding: 60px;
+}
+.row-404 {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.row-404 > div {
+	float: none;
+}
+.row-404 .error-code {
+	font-size: 34px;
+    line-height: 52px;
+    color: #545454;
+    font-weight: 700;
+}
+.row-404 p {
+	margin: 40px 0 30px;
+}
 #header .bottom-header.blog p {
 	margin-bottom: 0;
 }
@@ -2404,6 +2429,21 @@ span.rss-date:before,
 	height: 125px;
 	margin-bottom: 30px;
 	padding: 10px;
+}
+#comments #respond .comment-form textarea::-webkit-input-placeholder {
+	color: #8c9597;
+}
+
+#comments #respond .comment-form textarea::-moz-placeholder {
+	color: #8c9597;
+}
+
+#comments #respond .comment-form textarea:-ms-input-placeholder {
+	color: #8c9597;
+}
+
+#comments #respond .comment-form textarea:-moz-placeholder {
+	color: #8c9597;
 }
 input,
 textarea {

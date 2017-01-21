@@ -34,11 +34,29 @@ $wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize,
     ) )
 );
 
+// Show this section
+$wp_customize->add_setting( $prefix . '_full_width_padding',
+    array(
+        'sanitize_callback' => $prefix . '_sanitize_checkbox',
+        'default'           => 1,
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, 
+    $prefix . '_full_width_padding',
+    array(
+        'type'      => 'mte-toggle',
+        'label'     => __( 'Add padding to section ?', 'illdy' ),
+        'section'   => $panel_id,
+        'priority'  => 1
+    ) )
+);
+
 // Title
 $wp_customize->add_setting( $prefix .'_full_width_general_title',
     array(
         'sanitize_callback' => 'illdy_sanitize_html',
-        'default'           => __( 'About', 'illdy' ),
+        'default'           => '',
         'transport'         => 'postMessage'
     )
 );
@@ -57,20 +75,20 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_full_width_general_tit
 
 $wp_customize->add_setting( $prefix .'_full_width_general_entry',
     array(
-        'sanitize_callback' => 'illdy_sanitize_html',
-        'default'           => __( 'It is an amazing one-page theme with great features that offers an incredible experience. It is easy to install, make changes, adapt for your business. A modern design with clean lines and styling for a wide variety of content, exactly how a business design should be. You can add as many images as you want to the main header area and turn them into slider.', 'illdy' ),
+        'sanitize_callback' => 'wp_kses_post',
+        'default'           => '',
         'transport'         => 'postMessage'
     )
 );
-$wp_customize->add_control(
+$wp_customize->add_control( new Epsilon_Editor_Custom_Control(
+    $wp_customize,
     $prefix .'_full_width_general_entry',
     array(
         'label'         => __( 'Entry', 'illdy' ),
         'description'   => __( 'Add the content for this section.', 'illdy'),
         'section'       => $panel_id,
         'priority'      => 3,
-        'type'          => 'textarea'
-    )
+    ) )
 );
 $wp_customize->add_setting( $prefix .'_full_width_widget_button',
     array(

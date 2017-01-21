@@ -105,16 +105,16 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_general_thir
 if ( get_theme_mod( $prefix . '_jumbotron_general_entry' ) ) {
 
 	$wp_customize->add_setting( $prefix . '_jumbotron_general_entry', array(
-		'sanitize_callback' => 'illdy_sanitize_html',
+		'sanitize_callback' => 'wp_kses_post',
 		'default'           => __( 'lldy is a great one-page theme, perfect for developers and designers but also for someone who just wants a new website for his business. Try it now!', 'illdy' ),
 		'transport'         => 'postMessage',
 	) );
-	$wp_customize->add_control( $prefix . '_jumbotron_general_entry', array(
+	$wp_customize->add_control(  new Epsilon_Editor_Custom_Control(
+        $wp_customize, $prefix . '_jumbotron_general_entry', array(
 		'label'       => __( 'Entry', 'illdy' ),
 		'description' => __( 'The content added in this field will show below the title.', 'illdy' ),
 		'section'     => $prefix . '_jumbotron_general',
-		'type'        => 'textarea',
-	) );
+	) ) );
 
 }
 

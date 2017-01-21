@@ -165,9 +165,6 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		// Jumbotron
 		require_once get_template_directory() . '/inc/customizer/panels/jumbotron.php';
 
-		// Sections Order
-		require_once get_template_directory() . '/inc/customizer/panels/sections-order.php';
-
 		// About
 		require_once get_template_directory() . '/inc/customizer/panels/about.php';
 
@@ -242,7 +239,7 @@ if ( ! function_exists( 'illdy_customizer_js_load' ) ) {
 
 	}
 
-	add_action( 'customize_controls_enqueue_scripts', 'illdy_customizer_js_load' );
+	add_action( 'customize_controls_enqueue_scripts', 'illdy_customizer_js_load', 99 );
 }
 
 /**
@@ -632,3 +629,33 @@ if ( ! function_exists( 'illdy_get_section_position' ) ) {
 		return $return;
 	}
 }
+
+// Wp Editor
+class Epsilon_Editor_Scripts {
+    /**
+     * Enqueue scripts/styles.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return void
+     */
+    public static function enqueue() {
+        if ( ! class_exists( '_WP_Editors' ) ) {
+            require(ABSPATH . WPINC . '/class-wp-editor.php');
+        }
+        add_action( 'customize_controls_print_footer_scripts', array( __CLASS__, 'enqueue_editor' ),  2 );
+        add_action( 'customize_controls_print_footer_scripts', array( '_WP_Editors', 'editor_js' ), 50 );
+        add_action( 'customize_controls_print_footer_scripts', array( '_WP_Editors', 'enqueue_scripts' ), 1 );
+    }
+    public  static function enqueue_editor(){
+        if( ! isset( $GLOBALS['__wp_mce_editor__'] ) || ! $GLOBALS['__wp_mce_editor__'] ) {
+            $GLOBALS['__wp_mce_editor__'] = true;
+            ?>
+            <script id="_wp-mce-editor-tpl" type="text/html">
+                <?php wp_editor('', '__wp_mce_editor__'); ?>
+            </script>
+            <?php
+        }
+    }
+}
+add_action( 'customize_controls_enqueue_scripts', array( 'Epsilon_Editor_Scripts', 'enqueue' ), 95 );

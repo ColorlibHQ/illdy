@@ -58,20 +58,20 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_latest_news_general_ti
 if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
     $wp_customize->add_setting( $prefix .'_latest_news_general_entry',
         array(
-            'sanitize_callback' => 'illdy_sanitize_html',
+            'sanitize_callback' => 'wp_kses_post',
             'default'           => __( 'If you are interested in the latest articles in the industry, take a sneak peek at our blog. You have nothing to loose!', 'illdy' ),
             'transport'         => 'postMessage'
         )
     );
-    $wp_customize->add_control(
+    $wp_customize->add_control(  new Epsilon_Editor_Custom_Control(
+        $wp_customize,
         $prefix .'_latest_news_general_entry',
         array(
             'label'         => __( 'Entry', 'illdy' ),
             'description'   => __( 'Add the content for this section.', 'illdy'),
             'section'       => $prefix . '_latest_news_general',
             'priority'      => 3,
-            'type'          => 'textarea'
-        )
+        ) )
     );
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
     

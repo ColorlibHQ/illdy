@@ -84,20 +84,20 @@ if ( get_theme_mod( $prefix .'_projects_general_entry' ) ) {
     
     $wp_customize->add_setting( $prefix .'_projects_general_entry',
         array(
-            'sanitize_callback' => 'illdy_sanitize_html',
+            'sanitize_callback' => 'wp_kses_post',
             'default'           => __( 'You\'ll love our work. Check it out!', 'illdy' ),
             'transport'         => 'postMessage'
         )
     );
-    $wp_customize->add_control(
+    $wp_customize->add_control( new Epsilon_Editor_Custom_Control(
+        $wp_customize,
         $prefix .'_projects_general_entry',
         array(
             'label'         => __( 'Entry', 'illdy' ),
             'description'   => __( 'Add the content for this section.', 'illdy'),
             'section'       => $panel_id,
             'priority'      => 3,
-            'type'          => 'textarea'
-        )
+        ) )
     );
 
     $wp_customize->selective_refresh->add_partial( $prefix .'_projects_general_entry', array(

@@ -10,7 +10,9 @@
 <div class="bottom-header blog">
 	<div class="container">
 		<div class="row">
-			<?php if ( is_page_template( 'page-templates/blog.php' ) || is_singular() ){ ?>
+			<?php if ( is_404() ) { ?>
+				<h1><?php _e( 'Page not found', 'illdy' ) ?></h1>			 
+			<?php }elseif ( is_page_template( 'page-templates/blog.php' ) || is_singular() ){ ?>
 				<div class="col-sm-12">
 					<?php
 

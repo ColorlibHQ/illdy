@@ -23,7 +23,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$address2               = get_theme_mod( 'illdy_address2', __( 'London, UK', 'illdy' ) );
 	$general_title          = get_theme_mod( 'illdy_contact_us_general_title', __( 'Contact us', 'illdy' ) );
 	$general_entry          = get_theme_mod( 'illdy_contact_us_entry', __( 'And we will get in touch as soon as possible.', 'illdy' ) );
-	$general_contact_form_7 = get_theme_mod( 'illdy_contact_us_general_contact_form_7' );
+	$general_contact_form_7 = get_theme_mod( 'illdy_contact_us_contact_form_7' );
 	$general_address_title  = get_theme_mod( 'illdy_contact_us_general_address_title', __( 'Address', 'illdy' ) );
 	$customer_support_title = get_theme_mod( 'illdy_contact_us_general_customer_support_title', __( 'Customer Support', 'illdy' ) );
 } else {
@@ -41,7 +41,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$address2                  = get_theme_mod( 'illdy_address2' );
 	$general_title             = get_theme_mod( 'illdy_contact_us_general_title' );
 	$general_entry             = get_theme_mod( 'illdy_contact_us_entry' );
-	$general_contact_form_7    = get_theme_mod( 'illdy_contact_us_general_contact_form_7' );
+	$general_contact_form_7    = get_theme_mod( 'illdy_contact_us_contact_form_7' );
 	$general_address_title     = get_theme_mod( 'illdy_contact_us_general_address_title' );
 	$customer_support_title    = get_theme_mod( 'illdy_contact_us_general_customer_support_title' );
 }
@@ -145,7 +145,7 @@ if ( $general_title != '' || $general_entry != '' || $general_address_title != '
 				</div><!--/.row-->
 				<div class="row">
 					<div class="col-sm-12">
-						<?php if ( class_exists( 'WPCF7' ) && $general_contact_form_7 != null && $general_contact_form_7 != 'default' ): ?>
+						<?php if ( class_exists( 'WPCF7' ) && $general_contact_form_7 != null && $general_contact_form_7 != 'default' && get_post($general_contact_form_7) ): ?>
 							<?php $shortcode = '[contact-form-7 id="' . esc_html( $general_contact_form_7 ) . '"]'; ?>
 							<?php echo do_shortcode( $shortcode ); ?>
 						<?php endif; ?>
