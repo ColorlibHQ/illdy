@@ -97,12 +97,13 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_title', arr
 if ( get_theme_mod( $prefix .'_contact_us_entry' ) ) {
     $wp_customize->add_setting( $prefix .'_contact_us_entry',
         array(
-            'sanitize_callback' => 'illdy_sanitize_html',
+            'sanitize_callback' => 'wp_kses_post',
             'default'           => __( 'And we will get in touch as soon as possible.', 'illdy' ),
             'transport'         => 'postMessage'
         )
     );
-    $wp_customize->add_control(
+    $wp_customize->add_control( new Epsilon_Editor_Custom_Control(
+        $wp_customize,
         $prefix .'_contact_us_entry',
         array(
             'label'         => __( 'Entry', 'illdy' ),
@@ -110,7 +111,7 @@ if ( get_theme_mod( $prefix .'_contact_us_entry' ) ) {
             'section'       => $prefix . '_contact_us',
             'priority'      => 3,
             'type'          => 'textarea'
-        )
+        ) )
     );
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
     

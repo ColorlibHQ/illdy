@@ -55,17 +55,17 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_services_general_title
 if ( get_theme_mod( $prefix . '_services_general_entry' ) ) {
 
 	$wp_customize->add_setting( $prefix . '_services_general_entry', array(
-			'sanitize_callback' => 'illdy_sanitize_html',
+			'sanitize_callback' => 'wp_kses_post',
 			'default'           => __( 'In order to help you grow your business, our carefully selected experts can advise you in in the following areas:', 'illdy' ),
 			'transport'         => 'postMessage',
 		) );
-	$wp_customize->add_control( $prefix . '_services_general_entry', array(
+	$wp_customize->add_control(  new Epsilon_Editor_Custom_Control(
+        	$wp_customize, $prefix . '_services_general_entry', array(
 			'label'       => __( 'Entry', 'illdy' ),
 			'description' => __( 'Add the content for this section.', 'illdy' ),
 			'section'     => $panel_id,
 			'priority'    => 3,
-			'type'        => 'textarea',
-		) );
+		) ) );
 	$wp_customize->selective_refresh->add_partial( $prefix .'_services_general_entry', array(
 	    'selector' => '#services .section-header p',
 	) );

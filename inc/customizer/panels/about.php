@@ -68,12 +68,13 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_about_general_title', 
 if ( get_theme_mod( $prefix .'_about_general_entry' ) ) {
     $wp_customize->add_setting( $prefix .'_about_general_entry',
         array(
-            'sanitize_callback' => 'illdy_sanitize_html',
+            'sanitize_callback' => 'wp_kses_post',
             'default'           => __( 'It is an amazing one-page theme with great features that offers an incredible experience. It is easy to install, make changes, adapt for your business. A modern design with clean lines and styling for a wide variety of content, exactly how a business design should be. You can add as many images as you want to the main header area and turn them into slider.', 'illdy' ),
             'transport'         => 'postMessage'
         )
     );
-    $wp_customize->add_control(
+    $wp_customize->add_control( new Epsilon_Editor_Custom_Control(
+        $wp_customize,
         $prefix .'_about_general_entry',
         array(
             'label'         => __( 'Entry', 'illdy' ),
@@ -81,7 +82,7 @@ if ( get_theme_mod( $prefix .'_about_general_entry' ) ) {
             'section'       => $panel_id,
             'priority'      => 3,
             'type'          => 'textarea'
-        )
+        ) )
     );
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
     
