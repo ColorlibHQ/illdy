@@ -259,7 +259,7 @@ $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix 
 
 // Background Color
 $wp_customize->add_setting( $prefix . '_jumbotron_general_color', array(
-	'sanitize_callback' => 'esc_url_raw',
+	'sanitize_callback' => 'sanitize_hex_color',
 	'default'           => '#000000',
 	'transport'         => 'postMessage',
 
@@ -272,7 +272,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 
 // First Button Background Color
 $wp_customize->add_setting( $prefix . '_jumbotron_first_button_background', array(
-	'sanitize_callback' => 'esc_url_raw',
+	'sanitize_callback' => 'sanitize_hex_color',
 	'default'           => '#fff',
 	'transport'         => 'postMessage',
 ) );
@@ -284,7 +284,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 
 // Second Button Background color
 $wp_customize->add_setting( $prefix . '_jumbotron_second_button_background', array(
-	'sanitize_callback' => 'esc_url_raw',
+	'sanitize_callback' => 'sanitize_hex_color',
 	'default'           => '#f1d204',
 	'transport'         => 'postMessage',
 ) );
@@ -296,7 +296,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 
 // Second Button Hover Background color
 $wp_customize->add_setting( $prefix . '_jumbotron_second_button_background_hover', array(
-	'sanitize_callback' => 'esc_url_raw',
+	'sanitize_callback' => 'sanitize_hex_color',
 	'default'           => '#6a4d8a',
 	'transport'         => 'postMessage',
 ) );
@@ -308,7 +308,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 
 // Colors
 $wp_customize->add_setting( $prefix . '_jumbotron_title_color', array(
-	'sanitize_callback' => 'esc_url_raw',
+	'sanitize_callback' => 'sanitize_hex_color',
 	'default'           => '#fff',
 	'transport'         => 'postMessage',
 ) );
@@ -319,7 +319,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_jumbotron_points_color', array(
-	'sanitize_callback' => 'esc_url_raw',
+	'sanitize_callback' => 'sanitize_hex_color',
 	'default'           => '#f1d204',
 	'transport'         => 'postMessage',
 ) );
@@ -330,7 +330,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_jumbotron_descriptions_color', array(
-	'sanitize_callback' => 'esc_url_raw',
+	'sanitize_callback' => 'sanitize_hex_color',
 	'default'           => '#fff',
 	'transport'         => 'postMessage',
 ) );
@@ -341,7 +341,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_jumbotron_first_button_color', array(
-	'sanitize_callback' => 'esc_url_raw',
+	'sanitize_callback' => 'sanitize_hex_color',
 	'default'           => '#fff',
 	'transport'         => 'postMessage',
 ) );
@@ -352,7 +352,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_jumbotron_right_button_color', array(
-	'sanitize_callback' => 'esc_url_raw',
+	'sanitize_callback' => 'sanitize_hex_color',
 	'default'           => '#fff',
 	'transport'         => 'postMessage',
 ) );
