@@ -144,3 +144,420 @@ if( !function_exists( 'illdy_sections' ) ) {
 
     }
 }
+
+function illdy_hex2rgb($hexColor,$opacity = 1) {
+  $shorthand = (strlen($hexColor) == 4);
+
+  list($r, $g, $b) = $shorthand? sscanf($hexColor, "#%1s%1s%1s") : sscanf($hexColor, "#%2s%2s%2s");
+
+  return 'rgba( '.hexdec($shorthand? "$r$r" : $r).', '.hexdec($shorthand? "$g$g" : $g).', '.hexdec($shorthand? "$b$b" : $b).', '.$opacity.' )';
+}
+
+if ( !function_exists( 'illdy_jumbotron_css' ) ) {
+    function illdy_jumbotron_css(){
+
+        $illdy_jumbotron_general_image = get_theme_mod('illdy_jumbotron_general_image', esc_url( get_template_directory_uri() . '/layout/images/front-page/front-page-header.jpg' ));
+        $illdy_jumbotron_background_size = get_theme_mod('illdy_jumbotron_background_size');
+        $illdy_jumbotron_background_repeat = get_theme_mod('illdy_jumbotron_background_repeat');
+        $illdy_jumbotron_background_attachment = get_theme_mod('illdy_jumbotron_background_attachment');
+        $illdy_jumbotron_general_color = get_theme_mod('illdy_jumbotron_general_color');
+        $illdy_jumbotron_first_border_color = get_theme_mod('illdy_jumbotron_first_button_background');
+        $illdy_jumbotron_first_button_background = illdy_hex2rgb( $illdy_jumbotron_first_border_color, '.2' );
+        $illdy_jumbotron_first_button_background_hover = illdy_hex2rgb( $illdy_jumbotron_first_border_color, '.1' );
+        $illdy_jumbotron_second_button_background = get_theme_mod('illdy_jumbotron_second_button_background');
+        $illdy_jumbotron_second_button_background_hover = get_theme_mod('illdy_jumbotron_second_button_background_hover');
+        $illdy_jumbotron_title_color = get_theme_mod('illdy_jumbotron_title_color');
+        $illdy_jumbotron_points_color = get_theme_mod('illdy_jumbotron_points_color');
+        $illdy_jumbotron_descriptions_color = get_theme_mod('illdy_jumbotron_descriptions_color');
+        $illdy_jumbotron_first_button_color = get_theme_mod('illdy_jumbotron_first_button_color');
+        $illdy_jumbotron_right_button_color = get_theme_mod('illdy_jumbotron_right_button_color');
+
+        $css = '';
+        if ($illdy_jumbotron_general_image) {
+            $css .= '#header {background-image: url('.$illdy_jumbotron_general_image.') !important;}';
+        }else{
+            $css .= '#header {background-image: none !important;}';
+        }
+        if ($illdy_jumbotron_background_size) {
+            $css .= '#header {background-size: '.$illdy_jumbotron_background_size.' !important;}';
+        }
+        if ($illdy_jumbotron_background_repeat) {
+            $css .= '#header {background-repeat: repeat !important;}';
+        }
+        if ($illdy_jumbotron_background_attachment) {
+            $css .= '#header {background-attachment: scroll !important;}';
+        }
+        if ($illdy_jumbotron_general_color) {
+            $css .= '#header {background-color: '.$illdy_jumbotron_general_color.';}';
+        }
+        if ($illdy_jumbotron_first_button_background) {
+            $css .= '#header .bottom-header .header-button-one {background-color: '.$illdy_jumbotron_first_button_background.';}';
+        }
+        if ($illdy_jumbotron_first_button_background_hover) {
+            $css .= '#header .bottom-header .header-button-one:hover {background-color: '.$illdy_jumbotron_first_button_background_hover.';}';
+        }
+        if ($illdy_jumbotron_first_border_color) {
+            $css .= '#header .bottom-header .header-button-one {border-color: '.$illdy_jumbotron_first_border_color.';}';
+        }
+        if ($illdy_jumbotron_second_button_background) {
+            $css .= '#header .bottom-header .header-button-two {background-color: '.$illdy_jumbotron_second_button_background.';}';
+        }
+        if  ($illdy_jumbotron_second_button_background_hover) {
+            $css .= '#header .bottom-header .header-button-two:hover {background-color: '.$illdy_jumbotron_second_button_background_hover.';}';
+        }
+        if  ($illdy_jumbotron_title_color) {
+            $css .= '#header .bottom-header h1 {color: '.$illdy_jumbotron_title_color.';}';
+        }
+        if  ($illdy_jumbotron_points_color) {
+            $css .= '#header .bottom-header span.span-dot {color: '.$illdy_jumbotron_points_color.';}';
+        }
+        if  ($illdy_jumbotron_descriptions_color) {
+            $css .= '#header .bottom-header p {color: '.$illdy_jumbotron_descriptions_color.';}';
+        }
+        if  ($illdy_jumbotron_first_button_color) {
+            $css .= '#header .bottom-header .header-button-one {color: '.$illdy_jumbotron_first_button_color.';}';
+        }
+        if  ($illdy_jumbotron_right_button_color) { 
+            $css .= '#header .bottom-header .header-button-two {color: '.$illdy_jumbotron_right_button_color.';}';
+        }
+
+        return $css;
+    }
+}
+
+if ( !function_exists( 'illdy_latestnews_css' ) ) {
+    function illdy_latestnews_css(){
+
+        $illdy_latest_news_title_color = get_theme_mod('illdy_latest_news_title_color');
+        $illdy_latest_news_descriptions_color = get_theme_mod('illdy_latest_news_descriptions_color');
+        $illdy_latest_news_general_color = get_theme_mod('illdy_latest_news_general_color');
+        $illdy_latest_news_button_background = get_theme_mod('illdy_latest_news_button_background');
+        $illdy_latest_news_button_background_hover = get_theme_mod('illdy_latest_news_button_background_hover');
+        $illdy_latest_news_button_color = get_theme_mod('illdy_latest_news_button_color');
+        $illdy_latest_news_post_bakground_color = get_theme_mod('illdy_latest_news_post_bakground_color');
+        $illdy_latest_news_post_text_color = get_theme_mod('illdy_latest_news_post_text_color');
+        $illdy_latest_news_post_text_hover_color = get_theme_mod('illdy_latest_news_post_text_hover_color');
+        $illdy_latest_news_post_content_color = get_theme_mod('illdy_latest_news_post_content_color');
+        $illdy_latest_news_post_button_color = get_theme_mod('illdy_latest_news_post_button_color');
+        $illdy_latest_news_post_button_hover_color = get_theme_mod('illdy_latest_news_post_button_hover_color');
+        $illdy_latest_news_general_image = get_theme_mod('illdy_latest_news_general_image');
+        $illdy_latest_news_background_size = get_theme_mod('illdy_latest_news_background_size');
+        $illdy_latest_news_background_repeat = get_theme_mod('illdy_latest_news_background_repeat');
+        $illdy_latest_news_background_attachment = get_theme_mod('illdy_latest_news_background_attachment');
+
+        $css = '';
+        if ($illdy_latest_news_general_image) {
+            $css .= '#latest-news {background-image: url('.$illdy_latest_news_general_image.') !important;}';
+        }
+        if ($illdy_latest_news_background_size) {
+            $css .= '#latest-news {background-size: '.$illdy_latest_news_background_size.' !important;}';
+        }
+        if ($illdy_latest_news_background_repeat) {
+            $css .= '#latest-news {background-repeat: repeat !important;}';
+        }
+        if ($illdy_latest_news_background_attachment) {
+            $css .= '#latest-news {background-attachment: scroll !important;}';
+        }
+        if ($illdy_latest_news_general_color) {
+            $css .= '#latest-news {background-color: '.$illdy_latest_news_general_color.';}';
+        }
+        if ($illdy_latest_news_button_background) {
+            $css .= '#latest-news .latest-news-button {background-color: '.$illdy_latest_news_button_background.';}';
+        }
+        if ($illdy_latest_news_button_background_hover) {
+            $css .= '#latest-news .latest-news-button:hover {background-color: '.$illdy_latest_news_button_background_hover.';}';
+        }
+        if ($illdy_latest_news_button_color) {
+            $css .= '#latest-news .latest-news-button {color: '.$illdy_latest_news_button_color.';}';
+        }
+        if ($illdy_latest_news_post_bakground_color) {
+            $css .= '#latest-news .section-content .post {background-color: '.$illdy_latest_news_post_bakground_color.';}';
+        }
+        if ($illdy_latest_news_post_text_color) {
+            $css .= '#latest-news .section-content .post .post-title {color: '.$illdy_latest_news_post_text_color.';}';
+        }
+        if ($illdy_latest_news_post_text_hover_color) {
+            $css .= '#latest-news .section-content .post .post-title:hover {color: '.$illdy_latest_news_post_text_hover_color.';}';
+        }
+        if  ($illdy_latest_news_post_content_color) {
+            $css .= '#latest-news .section-content .post .post-entry {color: '.$illdy_latest_news_post_content_color.';}';
+        }
+        if  ($illdy_latest_news_post_button_color) {
+            $css .= '#latest-news .section-content .post .post-button {color: '.$illdy_latest_news_post_button_color.';}';
+        }
+        if  ($illdy_latest_news_post_button_hover_color) {
+            $css .= '#latest-news .section-content .post .post-button:hover {color: '.$illdy_latest_news_post_button_hover_color.';}';
+        }
+        if  ($illdy_latest_news_title_color) {
+            $css .= '#latest-news .section-header h3 {color: '.$illdy_latest_news_title_color.';}';
+        }
+        if  ($illdy_latest_news_descriptions_color) {
+            $css .= '#latest-news .section-header p {color: '.$illdy_latest_news_descriptions_color.';}';
+        }
+        
+        return $css;
+    }
+}
+
+if ( !function_exists( 'illdy_fullwidth_css' ) ) {
+    function illdy_fullwidth_css(){
+
+        $illdy_full_width_title_color = get_theme_mod('illdy_full_width_title_color');
+        $illdy_full_width_descriptions_color = get_theme_mod('illdy_full_width_descriptions_color');
+        $illdy_full_width_general_color = get_theme_mod('illdy_full_width_general_color');
+        $illdy_full_width_general_image = get_theme_mod('illdy_full_width_general_image');
+        $illdy_full_width_background_size = get_theme_mod('illdy_full_width_background_size');
+        $illdy_full_width_background_repeat = get_theme_mod('illdy_full_width_background_repeat');
+        $illdy_full_width_background_attachment = get_theme_mod('illdy_full_width_background_attachment');
+
+        $css = '';
+        if ($illdy_full_width_general_image) {
+            $css .= '#full-width {background-image: url('.$illdy_full_width_general_image.') !important;}';
+        }
+        if ($illdy_full_width_background_size) {
+            $css .= '#full-width {background-size: '.$illdy_full_width_background_size.' !important;}';
+        }
+        if ($illdy_full_width_background_repeat) {
+            $css .= '#full-width {background-repeat: repeat !important;}';
+        }
+        if ($illdy_full_width_background_attachment) {
+            $css .= '#full-width {background-attachment: scroll !important;}';
+        }
+        if ($illdy_full_width_general_color) {
+            $css .= '#full-width {background-color: '.$illdy_full_width_general_color.';}';
+        }
+        if  ($illdy_full_width_title_color) {
+            $css .= '#full-width .section-header h3 {color: '.$illdy_full_width_title_color.';}';
+        }
+        if  ($illdy_full_width_descriptions_color) {
+            $css .= '#full-width .section-header p {color: '.$illdy_full_width_descriptions_color.';}';
+        }
+        
+        return $css;
+    }
+}
+
+if ( !function_exists( 'illdy_about_css' ) ) {
+    function illdy_about_css(){
+
+        $illdy_about_title_color = get_theme_mod('illdy_about_title_color');
+        $illdy_about_descriptions_color = get_theme_mod('illdy_about_descriptions_color');
+        $illdy_about_general_color = get_theme_mod('illdy_about_general_color');
+        $illdy_about_general_image = get_theme_mod('illdy_about_general_image');
+        $illdy_about_background_size = get_theme_mod('illdy_about_background_size');
+        $illdy_about_background_repeat = get_theme_mod('illdy_about_background_repeat');
+        $illdy_about_background_attachment = get_theme_mod('illdy_about_background_attachment');
+
+        $css = '';
+        if ($illdy_about_general_image) {
+            $css .= '#about {background-image: url('.$illdy_about_general_image.') !important;}';
+        }
+        if ($illdy_about_background_size) {
+            $css .= '#about {background-size: '.$illdy_about_background_size.' !important;}';
+        }
+        if ($illdy_about_background_repeat) {
+            $css .= '#about {background-repeat: repeat !important;}';
+        }
+        if ($illdy_about_background_attachment) {
+            $css .= '#about {background-attachment: scroll !important;}';
+        }
+        if ($illdy_about_general_color) {
+            $css .= '#about {background-color: '.$illdy_about_general_color.';}';
+        }
+        if  ($illdy_about_title_color) {
+            $css .= '#about .section-header h3 {color: '.$illdy_about_title_color.';}';
+        }
+        if  ($illdy_about_descriptions_color) {
+            $css .= '#about .section-header p {color: '.$illdy_about_descriptions_color.';}';
+        }
+        
+        return $css;
+    }
+}
+
+if ( !function_exists( 'illdy_projects_css' ) ) {
+    function illdy_projects_css(){
+
+        $illdy_projects_title_color = get_theme_mod('illdy_projects_title_color');
+        $illdy_projects_descriptions_color = get_theme_mod('illdy_projects_descriptions_color');
+        $illdy_projects_general_color = get_theme_mod('illdy_projects_general_color');
+        $illdy_projects_general_image = get_theme_mod('illdy_projects_general_image');
+        $illdy_projects_background_size = get_theme_mod('illdy_projects_background_size');
+        $illdy_projects_background_repeat = get_theme_mod('illdy_projects_background_repeat');
+        $illdy_projects_background_attachment = get_theme_mod('illdy_projects_background_attachment');
+
+        $css = '';
+        if ($illdy_projects_general_image) {
+            $css .= '#projects {background-image: url('.$illdy_projects_general_image.') !important;}';
+        }
+        if ($illdy_projects_background_size) {
+            $css .= '#projects {background-size: '.$illdy_projects_background_size.' !important;}';
+        }
+        if ($illdy_projects_background_repeat) {
+            $css .= '#projects {background-repeat: repeat !important;}';
+        }
+        if ($illdy_projects_background_attachment) {
+            $css .= '#projects {background-attachment: scroll !important;}';
+        }
+        if ($illdy_projects_general_color) {
+            $css .= '#projects {background-color: '.$illdy_projects_general_color.';}';
+        }
+        if  ($illdy_projects_title_color) {
+            $css .= '#projects .section-header h3 {color: '.$illdy_projects_title_color.';}';
+        }
+        if  ($illdy_projects_descriptions_color) {
+            $css .= '#projects .section-header p {color: '.$illdy_projects_descriptions_color.';}';
+        }
+        
+        return $css;
+    }
+}
+
+if ( !function_exists( 'illdy_services_css' ) ) {
+    function illdy_services_css(){
+
+        $illdy_services_title_color = get_theme_mod('illdy_services_title_color');
+        $illdy_services_descriptions_color = get_theme_mod('illdy_services_descriptions_color');
+        $illdy_services_general_color = get_theme_mod('illdy_services_general_color');
+        $illdy_services_general_image = get_theme_mod('illdy_services_general_image');
+        $illdy_services_background_size = get_theme_mod('illdy_services_background_size');
+        $illdy_services_background_repeat = get_theme_mod('illdy_services_background_repeat');
+        $illdy_services_background_attachment = get_theme_mod('illdy_services_background_attachment');
+
+        $css = '';
+        if ($illdy_services_general_image) {
+            $css .= '#services {background-image: url('.$illdy_services_general_image.') !important;}';
+        }
+        if ($illdy_services_background_size) {
+            $css .= '#services {background-size: '.$illdy_services_background_size.' !important;}';
+        }
+        if ($illdy_services_background_repeat) {
+            $css .= '#services {background-repeat: repeat !important;}';
+        }
+        if ($illdy_services_background_attachment) {
+            $css .= '#services {background-attachment: scroll !important;}';
+        }
+        if ($illdy_services_general_color) {
+            $css .= '#services {background-color: '.$illdy_services_general_color.';}';
+        }
+        if  ($illdy_services_title_color) {
+            $css .= '#services .section-header h3 {color: '.$illdy_services_title_color.';}';
+        }
+        if  ($illdy_services_descriptions_color) {
+            $css .= '#services .section-header p {color: '.$illdy_services_descriptions_color.';}';
+        }
+        
+        return $css;
+    }
+}
+
+if ( !function_exists( 'illdy_team_css' ) ) {
+    function illdy_team_css(){
+
+        $illdy_team_title_color = get_theme_mod('illdy_team_title_color');
+        $illdy_team_descriptions_color = get_theme_mod('illdy_team_descriptions_color');
+        $illdy_team_general_color = get_theme_mod('illdy_team_general_color');
+        $illdy_team_general_image = get_theme_mod('illdy_team_general_image');
+        $illdy_team_background_size = get_theme_mod('illdy_team_background_size');
+        $illdy_team_background_repeat = get_theme_mod('illdy_team_background_repeat');
+        $illdy_team_background_attachment = get_theme_mod('illdy_team_background_attachment');
+
+        $css = '';
+        if ($illdy_team_general_image) {
+            $css .= '#team {background-image: url('.$illdy_team_general_image.') !important;}';
+        }
+        if ($illdy_team_background_size) {
+            $css .= '#team {background-size: '.$illdy_team_background_size.' !important;}';
+        }
+        if ($illdy_team_background_repeat) {
+            $css .= '#team {background-repeat: repeat !important;}';
+        }
+        if ($illdy_team_background_attachment) {
+            $css .= '#team {background-attachment: scroll !important;}';
+        }
+        if ($illdy_team_general_color) {
+            $css .= '#team {background-color: '.$illdy_team_general_color.';}';
+        }
+        if  ($illdy_team_title_color) {
+            $css .= '#team .section-header h3 {color: '.$illdy_team_title_color.';}';
+        }
+        if  ($illdy_team_descriptions_color) {
+            $css .= '#team .section-header p {color: '.$illdy_team_descriptions_color.';}';
+        }
+        
+        return $css;
+    }
+}
+
+if ( !function_exists( 'illdy_testimonials_css' ) ) {
+    function illdy_testimonials_css(){
+
+        $illdy_testimonials_title_color = get_theme_mod('illdy_testimonials_title_color');
+        $illdy_testimonials_general_color = get_theme_mod('illdy_testimonials_general_color');
+        $illdy_testimonials_general_image = get_theme_mod('illdy_testimonials_general_image', esc_url( get_template_directory_uri() . '/layout/images/testiomnials-background.jpg' ));
+        $illdy_testimonials_background_size = get_theme_mod('illdy_testimonials_background_size');
+        $illdy_testimonials_background_repeat = get_theme_mod('illdy_testimonials_background_repeat');
+        $illdy_testimonials_background_attachment = get_theme_mod('illdy_testimonials_background_attachment');
+
+        $illdy_testimonials_author_text_color = get_theme_mod('illdy_testimonials_author_text_color');
+        $illdy_testimonials_text_color = get_theme_mod('illdy_testimonials_text_color');
+        $illdy_testimonials_container_background_color = get_theme_mod('illdy_testimonials_container_background_color');
+        $illdy_testimonials_dots_color = get_theme_mod('illdy_testimonials_dots_color');
+
+        $css = '';
+        if ($illdy_testimonials_general_image) {
+            $css .= '#testimonials {background-image: url('.$illdy_testimonials_general_image.') !important;}';
+        }
+        if ($illdy_testimonials_background_size) {
+            $css .= '#testimonials {background-size: '.$illdy_testimonials_background_size.' !important;}';
+        }
+        if ($illdy_testimonials_background_repeat) {
+            $css .= '#testimonials {background-repeat: repeat !important;}';
+        }
+        if ($illdy_testimonials_background_attachment) {
+            $css .= '#testimonials {background-attachment: scroll !important;}';
+        }
+        if ($illdy_testimonials_general_color) {
+            $css .= '#testimonials {background-color: '.$illdy_testimonials_general_color.';}';
+        }
+        if  ($illdy_testimonials_title_color) {
+            $css .= '#testimonials .section-header h3 {color: '.$illdy_testimonials_title_color.';}';
+        }
+        if  ($illdy_testimonials_author_text_color) {
+            $css .= '#testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-meta {color: '.$illdy_testimonials_author_text_color.';}';
+        }
+         if  ($illdy_testimonials_text_color) {
+            $css .= '#testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-content blockquote {color: '.$illdy_testimonials_text_color.';}';
+        }
+         if  ($illdy_testimonials_container_background_color) {
+            $css .= '#testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-content {background-color: '.$illdy_testimonials_container_background_color.';}';
+            $css .= '#testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-content:after {border-color: '.$illdy_testimonials_container_background_color.' transparent transparent transparent;}';
+        }
+         if  ($illdy_testimonials_dots_color) {
+            $css .= '#testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot:hover, #testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot.active {border-color: '.$illdy_testimonials_dots_color.';}';
+            $css .= '#testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot {background-color: '.$illdy_testimonials_dots_color.';}';
+        }
+        
+        return $css;
+    }
+}
+
+if ( !function_exists( 'illdy_output_sections_css' ) ) {
+
+    function illdy_output_sections_css(){ ?>
+
+        <style type="text/css" id="illdy-jumbotron-section-css"><?php echo illdy_jumbotron_css() ?></style>
+        <style type="text/css" id="illdy-latestnews-section-css"><?php echo illdy_latestnews_css() ?></style>
+        <style type="text/css" id="illdy-fullwidth-section-css"><?php echo illdy_fullwidth_css() ?></style>
+        <style type="text/css" id="illdy-about-section-css"><?php echo illdy_about_css() ?></style>
+        <style type="text/css" id="illdy-projects-section-css"><?php echo illdy_projects_css() ?></style>
+        <style type="text/css" id="illdy-services-section-css"><?php echo illdy_services_css() ?></style>
+        <style type="text/css" id="illdy-team-section-css"><?php echo illdy_team_css() ?></style>
+        <style type="text/css" id="illdy-testimonials-section-css"><?php echo illdy_testimonials_css() ?></style>
+
+    <?php
+    }
+
+    add_action( 'wp_head', 'illdy_output_sections_css', 99 );
+
+}

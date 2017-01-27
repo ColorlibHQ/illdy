@@ -155,6 +155,7 @@ a:hover, a:focus {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #header .top-header {
@@ -570,7 +571,6 @@ a:hover, a:focus {
 	padding: 50px 0 30px 0;
 	text-align: center;
 	position: relative;
-	background-image: url('../images/testiomnials-background.jpg');
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -2798,6 +2798,17 @@ p.mb32 {
 #contact-us .section-content .wpcf7-form p .wpcf7-textarea.wpcf7-not-valid,
 #contact-us .section-content .wpcf7-form p .wpcf7-text.wpcf7-not-valid {
 	border-color: #f3c3c3;
+}
+
+/* Homepage ssctions background image */
+
+#latest-news,
+#full-width,
+#about.
+#projects {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -105,7 +105,7 @@ if ( get_theme_mod( $prefix .'_team_general_entry' ) ) {
         )
     );
 }
-$wp_customize->add_setting( $prefix .'_counters_widget_button',
+$wp_customize->add_setting( $prefix .'_team_widget_button',
     array(
         'transport'         => 'postMessage'
     )
@@ -113,7 +113,7 @@ $wp_customize->add_setting( $prefix .'_counters_widget_button',
 $wp_customize->add_control(
     new Epsilon_Control_Button(
         $wp_customize,
-        $prefix .'_counters_widget_button',
+        $prefix .'_team_widget_button',
         array(
             'text'         => __( 'Add & Edit Members', 'illdy' ),
             'section_id'    => 'sidebar-widgets-front-page-team-sidebar',
@@ -123,3 +123,121 @@ $wp_customize->add_control(
         )
     )
 );
+
+
+$wp_customize->add_setting( $prefix . '_team_tab', array(
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
+    $prefix . '_team_tab',
+    array(
+        'type'      => 'epsilon-tab',
+        'section'   => $panel_id,
+        'buttons'   => array(
+            array(
+                'name' => __( 'Colors', 'illdy' ),
+                'fields'    => array(
+                    $prefix . '_team_title_color',
+                    $prefix . '_team_descriptions_color',
+                    $prefix . '_team_general_color',
+                    ),
+                'active' => true
+                ),
+            array(
+                'name' => __( 'Backgrounds', 'illdy' ),
+                'fields'    => array(
+                    $prefix . '_team_general_image',
+                    $prefix . '_team_background_size',
+                    $prefix . '_team_background_repeat',
+                    $prefix . '_team_background_attachment',
+                    ),
+                ),
+            ),
+    ) )
+);
+
+// Background Image
+$wp_customize->add_setting( $prefix . '_team_general_image', array(
+    'sanitize_callback' => 'esc_url',
+    'default'           => '',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $prefix . '_team_general_image', array(
+    'label'    => __( 'Background Image', 'illdy' ),
+    'section'  => $panel_id,
+    'settings' => $prefix . '_team_general_image',
+) ) );
+$wp_customize->add_setting( $prefix . '_team_background_size', array(
+    'default' => 'cover',
+    'sanitize_callback' => 'illdy_sanitize_background_size',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( $prefix . '_team_background_size', array(
+    'label'      => __( 'Image Size' ),
+    'section'    => $panel_id,
+    'type'       => 'select',
+    'choices'    => array(
+        'auto'    => __( 'Original' ),
+        'contain' => __( 'Fit to Screen' ),
+        'cover'   => __( 'Fill Screen' ),
+    ),
+) );
+
+$wp_customize->add_setting( $prefix . '_team_background_repeat', array(
+    'sanitize_callback' => $prefix . '_sanitize_checkbox',
+    'default'           => 0,
+    'transport'         => 'postMessage',
+) );
+
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_team_background_repeat', array(
+    'type'        => 'mte-toggle',
+    'label'       => __( 'Repeat Background Image', 'illdy' ),
+    'section'     => $panel_id,
+) ) );
+
+$wp_customize->add_setting( $prefix . '_team_background_attachment', array(
+    'sanitize_callback' => $prefix . '_sanitize_checkbox',
+    'default'           => 0,
+    'transport'         => 'postMessage',
+) );
+
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_team_background_attachment', array(
+    'type'        => 'mte-toggle',
+    'label'       => __( 'Scroll with Page', 'illdy' ),
+    'section'     => $panel_id,
+) ) );
+
+$wp_customize->add_setting( $prefix . '_team_general_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#fff',
+    'transport'         => 'postMessage',
+
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_team_general_color', array(
+    'label'    => __( 'Background Color', 'illdy' ),
+    'section'  => $panel_id,
+    'settings' => $prefix . '_team_general_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_team_title_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#545454',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_team_title_color', array(
+    'label'    => __( 'Title Color', 'illdy' ),
+    'section'  => $panel_id,
+    'settings' => $prefix . '_team_title_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_team_descriptions_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#8c9597',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_team_descriptions_color', array(
+    'label'    => __( 'Description Color', 'illdy' ),
+    'section'  => $panel_id,
+    'settings' => $prefix . '_team_descriptions_color',
+) ) );

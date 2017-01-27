@@ -671,10 +671,266 @@
 		});
 	};
 
+    // Sections css
+    var sections = {
+
+        'jumbotron' : [ 
+            'illdy_jumbotron_general_image', 
+            'illdy_jumbotron_general_color', 
+            'illdy_jumbotron_first_button_background', 
+            'illdy_jumbotron_second_button_background',
+            'illdy_jumbotron_second_button_background_hover',
+            'illdy_jumbotron_title_color',
+            'illdy_jumbotron_points_color',
+            'illdy_jumbotron_descriptions_color',
+            'illdy_jumbotron_first_button_color',
+            'illdy_jumbotron_right_button_color',
+            'illdy_jumbotron_background_size',
+            'illdy_jumbotron_background_repeat',
+            'illdy_jumbotron_background_attachment',
+            ],
+        'latestnews' : [
+            'illdy_latest_news_title_color',
+            'illdy_latest_news_descriptions_color',
+            'illdy_latest_news_general_color',
+            'illdy_latest_news_button_background',
+            'illdy_latest_news_button_background_hover',
+            'illdy_latest_news_button_color',
+            'illdy_latest_news_post_bakground_color',
+            'illdy_latest_news_post_text_color',
+            'illdy_latest_news_post_text_hover_color',
+            'illdy_latest_news_post_content_color',
+            'illdy_latest_news_post_button_color',
+            'illdy_latest_news_post_button_hover_color',
+            'illdy_latest_news_general_image',
+            'illdy_latest_news_background_size',
+            'illdy_latest_news_background_repeat',
+            'illdy_latest_news_background_attachment',
+        ],
+        'fullwidth' : [
+            'illdy_full_width_title_color',
+            'illdy_full_width_descriptions_color',
+            'illdy_full_width_general_color',
+            'illdy_full_width_general_image',
+            'illdy_full_width_background_size',
+            'illdy_full_width_background_repeat',
+            'illdy_full_width_background_attachment',
+        ],
+        'about' : [
+            'illdy_about_title_color',
+            'illdy_about_descriptions_color',
+            'illdy_about_general_color',
+            'illdy_about_general_image',
+            'illdy_about_background_size',
+            'illdy_about_background_repeat',
+            'illdy_about_background_attachment',
+        ],
+        'projects' : [
+            'illdy_projects_title_color',
+            'illdy_projects_descriptions_color',
+            'illdy_projects_general_color',
+            'illdy_projects_general_image',
+            'illdy_projects_background_size',
+            'illdy_projects_background_repeat',
+            'illdy_projects_background_attachment',
+        ],
+        'services' : [
+            'illdy_services_title_color',
+            'illdy_services_descriptions_color',
+            'illdy_services_general_color',
+            'illdy_services_general_image',
+            'illdy_services_background_size',
+            'illdy_services_background_repeat',
+            'illdy_services_background_attachment',
+        ],
+        'testimonials' : [
+            'illdy_testimonials_title_color',
+            'illdy_testimonials_general_color',
+            'illdy_testimonials_general_image',
+            'illdy_testimonials_background_size',
+            'illdy_testimonials_background_repeat',
+            'illdy_testimonials_background_attachment',
+            'illdy_testimonials_author_text_color',
+            'illdy_testimonials_text_color',
+            'illdy_testimonials_container_background_color',
+            'illdy_testimonials_dots_color',
+        ],
+        'team' : [
+            'illdy_team_title_color',
+            'illdy_team_descriptions_color',
+            'illdy_team_general_color',
+            'illdy_team_general_image',
+            'illdy_team_background_size',
+            'illdy_team_background_repeat',
+            'illdy_team_background_attachment',
+        ],
+
+    };
+
+    function illdy_hexToRgbA(hex,opacity){
+        var c;
+        if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+            c= hex.substring(1).split('');
+            if(c.length== 3){
+                c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+            }
+            c= '0x'+c.join('');
+            return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+','+opacity+')';
+        }
+        throw new Error('Bad Hex');
+    }
+
+    function update_jumbotron_css(){
+        var liveObj = {
+            'action' : 'illdy_generate_section_css',
+            'illdy_section' : 'jumbotron',
+            'values' : {}
+        };
+
+         _.each( sections.jumbotron, function( setting ){
+            liveObj.values[setting] = wp.customize(setting)();
+        });
+
+        if ( liveObj.values.illdy_jumbotron_first_button_background !== undefined ) {
+            var color = liveObj.values.illdy_jumbotron_first_button_background;
+            liveObj.values.illdy_jumbotron_first_button_background = illdy_hexToRgbA( color, '.2' );
+            liveObj.values.illdy_jumbotron_first_button_background_hover = illdy_hexToRgbA( color, '.1' );
+            liveObj.values.illdy_jumbotron_first_border_color = illdy_hexToRgbA( color, '1' );
+        }
+
+        wp.customize.previewer.send('update-section-css', liveObj);
+
+    }
+
+    function update_latestnews_css(){
+        var liveObj = {
+            'action' : 'illdy_generate_section_css',
+            'illdy_section' : 'latestnews',
+            'values' : {}
+        };
+
+         _.each( sections.latestnews, function( setting ){
+            liveObj.values[setting] = wp.customize(setting)();
+        });
+
+        wp.customize.previewer.send('update-section-css', liveObj);
+    }
+
+    function update_fullwidth_css(){
+        var liveObj = {
+            'action' : 'illdy_generate_section_css',
+            'illdy_section' : 'fullwidth',
+            'values' : {}
+        };
+
+         _.each( sections.fullwidth, function( setting ){
+            liveObj.values[setting] = wp.customize(setting)();
+        });
+
+        wp.customize.previewer.send('update-section-css', liveObj);
+    }
+
+    function update_about_css(){
+        var liveObj = {
+            'action' : 'illdy_generate_section_css',
+            'illdy_section' : 'about',
+            'values' : {}
+        };
+
+         _.each( sections.about, function( setting ){
+            liveObj.values[setting] = wp.customize(setting)();
+        });
+
+        wp.customize.previewer.send('update-section-css', liveObj);
+    }
+
+    function update_projects_css(){
+        var liveObj = {
+            'action' : 'illdy_generate_section_css',
+            'illdy_section' : 'projects',
+            'values' : {}
+        };
+
+         _.each( sections.projects, function( setting ){
+            liveObj.values[setting] = wp.customize(setting)();
+        });
+
+        wp.customize.previewer.send('update-section-css', liveObj);
+    }
+
+    function update_services_css(){
+        var liveObj = {
+            'action' : 'illdy_generate_section_css',
+            'illdy_section' : 'services',
+            'values' : {}
+        };
+
+         _.each( sections.services, function( setting ){
+            liveObj.values[setting] = wp.customize(setting)();
+        });
+
+        wp.customize.previewer.send('update-section-css', liveObj);
+    }
+
+    function update_team_css(){
+        var liveObj = {
+            'action' : 'illdy_generate_section_css',
+            'illdy_section' : 'team',
+            'values' : {}
+        };
+
+         _.each( sections.team, function( setting ){
+            liveObj.values[setting] = wp.customize(setting)();
+        });
+
+        wp.customize.previewer.send('update-section-css', liveObj);
+    }
+
+    function update_testimonials_css(){
+        var liveObj = {
+            'action' : 'illdy_generate_section_css',
+            'illdy_section' : 'testimonials',
+            'values' : {}
+        };
+
+         _.each( sections.testimonials, function( setting ){
+            liveObj.values[setting] = wp.customize(setting)();
+        });
+
+        wp.customize.previewer.send('update-section-css', liveObj);
+    }
+
+
 	if ( typeof(wp) !== 'undefined' ) {
 		if ( typeof(wp.customize) !== 'undefined' ) {
 			wp.customize.bind('ready', function () {
 				EpsilonFramework.colorSchemes('.mte-color-scheme');
+
+                _.each( sections, function( settings, section_ID  ){
+                    _.each( settings, function( setting ){
+                        wp.customize(setting, function (setting) {
+                            if ( section_ID == 'jumbotron' ) {
+                                setting.bind(update_jumbotron_css);
+                            }else if ( section_ID == 'latestnews' ) {
+                                setting.bind(update_latestnews_css);
+                            }else if ( section_ID == 'fullwidth' ) {
+                                setting.bind(update_fullwidth_css);
+                            }else if ( section_ID == 'about' ) {
+                                setting.bind(update_about_css);
+                            }else if ( section_ID == 'projects' ) {
+                                setting.bind(update_projects_css);
+                            }else if ( section_ID == 'services' ) {
+                                setting.bind(update_services_css);
+                            }else if ( section_ID == 'testimonials' ) {
+                                setting.bind(update_testimonials_css);
+                            }else if ( section_ID == 'team' ) {
+                                setting.bind(update_team_css);
+                            }
+                            
+                        });
+                    });
+                });
+
 			});
 		}
 	}

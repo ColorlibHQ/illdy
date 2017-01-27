@@ -164,21 +164,3 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_footer_copyright', arr
     'selector' => '#footer .bottom-copyright',
 ) );
 
-/* Footer Image Logo */
-$wp_customize->add_setting( $prefix . '_img_footer_logo', array(
-	'sanitize_callback' => 'esc_url_raw',
-	'default'           => esc_url_raw( get_template_directory_uri() . '/layout/images/footer-logo.png' ),
-	'transport'         => 'postMessage',
-) );
-
-$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $prefix . '_img_footer_logo', array(
-	'label'       => __( 'Footer Logo', 'illdy' ),
-	'description' => __( 'Image logo used in the footer, above the copyright message.', 'illdy' ),
-	'section'     => $prefix . '_general_footer_section',
-	'settings'    => $prefix . '_img_footer_logo',
-	'priority'    => 3,
-) ) );
-$wp_customize->selective_refresh->add_partial( $prefix .'_img_footer_logo', array(
-    'selector' => '#footer .footer-logo',
-    'render_callback' => $prefix .'_img_footer_logo',
-) );

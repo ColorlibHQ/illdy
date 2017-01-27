@@ -58,6 +58,7 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			),
 		) );
 
+
 		// Add Image Size
 		add_image_size( 'illdy-blog-list', 750, 500, true );
 		add_image_size( 'illdy-widget-recent-posts', 70, 70, true );
