@@ -202,15 +202,15 @@
 	} );
 
 	// Image
-	wp.customize( 'illdy_jumbotron_general_image', function( value ) {
-		value.bind( function( newval ) {
-			if( newval == '' ) {
-				$( '#header.header-front-page' ).removeAttr( 'style' );
-			} else {
-				$( '#header.header-front-page' ).css( 'background-image', 'url('+ newval +')' );
-			}
-		} );
-	} );
+	// wp.customize( 'illdy_jumbotron_general_image', function( value ) {
+	// 	value.bind( function( newval ) {
+	// 		if( newval == '' ) {
+	// 			$( '#header.header-front-page' ).removeAttr( 'style' );
+	// 		} else {
+	// 			$( '#header.header-front-page' ).css( 'background-image', 'url('+ newval +')' );
+	// 		}
+	// 	} );
+	// } );
 
 	// First word from title
 	wp.customize( 'illdy_jumbotron_general_first_row_from_title', function( value ) {
@@ -560,13 +560,27 @@
 					var style = $('#illdy-main-inline-css');
 
 					if ( !style.length ) {
-						style = $('head').append('<style type="text/css" id="illdy-main-inline-css" />').find('#nilldy-main-inline-css');
+						style = $('head').append('<style type="text/css" id="illdy-main-inline-css" />').find('#illdy-main-inline-css');
 					}
 
 					style.html(json.responseText);
 				}
 			});
 		});
+
+		wp.customize.preview.bind('update-section-css', function (object) {
+			var illdy_templates = {};
+			var template = '#illdy-'+object.illdy_section+'-section';
+			var h_t = Handlebars.compile($(template).text());
+			var html = h_t(object.values);
+			var style = $('#illdy-'+object.illdy_section+'-section-css');
+			if ( !style.length ) {
+				style = $('head').append('<style type="text/css" id="illdy-'+object.illdy_section+'-section-css" />').find('#illdy-'+object.illdy_section+'-section-css');
+			}
+			
+			style.html(html);
+		});
+
 	});
 
 } )( jQuery );

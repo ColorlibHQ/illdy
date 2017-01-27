@@ -170,3 +170,236 @@ $wp_customize->add_control( new Epsilon_Control_Slider(
     )
 )
 );
+
+// Colors
+// Colors & Backgrounds
+$wp_customize->add_setting( $prefix . '_latest_news_tab', array(
+        'transport'         => 'postMessage'
+    )
+);
+$wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
+    $prefix . '_latest_news_tab',
+    array(
+        'type'      => 'epsilon-tab',
+        'section'   => $prefix . '_latest_news_general',
+        'buttons'   => array(
+            array(
+                'name' => __( 'Colors', 'illdy' ),
+                'fields'    => array(
+                    $prefix . '_latest_news_title_color',
+                    $prefix . '_latest_news_descriptions_color',
+                    $prefix . '_latest_news_general_color',
+                    $prefix . '_latest_news_button_background',
+                    $prefix . '_latest_news_second_button_background',
+                    $prefix . '_latest_news_button_background_hover',
+                    $prefix . '_latest_news_button_color',
+                    $prefix . '_latest_news_post_bakground_color',
+                    $prefix . '_latest_news_post_text_color',
+                    $prefix . '_latest_news_post_text_hover_color',
+                    $prefix . '_latest_news_post_content_color',
+                    $prefix . '_latest_news_post_button_color',
+                    $prefix . '_latest_news_post_button_hover_color',
+                    ),
+                'active' => true
+                ),
+            array(
+                'name' => __( 'Backgrounds', 'illdy' ),
+                'fields'    => array(
+                    $prefix . '_latest_news_general_image',
+                    $prefix . '_latest_news_background_size',
+                    $prefix . '_latest_news_background_repeat',
+                    $prefix . '_latest_news_background_attachment',
+                    ),
+                ),
+            ),
+    ) )
+);
+
+// Background Image
+$wp_customize->add_setting( $prefix . '_latest_news_general_image', array(
+    'sanitize_callback' => 'esc_url',
+    'default'           => '',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $prefix . '_latest_news_general_image', array(
+    'label'    => __( 'Background Image', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_general_image',
+) ) );
+$wp_customize->add_setting( $prefix . '_latest_news_background_size', array(
+    'default' => 'cover',
+    'sanitize_callback' => 'illdy_sanitize_background_size',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( $prefix . '_latest_news_background_size', array(
+    'label'      => __( 'Image Size' ),
+    'section'    => $prefix . '_latest_news_general',
+    'type'       => 'select',
+    'choices'    => array(
+        'auto'    => __( 'Original' ),
+        'contain' => __( 'Fit to Screen' ),
+        'cover'   => __( 'Fill Screen' ),
+    ),
+) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_background_repeat', array(
+    'sanitize_callback' => $prefix . '_sanitize_checkbox',
+    'default'           => 0,
+    'transport'         => 'postMessage',
+) );
+
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_latest_news_background_repeat', array(
+    'type'        => 'mte-toggle',
+    'label'       => __( 'Repeat Background Image', 'illdy' ),
+    'section'     => $prefix . '_latest_news_general',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_background_attachment', array(
+    'sanitize_callback' => $prefix . '_sanitize_checkbox',
+    'default'           => 0,
+    'transport'         => 'postMessage',
+) );
+
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_latest_news_background_attachment', array(
+    'type'        => 'mte-toggle',
+    'label'       => __( 'Scroll with Page', 'illdy' ),
+    'section'     => $prefix . '_latest_news_general',
+) ) );
+
+
+// Background Color
+$wp_customize->add_setting( $prefix . '_latest_news_general_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#222f36',
+    'transport'         => 'postMessage',
+
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_general_color', array(
+    'label'    => __( 'Background Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_general_color',
+) ) );
+$wp_customize->add_setting( $prefix . '_latest_news_title_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#fff',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_title_color', array(
+    'label'    => __( 'Title Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_title_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_descriptions_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#fff',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_descriptions_color', array(
+    'label'    => __( 'Description Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_descriptions_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_button_background', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#f1d204',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_button_background', array(
+    'label'    => __( 'Blog Button Background Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_button_background',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_button_background_hover', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#6a4d8a',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_button_background_hover', array(
+    'label'    => __( 'Blog Button Hover Background Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_button_background_hover',
+) ) );
+
+// Colors
+
+
+$wp_customize->add_setting( $prefix . '_latest_news_button_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#fff',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_button_color', array(
+    'label'    => __( 'Blog Button Text Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_button_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_post_bakground_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#fff',
+    'transport'         => 'postMessage',
+) );
+
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_post_bakground_color', array(
+    'label'    => __( 'Post Box Background Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_post_bakground_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_post_text_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#5e5e5e',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_post_text_color', array(
+    'label'    => __( 'Post Title Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_post_text_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_post_text_hover_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#f1d204',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_post_text_hover_color', array(
+    'label'    => __( 'Post Title Hover Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_post_text_hover_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_post_content_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#8c9597',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_post_content_color', array(
+    'label'    => __( 'Post Content Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_post_content_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_post_button_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#f1d204',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_post_button_color', array(
+    'label'    => __( 'Blog Button Background Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_post_button_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_latest_news_post_button_hover_color', array(
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => '#6a4d8a',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_latest_news_post_button_hover_color', array(
+    'label'    => __( 'Blog Button Hover Background Color', 'illdy' ),
+    'section'  => $prefix . '_latest_news_general',
+    'settings' => $prefix . '_latest_news_post_button_hover_color',
+) ) );
