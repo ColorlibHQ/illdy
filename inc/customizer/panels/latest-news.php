@@ -269,7 +269,7 @@ $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix 
 
 // Background Color
 $wp_customize->add_setting( $prefix . '_latest_news_general_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#222f36',
     'transport'         => 'postMessage',
 
@@ -280,7 +280,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
     'settings' => $prefix . '_latest_news_general_color',
 ) ) );
 $wp_customize->add_setting( $prefix . '_latest_news_title_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#fff',
     'transport'         => 'postMessage',
 ) );
@@ -291,7 +291,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_latest_news_descriptions_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#fff',
     'transport'         => 'postMessage',
 ) );
@@ -302,7 +302,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_latest_news_button_background', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#f1d204',
     'transport'         => 'postMessage',
 ) );
@@ -313,7 +313,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_latest_news_button_background_hover', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#6a4d8a',
     'transport'         => 'postMessage',
 ) );
@@ -327,7 +327,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 
 
 $wp_customize->add_setting( $prefix . '_latest_news_button_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#fff',
     'transport'         => 'postMessage',
 ) );
@@ -338,7 +338,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_latest_news_post_bakground_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#fff',
     'transport'         => 'postMessage',
 ) );
@@ -350,7 +350,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_latest_news_post_text_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#5e5e5e',
     'transport'         => 'postMessage',
 ) );
@@ -361,7 +361,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_latest_news_post_text_hover_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#f1d204',
     'transport'         => 'postMessage',
 ) );
@@ -372,7 +372,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_latest_news_post_content_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#8c9597',
     'transport'         => 'postMessage',
 ) );
@@ -383,7 +383,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_latest_news_post_button_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#f1d204',
     'transport'         => 'postMessage',
 ) );
@@ -394,7 +394,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_latest_news_post_button_hover_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#6a4d8a',
     'transport'         => 'postMessage',
 ) );

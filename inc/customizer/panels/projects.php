@@ -231,7 +231,7 @@ $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix 
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_projects_general_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#fff',
     'transport'         => 'postMessage',
 
@@ -243,7 +243,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_projects_title_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#545454',
     'transport'         => 'postMessage',
 ) );
@@ -254,7 +254,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 ) ) );
 
 $wp_customize->add_setting( $prefix . '_projects_descriptions_color', array(
-    'sanitize_callback' => 'esc_url_raw',
+    'sanitize_callback' => 'sanitize_hex_color',
     'default'           => '#8c9597',
     'transport'         => 'postMessage',
 ) );
