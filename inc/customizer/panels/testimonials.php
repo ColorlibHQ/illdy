@@ -149,6 +149,7 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
                     $prefix . '_testimonials_background_size',
                     $prefix . '_testimonials_background_repeat',
                     $prefix . '_testimonials_background_attachment',
+                    $prefix . '_testimonials_background_position',
                     ),
                 ),
             ),
@@ -165,6 +166,24 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $pref
     'label'    => __( 'Background Image', 'illdy' ),
     'section'  => $panel_id,
     'settings' => $prefix . '_testimonials_general_image',
+) ) );
+$wp_customize->add_setting( $prefix.'_testimonials_background_position_x', array(
+    'default'        => 'center',
+    'sanitize_callback' => 'esc_html',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_setting( $prefix.'_testimonials_background_position_y', array(
+    'default'        => 'center',
+    'sanitize_callback' => 'esc_html',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Background_Position_Control( $wp_customize, $prefix.'_testimonials_background_position', array(
+    'label'    => __( 'Background Position', 'illdy' ),
+    'section'  => $prefix . '_testimonials_general',
+    'settings' => array(
+        'x' => $prefix.'_testimonials_background_position_x',
+        'y' => $prefix.'_testimonials_background_position_y',
+    ),
 ) ) );
 $wp_customize->add_setting( $prefix . '_testimonials_background_size', array(
     'default' => 'cover',

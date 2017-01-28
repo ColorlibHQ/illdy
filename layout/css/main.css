@@ -522,7 +522,6 @@ a:hover, a:focus {
 /* 04. Projects */
 #projects {
 	width: 100%;
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQALXr1/3YYTxQRxNTc0tYAEYB8RmROaABADURw7WwN5h2QAAAABJRU5ErkJggg==);
 	padding: 65px 0 0 0;
 	text-align: center;
 }
@@ -948,7 +947,7 @@ a.button:hover {
 	background: #fff;
 	padding: 80px 0 100px 0;
 	text-align: center;
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQALXr1/3YYTxQRxNTc0tYAEYB8RmROaABADURw7WwN5h2QAAAABJRU5ErkJggg==);
+	background: url(../images/front-page/pattern.png);
 }
 
 #team .section-header {
@@ -2804,11 +2803,15 @@ p.mb32 {
 
 #latest-news,
 #full-width,
-#about.
+#about,
 #projects {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.pace-overlay {
+	z-index: 2;
 }
 
 /*# sourceMappingURL=main.css.map */

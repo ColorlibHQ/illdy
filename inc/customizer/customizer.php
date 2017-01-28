@@ -701,6 +701,12 @@ function illdy_print_customizer_templates() {
 		{{else}}
 			#header{ background-image: none !important; }
 		{{/if}}
+		{{#if illdy_jumbotron_background_position_y }}
+			#header{ background-position-y: {{illdy_jumbotron_background_position_y}} !important; }
+		{{/if}}
+		{{#if illdy_jumbotron_background_position_x }}
+			#header{ background-position-x: {{illdy_jumbotron_background_position_x}} !important; }
+		{{/if}}
 		{{#if illdy_jumbotron_background_attachment }}
 			#header{ background-attachment: scroll !important; }
 		{{/if}}
@@ -748,6 +754,12 @@ function illdy_print_customizer_templates() {
 	<script id="illdy-latestnews-section" type="text/x-handlebars-template">
 		{{#if illdy_latest_news_general_image }}
 			#latest-news{ background-image: url({{illdy_latest_news_general_image}}) !important; }
+		{{/if}}
+		{{#if illdy_latest_news_background_position_y }}
+			#latest-news{ background-position-y: {{illdy_latest_news_background_position_y}} !important; }
+		{{/if}}
+		{{#if illdy_latest_news_background_position_x }}
+			#latest-news{ background-position-x: {{illdy_latest_news_background_position_x}} !important; }
 		{{/if}}
 		{{#if illdy_latest_news_background_attachment }}
 			#latest-news{ background-attachment: scroll !important; }
@@ -800,6 +812,12 @@ function illdy_print_customizer_templates() {
 		{{#if illdy_full_width_general_image }}
 			#full-width { background-image: url({{illdy_full_width_general_image}}) !important; }
 		{{/if}}
+		{{#if illdy_full-width_background_position_y }}
+			#full-width{ background-position-y: {{illdy_full-width_background_position_y}} !important; }
+		{{/if}}
+		{{#if illdy_full-width_background_position_x }}
+			#full-width{ background-position-x: {{illdy_full-width_background_position_x}} !important; }
+		{{/if}}
 		{{#if illdy_full_width_background_attachment }}
 			#full-width { background-attachment: scroll !important; }
 		{{/if}}
@@ -823,6 +841,12 @@ function illdy_print_customizer_templates() {
 	<script id="illdy-about-section" type="text/x-handlebars-template">
 		{{#if illdy_about_general_image }}
 			#about { background-image: url({{illdy_about_general_image}}) !important; }
+		{{/if}}
+		{{#if illdy_about_background_position_y }}
+			#about{ background-position-y: {{illdy_about_background_position_y}} !important; }
+		{{/if}}
+		{{#if illdy_about_background_position_x }}
+			#about{ background-position-x: {{illdy_about_background_position_x}} !important; }
 		{{/if}}
 		{{#if illdy_about_background_attachment }}
 			#about { background-attachment: scroll !important; }
@@ -848,6 +872,12 @@ function illdy_print_customizer_templates() {
 		{{#if illdy_projects_general_image }}
 			#projects { background-image: url({{illdy_projects_general_image}}) !important; }
 		{{/if}}
+		{{#if illdy_projects_background_position_y }}
+			#projects{ background-position-y: {{illdy_projects_background_position_y}} !important; }
+		{{/if}}
+		{{#if illdy_projects_background_position_x }}
+			#projects{ background-position-x: {{illdy_projects_background_position_x}} !important; }
+		{{/if}}
 		{{#if illdy_projects_background_attachment }}
 			#projects { background-attachment: scroll !important; }
 		{{/if}}
@@ -871,6 +901,12 @@ function illdy_print_customizer_templates() {
 	<script id="illdy-services-section" type="text/x-handlebars-template">
 		{{#if illdy_services_general_image }}
 			#services { background-image: url({{illdy_services_general_image}}) !important; }
+		{{/if}}
+		{{#if illdy_services_background_position_y }}
+			#services{ background-position-y: {{illdy_services_background_position_y}} !important; }
+		{{/if}}
+		{{#if illdy_services_background_position_x }}
+			#services{ background-position-x: {{illdy_services_background_position_x}} !important; }
 		{{/if}}
 		{{#if illdy_services_background_attachment }}
 			#services { background-attachment: scroll !important; }
@@ -896,6 +932,12 @@ function illdy_print_customizer_templates() {
 		{{#if illdy_team_general_image }}
 			#team { background-image: url({{illdy_team_general_image}}) !important; }
 		{{/if}}
+		{{#if illdy_team_background_position_y }}
+			#team{ background-position-y: {{illdy_team_background_position_y}} !important; }
+		{{/if}}
+		{{#if illdy_team_background_position_x }}
+			#team{ background-position-x: {{illdy_team_background_position_x}} !important; }
+		{{/if}}
 		{{#if illdy_team_background_attachment }}
 			#team { background-attachment: scroll !important; }
 		{{/if}}
@@ -919,6 +961,12 @@ function illdy_print_customizer_templates() {
 	<script id="illdy-testimonials-section" type="text/x-handlebars-template">
 		{{#if illdy_testimonials_general_image }}
 			#testimonials { background-image: url({{illdy_testimonials_general_image}}) !important; }
+		{{/if}}
+		{{#if illdy_testimonials_background_position_y }}
+			#testimonials{ background-position-y: {{illdy_testimonials_background_position_y}} !important; }
+		{{/if}}
+		{{#if illdy_testimonials_background_position_x }}
+			#testimonials{ background-position-x: {{illdy_testimonials_background_position_x}} !important; }
 		{{/if}}
 		{{#if illdy_testimonials_background_attachment }}
 			#testimonials { background-attachment: scroll !important; }
