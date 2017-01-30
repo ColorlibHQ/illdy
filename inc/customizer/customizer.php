@@ -300,58 +300,6 @@ if ( ! function_exists( 'illdy_sanitize_checkbox' ) ) {
 }
 
 /**
- *  Active Callback: Is active JetPack Testimonials
- */
-if ( ! function_exists( 'illdy_is_active_jetpack_testimonials' ) ) {
-	function illdy_is_active_jetpack_testimonials() {
-		if ( post_type_exists( 'jetpack-testimonial' ) ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-}
-
-/**
- *  Active Callback: Is not active JetPack Testimonials
- */
-if ( ! function_exists( 'illdy_is_not_active_jetpack_testimonials' ) ) {
-	function illdy_is_not_active_jetpack_testimonials() {
-		if ( ! post_type_exists( 'jetpack-testimonial' ) ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-}
-
-/**
- *  Active Callback: Is active JetPack Projects
- */
-if ( ! function_exists( 'illdy_is_active_jetpack_projects' ) ) {
-	function illdy_is_active_jetpack_projects() {
-		if ( post_type_exists( 'jetpack-portfolio' ) ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-}
-
-/**
- *  Active Callback: Is not active JetPack Projects
- */
-if ( ! function_exists( 'illdy_is_not_active_jetpack_projects' ) ) {
-	function illdy_is_not_active_jetpack_projects() {
-		if ( ! post_type_exists( 'jetpack-portfolio' ) ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-}
-
-/**
  *  Active Callback: Is not active Contact Form 7
  */
 if ( ! function_exists( 'illdy_is_not_active_contact_form_7' ) ) {
@@ -959,8 +907,8 @@ function illdy_print_customizer_templates() {
 	</script>
 
 	<script id="illdy-testimonials-section" type="text/x-handlebars-template">
-		{{#if illdy_testimonials_general_image }}
-			#testimonials { background-image: url({{illdy_testimonials_general_image}}) !important; }
+		{{#if _testimonials_general_background_image }}
+			#testimonials { background-image: url({{_testimonials_general_background_image}}) !important; }
 		{{/if}}
 		{{#if illdy_testimonials_background_position_y }}
 			#testimonials{ background-position-y: {{illdy_testimonials_background_position_y}} !important; }

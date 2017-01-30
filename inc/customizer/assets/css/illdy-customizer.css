@@ -440,6 +440,16 @@ div.recomended-actions_container {
 .recomended-actions_container .succes a.social {
     width: 49%;
     margin-bottom: 1em;
+    line-height: 20px;
+    padding-top: 4px;
+}
+.recomended-actions_container .succes a.social span,
+.recomended-actions_container .succes a.illdy-wordpress span {
+    margin-right: 5px;
+}
+.recomended-actions_container .succes a.illdy-wordpress {
+    line-height: 20px;
+    padding-top: 4px;
 }
 
 /* Reorder */

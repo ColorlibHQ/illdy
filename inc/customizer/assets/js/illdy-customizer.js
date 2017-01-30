@@ -758,7 +758,7 @@
         'testimonials' : [
             'illdy_testimonials_title_color',
             'illdy_testimonials_general_color',
-            'illdy_testimonials_general_image',
+            '_testimonials_general_background_image',
             'illdy_testimonials_background_size',
             'illdy_testimonials_background_repeat',
             'illdy_testimonials_background_attachment',

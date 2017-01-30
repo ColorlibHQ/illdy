@@ -28,7 +28,7 @@ jQuery( document ).ready( function($) {
 
 	// Testimonials OWL Carousel
 	function testimonialsOwlCarousel() {
-		if( $( '.testimonials-carousel.owl-carousel-enabled' ).length ) {
+		if( $( '.testimonials-carousel.owl-carousel-enabled .widget_illdy_testimonial' ).length > 1 ) {
 			$( '.testimonials-carousel.owl-carousel-enabled' ).owlCarousel({
 				'items': 1,
 				'loop': true,

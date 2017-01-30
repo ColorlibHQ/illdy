@@ -125,7 +125,7 @@ if( !function_exists( 'illdy_sections' ) ) {
         $templates = array(
                 'illdy_panel_about' => 'about',
                 'illdy_panel_projects' => 'projects',
-                'illdy_testimonials_general' => 'testimonials',
+                'illdy_testimonials_general' => 'testimonials-widget',
                 'illdy_panel_services' => 'services',
                 'illdy_latest_news_general' => 'latest-news',
                 'illdy_counter_general' => 'counter',
@@ -562,7 +562,7 @@ if ( !function_exists( 'illdy_testimonials_css' ) ) {
 
         $illdy_testimonials_title_color = esc_html(get_theme_mod('illdy_testimonials_title_color'));
         $illdy_testimonials_general_color = esc_html(get_theme_mod('illdy_testimonials_general_color'));
-        $illdy_testimonials_general_image = esc_url(get_theme_mod('illdy_testimonials_general_image', esc_url( get_template_directory_uri() . '/layout/images/testiomnials-background.jpg' )));
+        $_testimonials_general_background_image = esc_url(get_theme_mod('_testimonials_general_background_image', esc_url( get_template_directory_uri() . '/layout/images/testiomnials-background.jpg' )));
         $illdy_testimonials_background_size = esc_html(get_theme_mod('illdy_testimonials_background_size'));
         $illdy_testimonials_background_repeat = esc_html(get_theme_mod('illdy_testimonials_background_repeat'));
         $illdy_testimonials_background_attachment = esc_html(get_theme_mod('illdy_testimonials_background_attachment'));
@@ -578,8 +578,8 @@ if ( !function_exists( 'illdy_testimonials_css' ) ) {
         $illdy_testimonials_background_position_x = esc_html(get_theme_mod('illdy_testimonials_background_position_x'));
 
         $css = '';
-        if ($illdy_testimonials_general_image) {
-            $css .= '#testimonials {background-image: url('.$illdy_testimonials_general_image.') !important;}';
+        if ($_testimonials_general_background_image) {
+            $css .= '#testimonials {background-image: url('.$_testimonials_general_background_image.') !important;}';
         }
         if ( $illdy_testimonials_background_position_y ) {
             $css .= '#testimonials {background-position-y: '.$illdy_testimonials_background_position_y.';}';
