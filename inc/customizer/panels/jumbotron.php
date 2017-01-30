@@ -199,6 +199,7 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
                     $prefix . '_jumbotron_background_size',
                     $prefix . '_jumbotron_background_repeat',
                     $prefix . '_jumbotron_background_attachment',
+                    $prefix . '_jumbotron_background_position',
                     ),
                 ),
             ),
@@ -216,6 +217,24 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $pref
 	'section'  => $prefix . '_jumbotron_general',
 	'settings' => $prefix . '_jumbotron_general_image',
 ) ) );
+$wp_customize->add_setting( $prefix.'_jumbotron_background_position_x', array(
+	'default'        => 'center',
+	'sanitize_callback' => 'esc_html',
+	'transport'         => 'postMessage',
+) );
+$wp_customize->add_setting( $prefix.'_jumbotron_background_position_y', array(
+	'default'        => 'center',
+	'sanitize_callback' => 'esc_html',
+	'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Background_Position_Control( $wp_customize, $prefix.'_jumbotron_background_position', array(
+	'label'    => __( 'Background Position', 'illdy' ),
+	'section'  => $prefix . '_jumbotron_general',
+	'settings' => array(
+		'x' => $prefix.'_jumbotron_background_position_x',
+		'y' => $prefix.'_jumbotron_background_position_y',
+	),
+) ) );
 $wp_customize->add_setting( $prefix . '_jumbotron_background_size', array(
 	'default' => 'cover',
 	'sanitize_callback' => 'illdy_sanitize_background_size',
@@ -226,9 +245,9 @@ $wp_customize->add_control( $prefix . '_jumbotron_background_size', array(
 	'section'    => $prefix . '_jumbotron_general',
 	'type'       => 'select',
 	'choices'    => array(
-		'auto'    => __( 'Original' ),
-		'contain' => __( 'Fit to Screen' ),
-		'cover'   => __( 'Fill Screen' ),
+		'auto'    => __( 'Original', 'illdy' ),
+		'contain' => __( 'Fit to Screen', 'illdy' ),
+		'cover'   => __( 'Fill Screen', 'illdy' ),
 	),
 ) );
 

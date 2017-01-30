@@ -106,14 +106,6 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 					"check"       => MT_Notify_System::has_import_plugin( 'illdy-companion' ),
 					"type"		  => 'plugin',
 					"plugin_slug" => 'illdy-companion'
-				),
-				array(
-					"id"          => 'illdy-req-ac-install-jetpack',
-					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Jetpack', 'illdy' ), __( 'Activate: Jetpack', 'illdy' ), 'jetpack' ),
-					"description" => __( 'It is highly recommended that you install the Jetpack plugin.', 'allegiant' ),
-					"check"       => MT_Notify_System::has_import_plugin( 'jetpack' ),
-					"type"		  => 'plugin',
-					"plugin_slug" => 'jetpack'
 				)
 			);
 
@@ -374,6 +366,17 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			'after_widget'  => '</div>',
 			'before_title'  => '<div class="widget-title"><h5>',
 			'after_title'   => '</h5></div>',
+		) );
+
+		// Testimonial Sidebar
+		register_sidebar( array(
+			'name'          => __( 'Front page - Testimonials Sidebar', 'illdy' ),
+			'id'            => 'front-page-testimonials-sidebar',
+			'description'   => __( 'The widgets added in this sidebar will appear in testimonials section from front page.', 'illdy' ),
+			'before_widget' => '<div id="%1$s" class="%2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '',
+			'after_title'   => '',
 		) );
 
 		// WooCommerce Sidebar

@@ -30,7 +30,6 @@ $wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize,
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_testimonials_general',
         'priority'  => 1,
-        'active_callback'   => 'illdy_is_active_jetpack_testimonials'
     ))
 );
 
@@ -49,72 +48,27 @@ $wp_customize->add_control(
         'description'       => __( 'Add the title for this section.', 'illdy'),
         'section'           => $prefix . '_testimonials_general',
         'priority'          => 2,
-        'active_callback'   => 'illdy_is_active_jetpack_testimonials'
     )
 );
 $wp_customize->selective_refresh->add_partial( $prefix .'_testimonials_general_title', array(
     'selector' => '#testimonials .section-header h3',
 ) );
 
-// Background Image
-$wp_customize->add_setting(
-    $prefix . '_testimonials_general_background_image',
+$wp_customize->add_setting( $prefix .'_testimonial_widget_button',
     array(
-        'sanitize_callback' => 'esc_url_raw',
-        'default'           => '',
         'transport'         => 'postMessage'
     )
 );
 $wp_customize->add_control(
-    new WP_Customize_Image_Control(
-        $wp_customize, $prefix . '_testimonials_general_background_image',
+    new Epsilon_Control_Button(
+        $wp_customize,
+        $prefix .'_testimonial_widget_button',
         array(
-            'label'             => __( 'Background Image', 'illdy' ),
-            'section'           => $prefix .'_testimonials_general',
-            'settings'          => $prefix . '_testimonials_general_background_image',
-            'priority'          => 3,
-            'active_callback'   => 'illdy_is_active_jetpack_testimonials'
-        )
-    )
-);
-
-// Number of posts
-$wp_customize->add_setting( $prefix .'_testimonials_number_of_posts',
-    array(
-        'sanitize_callback' => 'sanitize_text_field',
-        'default'           => absint( 4 ),
-    )
-);
-$wp_customize->add_control(
-    $prefix .'_testimonials_number_of_posts',
-    array(
-        'label'             => __( 'Number of posts', 'illdy' ),
-        'description'       => __( 'Add the number of posts to show in this section.', 'illdy'),
-        'section'           => $prefix . '_testimonials_general',
-        'priority'          => 4,
-        'active_callback'   => 'illdy_is_active_jetpack_testimonials'
-    )
-);
-
-// Install JetPack
-$wp_customize->add_setting(
-    $prefix . '_testimonials_general_text',
-    array(
-        'sanitize_callback' => 'esc_html',
-        'default'           => '',
-        'transport'         => 'postMessage'
-    )
-);
-$wp_customize->add_control(
-    new Illdy_Text_Custom_Control(
-        $wp_customize, $prefix . '_testimonials_general_text',
-        array(
-            'label'             => __( 'Install JetPack', 'illdy' ),
-            'description'       => __( 'In order to get the Testimonials module working, you will have to install JetPack and enable Custom Post Type: Testimonials.', 'illdy' ),
-            'section'           => $prefix .'_testimonials_general',
-            'settings'          => $prefix . '_testimonials_general_text',
-            'priority'          => 5,
-            'active_callback'   => 'illdy_is_not_active_jetpack_testimonials'
+            'text'         => __( 'Add & Edit Testimonials', 'illdy' ),
+            'section_id'    => 'sidebar-widgets-front-page-testimonials-sidebar',
+            'icon'          => 'dashicons-plus',
+            'section'       => $panel_id,
+            'priority'      => 5
         )
     )
 );
@@ -145,10 +99,11 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
             array(
                 'name' => __( 'Backgrounds', 'illdy' ),
                 'fields'    => array(
-                    $prefix . '_testimonials_general_image',
+                    $prefix . '_testimonials_general_background_image',
                     $prefix . '_testimonials_background_size',
                     $prefix . '_testimonials_background_repeat',
                     $prefix . '_testimonials_background_attachment',
+                    $prefix . '_testimonials_background_position',
                     ),
                 ),
             ),
@@ -156,15 +111,33 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
 );
 
 // Background Image
-$wp_customize->add_setting( $prefix . '_testimonials_general_image', array(
+$wp_customize->add_setting( $prefix . '_testimonials_general_background_image', array(
     'sanitize_callback' => 'esc_url',
     'default'           => esc_url( get_template_directory_uri() . '/layout/images/testiomnials-background.jpg' ),
     'transport'         => 'postMessage',
 ) );
-$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $prefix . '_testimonials_general_image', array(
+$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $prefix . '_testimonials_general_background_image', array(
     'label'    => __( 'Background Image', 'illdy' ),
     'section'  => $panel_id,
-    'settings' => $prefix . '_testimonials_general_image',
+    'settings' => $prefix . '_testimonials_general_background_image',
+) ) );
+$wp_customize->add_setting( $prefix.'_testimonials_background_position_x', array(
+    'default'        => 'center',
+    'sanitize_callback' => 'esc_html',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_setting( $prefix.'_testimonials_background_position_y', array(
+    'default'        => 'center',
+    'sanitize_callback' => 'esc_html',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Background_Position_Control( $wp_customize, $prefix.'_testimonials_background_position', array(
+    'label'    => __( 'Background Position', 'illdy' ),
+    'section'  => $prefix . '_testimonials_general',
+    'settings' => array(
+        'x' => $prefix.'_testimonials_background_position_x',
+        'y' => $prefix.'_testimonials_background_position_y',
+    ),
 ) ) );
 $wp_customize->add_setting( $prefix . '_testimonials_background_size', array(
     'default' => 'cover',

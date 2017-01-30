@@ -688,6 +688,8 @@
             'illdy_jumbotron_background_size',
             'illdy_jumbotron_background_repeat',
             'illdy_jumbotron_background_attachment',
+            'illdy_jumbotron_background_position_y',
+            'illdy_jumbotron_background_position_x'
             ],
         'latestnews' : [
             'illdy_latest_news_title_color',
@@ -706,6 +708,8 @@
             'illdy_latest_news_background_size',
             'illdy_latest_news_background_repeat',
             'illdy_latest_news_background_attachment',
+            'illdy_latest_news_background_position_y',
+            'illdy_latest_news_background_position_x'
         ],
         'fullwidth' : [
             'illdy_full_width_title_color',
@@ -715,6 +719,8 @@
             'illdy_full_width_background_size',
             'illdy_full_width_background_repeat',
             'illdy_full_width_background_attachment',
+            'illdy_full_width_background_position_y',
+            'illdy_full_width_background_position_x'
         ],
         'about' : [
             'illdy_about_title_color',
@@ -724,6 +730,8 @@
             'illdy_about_background_size',
             'illdy_about_background_repeat',
             'illdy_about_background_attachment',
+            'illdy_about_background_position_y',
+            'illdy_about_background_position_x'
         ],
         'projects' : [
             'illdy_projects_title_color',
@@ -733,6 +741,8 @@
             'illdy_projects_background_size',
             'illdy_projects_background_repeat',
             'illdy_projects_background_attachment',
+            'illdy_projects_background_position_y',
+            'illdy_projects_background_position_x'
         ],
         'services' : [
             'illdy_services_title_color',
@@ -742,11 +752,13 @@
             'illdy_services_background_size',
             'illdy_services_background_repeat',
             'illdy_services_background_attachment',
+            'illdy_services_background_position_y',
+            'illdy_services_background_position_x'
         ],
         'testimonials' : [
             'illdy_testimonials_title_color',
             'illdy_testimonials_general_color',
-            'illdy_testimonials_general_image',
+            '_testimonials_general_background_image',
             'illdy_testimonials_background_size',
             'illdy_testimonials_background_repeat',
             'illdy_testimonials_background_attachment',
@@ -754,6 +766,8 @@
             'illdy_testimonials_text_color',
             'illdy_testimonials_container_background_color',
             'illdy_testimonials_dots_color',
+            'illdy_testimonials_background_position_y',
+            'illdy_testimonials_background_position_x'
         ],
         'team' : [
             'illdy_team_title_color',
@@ -763,6 +777,8 @@
             'illdy_team_background_size',
             'illdy_team_background_repeat',
             'illdy_team_background_attachment',
+            'illdy_team_background_position_y',
+            'illdy_team_background_position_x'
         ],
 
     };
@@ -797,6 +813,8 @@
             liveObj.values.illdy_jumbotron_first_button_background_hover = illdy_hexToRgbA( color, '.1' );
             liveObj.values.illdy_jumbotron_first_border_color = illdy_hexToRgbA( color, '1' );
         }
+
+        console.log(liveObj);
 
         wp.customize.previewer.send('update-section-css', liveObj);
 

@@ -187,14 +187,14 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 				<# if( data.required_actions.length == 0 ){ #>
 					<p class="succes">
 						<# if( data.facebook ){ #>
-							<a href="{{ data.facebook }}" class="button social">Facebook</a>
+							<a href="{{ data.facebook }}" class="button social"><span class="dashicons dashicons-facebook-alt"></span>Facebook</a>
 						<# } #>
 
 						<# if( data.twitter ){ #>
-							<a href="{{ data.twitter }}" class="button social">Twitter</a>
+							<a href="{{ data.twitter }}" class="button social"><span class="dashicons dashicons-twitter"></span>Twitter</a>
 						<# } #>
 						<# if( data.wp_review ){ #>
-							<a href="https://wordpress.org/support/theme/{{ data.theme_slug }}/reviews/#new-post" class="button button-primary">Review this theme on w.org</a>
+							<a href="https://wordpress.org/support/theme/{{ data.theme_slug }}/reviews/#new-post" class="button button-primary illdy-wordpress"><span class="dashicons dashicons-wordpress"></span>Review this theme on w.org</a>
 						<# } #>
 					</p>
 				<# }else{ #>

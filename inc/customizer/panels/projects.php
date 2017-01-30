@@ -173,6 +173,7 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
                     $prefix . '_projects_background_size',
                     $prefix . '_projects_background_repeat',
                     $prefix . '_projects_background_attachment',
+                    $prefix . '_projects_background_position',
                     ),
                 ),
             ),
@@ -182,7 +183,7 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
 // Background Image
 $wp_customize->add_setting( $prefix . '_projects_general_image', array(
     'sanitize_callback' => 'esc_url',
-    'default'           => '',
+    'default'           => esc_url( get_template_directory_uri() . '/layout/images/front-page/pattern.png' ),
     'transport'         => 'postMessage',
 ) );
 $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $prefix . '_projects_general_image', array(
@@ -190,8 +191,26 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $pref
     'section'  => $panel_id,
     'settings' => $prefix . '_projects_general_image',
 ) ) );
+$wp_customize->add_setting( $prefix.'_projects_background_position_x', array(
+    'default'        => 'center',
+    'sanitize_callback' => 'esc_html',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_setting( $prefix.'_projects_background_position_y', array(
+    'default'        => 'center',
+    'sanitize_callback' => 'esc_html',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Background_Position_Control( $wp_customize, $prefix.'_projects_background_position', array(
+    'label'    => __( 'Background Position', 'illdy' ),
+    'section'  => $panel_id,
+    'settings' => array(
+        'x' => $prefix.'_projects_background_position_x',
+        'y' => $prefix.'_projects_background_position_y',
+    ),
+) ) );
 $wp_customize->add_setting( $prefix . '_projects_background_size', array(
-    'default' => 'cover',
+    'default' => 'auto',
     'sanitize_callback' => 'illdy_sanitize_background_size',
     'transport'         => 'postMessage',
 ) );
@@ -208,7 +227,7 @@ $wp_customize->add_control( $prefix . '_projects_background_size', array(
 
 $wp_customize->add_setting( $prefix . '_projects_background_repeat', array(
     'sanitize_callback' => $prefix . '_sanitize_checkbox',
-    'default'           => 0,
+    'default'           => 1,
     'transport'         => 'postMessage',
 ) );
 
