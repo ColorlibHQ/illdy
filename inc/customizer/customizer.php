@@ -907,8 +907,8 @@ function illdy_print_customizer_templates() {
 	</script>
 
 	<script id="illdy-testimonials-section" type="text/x-handlebars-template">
-		{{#if _testimonials_general_background_image }}
-			#testimonials { background-image: url({{_testimonials_general_background_image}}) !important; }
+		{{#if illdy_testimonials_general_background_image }}
+			#testimonials { background-image: url({{illdy_testimonials_general_background_image}}) !important; }
 		{{/if}}
 		{{#if illdy_testimonials_background_position_y }}
 			#testimonials{ background-position-y: {{illdy_testimonials_background_position_y}} !important; }

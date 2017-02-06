@@ -153,80 +153,80 @@ function illdy_hex2rgb($hexColor,$opacity = 1) {
   return 'rgba( '.hexdec($shorthand? "$r$r" : $r).', '.hexdec($shorthand? "$g$g" : $g).', '.hexdec($shorthand? "$b$b" : $b).', '.$opacity.' )';
 }
 
-if ( !function_exists( 'illdy_about_css' ) ) {
-    function illdy_about_css(){
+if ( !function_exists( 'illdy_jumbotron_css' ) ) {
+    function illdy_jumbotron_css(){
 
-        $illdy_about_general_image = esc_url(get_theme_mod('illdy_about_general_image', esc_url( get_template_directory_uri() . '/layout/images/front-page/front-page-header.jpg' )));
-        $illdy_about_background_size = esc_html(get_theme_mod('illdy_about_background_size'));
-        $illdy_about_background_position_y = esc_html(get_theme_mod('illdy_about_background_position_y'));
-        $illdy_about_background_position_x = esc_html(get_theme_mod('illdy_about_background_position_x'));
-        $illdy_about_background_repeat = esc_html(get_theme_mod('illdy_about_background_repeat'));
-        $illdy_about_background_attachment = esc_html(get_theme_mod('illdy_about_background_attachment'));
-        $illdy_about_general_color = esc_html(get_theme_mod('illdy_about_general_color'));
-        $illdy_about_first_border_color = esc_html(get_theme_mod('illdy_about_first_button_background'));
-        $illdy_about_first_button_background = esc_html(illdy_hex2rgb( $illdy_about_first_border_color, '.2' ));
-        $illdy_about_first_button_background_hover = esc_html(illdy_hex2rgb( $illdy_about_first_border_color, '.1' ));
-        $illdy_about_second_button_background = esc_html(get_theme_mod('illdy_about_second_button_background'));
-        $illdy_about_second_button_background_hover = esc_html(get_theme_mod('illdy_about_second_button_background_hover'));
-        $illdy_about_title_color = esc_html(get_theme_mod('illdy_about_title_color'));
-        $illdy_about_points_color = esc_html(get_theme_mod('illdy_about_points_color'));
-        $illdy_about_descriptions_color = esc_html(get_theme_mod('illdy_about_descriptions_color'));
-        $illdy_about_first_button_color = esc_html(get_theme_mod('illdy_about_first_button_color'));
-        $illdy_about_right_button_color = esc_html(get_theme_mod('illdy_about_right_button_color'));
+        $illdy_jumbotron_general_image = esc_url(get_theme_mod('illdy_jumbotron_general_image', esc_url( get_template_directory_uri() . '/layout/images/front-page/front-page-header.jpg' )));
+        $illdy_jumbotron_background_size = esc_html(get_theme_mod('illdy_jumbotron_background_size'));
+        $illdy_jumbotron_background_position_y = esc_html(get_theme_mod('illdy_jumbotron_background_position_y'));
+        $illdy_jumbotron_background_position_x = esc_html(get_theme_mod('illdy_jumbotron_background_position_x'));
+        $illdy_jumbotron_background_repeat = esc_html(get_theme_mod('illdy_jumbotron_background_repeat'));
+        $illdy_jumbotron_background_attachment = esc_html(get_theme_mod('illdy_jumbotron_background_attachment'));
+        $illdy_jumbotron_general_color = esc_html(get_theme_mod('illdy_jumbotron_general_color'));
+        $illdy_jumbotron_first_border_color = esc_html(get_theme_mod('illdy_jumbotron_first_button_background'));
+        $illdy_jumbotron_first_button_background = esc_html(illdy_hex2rgb( $illdy_jumbotron_first_border_color, '.2' ));
+        $illdy_jumbotron_first_button_background_hover = esc_html(illdy_hex2rgb( $illdy_jumbotron_first_border_color, '.1' ));
+        $illdy_jumbotron_second_button_background = esc_html(get_theme_mod('illdy_jumbotron_second_button_background'));
+        $illdy_jumbotron_second_button_background_hover = esc_html(get_theme_mod('illdy_jumbotron_second_button_background_hover'));
+        $illdy_jumbotron_title_color = esc_html(get_theme_mod('illdy_jumbotron_title_color'));
+        $illdy_jumbotron_points_color = esc_html(get_theme_mod('illdy_jumbotron_points_color'));
+        $illdy_jumbotron_descriptions_color = esc_html(get_theme_mod('illdy_jumbotron_descriptions_color'));
+        $illdy_jumbotron_first_button_color = esc_html(get_theme_mod('illdy_jumbotron_first_button_color'));
+        $illdy_jumbotron_right_button_color = esc_html(get_theme_mod('illdy_jumbotron_right_button_color'));
 
         $css = '';
-        if ($illdy_about_general_image) {
-            $css .= '#header {background-image: url('.$illdy_about_general_image.') !important;}';
+        if ($illdy_jumbotron_general_image) {
+            $css .= '#header {background-image: url('.$illdy_jumbotron_general_image.') !important;}';
         }else{
             $css .= '#header {background-image: none !important;}';
         }
-        if ( $illdy_about_background_position_y ) {
-            $css .= '#header {background-position-y: '.$illdy_about_background_position_y.';}';
+        if ( $illdy_jumbotron_background_position_y ) {
+            $css .= '#header {background-position-y: '.$illdy_jumbotron_background_position_y.';}';
         }
-        if ( $illdy_about_background_position_x ) {
-            $css .= '#header {background-position-x: '.$illdy_about_background_position_x.';}';
+        if ( $illdy_jumbotron_background_position_x ) {
+            $css .= '#header {background-position-x: '.$illdy_jumbotron_background_position_x.';}';
         }
-        if ($illdy_about_background_size) {
-            $css .= '#header {background-size: '.$illdy_about_background_size.' !important;}';
+        if ($illdy_jumbotron_background_size) {
+            $css .= '#header {background-size: '.$illdy_jumbotron_background_size.' !important;}';
         }
-        if ($illdy_about_background_repeat) {
+        if ($illdy_jumbotron_background_repeat) {
             $css .= '#header {background-repeat: repeat !important;}';
         }
-        if ($illdy_about_background_attachment) {
+        if ($illdy_jumbotron_background_attachment) {
             $css .= '#header {background-attachment: scroll !important;}';
         }
-        if ($illdy_about_general_color) {
-            $css .= '#header {background-color: '.$illdy_about_general_color.';}';
+        if ($illdy_jumbotron_general_color) {
+            $css .= '#header {background-color: '.$illdy_jumbotron_general_color.';}';
         }
-        if ($illdy_about_first_button_background) {
-            $css .= '#header .bottom-header .header-button-one {background-color: '.$illdy_about_first_button_background.';}';
+        if ($illdy_jumbotron_first_button_background) {
+            $css .= '#header .bottom-header .header-button-one {background-color: '.$illdy_jumbotron_first_button_background.';}';
         }
-        if ($illdy_about_first_button_background_hover) {
-            $css .= '#header .bottom-header .header-button-one:hover {background-color: '.$illdy_about_first_button_background_hover.';}';
+        if ($illdy_jumbotron_first_button_background_hover) {
+            $css .= '#header .bottom-header .header-button-one:hover {background-color: '.$illdy_jumbotron_first_button_background_hover.';}';
         }
-        if ($illdy_about_first_border_color) {
-            $css .= '#header .bottom-header .header-button-one {border-color: '.$illdy_about_first_border_color.';}';
+        if ($illdy_jumbotron_first_border_color) {
+            $css .= '#header .bottom-header .header-button-one {border-color: '.$illdy_jumbotron_first_border_color.';}';
         }
-        if ($illdy_about_second_button_background) {
-            $css .= '#header .bottom-header .header-button-two {background-color: '.$illdy_about_second_button_background.';}';
+        if ($illdy_jumbotron_second_button_background) {
+            $css .= '#header .bottom-header .header-button-two {background-color: '.$illdy_jumbotron_second_button_background.';}';
         }
-        if  ($illdy_about_second_button_background_hover) {
-            $css .= '#header .bottom-header .header-button-two:hover {background-color: '.$illdy_about_second_button_background_hover.';}';
+        if  ($illdy_jumbotron_second_button_background_hover) {
+            $css .= '#header .bottom-header .header-button-two:hover {background-color: '.$illdy_jumbotron_second_button_background_hover.';}';
         }
-        if  ($illdy_about_title_color) {
-            $css .= '#header .bottom-header h1 {color: '.$illdy_about_title_color.';}';
+        if  ($illdy_jumbotron_title_color) {
+            $css .= '#header .bottom-header h1 {color: '.$illdy_jumbotron_title_color.';}';
         }
-        if  ($illdy_about_points_color) {
-            $css .= '#header .bottom-header span.span-dot {color: '.$illdy_about_points_color.';}';
+        if  ($illdy_jumbotron_points_color) {
+            $css .= '#header .bottom-header span.span-dot {color: '.$illdy_jumbotron_points_color.';}';
         }
-        if  ($illdy_about_descriptions_color) {
-            $css .= '#header .bottom-header p {color: '.$illdy_about_descriptions_color.';}';
+        if  ($illdy_jumbotron_descriptions_color) {
+            $css .= '#header .bottom-header p {color: '.$illdy_jumbotron_descriptions_color.';}';
         }
-        if  ($illdy_about_first_button_color) {
-            $css .= '#header .bottom-header .header-button-one {color: '.$illdy_about_first_button_color.';}';
+        if  ($illdy_jumbotron_first_button_color) {
+            $css .= '#header .bottom-header .header-button-one {color: '.$illdy_jumbotron_first_button_color.';}';
         }
-        if  ($illdy_about_right_button_color) { 
-            $css .= '#header .bottom-header .header-button-two {color: '.$illdy_about_right_button_color.';}';
+        if  ($illdy_jumbotron_right_button_color) { 
+            $css .= '#header .bottom-header .header-button-two {color: '.$illdy_jumbotron_right_button_color.';}';
         }
 
         return $css;
@@ -562,7 +562,7 @@ if ( !function_exists( 'illdy_testimonials_css' ) ) {
 
         $illdy_testimonials_title_color = esc_html(get_theme_mod('illdy_testimonials_title_color'));
         $illdy_testimonials_general_color = esc_html(get_theme_mod('illdy_testimonials_general_color'));
-        $_testimonials_general_background_image = esc_url(get_theme_mod('_testimonials_general_background_image', esc_url( get_template_directory_uri() . '/layout/images/testiomnials-background.jpg' )));
+        $illdy_testimonials_general_background_image = esc_url(get_theme_mod('illdy_testimonials_general_background_image', get_template_directory_uri() . '/layout/images/testiomnials-background.jpg' ));
         $illdy_testimonials_background_size = esc_html(get_theme_mod('illdy_testimonials_background_size'));
         $illdy_testimonials_background_repeat = esc_html(get_theme_mod('illdy_testimonials_background_repeat'));
         $illdy_testimonials_background_attachment = esc_html(get_theme_mod('illdy_testimonials_background_attachment'));
@@ -578,8 +578,8 @@ if ( !function_exists( 'illdy_testimonials_css' ) ) {
         $illdy_testimonials_background_position_x = esc_html(get_theme_mod('illdy_testimonials_background_position_x'));
 
         $css = '';
-        if ($_testimonials_general_background_image) {
-            $css .= '#testimonials {background-image: url('.$_testimonials_general_background_image.') !important;}';
+        if ($illdy_testimonials_general_background_image) {
+            $css .= '#testimonials {background-image: url('.$illdy_testimonials_general_background_image.') !important;}';
         }
         if ( $illdy_testimonials_background_position_y ) {
             $css .= '#testimonials {background-position-y: '.$illdy_testimonials_background_position_y.';}';
@@ -625,7 +625,7 @@ if ( !function_exists( 'illdy_output_sections_css' ) ) {
 
     function illdy_output_sections_css(){ ?>
 
-        <style type="text/css" id="illdy-about-section-css"><?php echo illdy_about_css() ?></style>
+        <style type="text/css" id="illdy-about-section-css"><?php echo illdy_jumbotron_css() ?></style>
         <style type="text/css" id="illdy-latestnews-section-css"><?php echo illdy_latestnews_css() ?></style>
         <style type="text/css" id="illdy-fullwidth-section-css"><?php echo illdy_fullwidth_css() ?></style>
         <style type="text/css" id="illdy-about-section-css"><?php echo illdy_about_css() ?></style>
