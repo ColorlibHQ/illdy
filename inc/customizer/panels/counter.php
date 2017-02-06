@@ -64,7 +64,7 @@ $wp_customize->add_control(
     new WP_Customize_Image_Control(
         $wp_customize, $prefix . '_counter_background_image',
         array(
-            'label'     => __( 'Image', 'illdy' ),
+            'label'     => __( 'Background Image', 'illdy' ),
             'section'   => $prefix .'_counter_general',
             'settings'  => $prefix . '_counter_background_image',
             'priority'  => 2
@@ -86,7 +86,7 @@ $wp_customize->add_control(
     $wp_customize, 
     $prefix . '_counter_background_color',
     array(
-        'label'     => __( 'Color', 'illdy' ),
+        'label'     => __( 'Background Color', 'illdy' ),
         'section'   => $prefix .'_counter_general',
         'settings'  => $prefix . '_counter_background_color',
         'priority'  => 3
