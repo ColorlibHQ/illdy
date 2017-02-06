@@ -39,7 +39,7 @@ $jetpack_testimonial_query = new WP_Query( $jetpack_testimonial_query_args );
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
-						<h3><?php echo illdy_sanitize_html( $general_title ); ?></h3>
+						<h3><?php echo do_shortcode(wp_kses_post( $general_title )); ?></h3>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
 			</div><!--/.container-->
