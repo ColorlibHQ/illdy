@@ -50,7 +50,7 @@ if ( $first_row_from_title || $second_row_from_title || $third_row_from_title ||
 				<?php endif; ?>
 				<div class="col-sm-8 col-sm-offset-2">
 					<?php if ( $entry ): ?>
-						<p><?php echo illdy_sanitize_html( $entry ); ?></p>
+						<p><?php echo do_shortcode(wp_kses_post( $entry )); ?></p>
 					<?php endif; ?>
 					<?php if ( $first_button_title ): ?>
 						<a href="<?php echo esc_url( $first_button_url ); ?>" title="<?php echo esc_attr( $first_button_title ); ?>" class="header-button-one"><?php echo esc_html( $first_button_title ); ?></a>
