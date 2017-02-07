@@ -19,6 +19,7 @@ jQuery( document ).ready( function($) {
                     console.log(attachment.url);
                     $('.custom_media_id').val(attachment.id);
                     $('.custom_media_url_'+field_id).val(attachment.url);
+                    $('.custom_media_url_'+field_id).trigger('change');
                 } else {
                     return _orig_send_attachment.apply( button_id, [props, attachment] );
                 }
