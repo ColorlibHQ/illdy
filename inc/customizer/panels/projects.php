@@ -101,7 +101,7 @@ if ( get_theme_mod( $prefix .'_projects_general_entry' ) ) {
     );
 
     $wp_customize->selective_refresh->add_partial( $prefix .'_projects_general_entry', array(
-        'selector' => '#projects .section-header p',
+        'selector' => '#projects .section-header .section-description',
     ) );
     
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {

@@ -220,7 +220,7 @@ if ( !function_exists( 'illdy_jumbotron_css' ) ) {
             $css .= '#header .bottom-header span.span-dot {color: '.$illdy_jumbotron_points_color.';}';
         }
         if  ($illdy_jumbotron_descriptions_color) {
-            $css .= '#header .bottom-header p {color: '.$illdy_jumbotron_descriptions_color.';}';
+            $css .= '#header .bottom-header .section-description {color: '.$illdy_jumbotron_descriptions_color.';}';
         }
         if  ($illdy_jumbotron_first_button_color) {
             $css .= '#header .bottom-header .header-button-one {color: '.$illdy_jumbotron_first_button_color.';}';
@@ -310,7 +310,7 @@ if ( !function_exists( 'illdy_latestnews_css' ) ) {
             $css .= '#latest-news .section-header h3 {color: '.$illdy_latest_news_title_color.';}';
         }
         if  ($illdy_latest_news_descriptions_color) {
-            $css .= '#latest-news .section-header p {color: '.$illdy_latest_news_descriptions_color.';}';
+            $css .= '#latest-news .section-header .section-description {color: '.$illdy_latest_news_descriptions_color.';}';
         }
         
         return $css;
@@ -358,7 +358,7 @@ if ( !function_exists( 'illdy_fullwidth_css' ) ) {
             $css .= '#full-width .section-header h3 {color: '.$illdy_full_width_title_color.';}';
         }
         if  ($illdy_full_width_descriptions_color) {
-            $css .= '#full-width .section-header p {color: '.$illdy_full_width_descriptions_color.';}';
+            $css .= '#full-width .section-header .section-description {color: '.$illdy_full_width_descriptions_color.';}';
         }
         
         return $css;
@@ -406,7 +406,7 @@ if ( !function_exists( 'illdy_about_css' ) ) {
             $css .= '#about .section-header h3 {color: '.$illdy_about_title_color.';}';
         }
         if  ($illdy_about_descriptions_color) {
-            $css .= '#about .section-header p {color: '.$illdy_about_descriptions_color.';}';
+            $css .= '#about .section-header .section-description {color: '.$illdy_about_descriptions_color.';}';
         }
         
         return $css;
@@ -454,7 +454,7 @@ if ( !function_exists( 'illdy_projects_css' ) ) {
             $css .= '#projects .section-header h3 {color: '.$illdy_projects_title_color.';}';
         }
         if  ($illdy_projects_descriptions_color) {
-            $css .= '#projects .section-header p {color: '.$illdy_projects_descriptions_color.';}';
+            $css .= '#projects .section-header .section-description {color: '.$illdy_projects_descriptions_color.';}';
         }
         
         return $css;
@@ -502,7 +502,7 @@ if ( !function_exists( 'illdy_services_css' ) ) {
             $css .= '#services .section-header h3 {color: '.$illdy_services_title_color.';}';
         }
         if  ($illdy_services_descriptions_color) {
-            $css .= '#services .section-header p {color: '.$illdy_services_descriptions_color.';}';
+            $css .= '#services .section-header .section-description {color: '.$illdy_services_descriptions_color.';}';
         }
         
         return $css;
@@ -550,7 +550,7 @@ if ( !function_exists( 'illdy_team_css' ) ) {
             $css .= '#team .section-header h3 {color: '.$illdy_team_title_color.';}';
         }
         if  ($illdy_team_descriptions_color) {
-            $css .= '#team .section-header p {color: '.$illdy_team_descriptions_color.';}';
+            $css .= '#team .section-header .section-description {color: '.$illdy_team_descriptions_color.';}';
         }
         
         return $css;

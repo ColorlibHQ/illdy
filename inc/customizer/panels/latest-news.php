@@ -98,7 +98,7 @@ if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
     
 }
 $wp_customize->selective_refresh->add_partial( $prefix .'_latest_news_general_text', array(
-    'selector' => '#latest-news .section-header p',
+    'selector' => '#latest-news .section-header .section-description',
 ) );
 
 // Button Text

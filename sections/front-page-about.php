@@ -30,7 +30,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 					<?php endif; ?>
 					<?php if( $general_entry ): ?>
 						<div class="col-sm-10 col-sm-offset-1">
-							<p><?php echo do_shortcode(wp_kses_post( $general_entry )); ?></p>
+							<div class="section-description"><?php echo do_shortcode(wp_kses_post( $general_entry )); ?></div>
 						</div><!--/.col-sm-10.col-sm-offset-1-->
 					<?php endif; ?>
 				</div><!--/.row-->

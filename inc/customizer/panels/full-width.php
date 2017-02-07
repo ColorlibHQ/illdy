@@ -90,6 +90,9 @@ $wp_customize->add_control( new Epsilon_Editor_Custom_Control(
         'priority'      => 3,
     ) )
 );
+$wp_customize->selective_refresh->add_partial( $prefix .'_full_width_general_entry', array(
+    'selector' => '#full-width .section-header .section-description',
+) );
 $wp_customize->add_setting( $prefix .'_full_width_widget_button',
     array(
         'transport'         => 'postMessage'

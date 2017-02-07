@@ -67,7 +67,7 @@ if ( get_theme_mod( $prefix . '_services_general_entry' ) ) {
 			'priority'    => 3,
 		) ) );
 	$wp_customize->selective_refresh->add_partial( $prefix .'_services_general_entry', array(
-	    'selector' => '#services .section-header p',
+	    'selector' => '#services .section-header .section-description',
 	) );
 
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
