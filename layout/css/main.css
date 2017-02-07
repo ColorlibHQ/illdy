@@ -107,13 +107,19 @@ a:hover, a:focus {
 	color: #545454;
 }
 
-.front-page-section .section-header p {
+.front-page-section .section-header .section-description {
 	margin-bottom: 0;
 	line-height: 26px;
 	font-size: 16px;
 	color: #8c9597;
 	font-family: "Lato";
 	font-weight: 400;
+}
+.front-page-section .section-header .section-description ul,
+#header .bottom-header .section-description ul,
+#header .bottom-header .section-description ol,
+.front-page-section .section-header .section-description ol {
+	list-style-position: inside;
 }
 
 .front-page-section .section-content {
@@ -360,7 +366,7 @@ a:hover, a:focus {
 	color: #ffde00;
 }
 
-#header .bottom-header p {
+#header .bottom-header .section-description {
 	line-height: 26px;
     margin-bottom: 60px;
     font-size: 16px;

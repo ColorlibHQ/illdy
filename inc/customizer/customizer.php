@@ -689,7 +689,7 @@ function illdy_print_customizer_templates() {
 			#header .bottom-header span.span-dot{ color: {{illdy_jumbotron_points_color}}; }
 		{{/if}}
 		{{#if  illdy_jumbotron_descriptions_color }}
-			#header .bottom-header p{ color: {{illdy_jumbotron_descriptions_color}}; }
+			#header .bottom-header .section-description{ color: {{illdy_jumbotron_descriptions_color}}; }
 		{{/if}}
 		{{#if  illdy_jumbotron_first_button_color }}
 			#header .bottom-header .header-button-one{ color: {{illdy_jumbotron_first_button_color}}; }
@@ -725,7 +725,7 @@ function illdy_print_customizer_templates() {
 			#latest-news .section-header h3 { color: {{illdy_latest_news_title_color}}; }
 		{{/if}}
 		{{#if  illdy_latest_news_descriptions_color }}
-			#latest-news .section-header p{ color: {{illdy_latest_news_descriptions_color}}; }
+			#latest-news .section-header .section-description { color: {{illdy_latest_news_descriptions_color}}; }
 		{{/if}}
 		{{#if illdy_latest_news_button_background }}
 			#latest-news .latest-news-button { background-color: {{illdy_latest_news_button_background}}; }
@@ -782,7 +782,7 @@ function illdy_print_customizer_templates() {
 			#full-width .section-header h3 { color: {{illdy_full_width_title_color}}; }
 		{{/if}}
 		{{#if  illdy_full_width_descriptions_color }}
-			#full-width .section-header p { color: {{illdy_full_width_descriptions_color}}; }
+			#full-width .section-header .section-description { color: {{illdy_full_width_descriptions_color}}; }
 		{{/if}}
 	</script>
 
@@ -812,7 +812,7 @@ function illdy_print_customizer_templates() {
 			#about .section-header h3 { color: {{illdy_about_title_color}}; }
 		{{/if}}
 		{{#if  illdy_about_descriptions_color }}
-			#about .section-header p { color: {{illdy_about_descriptions_color}}; }
+			#about .section-header .section-description { color: {{illdy_about_descriptions_color}}; }
 		{{/if}}
 	</script>
 
@@ -842,7 +842,7 @@ function illdy_print_customizer_templates() {
 			#projects .section-header h3 { color: {{illdy_projects_title_color}}; }
 		{{/if}}
 		{{#if  illdy_projects_descriptions_color }}
-			#projects .section-header p { color: {{illdy_projects_descriptions_color}}; }
+			#projects .section-header .section-description { color: {{illdy_projects_descriptions_color}}; }
 		{{/if}}
 	</script>
 
@@ -872,7 +872,7 @@ function illdy_print_customizer_templates() {
 			#services .section-header h3 { color: {{illdy_services_title_color}}; }
 		{{/if}}
 		{{#if  illdy_services_descriptions_color }}
-			#services .section-header p { color: {{illdy_services_descriptions_color}}; }
+			#services .section-header .section-description { color: {{illdy_services_descriptions_color}}; }
 		{{/if}}
 	</script>
 
@@ -902,7 +902,7 @@ function illdy_print_customizer_templates() {
 			#team .section-header h3 { color: {{illdy_team_title_color}}; }
 		{{/if}}
 		{{#if  illdy_team_descriptions_color }}
-			#team .section-header p { color: {{illdy_team_descriptions_color}}; }
+			#team .section-header .section-description { color: {{illdy_team_descriptions_color}}; }
 		{{/if}}
 	</script>
 

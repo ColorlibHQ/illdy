@@ -487,7 +487,10 @@ body .wp-full-overlay{
 }
 
 .wp-js-editor-active textarea, .onepress-editor-added textarea{
-    display: none;
+    height: 0;
+    padding: 0;
+    border: 0;
+    margin: 0;
 }
 
 .wp-js-editor-preview {

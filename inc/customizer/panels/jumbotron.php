@@ -109,7 +109,7 @@ if ( get_theme_mod( $prefix . '_jumbotron_general_entry' ) ) {
 }
 
 $wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_general_entry', array(
-    'selector' => '#header .bottom-header .col-sm-8 p',
+    'selector' => '#header .bottom-header .section-description',
 ) );
 
 

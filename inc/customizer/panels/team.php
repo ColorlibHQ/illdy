@@ -80,7 +80,7 @@ if ( get_theme_mod( $prefix .'_team_general_entry' ) ) {
         ) )
     );
     $wp_customize->selective_refresh->add_partial( $prefix .'_team_general_entry', array(
-        'selector' => '#team .section-header p',
+        'selector' => '#team .section-header .section-description',
     ) );
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
     

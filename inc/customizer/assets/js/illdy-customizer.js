@@ -392,6 +392,18 @@
                     return false;
                 } );
 
+                control.editing_area.on( 'focus', function( e ){
+                    console.log('asdasdsad');
+                    $( '.modal-wp-js-editor').removeClass( 'wpe-active' );
+                    control.editing_editor.toggleClass( 'wpe-active' );
+                    tinyMCE.get( control.editor_id ).focus();
+                    control.preview.addClass( 'wpe-focus' );
+                    control._resize();
+                    return false;
+                } );
+
+
+
                 control.container.find( '.wp-js-editor').addClass( 'wp-js-editor-active' );
                 control.preview.insertBefore( control.editing_area );
                 control.container.on( 'click', '.wp-js-editor-preview', function( e ){

@@ -138,7 +138,7 @@ if ( get_theme_mod( $prefix .'_contact_us_entry' ) ) {
     
 }
 $wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_text', array(
-    'selector' => '#contact-us .section-header p',
+    'selector' => '#contact-us .section-header .section-description',
     'render_callback' => $prefix .'_contact_us_text',
 ) );
 

@@ -109,7 +109,7 @@ if ( get_theme_mod( $prefix .'_about_general_entry' ) ) {
 
 }
 $wp_customize->selective_refresh->add_partial( $prefix .'_about_general_entry', array(
-    'selector' => '#about .section-header p',
+    'selector' => '#about .section-header .section-description',
     'render_callback' => $prefix .'_about_general_entry',
 ) );
 
