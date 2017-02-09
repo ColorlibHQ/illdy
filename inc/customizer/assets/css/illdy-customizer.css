@@ -1,3 +1,6 @@
+ul.accordion-section {
+    min-height: 100% !important;
+}
 .description.customize-section-description {
 	background-color: #FFF;
 	border-radius: 5px;
