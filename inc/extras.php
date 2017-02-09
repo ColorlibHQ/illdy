@@ -110,7 +110,7 @@ if( !function_exists( 'illdy_sections_show' ) ) {
                 'illdy_full_width' => 'illdy_full_width_general_show'
             );
 
-        if ( in_array( $section , $controls) ) {
+        if ( array_key_exists( $section , $controls) ) {
             return get_theme_mod( $controls[$section], 1 );
         }else{
             return true;
