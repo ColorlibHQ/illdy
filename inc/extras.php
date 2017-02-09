@@ -176,57 +176,57 @@ if ( !function_exists( 'illdy_jumbotron_css' ) ) {
 
         $css = '';
         if ($illdy_jumbotron_general_image) {
-            $css .= '#header {background-image: url('.$illdy_jumbotron_general_image.') !important;}';
+            $css .= '#header.header-front-page {background-image: url('.$illdy_jumbotron_general_image.') !important;}';
         }else{
-            $css .= '#header {background-image: none !important;}';
+            $css .= '#header.header-front-page {background-image: none !important;}';
         }
         if ( $illdy_jumbotron_background_position_y ) {
-            $css .= '#header {background-position-y: '.$illdy_jumbotron_background_position_y.';}';
+            $css .= '#header.header-front-page {background-position-y: '.$illdy_jumbotron_background_position_y.';}';
         }
         if ( $illdy_jumbotron_background_position_x ) {
-            $css .= '#header {background-position-x: '.$illdy_jumbotron_background_position_x.';}';
+            $css .= '#header.header-front-page {background-position-x: '.$illdy_jumbotron_background_position_x.';}';
         }
         if ($illdy_jumbotron_background_size) {
-            $css .= '#header {background-size: '.$illdy_jumbotron_background_size.' !important;}';
+            $css .= '#header.header-front-page {background-size: '.$illdy_jumbotron_background_size.' !important;}';
         }
         if ($illdy_jumbotron_background_repeat) {
-            $css .= '#header {background-repeat: repeat !important;}';
+            $css .= '#header.header-front-page {background-repeat: repeat !important;}';
         }
         if ($illdy_jumbotron_background_attachment) {
-            $css .= '#header {background-attachment: scroll !important;}';
+            $css .= '#header.header-front-page {background-attachment: scroll !important;}';
         }
         if ($illdy_jumbotron_general_color) {
-            $css .= '#header {background-color: '.$illdy_jumbotron_general_color.';}';
+            $css .= '#header.header-front-page {background-color: '.$illdy_jumbotron_general_color.';}';
         }
         if ($illdy_jumbotron_first_button_background) {
-            $css .= '#header .bottom-header .header-button-one {background-color: '.$illdy_jumbotron_first_button_background.';}';
+            $css .= '#header.header-front-page .bottom-header .header-button-one {background-color: '.$illdy_jumbotron_first_button_background.';}';
         }
         if ($illdy_jumbotron_first_button_background_hover) {
-            $css .= '#header .bottom-header .header-button-one:hover {background-color: '.$illdy_jumbotron_first_button_background_hover.';}';
+            $css .= '#header.header-front-page .bottom-header .header-button-one:hover {background-color: '.$illdy_jumbotron_first_button_background_hover.';}';
         }
         if ($illdy_jumbotron_first_border_color) {
-            $css .= '#header .bottom-header .header-button-one {border-color: '.$illdy_jumbotron_first_border_color.';}';
+            $css .= '#header.header-front-page .bottom-header .header-button-one {border-color: '.$illdy_jumbotron_first_border_color.';}';
         }
         if ($illdy_jumbotron_second_button_background) {
-            $css .= '#header .bottom-header .header-button-two {background-color: '.$illdy_jumbotron_second_button_background.';}';
+            $css .= '#header.header-front-page .bottom-header .header-button-two {background-color: '.$illdy_jumbotron_second_button_background.';}';
         }
         if  ($illdy_jumbotron_second_button_background_hover) {
-            $css .= '#header .bottom-header .header-button-two:hover {background-color: '.$illdy_jumbotron_second_button_background_hover.';}';
+            $css .= '#header.header-front-page .bottom-header .header-button-two:hover {background-color: '.$illdy_jumbotron_second_button_background_hover.';}';
         }
         if  ($illdy_jumbotron_title_color) {
-            $css .= '#header .bottom-header h1 {color: '.$illdy_jumbotron_title_color.';}';
+            $css .= '#header.header-front-page .bottom-header h1 {color: '.$illdy_jumbotron_title_color.';}';
         }
         if  ($illdy_jumbotron_points_color) {
-            $css .= '#header .bottom-header span.span-dot {color: '.$illdy_jumbotron_points_color.';}';
+            $css .= '#header.header-front-page .bottom-header span.span-dot {color: '.$illdy_jumbotron_points_color.';}';
         }
         if  ($illdy_jumbotron_descriptions_color) {
-            $css .= '#header .bottom-header .section-description {color: '.$illdy_jumbotron_descriptions_color.';}';
+            $css .= '#header.header-front-page .bottom-header .section-description {color: '.$illdy_jumbotron_descriptions_color.';}';
         }
         if  ($illdy_jumbotron_first_button_color) {
-            $css .= '#header .bottom-header .header-button-one {color: '.$illdy_jumbotron_first_button_color.';}';
+            $css .= '#header.header-front-page .bottom-header .header-button-one {color: '.$illdy_jumbotron_first_button_color.';}';
         }
         if  ($illdy_jumbotron_right_button_color) { 
-            $css .= '#header .bottom-header .header-button-two {color: '.$illdy_jumbotron_right_button_color.';}';
+            $css .= '#header.header-front-page .bottom-header .header-button-two {color: '.$illdy_jumbotron_right_button_color.';}';
         }
 
         return $css;

@@ -306,7 +306,7 @@
 
                 var control = this;
                 control.container = container;
-                control.container.addClass( 'onepress-editor-added' );
+                control.container.addClass( 'illdy-editor-added' );
                 control.editing_area = $( 'textarea' , control.container );
                 if ( control.editing_area.hasClass( 'wp-editor-added' ) ) {
                     return false;

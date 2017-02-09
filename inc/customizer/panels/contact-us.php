@@ -116,7 +116,7 @@ if ( get_theme_mod( $prefix .'_contact_us_entry' ) ) {
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
     
     $wp_customize->add_setting(
-        $prefix . '_contact_us_text',
+        $prefix . '_contact_us_entry',
         array(
             'sanitize_callback' => 'esc_html',
             'default'           => '',
@@ -125,21 +125,21 @@ if ( get_theme_mod( $prefix .'_contact_us_entry' ) ) {
     );
     $wp_customize->add_control(
         new Illdy_Text_Custom_Control(
-            $wp_customize, $prefix . '_contact_us_text',
+            $wp_customize, $prefix . '_contact_us_entry',
             array(
                 'label'             => __( 'Install Illdy Companion', 'illdy' ),
                 'description'       => sprintf(__( 'In order to edit description please install <a href="%s" target="_blank">Illdy Companion</a>', 'illdy' ), illdy_get_recommended_actions_url()),
                 'section'           => $prefix . '_contact_us',
-                'settings'          => $prefix . '_contact_us_text',
+                'settings'          => $prefix . '_contact_us_entry',
                 'priority'          => 3,
             )
         )
     );
     
 }
-$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_text', array(
+$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_entry', array(
     'selector' => '#contact-us .section-header .section-description',
-    'render_callback' => $prefix .'_contact_us_text',
+    'render_callback' => $prefix .'_contact_us_entry',
 ) );
 
 // Address Title

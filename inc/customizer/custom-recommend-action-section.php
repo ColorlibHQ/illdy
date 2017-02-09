@@ -159,7 +159,7 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 					</span>
 				<# } #>
 			</h3>
-			<div class="recomended-actions_container" id="">
+			<div class="recomended-actions_container" id="plugin-filter">
 				<# if( data.required_actions.length > 0 ){ #>
 					<# for (action in data.required_actions) { #>
 						<div class="epsilon-recommeded-actions-container" data-index="{{ data.required_actions[action].index }}">
