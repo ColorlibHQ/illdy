@@ -553,7 +553,9 @@ a:hover, a:focus {
 	-o-background-size: cover;
 	background-size: cover;
 }
-
+#projects .project.no-url {
+	pointer-events: none;
+}
 #projects .project:hover .project-overlay {
 	opacity: 0.3;
 }
