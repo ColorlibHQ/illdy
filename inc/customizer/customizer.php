@@ -63,7 +63,7 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 
 		// Front Page sections panel
 		$wp_customize->add_panel( 'illdy_frontpage_panel', array(
-		    'priority'       => 100,
+		    'priority'       => 2,
 		    'title'          => esc_html__( 'Front Page Sections', 'illdy' ),
 		    'description'	 => esc_html__( 'Drag & drop to reorder front-page sections', 'illdy' ),
 		) );

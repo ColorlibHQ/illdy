@@ -76,7 +76,7 @@ if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
     
     $wp_customize->add_setting(
-        $prefix . '_latest_news_general_text',
+        $prefix . '_latest_news_general_entry',
         array(
             'sanitize_callback' => 'esc_html',
             'default'           => '',
@@ -85,7 +85,7 @@ if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
     );
     $wp_customize->add_control(
         new Illdy_Text_Custom_Control(
-            $wp_customize, $prefix . '_latest_news_general_text',
+            $wp_customize, $prefix . '_latest_news_general_entry',
             array(
                 'label'             => __( 'Install Illdy Companion', 'illdy' ),
                 'description'       => sprintf(__( 'In order to edit description please install <a href="%s" target="_blank">Illdy Companion</a>', 'illdy' ), illdy_get_recommended_actions_url()),
@@ -97,7 +97,7 @@ if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
     );
     
 }
-$wp_customize->selective_refresh->add_partial( $prefix .'_latest_news_general_text', array(
+$wp_customize->selective_refresh->add_partial( $prefix .'_latest_news_general_entry', array(
     'selector' => '#latest-news .section-header .section-description',
 ) );
 

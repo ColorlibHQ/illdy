@@ -1,3 +1,6 @@
+ul.accordion-section {
+    min-height: 100% !important;
+}
 .description.customize-section-description {
 	background-color: #FFF;
 	border-radius: 5px;
@@ -486,7 +489,7 @@ body .wp-full-overlay{
     z-index: 9999;
 }
 
-.wp-js-editor-active textarea, .onepress-editor-added textarea{
+.wp-js-editor-active textarea, .illdy-editor-added textarea{
     height: 0;
     padding: 0;
     border: 0;
