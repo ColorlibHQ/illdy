@@ -56,14 +56,14 @@ if ( ! class_exists( 'Epsilon_Color_Scheme' ) ) {
 				),
 				'epsilon_text_color' => array(
 					'label'       => __( 'Text Color', 'illdy' ),
-					'description' => __( 'The color used for paragraphs.', 'illdy' ),
+					'description' => __( 'The color used for headings.', 'illdy' ),
 					'default'     => '#545454',
 					'section'     => 'colors'
 				),
 				
 				'epsilon_contrast_color' => array(
 					'label'       => __( 'Contrast Color', 'illdy' ),
-					'description' => __( '', 'illdy' ),
+					'description' => __( 'The color used for paragraphs.', 'illdy' ),
 					'default'     => '#8c9597',
 					'section'     => 'colors'
 				),
@@ -160,12 +160,12 @@ if ( ! class_exists( 'Epsilon_Color_Scheme' ) ) {
 				.blog-post-related-articles .related-post:hover .related-post-title,
 				#comments #comments-list ul.comments .comment .url,
 				#comments #comments-list ul.comments .comment .comment-reply-link,
-				#comments #respond .comment-form #input-submit,
 				#header .bottom-header span.span-dot,
 				#header .top-header .header-navigation ul li:hover a,
 				input[type=submit] { color: %1$s; }
 				#header .top-header .header-navigation ul li.menu-item-has-children .sub-menu li:hover > a { border-color: %1$s; }
 				#header .bottom-header .header-button-two,
+				#comments #respond .comment-form #input-submit,
 				#latest-news .latest-news-button,
 				#contact-us .section-content .wpcf7-form p .wpcf7-submit,
 				#blog .blog-post .blog-post-button,
@@ -199,7 +199,7 @@ if ( ! class_exists( 'Epsilon_Color_Scheme' ) ) {
 				input:hover,
 				textarea:focus,
 				textarea:hover { border-color: %5$s; }
-				.front-page-section .section-header p,
+				.front-page-section .section-header .section-description,
 				#header .top-header .header-navigation ul li.menu-item-has-children .sub-menu li a,
 				#services .section-content .service .service-entry,
 				#latest-news .section-content .post .post-entry,
@@ -208,6 +208,18 @@ if ( ! class_exists( 'Epsilon_Color_Scheme' ) ) {
 				#contact-us .section-content .contact-us-box .box-right span a,
 				#contact-us .section-content .contact-us-social a,
 				#contact-us .section-content .wpcf7-form p .wpcf7-text,
+				#footer .copyright,
+				#footer .copyright a,
+				.widget table tbody,
+				input,
+				textarea,
+				.markup-format h1, 
+				.markup-format h2, 
+				.markup-format h3, 
+				.markup-format h4, 
+				.markup-format h5, 
+				.markup-format h6,
+				body { color: %4$s; }
 				#contact-us .section-content .wpcf7-form p .wpcf7-text::-webkit-input-placeholder,
 				#contact-us .section-content .wpcf7-form p .wpcf7-text::-moz-placeholder,
 				#contact-us .section-content .wpcf7-form p .wpcf7-text:-ms-input-placeholder,
@@ -216,15 +228,12 @@ if ( ! class_exists( 'Epsilon_Color_Scheme' ) ) {
 				#contact-us .section-content .wpcf7-form p .wpcf7-textarea::-webkit-input-placeholder,
 				#contact-us .section-content .wpcf7-form p .wpcf7-textarea::-moz-placeholder,
 				#contact-us .section-content .wpcf7-form p .wpcf7-textarea:-ms-input-placeholder,
-				#contact-us .section-content .wpcf7-form p .wpcf7-textarea:-moz-placeholder,
-				#footer .copyright,
-				#footer .copyright a,
-				.widget table tbody,
-				input,
-				textarea,
-				body { color: %4$s; }
+				#contact-us .section-content .wpcf7-form p .wpcf7-textarea:-moz-placeholder{ color: %4$s; }
 				.front-page-section .section-header h3,
 				#latest-news .section-content .post .post-button:active,
+				#blog .blog-post .blog-post-title,
+				.widget table thead th,
+				#team .section-content .person .person-content h6,
 				.widget_rss cite { color: %3$s; }
 			';
 			return $css;
