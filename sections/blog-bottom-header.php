@@ -38,8 +38,7 @@
 				<div class="col-sm-12">
 					<?php
 
-					$current_site_title        = get_bloginfo( 'name' );
-					$custom_blog_archive_title = get_theme_mod( 'illdy_custom_blog_archive_title', __( 'Blog', 'illdy' ) );
+					$custom_blog_archive_title        = get_bloginfo( 'name' );
 
 					// check if the current page being displayed is the same one set in Settings -> Reading as the blog page.
 					// Only for this page we're employing some custom logic to display a custom title.
