@@ -502,7 +502,7 @@
 	} );
 
 	// Show this section
-	wp.customize( 'illdy_contact_us_general_show', function( value ) {
+	wp.customize( 'illdy_contact_us_show', function( value ) {
 		value.bind( function( newval ) {
 			if( newval == false ) {
 				$( '#contact-us' ).addClass( 'customizer-display-none' );

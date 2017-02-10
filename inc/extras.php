@@ -106,7 +106,7 @@ if( !function_exists( 'illdy_sections_show' ) ) {
                 'illdy_latest_news_general' => 'illdy_latest_news_general_show',
                 'illdy_counter_general' => 'illdy_counter_general_show',
                 'illdy_panel_team' => 'illdy_team_general_show',
-                'illdy_contact_us' => 'illdy_contact_us_general_show',
+                'illdy_contact_us' => 'illdy_contact_us_show',
                 'illdy_full_width' => 'illdy_full_width_general_show'
             );
 
