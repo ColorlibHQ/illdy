@@ -106,7 +106,9 @@ a:hover, a:focus {
 	margin: 0 0 5px 0;
 	color: #545454;
 }
-
+.section-description img {
+	max-width: 100%;
+}
 .front-page-section .section-header .section-description {
 	margin-bottom: 0;
 	line-height: 26px;
