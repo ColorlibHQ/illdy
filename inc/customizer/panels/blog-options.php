@@ -19,12 +19,12 @@ $site_title->priority = 15;
 // Change priority for Site Tagline
 $site_title              = $wp_customize->get_control( 'blogdescription' );
 $site_title->label       = __( 'Default site tagline', 'illdy' );
-$site_title->description = __( 'The tagline will be shown on archive pages, in the jumbotron right below the title.', 'illdy' );
+$site_title->description = __( 'The tagline will be shown on archive pages, in the blog page right below the title.', 'illdy' );
 $site_title->priority    = 17;
 
 // site title
 $site_logo              = $wp_customize->get_control( 'blogname' );
-$site_logo->description = __( 'This is the default WordPress title. This will be used in the jumbotron, if you don\'t specify a custom title.', 'illdy' );
+$site_logo->description = __( 'This is the default WordPress title. This will be used in the blog page.', 'illdy' );
 
 $wp_customize->add_panel( $panel_id, array(
 	'priority'       => 2,
@@ -163,16 +163,3 @@ $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix 
 /***********************************************/
 /************** Title Blog Settings  ***************/
 /***********************************************/
-
-/* Posted on on single blog posts */
-$wp_customize->add_setting( $prefix . '_custom_blog_archive_title', array(
-	'sanitize_callback' => $prefix . '_sanitize_html',
-	'default'           => '',
-	'transport'         => 'postMessage',
-) );
-
-$wp_customize->add_control( $prefix . '_custom_blog_archive_title', array(
-	'label'       => __( 'Use a custom title on the blog archive.', 'illdy' ),
-	'description' => __( 'Will be displayed in the Jumbotron as a custom title. Only used on the blog archive, all other pages default to the WordPress Core functionality where the archive title is displayed.', 'illdy' ),
-	'section'     => 'title_tagline',
-) );

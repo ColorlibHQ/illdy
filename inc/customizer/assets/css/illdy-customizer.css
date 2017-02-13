@@ -132,12 +132,16 @@ ul.accordion-section {
     min-height: 50px;
     border-radius: 5px;
     left: -75px; /* half of its width */
-    top: 25px;
+    bottom: 25px;
     z-index: 10;
     display: none;
     padding: 12px;
     line-height: 1.5;
     font-family: 'Arial', sans-serif;
+}
+.accordion-section-content > li:nth-of-type(2) .mte-tooltip {
+    bottom: initial;
+    top: 25px;
 }
 
 .dashicons.dashicons-editor-help {
