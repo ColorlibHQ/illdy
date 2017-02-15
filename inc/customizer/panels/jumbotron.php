@@ -38,7 +38,7 @@ $wp_customize->add_setting( $prefix . '_jumbotron_enable_parallax_effect', array
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_jumbotron_enable_parallax_effect', array(
 	'type'        => 'mte-toggle',
-	'label'       => __( 'Parallax effect on header image ?', 'illdy' ),
+	'label'       => __( 'Enable parallax effect ?', 'illdy' ),
 	'description' => __( 'Enabling this will add a parallax scrolling effect for the header image.', 'illdy' ),
 	'section'     => $prefix . '_jumbotron_general',
 ) ) );

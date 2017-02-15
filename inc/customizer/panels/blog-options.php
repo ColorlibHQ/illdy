@@ -101,7 +101,7 @@ $wp_customize->add_setting( $prefix . '_enable_post_posted_on_blog_posts', array
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_posted_on_blog_posts', array(
 	'type'        => 'mte-toggle',
-	'label'       => __( 'Posted on meta on single blog post', 'illdy' ),
+	'label'       => __( 'Show Posted on', 'illdy' ),
 	'description' => __( 'This will disable the posted on zone as well as the author name', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
 ) ) );
@@ -114,9 +114,9 @@ $wp_customize->add_setting( $prefix . '_enable_post_category_blog_posts', array(
 ) );
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_category_blog_posts', array(
 	'type'        => 'mte-toggle',
-	'label'       => __( 'Category meta on single blog post', 'illdy' ),
+	'label'       => __( 'Show category', 'illdy' ),
 	'description' => __( 'This will disable the posted in zone.', 'illdy' ),
-	// 'section'       => $prefix.'_blog_global_section',
+	'section'       => $prefix.'_blog_global_section',
 ) ) );
 
 
@@ -128,7 +128,7 @@ $wp_customize->add_setting( $prefix . '_enable_post_tags_blog_posts', array(
 ) );
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_tags_blog_posts', array(
 	'type'        => 'mte-toggle',
-	'label'       => __( 'Tags meta on single blog post', 'illdy' ),
+	'label'       => __( 'Show tags', 'illdy' ),
 	'description' => __( 'This will disable the tagged with zone.', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
 ) ) );
@@ -142,7 +142,7 @@ $wp_customize->add_setting( $prefix . '_enable_post_comments_blog_posts', array(
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_comments_blog_posts', array(
 	'type'        => 'mte-toggle',
-	'label'       => __( 'Coments meta on single blog post', 'illdy' ),
+	'label'       => __( 'Show comments number', 'illdy' ),
 	'description' => __( 'This will disable the comments header zone.', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
 ) ) );
@@ -155,7 +155,7 @@ $wp_customize->add_setting( $prefix . '_enable_author_box_blog_posts', array(
 ) );
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_author_box_blog_posts', array(
 	'type'        => 'mte-toggle',
-	'label'       => __( 'Author info box on single blog post', 'illdy' ),
+	'label'       => __( 'Show author box', 'illdy' ),
 	'description' => __( 'Displayed right at the end of the post', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
 ) ) );
