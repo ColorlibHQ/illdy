@@ -55,7 +55,7 @@ $wp_customize->add_control( $prefix . '_jumbotron_general_first_row_from_title',
 ) );
 
 $wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_general_first_row_from_title', array(
-    'selector' => '#header .bottom-header h1 span:nth-child(1)',
+    'selector' => '#header .bottom-header.front-page h1 span:nth-child(1)',
     'render_callback' => $prefix .'_jumbotron_general_first_row_from_title',
 ) );
 
@@ -71,7 +71,7 @@ $wp_customize->add_control( $prefix . '_jumbotron_general_second_row_from_title'
 ) );
 
 $wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_general_second_row_from_title', array(
-    'selector' => '#header .bottom-header h1 span:nth-child(3)',
+    'selector' => '#header .bottom-header.front-page h1 span:nth-child(3)',
     'render_callback' => $prefix .'_jumbotron_general_second_row_from_title',
 ) );
 
@@ -87,7 +87,7 @@ $wp_customize->add_control( $prefix . '_jumbotron_general_third_row_from_title',
 ) );
 
 $wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_general_third_row_from_title', array(
-    'selector' => '#header .bottom-header h1 span:nth-child(5)',
+    'selector' => '#header .bottom-header.front-page h1 span:nth-child(5)',
     // 'render_callback' => $prefix .'_jumbotron_general_second_row_from_title',
 ) );
 
@@ -109,7 +109,7 @@ if ( get_theme_mod( $prefix . '_jumbotron_general_entry' ) ) {
 }
 
 $wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_general_entry', array(
-    'selector' => '#header .bottom-header .section-description',
+    'selector' => '#header .bottom-header.front-page .section-description',
 ) );
 
 
