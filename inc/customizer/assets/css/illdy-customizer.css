@@ -131,17 +131,15 @@ ul.accordion-section {
     font-size: 12px;
     min-height: 50px;
     border-radius: 5px;
-    left: -75px; /* half of its width */
-    bottom: 25px;
+    right: -150px;
+    top: -10px;
     z-index: 10;
     display: none;
     padding: 12px;
     line-height: 1.5;
     font-family: 'Arial', sans-serif;
-}
-.accordion-section-content > li:nth-of-type(2) .mte-tooltip {
-    bottom: initial;
-    top: 25px;
+    transform: translateY(-100%);
+    left: auto;
 }
 
 .dashicons.dashicons-editor-help {
