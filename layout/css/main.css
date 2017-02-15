@@ -2447,6 +2447,22 @@ span.rss-date:before,
 #comments #respond .comment-form textarea:-moz-placeholder {
 	color: #8c9597;
 }
+#comments #respond .comment-form input.input-full::-webkit-input-placeholder {
+	color: #8c9597;
+}
+
+#comments #respond .comment-form input.input-full::-moz-placeholder {
+	color: #8c9597;
+}
+
+#comments #respond .comment-form input.input-full:-ms-input-placeholder {
+	color: #8c9597;
+}
+
+#comments #respond .comment-form input.input-full:-moz-placeholder {
+	color: #8c9597;
+}
+
 input,
 textarea {
 	width: 100%;
