@@ -17,23 +17,13 @@
 					<?php
 
 						$title = get_the_title();
-						$count = str_word_count( strip_tags( $title ) );
-						if ( $count > 1 ) {
-							echo '<h1>' . esc_html( $title ) . '<span class="span-dot">.</span></h1>';
-						}else{
-							echo '<h1>' . esc_html( $title ) . '</h1>';
-						}
+						echo '<h1>' . esc_html( $title ) . '</h1>';
 
 					?>
 				</div><!--/.col-sm-12-->
 			<?php }elseif ( class_exists( 'WooCommerce' ) && is_shop() ) {
 				$title = get_the_title(woocommerce_get_page_id( 'shop' ));
-				$count = str_word_count( strip_tags( $title ) );
-				if ( $count > 1 ) {
-					echo '<h1>' . esc_html( $title ) . '<span class="span-dot">.</span></h1>';
-				}else{
-					echo '<h1>' . esc_html( $title ) . '</h1>';
-				}
+				echo '<h1>' . esc_html( $title ) . '</h1>';
 			}else{ ?>
 				<div class="col-sm-12">
 					<?php
@@ -47,21 +37,10 @@
 
 
 					if ( ! empty( $custom_blog_archive_title ) && is_home() ) {
-						$count = str_word_count( strip_tags( $custom_blog_archive_title ) );
-						if ( $count > 1 ) {
-							echo '<h2>' . esc_html( $custom_blog_archive_title ) . '<span class="span-dot">.</span></h2>';
-						}else{
-							echo '<h2>' . esc_html( $custom_blog_archive_title ) . '</h2>';
-						}
-						
+						echo '<h2>' . esc_html( $custom_blog_archive_title ) . '</h2>';
 					} else {
 						$archive_title = get_the_archive_title();
-						$count = str_word_count( strip_tags( $archive_title ) );
-						if ( $count > 1 ) {
-							echo '<h2>' . esc_html( $archive_title ) . '<span class="span-dot">.</span></h2>';
-						}else{
-							echo '<h2>' . esc_html( $archive_title ) . '</h2>';
-						}
+						echo '<h2>' . esc_html( $archive_title ) . '</h2>';
 					}
 
 					?>
