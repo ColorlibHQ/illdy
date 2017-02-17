@@ -583,4 +583,10 @@
 
 	});
 
+	$(document).ready(function(){
+		wp.customize.selectiveRefresh.bind('widget-updated', function (placement) {
+			$('.parallax-window').parallax();
+		});
+	});
+
 } )( jQuery );

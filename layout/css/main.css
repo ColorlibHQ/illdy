@@ -2556,6 +2556,12 @@ p.mb32 {
 .border-bottom {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+.illdy_home_parallax .cast-shadow.img-responsive {
+	display: inline-block;
+}
+.illdy-customizer-preview .parallax-mirror {
+	z-index: 0 !important;
+}
 
 @media only screen and (max-width: 1024px) {
 	#header {

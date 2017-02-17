@@ -856,7 +856,7 @@
          _.each( sections.fullwidth, function( setting ){
             liveObj.values[setting] = wp.customize(setting)();
         });
-
+         console.log('in fws');
         wp.customize.previewer.send('update-section-css', liveObj);
     }
 
