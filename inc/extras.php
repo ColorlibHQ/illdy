@@ -322,13 +322,11 @@ if ( !function_exists( 'illdy_fullwidth_css' ) ) {
 
         $illdy_full_width_title_color = esc_html(get_theme_mod('illdy_full_width_title_color'));
         $illdy_full_width_descriptions_color = esc_html(get_theme_mod('illdy_full_width_descriptions_color'));
-        $illdy_full_width_general_color = esc_html(get_theme_mod('illdy_full_width_general_color'));
+        $illdy_full_width_general_color = esc_html(get_theme_mod('illdy_full_width_general_color', ''));
         $illdy_full_width_general_image = esc_url(get_theme_mod('illdy_full_width_general_image'));
         $illdy_full_width_background_size = esc_html(get_theme_mod('illdy_full_width_background_size'));
         $illdy_full_width_background_repeat = esc_html(get_theme_mod('illdy_full_width_background_repeat'));
         $illdy_full_width_background_attachment = esc_html(get_theme_mod('illdy_full_width_background_attachment'));
-        $illdy_full_width_first_button_color = esc_html(get_theme_mod('illdy_full_width_first_button_color'));
-        $illdy_full_width_right_button_color = esc_html(get_theme_mod('illdy_full_width_right_button_color'));
         $illdy_full_width_background_position_y = esc_html(get_theme_mod('illdy_full_width_background_position_y'));
         $illdy_full_width_background_position_x = esc_html(get_theme_mod('illdy_full_width_background_position_x'));
 
@@ -639,4 +637,13 @@ if ( !function_exists( 'illdy_output_sections_css' ) ) {
 
     add_action( 'wp_head', 'illdy_output_sections_css', 99 );
 
+}
+
+add_filter('body_class', 'illdy_output_customizer_class');
+
+function illdy_output_customizer_class($classes) {
+        if ( is_customize_preview() ) {
+            $classes[] = 'illdy-customizer-preview';
+        }
+        return $classes;
 }
