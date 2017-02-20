@@ -848,7 +848,8 @@ a:hover, a:focus {
 	text-decoration: none;
 	color: #6a4d8a;
 }
-#latest-news .section-content .post .post-button:active {
+#latest-news .section-content .post .post-button:active,
+.top-parallax-section h1 {
 	color: #545454;
 }
 
@@ -2543,10 +2544,7 @@ a.button:hover {
 p.mb32 {
 	margin-bottom: 32px;
 }
-.illdy_home_parallax .parallax-window h1,
-.illdy_home_parallax .parallax-window p {
-	color: #fff;
-}
+
 .illdy_home_parallax .row {
 	margin: 0;
 }
