@@ -234,7 +234,8 @@ if ( ! class_exists( 'Epsilon_Color_Scheme' ) ) {
 				#blog .blog-post .blog-post-title,
 				.widget table thead th,
 				#team .section-content .person .person-content h6,
-				.widget_rss cite { color: %3$s; }
+				.widget_rss cite,
+				.top-parallax-section h1 { color: %3$s; }
 			';
 			return $css;
 		}
