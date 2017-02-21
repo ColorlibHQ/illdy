@@ -39,7 +39,7 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 				'illdy-recomended-section',
 				array(
 					'title'    => esc_html__( 'Recomended Actions', 'illdy' ),
-					'succes_text'	=> esc_html__( 'Follow us on :', 'illdy' ),
+					'succes_text'	=> esc_html__( 'We are social :', 'illdy' ),
 					'facebook' => 'https://www.facebook.com/colorlib',
 					'twitter' => 'https://twitter.com/colorlib',
 					'wp_review' => true,
@@ -79,8 +79,8 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
                         $wp_customize,
                         'illdy_color_scheme',
                         array(
-                            'label'       => esc_html__( 'Color scheme', 'newsmag-pro' ),
-                            'description' => esc_html__( 'Select a color scheme', 'newsmag-pro' ),
+                            'label'       => esc_html__( 'Color scheme', 'illdy' ),
+                            'description' => esc_html__( 'Select a color scheme', 'illdy' ),
                             'choices'     => array(
 	                            array(
 		                            'id'     => 'Illdy',
@@ -581,14 +581,14 @@ if ( ! function_exists( 'illdy_get_section_position' ) ) {
 
 function illdy_sanitize_background_repeat( $value, $setting ) {
 	if ( ! in_array( $value, array( 'repeat-x', 'repeat-y', 'repeat', 'no-repeat' ) ) ) {
-		return new WP_Error( 'invalid_value', __( 'Invalid value for background repeat.' ) );
+		return new WP_Error( 'invalid_value', __( 'Invalid value for background repeat.', 'illdy' ) );
 	}
 	return $value;
 }
 
 function illdy_sanitize_background_preset( $value, $setting ) {
  	if ( ! in_array( $value, array( 'default', 'fill', 'fit', 'repeat', 'custom' ), true ) ) {
-		return new WP_Error( 'invalid_value', __( 'Invalid value for background size.' ) );
+		return new WP_Error( 'invalid_value', __( 'Invalid value for background size.', 'illdy' ) );
 	}
 
 	return $value;
@@ -596,7 +596,7 @@ function illdy_sanitize_background_preset( $value, $setting ) {
 
 function illdy_sanitize_background_size( $value, $setting ) {
 	if ( ! in_array( $value, array( 'auto', 'contain', 'cover' ), true ) ) {
-		return new WP_Error( 'invalid_value', __( 'Invalid value for background size.' ) );
+		return new WP_Error( 'invalid_value', __( 'Invalid value for background size.', 'illdy' ) );
 	}
 	return $value;
 }

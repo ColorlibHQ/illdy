@@ -53,7 +53,7 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			'default' => array(
 				'url'           => '%s/layout/images/blog/blog-header.png',
 				'thumbnail_url' => '%s/layout/images/blog/blog-header.png',
-				'description'   => __( 'Coffe', 'twentyeleven' )
+				'description'   => __( 'Coffe', 'illdy' )
 			),
 		) );
 
@@ -87,7 +87,6 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			global $illdy_required_actions, $illdy_recommended_plugins;
 			$illdy_recommended_plugins = array(
 				'kiwi-social-share'		=> array( 'recommended' => false ),
-				'jetpack'           	=> array( 'recommended' => false ),
 				'contact-form-7'  		=> array( 'recommended' => false ),
 			);
 			/*
@@ -102,10 +101,18 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 				array(
 					"id"          => 'illdy-req-ac-install-illdy-companion',
 					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Illdy Companion', 'illdy' ), __( 'Activate: Illdy Companion', 'illdy' ), 'illdy-companion' ),
-					"description" => __( 'It is highly recommended that you install the Illdy Companion.', 'allegiant' ),
+					"description" => __( 'It is highly recommended that you install the Illdy Companion.', 'illdy' ),
 					"check"       => MT_Notify_System::has_import_plugin( 'illdy-companion' ),
 					"type"		  => 'plugin',
 					"plugin_slug" => 'illdy-companion'
+				),
+				array(
+					"id"          => 'illdy-req-ac-install-contact-form-7',
+					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Contact Form 7', 'illdy' ), __( 'Activate: Contact Form 7', 'illdy' ), 'illdy-companion' ),
+					"description" => __( 'It is highly recommended that you install the Contact Form 7.', 'illdy' ),
+					"check"       => MT_Notify_System::has_import_plugin( 'contact-form-7' ),
+					"type"		  => 'plugin',
+					"plugin_slug" => 'contact-form-7'
 				)
 			);
 

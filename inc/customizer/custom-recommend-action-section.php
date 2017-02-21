@@ -124,8 +124,11 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 		$json['total_actions'] = count($illdy_required_actions);
 		$json['succes_text'] = $this->succes_text;
 		$json['facebook'] = $this->facebook;
+		$json['facebook_text'] = esc_html__( 'Facebook', 'illdy' );
 		$json['twitter'] = $this->twitter;
+		$json['twitter_text'] = esc_html__( 'Twitter', 'illdy' );
 		$json['wp_review'] = $this->wp_review;
+		$json['wp_review_text'] = esc_html__( 'Review this theme on w.org', 'illdy' );
 		if ( $this->wp_review ) {
 			$json['theme_slug'] = get_template();
 		}
@@ -187,27 +190,27 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 				<# if( data.required_actions.length == 0 ){ #>
 					<p class="succes">
 						<# if( data.facebook ){ #>
-							<a href="{{ data.facebook }}" class="button social"><span class="dashicons dashicons-facebook-alt"></span>Facebook</a>
+							<a href="{{ data.facebook }}" class="button social"><span class="dashicons dashicons-facebook-alt"></span>{{ data.facebook_text }}</a>
 						<# } #>
 
 						<# if( data.twitter ){ #>
-							<a href="{{ data.twitter }}" class="button social"><span class="dashicons dashicons-twitter"></span>Twitter</a>
+							<a href="{{ data.twitter }}" class="button social"><span class="dashicons dashicons-twitter"></span>{{ data.twitter_text }}</a>
 						<# } #>
 						<# if( data.wp_review ){ #>
-							<a href="https://wordpress.org/support/theme/{{ data.theme_slug }}/reviews/#new-post" class="button button-primary illdy-wordpress"><span class="dashicons dashicons-wordpress"></span>Review this theme on w.org</a>
+							<a href="https://wordpress.org/support/theme/{{ data.theme_slug }}/reviews/#new-post" class="button button-primary illdy-wordpress"><span class="dashicons dashicons-wordpress"></span>{{ data.wp_review_text }}</a>
 						<# } #>
 					</p>
 				<# }else{ #>
 					<p class="succes hide">
 						<# if( data.facebook ){ #>
-							<a href="{{ data.facebook }}" class="button social">Facebook</a>
+							<a href="{{ data.facebook }}" class="button social"><span class="dashicons dashicons-facebook-alt"></span>{{ data.facebook_text }}</a>
 						<# } #>
 
 						<# if( data.twitter ){ #>
-							<a href="{{ data.twitter }}" class="button social">Twitter</a>
+							<a href="{{ data.twitter }}" class="button social"><span class="dashicons dashicons-twitter"></span>{{ data.twitter_text }}</a>
 						<# } #>
 						<# if( data.wp_review ){ #>
-							<a href="https://wordpress.org/support/theme/{{ data.theme_slug }}/reviews/#new-post" class="button button-primary">Review this theme on w.org</a>
+							<a href="https://wordpress.org/support/theme/{{ data.theme_slug }}/reviews/#new-post" class="button button-primary illdy-wordpress"><span class="dashicons dashicons-wordpress"></span>{{ data.wp_review_text }}</a>
 						<# } #>
 					</p>
 				<# } #>

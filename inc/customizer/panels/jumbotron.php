@@ -168,7 +168,8 @@ $wp_customize->add_control( 'illdy_jumbotron_general_second_button_url', array(
 
 // Colors & Backgrounds
 $wp_customize->add_setting( $prefix . '_jumbotron_tab', array(
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
+        'sanitize_callback' => 'wp_kses_post'
     )
 );
 $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
@@ -241,7 +242,7 @@ $wp_customize->add_setting( $prefix . '_jumbotron_background_size', array(
 	'transport'         => 'postMessage',
 ) );
 $wp_customize->add_control( $prefix . '_jumbotron_background_size', array(
-	'label'      => __( 'Image Size' ),
+	'label'      => __( 'Image Size', 'illdy' ),
 	'section'    => $prefix . '_jumbotron_general',
 	'type'       => 'select',
 	'choices'    => array(

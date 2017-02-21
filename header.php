@@ -75,17 +75,17 @@ else: echo 'header-blog'; endif; ?>" style="<?php echo $style ?>">
 
 				</div><!--/.col-sm-2-->
 				<div class="col-sm-8 col-xs-4">
+					<nav class="header-navigation">
 					<?php
 						wp_nav_menu( array(
 							'theme_location'  => 'primary-menu',
 							'menu'            => '',
-							'container'       => 'nav',
-							'container_class' => 'header-navigation',
-							'container_id'    => '',
+							'container'       => false,
 							'menu_class'      => 'clearfix',
 							'menu_id'         => '',
 						) );
 					?>
+					</nav>
 					<button class="open-responsive-menu"><i class="fa fa-bars"></i></button>
 				</div><!--/.col-sm-10-->
 			</div><!--/.row-->
