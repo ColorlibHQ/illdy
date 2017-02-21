@@ -784,6 +784,9 @@ function illdy_print_customizer_templates() {
 		{{#if  illdy_full_width_descriptions_color }}
 			#full-width .section-header .section-description { color: {{illdy_full_width_descriptions_color}}; }
 		{{/if}}
+		{{#if  illdy_full_width_descriptions_color }}
+			#full-width .top-parallax-section h1, #full-width .top-parallax-section p { color: {{illdy_full_width_full_text}}; }
+		{{/if}}
 	</script>
 
 	<script id="illdy-about-section" type="text/x-handlebars-template">

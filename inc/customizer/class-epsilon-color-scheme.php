@@ -235,7 +235,7 @@ if ( ! class_exists( 'Epsilon_Color_Scheme' ) ) {
 				.widget table thead th,
 				#team .section-content .person .person-content h6,
 				.widget_rss cite,
-				.top-parallax-section h1 { color: %3$s; }
+				.illdy_home_parallax h3 { color: %3$s; }
 			';
 			return $css;
 		}
