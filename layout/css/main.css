@@ -849,8 +849,12 @@ a:hover, a:focus {
 	color: #6a4d8a;
 }
 #latest-news .section-content .post .post-button:active,
-.top-parallax-section h1 {
+.illdy_home_parallax h3 {
 	color: #545454;
+}
+.top-parallax-section h1,
+.top-parallax-section p {
+	color: #fff;
 }
 
 #latest-news .section-content .post .post-button .fa {

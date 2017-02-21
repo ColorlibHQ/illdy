@@ -127,6 +127,7 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
                     $prefix . '_full_width_title_color',
                     $prefix . '_full_width_descriptions_color',
                     $prefix . '_full_width_general_color',
+                    $prefix . '_full_width_full_text',
                     ),
                 'active' => true
                 ),
@@ -245,4 +246,15 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
     'label'    => __( 'Description Color', 'illdy' ),
     'section'  => $panel_id,
     'settings' => $prefix . '_full_width_descriptions_color',
+) ) );
+
+$wp_customize->add_setting( $prefix . '_full_width_full_text', array(
+    'sanitize_callback' => 'sanitize_hex_color',
+    'default'           => '#fff',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_full_width_full_text', array(
+    'label'    => __( 'Title & Description Color for Full & Small Parallax Widget', 'illdy' ),
+    'section'  => $panel_id,
+    'settings' => $prefix . '_full_width_full_text',
 ) ) );

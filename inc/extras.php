@@ -322,6 +322,7 @@ if ( !function_exists( 'illdy_fullwidth_css' ) ) {
 
         $illdy_full_width_title_color = esc_html(get_theme_mod('illdy_full_width_title_color'));
         $illdy_full_width_descriptions_color = esc_html(get_theme_mod('illdy_full_width_descriptions_color'));
+        $illdy_full_width_full_text = esc_html(get_theme_mod('illdy_full_width_full_text'));
         $illdy_full_width_general_color = esc_html(get_theme_mod('illdy_full_width_general_color', ''));
         $illdy_full_width_general_image = esc_url(get_theme_mod('illdy_full_width_general_image'));
         $illdy_full_width_background_size = esc_html(get_theme_mod('illdy_full_width_background_size'));
@@ -357,6 +358,9 @@ if ( !function_exists( 'illdy_fullwidth_css' ) ) {
         }
         if  ($illdy_full_width_descriptions_color) {
             $css .= '#full-width .section-header .section-description {color: '.$illdy_full_width_descriptions_color.';}';
+        }
+        if  ($illdy_full_width_descriptions_color) {
+            $css .= '#full-width .top-parallax-section h1, #full-width .top-parallax-section p {color: '.$illdy_full_width_full_text.';}';
         }
         
         return $css;

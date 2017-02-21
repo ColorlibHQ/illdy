@@ -727,6 +727,7 @@
             'illdy_full_width_title_color',
             'illdy_full_width_descriptions_color',
             'illdy_full_width_general_color',
+            'illdy_full_width_full_text',
             'illdy_full_width_general_image',
             'illdy_full_width_background_size',
             'illdy_full_width_background_repeat',
