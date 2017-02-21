@@ -16,7 +16,8 @@ $wp_customize->add_section( $prefix . '_contact_us' ,
 );
 
 $wp_customize->add_setting( $prefix . '_contact_tab', array(
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
+        'sanitize_callback' => 'wp_kses_post'
     )
 );
 $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,

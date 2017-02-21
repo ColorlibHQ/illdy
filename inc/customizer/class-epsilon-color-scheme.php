@@ -108,7 +108,7 @@ if ( ! class_exists( 'Epsilon_Color_Scheme' ) ) {
 		public function get_color_scheme() {
 			$colors = array();
 			foreach ( $this->options as $k => $v ) {
-				$color        = get_theme_mod( $k, $v );
+				$color        = sanitize_hex_color(get_theme_mod( $k, $v ));
 				$colors[ $k ] = $color;
 			}
 			/**

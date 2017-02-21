@@ -95,7 +95,8 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_full_width_general_ent
 ) );
 $wp_customize->add_setting( $prefix .'_full_width_widget_button',
     array(
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
+        'sanitize_callback' => 'wp_kses_post',
     )
 );
 $wp_customize->add_control(
@@ -113,6 +114,7 @@ $wp_customize->add_control(
 );
 $wp_customize->add_setting( $prefix . '_full_width_tab', array(
         'transport'         => 'postMessage'
+        'sanitize_callback' => 'wp_kses_post',
     )
 );
 $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
@@ -180,13 +182,13 @@ $wp_customize->add_setting( $prefix . '_full_width_background_size', array(
     'transport'         => 'postMessage',
 ) );
 $wp_customize->add_control( $prefix . '_full_width_background_size', array(
-    'label'      => __( 'Image Size' ),
+    'label'      => __( 'Image Size', 'illdy' ),
     'section'    => $panel_id,
     'type'       => 'select',
     'choices'    => array(
-        'auto'    => __( 'Original' ),
-        'contain' => __( 'Fit to Screen' ),
-        'cover'   => __( 'Fill Screen' ),
+        'auto'    => __( 'Original', 'illdy' ),
+        'contain' => __( 'Fit to Screen', 'illdy' ),
+        'cover'   => __( 'Fill Screen', 'illdy' ),
     ),
 ) );
 

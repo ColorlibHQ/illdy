@@ -162,17 +162,17 @@ if ( !function_exists( 'illdy_jumbotron_css' ) ) {
         $illdy_jumbotron_background_position_x = esc_html(get_theme_mod('illdy_jumbotron_background_position_x'));
         $illdy_jumbotron_background_repeat = esc_html(get_theme_mod('illdy_jumbotron_background_repeat'));
         $illdy_jumbotron_background_attachment = esc_html(get_theme_mod('illdy_jumbotron_background_attachment'));
-        $illdy_jumbotron_general_color = esc_html(get_theme_mod('illdy_jumbotron_general_color'));
-        $illdy_jumbotron_first_border_color = esc_html(get_theme_mod('illdy_jumbotron_first_button_background'));
-        $illdy_jumbotron_first_button_background = esc_html(illdy_hex2rgb( $illdy_jumbotron_first_border_color, '.2' ));
-        $illdy_jumbotron_first_button_background_hover = esc_html(illdy_hex2rgb( $illdy_jumbotron_first_border_color, '.1' ));
-        $illdy_jumbotron_second_button_background = esc_html(get_theme_mod('illdy_jumbotron_second_button_background'));
-        $illdy_jumbotron_second_button_background_hover = esc_html(get_theme_mod('illdy_jumbotron_second_button_background_hover'));
-        $illdy_jumbotron_title_color = esc_html(get_theme_mod('illdy_jumbotron_title_color'));
-        $illdy_jumbotron_points_color = esc_html(get_theme_mod('illdy_jumbotron_points_color'));
-        $illdy_jumbotron_descriptions_color = esc_html(get_theme_mod('illdy_jumbotron_descriptions_color'));
-        $illdy_jumbotron_first_button_color = esc_html(get_theme_mod('illdy_jumbotron_first_button_color'));
-        $illdy_jumbotron_right_button_color = esc_html(get_theme_mod('illdy_jumbotron_right_button_color'));
+        $illdy_jumbotron_general_color = sanitize_hex_color(get_theme_mod('illdy_jumbotron_general_color'));
+        $illdy_jumbotron_first_border_color = sanitize_hex_color(get_theme_mod('illdy_jumbotron_first_button_background'));
+        $illdy_jumbotron_first_button_background = sanitize_hex_color(illdy_hex2rgb( $illdy_jumbotron_first_border_color, '.2' ));
+        $illdy_jumbotron_first_button_background_hover = sanitize_hex_color(illdy_hex2rgb( $illdy_jumbotron_first_border_color, '.1' ));
+        $illdy_jumbotron_second_button_background = sanitize_hex_color(get_theme_mod('illdy_jumbotron_second_button_background'));
+        $illdy_jumbotron_second_button_background_hover = sanitize_hex_color(get_theme_mod('illdy_jumbotron_second_button_background_hover'));
+        $illdy_jumbotron_title_color = sanitize_hex_color(get_theme_mod('illdy_jumbotron_title_color'));
+        $illdy_jumbotron_points_color = sanitize_hex_color(get_theme_mod('illdy_jumbotron_points_color'));
+        $illdy_jumbotron_descriptions_color = sanitize_hex_color(get_theme_mod('illdy_jumbotron_descriptions_color'));
+        $illdy_jumbotron_first_button_color = sanitize_hex_color(get_theme_mod('illdy_jumbotron_first_button_color'));
+        $illdy_jumbotron_right_button_color = sanitize_hex_color(get_theme_mod('illdy_jumbotron_right_button_color'));
 
         $css = '';
         if ($illdy_jumbotron_general_image) {
@@ -236,24 +236,22 @@ if ( !function_exists( 'illdy_jumbotron_css' ) ) {
 if ( !function_exists( 'illdy_latestnews_css' ) ) {
     function illdy_latestnews_css(){
 
-        $illdy_latest_news_title_color = esc_html(get_theme_mod('illdy_latest_news_title_color'));
-        $illdy_latest_news_descriptions_color = esc_html(get_theme_mod('illdy_latest_news_descriptions_color'));
-        $illdy_latest_news_general_color = esc_html(get_theme_mod('illdy_latest_news_general_color'));
-        $illdy_latest_news_button_background = esc_html(get_theme_mod('illdy_latest_news_button_background'));
-        $illdy_latest_news_button_background_hover = esc_html(get_theme_mod('illdy_latest_news_button_background_hover'));
-        $illdy_latest_news_button_color = esc_html(get_theme_mod('illdy_latest_news_button_color'));
-        $illdy_latest_news_post_bakground_color = esc_html(get_theme_mod('illdy_latest_news_post_bakground_color'));
-        $illdy_latest_news_post_text_color = esc_html(get_theme_mod('illdy_latest_news_post_text_color'));
-        $illdy_latest_news_post_text_hover_color = esc_html(get_theme_mod('illdy_latest_news_post_text_hover_color'));
-        $illdy_latest_news_post_content_color = esc_html(get_theme_mod('illdy_latest_news_post_content_color'));
-        $illdy_latest_news_post_button_color = esc_html(get_theme_mod('illdy_latest_news_post_button_color'));
-        $illdy_latest_news_post_button_hover_color = esc_html(get_theme_mod('illdy_latest_news_post_button_hover_color'));
+        $illdy_latest_news_title_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_title_color'));
+        $illdy_latest_news_descriptions_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_descriptions_color'));
+        $illdy_latest_news_general_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_general_color'));
+        $illdy_latest_news_button_background = sanitize_hex_color(get_theme_mod('illdy_latest_news_button_background'));
+        $illdy_latest_news_button_background_hover = sanitize_hex_color(get_theme_mod('illdy_latest_news_button_background_hover'));
+        $illdy_latest_news_button_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_button_color'));
+        $illdy_latest_news_post_bakground_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_post_bakground_color'));
+        $illdy_latest_news_post_text_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_post_text_color'));
+        $illdy_latest_news_post_text_hover_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_post_text_hover_color'));
+        $illdy_latest_news_post_content_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_post_content_color'));
+        $illdy_latest_news_post_button_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_post_button_color'));
+        $illdy_latest_news_post_button_hover_color = sanitize_hex_color(get_theme_mod('illdy_latest_news_post_button_hover_color'));
         $illdy_latest_news_general_image = esc_url(get_theme_mod('illdy_latest_news_general_image'));
         $illdy_latest_news_background_size = esc_html(get_theme_mod('illdy_latest_news_background_size'));
         $illdy_latest_news_background_repeat = esc_html(get_theme_mod('illdy_latest_news_background_repeat'));
         $illdy_latest_news_background_attachment = esc_html(get_theme_mod('illdy_latest_news_background_attachment'));
-        $illdy_latest_news_first_button_color = esc_html(get_theme_mod('illdy_latest_news_first_button_color'));
-        $illdy_latest_news_right_button_color = esc_html(get_theme_mod('illdy_latest_news_right_button_color'));
         $illdy_latest_news_background_position_y = esc_html(get_theme_mod('illdy_latest_news_background_position_y'));
         $illdy_latest_news_background_position_x = esc_html(get_theme_mod('illdy_latest_news_background_position_x'));
 
@@ -320,10 +318,10 @@ if ( !function_exists( 'illdy_latestnews_css' ) ) {
 if ( !function_exists( 'illdy_fullwidth_css' ) ) {
     function illdy_fullwidth_css(){
 
-        $illdy_full_width_title_color = esc_html(get_theme_mod('illdy_full_width_title_color'));
-        $illdy_full_width_descriptions_color = esc_html(get_theme_mod('illdy_full_width_descriptions_color'));
-        $illdy_full_width_full_text = esc_html(get_theme_mod('illdy_full_width_full_text'));
-        $illdy_full_width_general_color = esc_html(get_theme_mod('illdy_full_width_general_color', ''));
+        $illdy_full_width_title_color = sanitize_hex_color(get_theme_mod('illdy_full_width_title_color'));
+        $illdy_full_width_descriptions_color = sanitize_hex_color(get_theme_mod('illdy_full_width_descriptions_color'));
+        $illdy_full_width_full_text = sanitize_hex_color(get_theme_mod('illdy_full_width_full_text'));
+        $illdy_full_width_general_color = sanitize_hex_color(get_theme_mod('illdy_full_width_general_color', ''));
         $illdy_full_width_general_image = esc_url(get_theme_mod('illdy_full_width_general_image'));
         $illdy_full_width_background_size = esc_html(get_theme_mod('illdy_full_width_background_size'));
         $illdy_full_width_background_repeat = esc_html(get_theme_mod('illdy_full_width_background_repeat'));
@@ -370,15 +368,13 @@ if ( !function_exists( 'illdy_fullwidth_css' ) ) {
 if ( !function_exists( 'illdy_about_css' ) ) {
     function illdy_about_css(){
 
-        $illdy_about_title_color = esc_html(get_theme_mod('illdy_about_title_color'));
-        $illdy_about_descriptions_color = esc_html(get_theme_mod('illdy_about_descriptions_color'));
-        $illdy_about_general_color = esc_html(get_theme_mod('illdy_about_general_color'));
+        $illdy_about_title_color = sanitize_hex_color(get_theme_mod('illdy_about_title_color'));
+        $illdy_about_descriptions_color = sanitize_hex_color(get_theme_mod('illdy_about_descriptions_color'));
+        $illdy_about_general_color = sanitize_hex_color(get_theme_mod('illdy_about_general_color'));
         $illdy_about_general_image = esc_url(get_theme_mod('illdy_about_general_image'));
         $illdy_about_background_size = esc_html(get_theme_mod('illdy_about_background_size'));
         $illdy_about_background_repeat = esc_html(get_theme_mod('illdy_about_background_repeat'));
         $illdy_about_background_attachment = esc_html(get_theme_mod('illdy_about_background_attachment'));
-        $illdy_about_first_button_color = esc_html(get_theme_mod('illdy_about_first_button_color'));
-        $illdy_about_right_button_color = esc_html(get_theme_mod('illdy_about_right_button_color'));
         $illdy_about_background_position_y = esc_html(get_theme_mod('illdy_about_background_position_y'));
         $illdy_about_background_position_x = esc_html(get_theme_mod('illdy_about_background_position_x'));
 
@@ -418,15 +414,13 @@ if ( !function_exists( 'illdy_about_css' ) ) {
 if ( !function_exists( 'illdy_projects_css' ) ) {
     function illdy_projects_css(){
 
-        $illdy_projects_title_color = esc_html(get_theme_mod('illdy_projects_title_color'));
-        $illdy_projects_descriptions_color = esc_html(get_theme_mod('illdy_projects_descriptions_color'));
-        $illdy_projects_general_color = esc_html(get_theme_mod('illdy_projects_general_color'));
+        $illdy_projects_title_color = sanitize_hex_color(get_theme_mod('illdy_projects_title_color'));
+        $illdy_projects_descriptions_color = sanitize_hex_color(get_theme_mod('illdy_projects_descriptions_color'));
+        $illdy_projects_general_color = sanitize_hex_color(get_theme_mod('illdy_projects_general_color'));
         $illdy_projects_general_image = esc_url(get_theme_mod('illdy_projects_general_image', get_template_directory_uri() . '/layout/images/front-page/pattern.png'));
         $illdy_projects_background_size = esc_html(get_theme_mod('illdy_projects_background_size','auto'));
         $illdy_projects_background_repeat = esc_html(get_theme_mod('illdy_projects_background_repeat',1));
         $illdy_projects_background_attachment = esc_html(get_theme_mod('illdy_projects_background_attachment'));
-        $illdy_projects_first_button_color = esc_html(get_theme_mod('illdy_projects_first_button_color'));
-        $illdy_projects_right_button_color = esc_html(get_theme_mod('illdy_projects_right_button_color'));
         $illdy_projects_background_position_y = esc_html(get_theme_mod('illdy_projects_background_position_y'));
         $illdy_projects_background_position_x = esc_html(get_theme_mod('illdy_projects_background_position_x'));
 
@@ -466,15 +460,13 @@ if ( !function_exists( 'illdy_projects_css' ) ) {
 if ( !function_exists( 'illdy_services_css' ) ) {
     function illdy_services_css(){
 
-        $illdy_services_title_color = esc_html(get_theme_mod('illdy_services_title_color'));
-        $illdy_services_descriptions_color = esc_html(get_theme_mod('illdy_services_descriptions_color'));
-        $illdy_services_general_color = esc_html(get_theme_mod('illdy_services_general_color'));
+        $illdy_services_title_color = sanitize_hex_color(get_theme_mod('illdy_services_title_color'));
+        $illdy_services_descriptions_color = sanitize_hex_color(get_theme_mod('illdy_services_descriptions_color'));
+        $illdy_services_general_color = sanitize_hex_color(get_theme_mod('illdy_services_general_color'));
         $illdy_services_general_image = esc_url(get_theme_mod('illdy_services_general_image'));
         $illdy_services_background_size = esc_html(get_theme_mod('illdy_services_background_size'));
         $illdy_services_background_repeat = esc_html(get_theme_mod('illdy_services_background_repeat'));
         $illdy_services_background_attachment = esc_html(get_theme_mod('illdy_services_background_attachment'));
-        $illdy_services_first_button_color = esc_html(get_theme_mod('illdy_services_first_button_color'));
-        $illdy_services_right_button_color = esc_html(get_theme_mod('illdy_services_right_button_color'));
         $illdy_services_background_position_y = esc_html(get_theme_mod('illdy_services_background_position_y'));
         $illdy_services_background_position_x = esc_html(get_theme_mod('illdy_services_background_position_x'));
 
@@ -514,15 +506,13 @@ if ( !function_exists( 'illdy_services_css' ) ) {
 if ( !function_exists( 'illdy_team_css' ) ) {
     function illdy_team_css(){
 
-        $illdy_team_title_color = esc_html(get_theme_mod('illdy_team_title_color'));
-        $illdy_team_descriptions_color = esc_html(get_theme_mod('illdy_team_descriptions_color'));
-        $illdy_team_general_color = esc_html(get_theme_mod('illdy_team_general_color'));
+        $illdy_team_title_color = sanitize_hex_color(get_theme_mod('illdy_team_title_color'));
+        $illdy_team_descriptions_color = sanitize_hex_color(get_theme_mod('illdy_team_descriptions_color'));
+        $illdy_team_general_color = sanitize_hex_color(get_theme_mod('illdy_team_general_color'));
         $illdy_team_general_image = esc_url(get_theme_mod('illdy_team_general_image',get_template_directory_uri() . '/layout/images/front-page/pattern.png'));
         $illdy_team_background_size = esc_html(get_theme_mod('illdy_team_background_size','auto'));
         $illdy_team_background_repeat = esc_html(get_theme_mod('illdy_team_background_repeat',1));
         $illdy_team_background_attachment = esc_html(get_theme_mod('illdy_team_background_attachment'));
-        $illdy_team_first_button_color = esc_html(get_theme_mod('illdy_team_first_button_color'));
-        $illdy_team_right_button_color = esc_html(get_theme_mod('illdy_team_right_button_color'));
         $illdy_team_background_position_y = esc_html(get_theme_mod('illdy_team_background_position_y'));
         $illdy_team_background_position_x = esc_html(get_theme_mod('illdy_team_background_position_x'));
 
@@ -562,19 +552,17 @@ if ( !function_exists( 'illdy_team_css' ) ) {
 if ( !function_exists( 'illdy_testimonials_css' ) ) {
     function illdy_testimonials_css(){
 
-        $illdy_testimonials_title_color = esc_html(get_theme_mod('illdy_testimonials_title_color'));
-        $illdy_testimonials_general_color = esc_html(get_theme_mod('illdy_testimonials_general_color'));
+        $illdy_testimonials_title_color = sanitize_hex_color(get_theme_mod('illdy_testimonials_title_color'));
+        $illdy_testimonials_general_color = sanitize_hex_color(get_theme_mod('illdy_testimonials_general_color'));
         $illdy_testimonials_general_background_image = esc_url(get_theme_mod('illdy_testimonials_general_background_image', get_template_directory_uri() . '/layout/images/testiomnials-background.jpg' ));
         $illdy_testimonials_background_size = esc_html(get_theme_mod('illdy_testimonials_background_size'));
         $illdy_testimonials_background_repeat = esc_html(get_theme_mod('illdy_testimonials_background_repeat'));
         $illdy_testimonials_background_attachment = esc_html(get_theme_mod('illdy_testimonials_background_attachment'));
 
-        $illdy_testimonials_author_text_color = esc_html(get_theme_mod('illdy_testimonials_author_text_color'));
-        $illdy_testimonials_text_color = esc_html(get_theme_mod('illdy_testimonials_text_color'));
-        $illdy_testimonials_container_background_color = esc_html(get_theme_mod('illdy_testimonials_container_background_color'));
-        $illdy_testimonials_dots_color = esc_html(get_theme_mod('illdy_testimonials_dots_color'));
-        $illdy_testimonials_first_button_color = esc_html(get_theme_mod('illdy_testimonials_first_button_color'));
-        $illdy_testimonials_right_button_color = esc_html(get_theme_mod('illdy_testimonials_right_button_color'));
+        $illdy_testimonials_author_text_color = sanitize_hex_color(get_theme_mod('illdy_testimonials_author_text_color'));
+        $illdy_testimonials_text_color = sanitize_hex_color(get_theme_mod('illdy_testimonials_text_color'));
+        $illdy_testimonials_container_background_color = sanitize_hex_color(get_theme_mod('illdy_testimonials_container_background_color'));
+        $illdy_testimonials_dots_color = sanitize_hex_color(get_theme_mod('illdy_testimonials_dots_color'));
 
         $illdy_testimonials_background_position_y = esc_html(get_theme_mod('illdy_testimonials_background_position_y'));
         $illdy_testimonials_background_position_x = esc_html(get_theme_mod('illdy_testimonials_background_position_x'));

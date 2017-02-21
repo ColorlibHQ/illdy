@@ -94,7 +94,8 @@ $wp_customize->add_control(
 );
 $wp_customize->add_setting( $prefix .'_counters_widget_button',
     array(
-        'transport'         => 'postMessage'
+        'transport'         => 'postMessage',
+        'sanitize_callback' => 'wp_kses_post',
     )
 );
 $wp_customize->add_control(
