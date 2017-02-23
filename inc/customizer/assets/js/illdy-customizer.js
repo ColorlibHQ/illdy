@@ -980,7 +980,7 @@ jQuery(document).ready(function(){
             dataType: "html",
             url: illdyWelcomeScreenObject.ajaxurl,
             beforeSend: function (data, settings) {
-                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + illdyWelcomeScreenObject.template_directory + '/core/welcome-screen/img/ajax-loader.gif" /></div>');
+                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + illdyWelcomeScreenObject.template_directory + '/inc/admin/welcome-screen/img/ajax-loader.gif" /></div>');
             },
             success: function (data) {
                 var container = jQuery('#' + data).parent().parent();
@@ -1016,7 +1016,7 @@ jQuery(document).ready(function(){
             dataType: "html",
             url: illdyWelcomeScreenObject.ajaxurl,
             beforeSend: function (data, settings) {
-                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + illdyWelcomeScreenObject.template_directory + '/core/welcome-screen/img/ajax-loader.gif" /></div>');
+                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + illdyWelcomeScreenObject.template_directory + '/inc/admin/welcome-screen/img/ajax-loader.gif" /></div>');
             },
             success: function (data) {
                 var container = jQuery('#' + data).parent().parent();

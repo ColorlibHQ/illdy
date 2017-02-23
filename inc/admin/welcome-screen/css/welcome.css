@@ -183,3 +183,7 @@
 .about-wrap .three-col .plugin_box.col {
     width: 29.81%;
 }
+
+.about-wrap.epsilon-wrap .feature-section.two-col .col {
+    margin-top: 40px;
+}
