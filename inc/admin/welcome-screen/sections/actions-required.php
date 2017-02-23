@@ -43,7 +43,10 @@ wp_enqueue_script( 'updates' );
 				<?php
 				if ( ! empty( $illdy_required_action_value['plugin_slug'] ) ) {
 					$active = $this->check_active( $illdy_required_action_value['plugin_slug'] );
-					$url    = $this->create_action_link( $active['needs'], $illdy_required_action_value['plugin_slug'] );
+					if ( !isset($active['plugin_path']) ) {
+						$active['plugin_path'] = '';
+					}
+					$url    = $this->create_action_link( $active['needs'], $illdy_required_action_value['plugin_slug'], $active['plugin_path'] );
 					$label  = '';
 
 					switch ( $active['needs'] ) {

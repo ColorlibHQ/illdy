@@ -56,6 +56,8 @@ class Illdy_Welcome {
 		}
 	}
 
+	
+
 
 	public function illdy_activate_plugin() {
 		if ( ! empty( $_GET ) ) {
@@ -285,12 +287,13 @@ class Illdy_Welcome {
 	}
 
 	public function check_active( $slug ) {
-		if ( file_exists( ABSPATH . 'wp-content/plugins/' . $slug . '/' . $slug . '.php' ) ) {
+		$plugin_path = MT_Notify_System::_get_plugin_basename_from_slug( $slug );
+		if ( file_exists( ABSPATH . 'wp-content/plugins/' . $plugin_path ) ) {
 			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-			$needs = is_plugin_active( $slug . '/' . $slug . '.php' ) ? 'deactivate' : 'activate';
+			$needs = is_plugin_active( $plugin_path ) ? 'deactivate' : 'activate';
 
-			return array( 'status' => is_plugin_active( $slug . '/' . $slug . '.php' ), 'needs' => $needs );
+			return array( 'status' => is_plugin_active( $plugin_path ), 'needs' => $needs, 'plugin_path' => $plugin_path );
 		}
 
 		return array( 'status' => false, 'needs' => 'install' );
@@ -310,7 +313,10 @@ class Illdy_Welcome {
 		return $plugin_icon_url;
 	}
 
-	public function create_action_link( $state, $slug ) {
+	public function create_action_link( $state, $slug, $plugin_path = '' ) {
+		if ( $plugin_path == '' ) {
+			$plugin_path = $slug . '/' . $slug . '.php';
+		}
 		switch ( $state ) {
 			case 'install':
 				return wp_nonce_url(
@@ -327,19 +333,19 @@ class Illdy_Welcome {
 			case 'deactivate':
 				return add_query_arg( array(
 					                      'action'        => 'deactivate',
-					                      'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
+					                      'plugin'        => rawurlencode( $plugin_path ),
 					                      'plugin_status' => 'all',
 					                      'paged'         => '1',
-					                      '_wpnonce'      => wp_create_nonce( 'deactivate-plugin_' . $slug . '/' . $slug . '.php' ),
+					                      '_wpnonce'      => wp_create_nonce( 'deactivate-plugin_' . $plugin_path ),
 				                      ), network_admin_url( 'plugins.php' ) );
 				break;
 			case 'activate':
 				return add_query_arg( array(
 					                      'action'        => 'activate',
-					                      'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
+					                      'plugin'        => rawurlencode( $plugin_path ),
 					                      'plugin_status' => 'all',
 					                      'paged'         => '1',
-					                      '_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $slug . '/' . $slug . '.php' ),
+					                      '_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $plugin_path ),
 				                      ), network_admin_url( 'plugins.php' ) );
 				break;
 		}

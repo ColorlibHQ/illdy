@@ -108,7 +108,7 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 				),
 				array(
 					"id"          => 'illdy-req-ac-install-contact-form-7',
-					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Contact Form 7', 'illdy' ), __( 'Activate: Contact Form 7', 'illdy' ), 'illdy-companion' ),
+					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Contact Form 7', 'illdy' ), __( 'Activate: Contact Form 7', 'illdy' ), 'contact-form-7' ),
 					"description" => __( 'It is highly recommended that you install the Contact Form 7.', 'illdy' ),
 					"check"       => MT_Notify_System::has_import_plugin( 'contact-form-7' ),
 					"type"		  => 'plugin',

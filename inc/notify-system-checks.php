@@ -5,6 +5,27 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 	 * Class MT_Notify_System
 	 */
 	class MT_Notify_System {
+
+		public static function get_plugins( $plugin_folder = '' ) {
+			if ( ! function_exists( 'get_plugins' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+
+			return get_plugins( $plugin_folder );
+		}
+
+		public static function _get_plugin_basename_from_slug( $slug ) {
+			$keys = array_keys( MT_Notify_System::get_plugins() );
+
+			foreach ( $keys as $key ) {
+				if ( preg_match( '|^' . $slug . '/|', $key ) ) {
+					return $key;
+				}
+			}
+
+			return $slug;
+		}
+
 		/**
 		 * @param $ver
 		 *
@@ -81,7 +102,8 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		 * @return bool
 		 */
 		public static function check_plugin_is_installed( $slug ) {
-			if ( file_exists( ABSPATH . 'wp-content/plugins/' . $slug . '/' . $slug . '.php' ) ) {
+			$plugin_path = MT_Notify_System::_get_plugin_basename_from_slug( $slug );
+			if ( file_exists( ABSPATH . 'wp-content/plugins/' . $plugin_path ) ) {
 				return true;
 			}
 
@@ -92,10 +114,11 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		 * @return bool
 		 */
 		public static function check_plugin_is_active( $slug ) {
-			if ( file_exists( ABSPATH . 'wp-content/plugins/' . $slug . '/' . $slug . '.php' ) ) {
+			$plugin_path = MT_Notify_System::_get_plugin_basename_from_slug( $slug );
+			if ( file_exists( ABSPATH . 'wp-content/plugins/' .$plugin_path ) ) {
 				include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-				return is_plugin_active( $slug . '/' . $slug . '.php' );
+				return is_plugin_active( $plugin_path );
 			}
 		}
 
