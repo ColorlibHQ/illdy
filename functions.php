@@ -86,8 +86,10 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			require get_template_directory() . '/inc/notify-system-checks.php';
 			global $illdy_required_actions, $illdy_recommended_plugins;
 			$illdy_recommended_plugins = array(
-				'kiwi-social-share'		=> array( 'recommended' => false ),
-				'contact-form-7'  		=> array( 'recommended' => false ),
+				'kiwi-social-share'			=> array( 'recommended' => true ),
+				'contact-form-7'  			=> array( 'recommended' => false ),
+				'simple-custom-post-order' 	=> array( 'recommended' => false ),
+				'fancybox-for-wordpress' 	=> array( 'recommended' => false ),
 			);
 			/*
 			 * id - unique id; required

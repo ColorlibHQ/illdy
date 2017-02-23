@@ -26,9 +26,9 @@ class Illdy_Welcome {
 			$this,
 			'illdy_dismiss_required_action_callback'
 		) );
-		add_action( 'wp_ajax_nopriv_illdy_dismiss_required_action', array(
+		add_action( 'wp_ajax_illdy_dismiss_recommended_plugins', array(
 			$this,
-			'illdy_dismiss_required_action_callback'
+			'illdy_dismiss_recommended_plugins_callback'
 		) );
 
 		add_action( 'admin_init', array( $this, 'illdy_activate_plugin' ) );
@@ -220,6 +220,27 @@ class Illdy_Welcome {
 
 		endif;
 
+		die(); // this is required to return a proper result
+	}
+
+	public function illdy_dismiss_recommended_plugins_callback() {
+		$action_id = ( isset( $_GET['id'] ) ) ? $_GET['id'] : 0;
+		echo $action_id; /* this is needed and it's the id of the dismissable required action */
+		if ( ! empty( $action_id ) ):
+			/* if the option exists, update the record for the specified id */
+			$illdy_show_recommended_plugins = get_option( 'illdy_show_recommended_plugins' );
+				
+				switch ( $_GET['todo'] ) {
+					case 'add';
+						$illdy_show_recommended_plugins[ $action_id ] = false;
+						break;
+					case 'dismiss';
+						$illdy_show_recommended_plugins[ $action_id ] = true;
+						break;
+				}
+				update_option( 'illdy_show_recommended_plugins', $illdy_show_recommended_plugins );
+			/* create the new option,with false for the specified id */
+		endif;
 		die(); // this is required to return a proper result
 	}
 
