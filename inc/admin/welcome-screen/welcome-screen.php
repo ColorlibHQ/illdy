@@ -26,9 +26,9 @@ class Illdy_Welcome {
 			$this,
 			'illdy_dismiss_required_action_callback'
 		) );
-		add_action( 'wp_ajax_nopriv_illdy_dismiss_required_action', array(
+		add_action( 'wp_ajax_illdy_dismiss_recommended_plugins', array(
 			$this,
-			'illdy_dismiss_required_action_callback'
+			'illdy_dismiss_recommended_plugins_callback'
 		) );
 
 		add_action( 'admin_init', array( $this, 'illdy_activate_plugin' ) );
@@ -55,6 +55,8 @@ class Illdy_Welcome {
 			}
 		}
 	}
+
+	
 
 
 	public function illdy_activate_plugin() {
@@ -140,6 +142,12 @@ class Illdy_Welcome {
 	public function illdy_welcome_style_and_scripts( $hook_suffix ) {
 
 		wp_enqueue_style( 'illdy-welcome-screen-css', get_template_directory_uri() . '/inc/admin/welcome-screen/css/welcome.css' );
+		
+		$screen = get_current_screen();
+		if ( $screen->base != 'appearance_page_illdy-welcome' ) {
+			return;
+		}
+		
 		wp_enqueue_script( 'illdy-welcome-screen-js', get_template_directory_uri() . '/inc/admin/welcome-screen/js/welcome.js', array( 'jquery' ) );
 
 		wp_localize_script( 'illdy-welcome-screen-js', 'illdyWelcomeScreenObject', array(
@@ -221,6 +229,27 @@ class Illdy_Welcome {
 		die(); // this is required to return a proper result
 	}
 
+	public function illdy_dismiss_recommended_plugins_callback() {
+		$action_id = ( isset( $_GET['id'] ) ) ? $_GET['id'] : 0;
+		echo $action_id; /* this is needed and it's the id of the dismissable required action */
+		if ( ! empty( $action_id ) ):
+			/* if the option exists, update the record for the specified id */
+			$illdy_show_recommended_plugins = get_option( 'illdy_show_recommended_plugins' );
+				
+				switch ( $_GET['todo'] ) {
+					case 'add';
+						$illdy_show_recommended_plugins[ $action_id ] = false;
+						break;
+					case 'dismiss';
+						$illdy_show_recommended_plugins[ $action_id ] = true;
+						break;
+				}
+				update_option( 'illdy_show_recommended_plugins', $illdy_show_recommended_plugins );
+			/* create the new option,with false for the specified id */
+		endif;
+		die(); // this is required to return a proper result
+	}
+
 	/**
 	 *
 	 */
@@ -285,12 +314,13 @@ class Illdy_Welcome {
 	}
 
 	public function check_active( $slug ) {
-		if ( file_exists( ABSPATH . 'wp-content/plugins/' . $slug . '/' . $slug . '.php' ) ) {
+		$plugin_path = MT_Notify_System::_get_plugin_basename_from_slug( $slug );
+		if ( file_exists( ABSPATH . 'wp-content/plugins/' . $plugin_path ) ) {
 			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-			$needs = is_plugin_active( $slug . '/' . $slug . '.php' ) ? 'deactivate' : 'activate';
+			$needs = is_plugin_active( $plugin_path ) ? 'deactivate' : 'activate';
 
-			return array( 'status' => is_plugin_active( $slug . '/' . $slug . '.php' ), 'needs' => $needs );
+			return array( 'status' => is_plugin_active( $plugin_path ), 'needs' => $needs, 'plugin_path' => $plugin_path );
 		}
 
 		return array( 'status' => false, 'needs' => 'install' );
@@ -310,7 +340,10 @@ class Illdy_Welcome {
 		return $plugin_icon_url;
 	}
 
-	public function create_action_link( $state, $slug ) {
+	public function create_action_link( $state, $slug, $plugin_path = '' ) {
+		if ( $plugin_path == '' ) {
+			$plugin_path = $slug . '/' . $slug . '.php';
+		}
 		switch ( $state ) {
 			case 'install':
 				return wp_nonce_url(
@@ -327,20 +360,32 @@ class Illdy_Welcome {
 			case 'deactivate':
 				return add_query_arg( array(
 					                      'action'        => 'deactivate',
-					                      'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
+					                      'plugin'        => rawurlencode( $plugin_path ),
 					                      'plugin_status' => 'all',
 					                      'paged'         => '1',
-					                      '_wpnonce'      => wp_create_nonce( 'deactivate-plugin_' . $slug . '/' . $slug . '.php' ),
+					                      '_wpnonce'      => wp_create_nonce( 'deactivate-plugin_' . $plugin_path ),
 				                      ), network_admin_url( 'plugins.php' ) );
 				break;
 			case 'activate':
 				return add_query_arg( array(
 					                      'action'        => 'activate',
-					                      'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
+					                      'plugin'        => rawurlencode( $plugin_path ),
 					                      'plugin_status' => 'all',
 					                      'paged'         => '1',
-					                      '_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $slug . '/' . $slug . '.php' ),
+					                      '_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $plugin_path ),
 				                      ), network_admin_url( 'plugins.php' ) );
+				break;
+			case 'update':
+				return wp_nonce_url(
+					add_query_arg(
+						array(
+							'action' => 'upgrade-plugin',
+							'plugin' => rawurlencode( $plugin_path )
+						),
+						network_admin_url( 'update.php' )
+					),
+					'upgrade-plugin_' . $plugin_path
+				);
 				break;
 		}
 	}

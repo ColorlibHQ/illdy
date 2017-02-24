@@ -86,8 +86,10 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			require get_template_directory() . '/inc/notify-system-checks.php';
 			global $illdy_required_actions, $illdy_recommended_plugins;
 			$illdy_recommended_plugins = array(
-				'kiwi-social-share'		=> array( 'recommended' => false ),
-				'contact-form-7'  		=> array( 'recommended' => false ),
+				'kiwi-social-share'			=> array( 'recommended' => true ),
+				'contact-form-7'  			=> array( 'recommended' => false ),
+				'simple-custom-post-order' 	=> array( 'recommended' => false ),
+				'fancybox-for-wordpress' 	=> array( 'recommended' => false ),
 			);
 			/*
 			 * id - unique id; required
@@ -97,18 +99,19 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			 * plugin_slug - the plugin's slug (used for installing the plugin)
 			 *
 			 */
+
 			$illdy_required_actions = array(
 				array(
 					"id"          => 'illdy-req-ac-install-illdy-companion',
-					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Illdy Companion', 'illdy' ), __( 'Activate: Illdy Companion', 'illdy' ), 'illdy-companion' ),
+					"title"       => MT_Notify_System::create_plugin_title( __( 'Illdy Companion', 'illdy' ), 'illdy-companion' ),
 					"description" => __( 'It is highly recommended that you install the Illdy Companion.', 'illdy' ),
-					"check"       => MT_Notify_System::has_import_plugin( 'illdy-companion' ),
+					"check"       => MT_Notify_System::check_plugin_update( 'illdy-companion' ),
 					"type"		  => 'plugin',
 					"plugin_slug" => 'illdy-companion'
 				),
 				array(
 					"id"          => 'illdy-req-ac-install-contact-form-7',
-					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Contact Form 7', 'illdy' ), __( 'Activate: Contact Form 7', 'illdy' ), 'illdy-companion' ),
+					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Contact Form 7', 'illdy' ), __( 'Activate: Contact Form 7', 'illdy' ), 'contact-form-7' ),
 					"description" => __( 'It is highly recommended that you install the Contact Form 7.', 'illdy' ),
 					"check"       => MT_Notify_System::has_import_plugin( 'contact-form-7' ),
 					"type"		  => 'plugin',

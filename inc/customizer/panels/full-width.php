@@ -113,8 +113,8 @@ $wp_customize->add_control(
     )
 );
 $wp_customize->add_setting( $prefix . '_full_width_tab', array(
-        'transport'         => 'postMessage'
-        'sanitize_callback' => 'wp_kses_post',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => 'wp_kses_post'
     )
 );
 $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,

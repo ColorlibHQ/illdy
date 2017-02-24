@@ -401,6 +401,7 @@ div.recomended-actions_container {
     font-size: 14px;
     color: #555d66;
     font-weight: 600;
+    padding-right: 20px;
 }
 .epsilon-recommeded-actions div.description {
     font-size: 12px;

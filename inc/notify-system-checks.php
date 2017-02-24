@@ -5,6 +5,27 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 	 * Class MT_Notify_System
 	 */
 	class MT_Notify_System {
+
+		public static function get_plugins( $plugin_folder = '' ) {
+			if ( ! function_exists( 'get_plugins' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+
+			return get_plugins( $plugin_folder );
+		}
+
+		public static function _get_plugin_basename_from_slug( $slug ) {
+			$keys = array_keys( MT_Notify_System::get_plugins() );
+
+			foreach ( $keys as $key ) {
+				if ( preg_match( '|^' . $slug . '/|', $key ) ) {
+					return $key;
+				}
+			}
+
+			return $slug;
+		}
+
 		/**
 		 * @param $ver
 		 *
@@ -37,7 +58,7 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		/**
 		 * @return bool
 		 */
-		public static function newmsag_has_posts() {
+		public static function illdy_has_posts() {
 			$args  = array( "s" => 'Gary Johns: \'What is Aleppo\'' );
 			$query = get_posts( $args );
 
@@ -54,7 +75,7 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		public static function has_content() {
 			$check = array(
 				'widgets' => self::has_widgets(),
-				'posts'   => self::newmsag_has_posts(),
+				'posts'   => self::illdy_has_posts(),
 			);
 
 			if ( $check['widgets'] && $check['posts'] ) {
@@ -81,7 +102,8 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		 * @return bool
 		 */
 		public static function check_plugin_is_installed( $slug ) {
-			if ( file_exists( ABSPATH . 'wp-content/plugins/' . $slug . '/' . $slug . '.php' ) ) {
+			$plugin_path = MT_Notify_System::_get_plugin_basename_from_slug( $slug );
+			if ( file_exists( ABSPATH . 'wp-content/plugins/' . $plugin_path ) ) {
 				return true;
 			}
 
@@ -92,10 +114,11 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		 * @return bool
 		 */
 		public static function check_plugin_is_active( $slug ) {
-			if ( file_exists( ABSPATH . 'wp-content/plugins/' . $slug . '/' . $slug . '.php' ) ) {
+			$plugin_path = MT_Notify_System::_get_plugin_basename_from_slug( $slug );
+			if ( file_exists( ABSPATH . 'wp-content/plugins/' .$plugin_path ) ) {
 				include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-				return is_plugin_active( $slug . '/' . $slug . '.php' );
+				return is_plugin_active( $plugin_path );
 			}
 		}
 
@@ -115,6 +138,40 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 			}
 
 			return true;
+		}
+
+		public static function check_plugin_need_update( $slug ) {
+
+			$update_plugin_transient = get_site_transient('update_plugins');
+
+			if ( isset($update_plugin_transient->response) ) {
+				$plugins = $update_plugin_transient->response;
+
+				foreach ( $plugins as $key => $plugin ) {
+					if ( preg_match( '|^' . $slug . '/|', $key ) ) {
+						return false;
+					}
+				}
+			}
+
+			return true;
+
+		}
+
+		public static function check_plugin_update( $slug ) {
+
+			$check = array(
+				'installed' => self::check_plugin_is_installed( $slug ),
+				'active'    => self::check_plugin_is_active( $slug ),
+				'update'	=> self::check_plugin_need_update( $slug )
+			);
+
+			if ( ! $check['installed'] || ! $check['active'] || ! $check['update'] ) {
+				return false;
+			}
+
+			return true;
+
 		}
 
 		public static function has_import_plugins() {
@@ -231,6 +288,17 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 				return '';
 			}
 
+		}
+
+		public static function create_plugin_title( $plugin_title, $plugin_slug ){
+			$installed = self::check_plugin_is_installed( $plugin_slug );
+			if ( ! $installed ) {
+				return __( 'Install : ', 'illdy' ).$plugin_title;
+			}elseif ( ! self::check_plugin_is_active( $plugin_slug ) && $installed ) {
+				return __( 'Activate : ', 'illdy' ).$plugin_title;
+			}else{
+				return __( 'Update : ', 'illdy' ).$plugin_title;
+			}
 		}
 
 		/**

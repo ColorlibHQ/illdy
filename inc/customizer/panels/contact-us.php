@@ -35,7 +35,7 @@ $wp_customize->add_control(  new Epsilon_Control_Tab( $wp_customize,
             array(
                 'name' => __( 'Details', 'illdy' ),
                 'fields'    => array(
-                    $prefix . 'illdy_contact_bar_facebook_url',
+                    $prefix . '_contact_bar_facebook_url',
                     $prefix . '_contact_bar_twitter_url',
                     $prefix . '_contact_bar_linkedin_url',
                     $prefix . '_contact_bar_googlep_url',
@@ -186,14 +186,14 @@ $wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_customer_su
 ) );
 
 // Contact Form 7
-$wp_customize->add_setting( 'illdy_contact_us_contact_form_7',
+$wp_customize->add_setting( 'illdy_contact_us_general_contact_form_7',
     array(
         'sanitize_callback' => 'sanitize_key'
     )
 );
 $wp_customize->add_control( new Illdy_CF7_Custom_Control(
     $wp_customize,
-    'illdy_contact_us_contact_form_7',
+    'illdy_contact_us_general_contact_form_7',
         array(
             'label'             => __( 'Select the contact form you\'d like to display (powered by Contact Form 7)', 'illdy' ),
             'section'           => $prefix . '_contact_us',

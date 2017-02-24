@@ -39,7 +39,8 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 				'illdy-recomended-section',
 				array(
 					'title'    => esc_html__( 'Recomended Actions', 'illdy' ),
-					'succes_text'	=> esc_html__( 'We are social :', 'illdy' ),
+					'social_text'	=> esc_html__( 'We are social :', 'illdy' ),
+					'plugin_text'	=> esc_html__( 'Recomended Plugins :', 'illdy' ),
 					'facebook' => 'https://www.facebook.com/colorlib',
 					'twitter' => 'https://twitter.com/colorlib',
 					'wp_review' => true,
@@ -229,7 +230,10 @@ if ( ! function_exists( 'illdy_customizer_js_load' ) ) {
 		wp_enqueue_style( 'plugin-install' );
 		wp_enqueue_script( 'plugin-install' );
 		wp_enqueue_script( 'updates' );
-		wp_add_inline_script( 'plugin-install', 'var pagenow = "customizer";' );
+		wp_localize_script( 'updates', '_wpUpdatesItemCounts', array(
+			'totals'  => wp_get_update_data(),
+		) );
+		wp_add_inline_script( 'plugin-install', 'var pagenow = "plugin-install";' );
 		wp_enqueue_script( 'illdy-customizer', get_template_directory_uri() . '/inc/customizer/assets/js/illdy-customizer.js', array( 'customize-controls' ), '1.0', true );
 
 		$IlldyCustomizer = array();
@@ -351,7 +355,7 @@ if ( ! function_exists( 'illdy_create_contact_tab_sections' ) ) {
 		}elseif ( illdy_have_not_contact_form_7() ) {
 			$sections[] = $prefix . '_contact_us_create_contact_form_7';
 		}else{
-			$sections[] = $prefix . '_contact_us_contact_form_7';
+			$sections[] = $prefix . '_contact_us_general_contact_form_7';
 		}
 		return $sections;
 	}
