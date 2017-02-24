@@ -1,4 +1,4 @@
-### V1.0.36
+### V2.0.0
 	- Added new Welcome Page.
 	- Remove static fronpate action from Illdy theme and added to Illdy companion
 	- Resolved #5 - Add fallback image for jumbotron. (https://github.com/puikinsh/illdy/issues/5)

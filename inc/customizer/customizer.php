@@ -352,7 +352,7 @@ if ( ! function_exists( 'illdy_create_contact_tab_sections' ) ) {
 		}elseif ( illdy_have_not_contact_form_7() ) {
 			$sections[] = $prefix . '_contact_us_create_contact_form_7';
 		}else{
-			$sections[] = $prefix . '_contact_us_contact_form_7';
+			$sections[] = $prefix . '_contact_us_general_contact_form_7';
 		}
 		return $sections;
 	}
