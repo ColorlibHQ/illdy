@@ -1,3 +1,8 @@
+pagenow = 'plugin-install'
+jQuery(document).on( 'wp-plugin-update-success', function( evt, response ){
+	location.reload();
+});
+
 jQuery(document).ready(function () {
 
 	/* If there are required actions, add an icon with the number of required actions in the About illdy page -> Actions required tab */
@@ -54,4 +59,7 @@ jQuery(document).ready(function () {
             }
         });
     });
+
+    
+
 });

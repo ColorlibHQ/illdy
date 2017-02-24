@@ -6,6 +6,9 @@
 wp_enqueue_style( 'plugin-install' );
 wp_enqueue_script( 'plugin-install' );
 wp_enqueue_script( 'updates' );
+wp_localize_script( 'updates', '_wpUpdatesItemCounts', array(
+		'totals'  => wp_get_update_data(),
+	) );
 ?>
 
 <div class="feature-section action-required demo-import-boxed" id="plugin-filter">
@@ -53,6 +56,11 @@ wp_enqueue_script( 'updates' );
 					if ( !isset($active['plugin_path']) ) {
 						$active['plugin_path'] = '';
 					}
+
+					if ( $active['needs'] == 'deactivate' && !MT_Notify_System::check_plugin_update( $illdy_required_action_value['plugin_slug'] ) ) {
+						$active['needs'] = 'update';
+					}
+
 					$url    = $this->create_action_link( $active['needs'], $illdy_required_action_value['plugin_slug'], $active['plugin_path'] );
 					$label  = '';
 
@@ -65,6 +73,10 @@ wp_enqueue_script( 'updates' );
 							$class = 'activate-now button button-primary';
 							$label = __( 'Activate', 'illdy' );
 							break;
+						case 'update':
+							$class = 'update-now button button-primary';
+							$label = __( 'Update', 'illdy' );
+							break;
 						case 'deactivate':
 							$class = 'deactivate-now button';
 							$label = __( 'Deactivate', 'illdy' );
@@ -74,6 +86,7 @@ wp_enqueue_script( 'updates' );
 					?>
 					<p class="plugin-card-<?php echo esc_attr( $illdy_required_action_value['plugin_slug'] ) ?> action_button <?php echo ( $active['needs'] !== 'install' && $active['status'] ) ? 'active' : '' ?>">
 						<a data-slug="<?php echo esc_attr( $illdy_required_action_value['plugin_slug'] ) ?>"
+							data-plugin = "<?php echo esc_attr( $active['plugin_path'] ) ?>"
 						   class="<?php echo $class; ?>"
 						   href="<?php echo esc_url( $url ) ?>"> <?php echo $label ?> </a>
 					</p>

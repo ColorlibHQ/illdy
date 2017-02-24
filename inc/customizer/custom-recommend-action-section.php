@@ -78,6 +78,18 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 					                      '_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $plugin_path ),
 				                      ), network_admin_url( 'plugins.php' ) );
 				break;
+			case 'update':
+				return wp_nonce_url(
+					add_query_arg(
+						array(
+							'action' => 'upgrade-plugin',
+							'plugin' => rawurlencode( $plugin_path )
+						),
+						network_admin_url( 'update.php' )
+					),
+					'upgrade-plugin_' . $plugin_path
+				);
+				break;
 		}
 	}
 
@@ -138,6 +150,11 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 				if ( !isset($active['plugin_path']) ) {
 					$active['plugin_path'] = '';
 				}
+
+				if ( $active['needs'] == 'deactivate' && !MT_Notify_System::check_plugin_update( $illdy_required_action['plugin_slug'] ) ) {
+					$active['needs'] = 'update';
+				}
+
 				$illdy_required_action['url']    = $this->create_action_link( $active['needs'], $illdy_required_action['plugin_slug'], $active['plugin_path'] );
 				if ( $active['needs'] !== 'install' && $active['status'] ) {
 					$illdy_required_action['class'] = 'active';
@@ -154,11 +171,17 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 						$illdy_required_action['button_class'] = 'activate-now button button-primary';
 						$illdy_required_action['button_label'] = __( 'Activate', 'illdy' );
 						break;
+					case 'update':
+						$illdy_required_action['button_class'] = 'update-now button button-primary';
+						$illdy_required_action['button_label'] = __( 'Update', 'illdy' );
+						break;
 					case 'deactivate':
 						$illdy_required_action['button_class'] = 'deactivate-now button';
 						$illdy_required_action['button_label'] = __( 'Deactivate', 'illdy' );
 						break;
 				}
+
+				$illdy_required_action['path'] = $active['plugin_path'];
 
 			}
 			$formatted_array[] = $illdy_required_action;
@@ -204,6 +227,7 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 			}
 			$info   = $this->call_plugin_api( $slug );
 			$illdy_recommended_plugin['id'] = $slug;
+			$illdy_recommended_plugin['path'] = $active['plugin_path'];
 			$illdy_recommended_plugin['plugin_slug'] = $slug;
 			$illdy_recommended_plugin['description'] = $info->short_description;
 			$illdy_recommended_plugin['title'] = $illdy_recommended_plugin['button_label'].': '.$info->name;
@@ -272,9 +296,10 @@ class Illdy_Customize_Section_Recommend extends WP_Customize_Section {
 									<# if( data.required_actions[action].plugin_slug ){ #>
 										<div class="custom-action">
 											<p class="plugin-card-{{ data.required_actions[action].plugin_slug }} action_button {{ data.required_actions[action].class }}">
-												<a data-slug="{{ data.required_actions[action].plugin_slug }}"
-												   class="{{ data.required_actions[action].button_class }}"
-												   href="{{ data.required_actions[action].url }}">{{ data.required_actions[action].button_label }}</a>
+												<a  data-slug="{{ data.required_actions[action].plugin_slug }}"
+													data-plugin="{{ data.required_actions[action].path }}"
+												   	class="{{ data.required_actions[action].button_class }}"
+												   	href="{{ data.required_actions[action].url }}">{{ data.required_actions[action].button_label }}</a>
 											</p>
 										</div>
 									<# } #>

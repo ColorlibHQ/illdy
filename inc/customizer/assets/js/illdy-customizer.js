@@ -3,6 +3,10 @@
  *
  */
 
+ jQuery(document).on( 'wp-plugin-update-success', function( evt, response ){
+    location.reload();
+});
+
 ( function( api ) {
 
 	// Extends our custom "illdy-pro-section" section.

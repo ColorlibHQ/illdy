@@ -99,12 +99,13 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			 * plugin_slug - the plugin's slug (used for installing the plugin)
 			 *
 			 */
+
 			$illdy_required_actions = array(
 				array(
 					"id"          => 'illdy-req-ac-install-illdy-companion',
-					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Illdy Companion', 'illdy' ), __( 'Activate: Illdy Companion', 'illdy' ), 'illdy-companion' ),
+					"title"       => MT_Notify_System::create_plugin_title( __( 'Illdy Companion', 'illdy' ), 'illdy-companion' ),
 					"description" => __( 'It is highly recommended that you install the Illdy Companion.', 'illdy' ),
-					"check"       => MT_Notify_System::has_import_plugin( 'illdy-companion' ),
+					"check"       => MT_Notify_System::check_plugin_update( 'illdy-companion' ),
 					"type"		  => 'plugin',
 					"plugin_slug" => 'illdy-companion'
 				),

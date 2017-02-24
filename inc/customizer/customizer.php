@@ -230,7 +230,10 @@ if ( ! function_exists( 'illdy_customizer_js_load' ) ) {
 		wp_enqueue_style( 'plugin-install' );
 		wp_enqueue_script( 'plugin-install' );
 		wp_enqueue_script( 'updates' );
-		wp_add_inline_script( 'plugin-install', 'var pagenow = "customizer";' );
+		wp_localize_script( 'updates', '_wpUpdatesItemCounts', array(
+			'totals'  => wp_get_update_data(),
+		) );
+		wp_add_inline_script( 'plugin-install', 'var pagenow = "plugin-install";' );
 		wp_enqueue_script( 'illdy-customizer', get_template_directory_uri() . '/inc/customizer/assets/js/illdy-customizer.js', array( 'customize-controls' ), '1.0', true );
 
 		$IlldyCustomizer = array();
