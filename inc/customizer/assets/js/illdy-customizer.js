@@ -831,8 +831,6 @@
             liveObj.values.illdy_jumbotron_first_border_color = illdy_hexToRgbA( color, '1' );
         }
 
-        console.log(liveObj);
-
         wp.customize.previewer.send('update-section-css', liveObj);
 
     }
@@ -861,7 +859,6 @@
          _.each( sections.fullwidth, function( setting ){
             liveObj.values[setting] = wp.customize(setting)();
         });
-         console.log('in fws');
         wp.customize.previewer.send('update-section-css', liveObj);
     }
 
@@ -982,9 +979,9 @@ jQuery(document).ready(function(){
             type: "GET",
             data: { action: 'illdy_dismiss_required_action', id: id, todo: action },
             dataType: "html",
-            url: illdyWelcomeScreenObject.ajaxurl,
+            url: IlldyCustomizer.ajax_url,
             beforeSend: function (data, settings) {
-                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + illdyWelcomeScreenObject.template_directory + '/inc/admin/welcome-screen/img/ajax-loader.gif" /></div>');
+                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + IlldyCustomizer.template_directory + '/inc/admin/welcome-screen/img/ajax-loader.gif" /></div>');
             },
             success: function (data) {
                 var container = jQuery('#' + data).parent().parent();
@@ -1018,9 +1015,9 @@ jQuery(document).ready(function(){
             type: "GET",
             data: { action: 'illdy_dismiss_recommended_plugins', id: id, todo: action },
             dataType: "html",
-            url: illdyWelcomeScreenObject.ajaxurl,
+            url: IlldyCustomizer.ajax_url,
             beforeSend: function (data, settings) {
-                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + illdyWelcomeScreenObject.template_directory + '/inc/admin/welcome-screen/img/ajax-loader.gif" /></div>');
+                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + IlldyCustomizer.template_directory + '/inc/admin/welcome-screen/img/ajax-loader.gif" /></div>');
             },
             success: function (data) {
                 var container = jQuery('#' + data).parent().parent();
