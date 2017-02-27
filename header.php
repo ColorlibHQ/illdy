@@ -14,6 +14,7 @@ $jumbotron_general_image   = get_theme_mod( 'illdy_jumbotron_general_image', esc
 $jumbotron_single_image    = get_theme_mod( 'illdy_jumbotron_enable_featured_image', false );
 $jumbotron_parallax_enable = get_theme_mod( 'illdy_jumbotron_enable_parallax_effect', true );
 $preloader_enable          = get_theme_mod( 'illdy_preloader_enable', 1 );
+$isMobileSafari            = preg_match('/(iPod|iPhone|iPad)/', $_SERVER['HTTP_USER_AGENT']);
 
 $style = '';
 
@@ -36,7 +37,9 @@ if ( get_option( 'show_on_front' ) == 'page' && is_front_page() ) {
 $url = get_theme_mod( 'header_image', get_theme_support( 'custom-header', 'default-image' ) );
 
 // append the parallax effect
-if ( $jumbotron_parallax_enable == true ) {
+if ( $isMobileSafari == true ) {
+	$style .= 'background-attachment: scroll;';
+} elseif ( $jumbotron_parallax_enable == true ) {
 	$style .= 'background-attachment: fixed;';
 }
 
