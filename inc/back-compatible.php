@@ -150,10 +150,27 @@ if( version_compare( $theme->version, '1.0.36', '>=' ) ) {
 		remove_theme_mod( 'illdy_jumbotron_general_second_row_from_title');
 		remove_theme_mod( 'illdy_jumbotron_general_third_row_from_title');
 
-
 	}
 
+	// Contact US Title
+	$contacus_title = get_theme_mod( 'illdy_contact_us_title' );
+	if ( $contacus_title ) {
+		set_theme_mod( 'illdy_contact_us_general_title', $contacus_title );
+		remove_theme_mod( 'illdy_contact_us_title');
+	}
 
+	//Adress Title
+	$address_title = get_theme_mod( 'illdy_contact_us_address_title' );
+	if ( $address_title ) {
+		set_theme_mod( 'illdy_contact_us_general_address_title', $address_title );
+		remove_theme_mod( 'illdy_contact_us_address_title');
+	}
 
+	//Support Title
+	$support_title = get_theme_mod( 'illdy_contact_us_customer_support_title' );
+	if ( $support_title ) {
+		set_theme_mod( 'illdy_contact_us_general_customer_support_title', $support_title );
+		remove_theme_mod( 'illdy_contact_us_customer_support_title');
+	}
 
 }

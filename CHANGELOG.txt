@@ -2,6 +2,7 @@
 	- Fixed left sidebar mobile issue. ( https://github.com/puikinsh/illdy/issues/176 )
 	- Woocommerce "Additional Information" Tab issue. ( https://github.com/puikinsh/illdy/issues/179 )
 	- Allow change of font for title and also make the period optional( https://github.com/puikinsh/illdy/issues/180 )
+	- Contact Us Title not displaying on front end. ( https://github.com/puikinsh/illdy/issues/181 )
 
 ### V2.0.0
 	- Added new Welcome Page.
