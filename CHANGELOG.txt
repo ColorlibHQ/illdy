@@ -1,3 +1,6 @@
+### V2.0.1
+	- Fixed left sidebar mobile issue. ( https://github.com/puikinsh/illdy/issues/176 )
+
 ### V2.0.0
 	- Added new Welcome Page.
 	- Remove static fronpate action from Illdy theme and added to Illdy companion

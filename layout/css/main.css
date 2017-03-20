@@ -1661,7 +1661,6 @@ a.button:hover {
 	margin: 50px 0 40px 0;
 	padding-left: 10%;
 	border-left: 1px solid #ebebeb;
-	float: right;
 }
 
 .page-template-left-sidebar #sidebar {
@@ -1669,7 +1668,6 @@ a.button:hover {
 	padding-left: 0;
 	border-right: 1px solid #ebebeb;
 	border-left: none;
-	float: left;
 }
 
 .widget {
