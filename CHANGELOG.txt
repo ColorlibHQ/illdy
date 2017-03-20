@@ -1,5 +1,6 @@
 ### V2.0.1
 	- Fixed left sidebar mobile issue. ( https://github.com/puikinsh/illdy/issues/176 )
+	- Woocommerce "Additional Information" Tab issue. ( https://github.com/puikinsh/illdy/issues/179 )
 
 ### V2.0.0
 	- Added new Welcome Page.
