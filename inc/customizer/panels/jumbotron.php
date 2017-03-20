@@ -43,53 +43,21 @@ $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix 
 	'section'     => $prefix . '_jumbotron_general',
 ) ) );
 
-// First word from title
-$wp_customize->add_setting( $prefix . '_jumbotron_general_first_row_from_title', array(
-	'sanitize_callback' => 'illdy_sanitize_html',
-	'default'           => __( 'Clean', 'illdy' ),
+$wp_customize->add_setting( $prefix . '_jumbotron_title', array(
+	'sanitize_callback' => 'wp_kses_post',
+	'default'           => __( 'Clean <span class="span-dot">.</span> Slick<span class="span-dot">.</span> Pixel Perfect', 'illdy' ),
 	'transport'         => 'postMessage',
 ) );
-$wp_customize->add_control( $prefix . '_jumbotron_general_first_row_from_title', array(
-	'label'    => __( 'First word from title', 'illdy' ),
-	'section'  => $prefix . '_jumbotron_general',
+$wp_customize->add_control(  new Epsilon_Editor_Custom_Control(
+    $wp_customize, $prefix . '_jumbotron_title', array(
+	'label'       => __( 'Title', 'illdy' ),
+	'description' => __( 'Add the title for this section.', 'illdy' ),
+	'section'     => $prefix . '_jumbotron_general',
+) ) );
+$wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_title', array(
+    'selector' => '#header .bottom-header.front-page h1',
 ) );
 
-$wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_general_first_row_from_title', array(
-    'selector' => '#header .bottom-header.front-page h1 span:nth-child(1)',
-    'render_callback' => $prefix .'_jumbotron_general_first_row_from_title',
-) );
-
-// Second word from title
-$wp_customize->add_setting( $prefix . '_jumbotron_general_second_row_from_title', array(
-	'sanitize_callback' => 'illdy_sanitize_html',
-	'default'           => __( 'Slick', 'illdy' ),
-	'transport'         => 'postMessage',
-) );
-$wp_customize->add_control( $prefix . '_jumbotron_general_second_row_from_title', array(
-	'label'    => __( 'Second word from title', 'illdy' ),
-	'section'  => $prefix . '_jumbotron_general',
-) );
-
-$wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_general_second_row_from_title', array(
-    'selector' => '#header .bottom-header.front-page h1 span:nth-child(3)',
-    'render_callback' => $prefix .'_jumbotron_general_second_row_from_title',
-) );
-
-// Third word from title
-$wp_customize->add_setting( $prefix . '_jumbotron_general_third_row_from_title', array(
-	'sanitize_callback' => 'illdy_sanitize_html',
-	'default'           => __( 'Pixel Perfect', 'illdy' ),
-	'transport'         => 'postMessage',
-) );
-$wp_customize->add_control( $prefix . '_jumbotron_general_third_row_from_title', array(
-	'label'    => __( 'Third word from title', 'illdy' ),
-	'section'  => $prefix . '_jumbotron_general',
-) );
-
-$wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_general_third_row_from_title', array(
-    'selector' => '#header .bottom-header.front-page h1 span:nth-child(5)',
-    // 'render_callback' => $prefix .'_jumbotron_general_second_row_from_title',
-) );
 
 // Entry
 if ( get_theme_mod( $prefix . '_jumbotron_general_entry' ) ) {

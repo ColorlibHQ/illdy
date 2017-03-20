@@ -8,18 +8,14 @@
 ?>
 <?php
 if ( current_user_can( 'edit_theme_options' ) ) {
-	$first_row_from_title  = get_theme_mod( 'illdy_jumbotron_general_first_row_from_title', __( 'Clean', 'illdy' ) );
-	$second_row_from_title = get_theme_mod( 'illdy_jumbotron_general_second_row_from_title', __( 'Slick', 'illdy' ) );
-	$third_row_from_title  = get_theme_mod( 'illdy_jumbotron_general_third_row_from_title', __( 'Pixel Perfect', 'illdy' ) );
+	$jumbotron_title       = get_theme_mod( 'illdy_jumbotron_title', __( 'Clean <span class="span-dot">.</span> Slick<span class="span-dot">.</span> Pixel Perfect', 'illdy' ) );
 	$entry                 = get_theme_mod( 'illdy_jumbotron_general_entry', __( 'lldy is a great one-page theme, perfect for developers and designers but also for someone who just wants a new website for his business. Try it now!', 'illdy' ) );
 	$first_button_title    = get_theme_mod( 'illdy_jumbotron_general_first_button_title', __( 'Learn more', 'illdy' ) );
 	$first_button_url      = get_theme_mod( 'illdy_jumbotron_general_first_button_url', esc_url( '#' ) );
 	$second_button_title   = get_theme_mod( 'illdy_jumbotron_general_second_button_title', __( 'Download', 'illdy' ) );
 	$second_button_url     = get_theme_mod( 'illdy_jumbotron_general_second_button_url', esc_url( '#' ) );
 } else {
-	$first_row_from_title  = get_theme_mod( 'illdy_jumbotron_general_first_row_from_title', get_the_title() );
-	$second_row_from_title = get_theme_mod( 'illdy_jumbotron_general_second_row_from_title' );
-	$third_row_from_title  = get_theme_mod( 'illdy_jumbotron_general_third_row_from_title' );
+	$jumbotron_title       = get_theme_mod( 'illdy_jumbotron_title', __( 'Clean <span class="span-dot">.</span> Slick<span class="span-dot">.</span> Pixel Perfect', 'illdy' ) );
 	$entry                 = get_theme_mod( 'illdy_jumbotron_general_entry' );
 	$first_button_title    = get_theme_mod( 'illdy_jumbotron_general_first_button_title' );
 	$first_button_url      = get_theme_mod( 'illdy_jumbotron_general_first_button_url' );
@@ -27,25 +23,15 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$second_button_url     = get_theme_mod( 'illdy_jumbotron_general_second_button_url' );
 }
 
-if ( $first_row_from_title || $second_row_from_title || $third_row_from_title || $entry || $first_button_title || $second_button_title ) {
+if ( $jumbotron_title || $entry || $first_button_title || $second_button_title ) {
 
 	?>
 	<div class="bottom-header front-page">
 		<div class="container">
 			<div class="row">
-				<?php if ( $first_row_from_title || $second_row_from_title || $third_row_from_title ): ?>
+				<?php if ( $jumbotron_title ): ?>
 					<div class="col-sm-12">
-						<h1><?php if ( $first_row_from_title ) {
-								echo '<span data-customizer="first-row-from-title">' . illdy_sanitize_html( $first_row_from_title ) . '</span><span class="span-dot first-span-dot">' . __( '.', 'illdy' ) . '</span>';
-							} ?>
-							<?php if ( $second_row_from_title ) {
-								echo '<span data-customizer="second-row-from-title">' . illdy_sanitize_html( $second_row_from_title ) . '</span><span class="span-dot second-span-dot">' . __( '.', 'illdy' ) . '</span>';
-							} ?>
-
-							<?php if ( $third_row_from_title ) {
-								echo '<span data-customizer="third-row-from-title">' . illdy_sanitize_html( $third_row_from_title ) . '</span>';
-							} ?>
-						</h1>
+						<h1><?php echo $jumbotron_title; ?></h1>
 					</div><!--/.col-sm-12-->
 				<?php endif; ?>
 				<div class="col-sm-8 col-sm-offset-2">

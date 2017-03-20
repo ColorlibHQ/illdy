@@ -119,4 +119,41 @@ if( version_compare( $theme->version, '1.0.36', '>=' ) ) {
 
 	}
 
+
+	// Jumbotron Title
+	$first_word = get_theme_mod( 'illdy_jumbotron_general_first_row_from_title' );
+	$second_word = get_theme_mod( 'illdy_jumbotron_general_second_row_from_title' );
+	$third_word = get_theme_mod( 'illdy_jumbotron_general_third_row_from_title' );
+
+	if ( $first_word || $second_word || $third_word ) {
+		
+		$title = '';
+		if ( $first_word ) {
+			$title = $first_word;
+		}
+		if ( $second_word ) {
+			if ( $title != '' ) {
+				$title .= '<span class="span-dot">.</span>';
+			}
+			$title .= $second_word;
+		}
+		if ( $third_word ) {
+			if ( $title != '' ) {
+				$title .= '<span class="span-dot">.</span>';
+			}
+			$title .= $third_word;
+		}
+
+
+		set_theme_mod( 'illdy_jumbotron_title', $title );
+		remove_theme_mod( 'illdy_jumbotron_general_first_row_from_title');
+		remove_theme_mod( 'illdy_jumbotron_general_second_row_from_title');
+		remove_theme_mod( 'illdy_jumbotron_general_third_row_from_title');
+
+
+	}
+
+
+
+
 }
