@@ -73,7 +73,7 @@ $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize,
 );
 
 // Title
-$wp_customize->add_setting( $prefix .'_contact_us_title',
+$wp_customize->add_setting( $prefix .'_contact_us_general_title',
     array(
         'sanitize_callback' => 'illdy_sanitize_html',
         'default'           => __( 'Contact us', 'illdy' ),
@@ -81,7 +81,7 @@ $wp_customize->add_setting( $prefix .'_contact_us_title',
     )
 );
 $wp_customize->add_control(
-    $prefix .'_contact_us_title',
+    $prefix .'_contact_us_general_title',
     array(
         'label'         => __( 'Title', 'illdy' ),
         'description'   => __( 'Add the title for this section.', 'illdy'),
@@ -89,9 +89,8 @@ $wp_customize->add_control(
         'priority'      => 2
     )
 );
-$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_title', array(
+$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_general_title', array(
     'selector' => '#contact-us .section-header h3',
-    'render_callback' => $prefix .'_contact_us_title',
 ) );
 
 // Entry
@@ -140,11 +139,10 @@ if ( get_theme_mod( $prefix .'_contact_us_entry' ) ) {
 }
 $wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_entry', array(
     'selector' => '#contact-us .section-header .section-description',
-    'render_callback' => $prefix .'_contact_us_entry',
 ) );
 
 // Address Title
-$wp_customize->add_setting( $prefix .'_contact_us_address_title',
+$wp_customize->add_setting( $prefix .'_contact_us_general_address_title',
     array(
         'sanitize_callback' => 'illdy_sanitize_html',
         'default'           => __( 'Address', 'illdy' ),
@@ -152,20 +150,19 @@ $wp_customize->add_setting( $prefix .'_contact_us_address_title',
     )
 );
 $wp_customize->add_control(
-    $prefix .'_contact_us_address_title',
+    $prefix .'_contact_us_general_address_title',
     array(
         'label'         => __( 'Address Title', 'illdy' ),
         'section'       => $prefix . '_contact_us',
         'priority'      => 4
     )
 );
-$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_address_title', array(
+$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_general_address_title', array(
     'selector' => '#contact-us .section-content .row .col-sm-4 .box-left',
-    'render_callback' => $prefix .'_contact_us_address_title',
 ) );
 
 // Customer Support Title
-$wp_customize->add_setting( $prefix .'_contact_us_customer_support_title',
+$wp_customize->add_setting( $prefix .'_contact_us_general_customer_support_title',
     array(
         'sanitize_callback' => 'illdy_sanitize_html',
         'default'           => __( 'Customer Support', 'illdy' ),
@@ -173,16 +170,15 @@ $wp_customize->add_setting( $prefix .'_contact_us_customer_support_title',
     )
 );
 $wp_customize->add_control(
-    $prefix .'_contact_us_customer_support_title',
+    $prefix .'_contact_us_general_customer_support_title',
     array(
         'label'         => __( 'Customer Support Title', 'illdy' ),
         'section'       => $prefix . '_contact_us',
         'priority'      => 5
     )
 );
-$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_customer_support_title', array(
+$wp_customize->selective_refresh->add_partial( $prefix .'_contact_us_general_customer_support_title', array(
     'selector' => '#contact-us .section-content .row .col-sm-5 .box-left',
-    'render_callback' => $prefix .'_contact_us_customer_support_title',
 ) );
 
 // Contact Form 7
@@ -447,7 +443,6 @@ $wp_customize->add_control(
     );
     $wp_customize->selective_refresh->add_partial( $prefix .'_phone', array(
         'selector' => '#contact-us .section-content .row .col-sm-5 .box-right span:nth-child(2)',
-        'render_callback' => $prefix .'_phone',
     ) );
 
     // Address 1
@@ -470,7 +465,6 @@ $wp_customize->add_control(
     );
     $wp_customize->selective_refresh->add_partial( $prefix .'_address1', array(
         'selector' => '#contact-us .section-content .row .col-sm-4 .box-right span:first-child',
-        'render_callback' => $prefix .'_address1',
     ) );
 
     // Address 2

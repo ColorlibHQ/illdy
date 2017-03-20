@@ -18,7 +18,7 @@ jQuery( document ).ready( function($) {
 
 	// Smooth Scroll Anchors
 	function smoothScrollAnchors() {
-		$('a[href*="#"]:not([href="#"])').on('click', function() {
+		$('body:not(.single-product) a[href*="#"]:not([href="#"])').on('click', function() {
 			if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
 				var target = $(this.hash);
 				target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -101,30 +101,6 @@ jQuery( document ).ready( function($) {
 		}
 	}
 
-	// WooCommerce Tabs
-	function woocommerceTabs() {
-		var descriptionTab = $( 'li.description_tab' );
-		var descriptionTabLink = $( 'li.description_tab a' );
-		var reviewsTab = $( 'li.reviews_tab' );
-		var reviewsTabLink = $( 'li.reviews_tab a' );
-		var panelDescription = $( '.panel#tab-description' );
-		var panelReviews = $( '.panel#tab-reviews' );
-
-		$( descriptionTabLink ).click( function() {
-			$( this ).parent().addClass( 'active' );
-			$( reviewsTab ).removeClass( 'active' );
-			$( panelDescription ).show();
-			$( panelReviews ).hide();
-		});
-
-		$( reviewsTabLink ).click( function() {
-			$( this ).parent().addClass( 'active' );
-			$( descriptionTab ).removeClass( 'active' );
-			$( panelReviews ).show();
-			$( panelDescription ).hide();
-		});
-	}
-
 	// Called Functions
 	$( function() {
 		isIsIOS();
@@ -135,7 +111,6 @@ jQuery( document ).ready( function($) {
 		setColorOnFrontPagePerson();
 		subMenu();
 		alignSubSubMenu();
-		woocommerceTabs();
 	});
 
 	// Window Resize

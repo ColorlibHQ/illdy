@@ -345,10 +345,10 @@ if ( ! function_exists( 'illdy_create_contact_tab_sections' ) ) {
 		$prefix = 'illdy';
 		$sections = array(
             $prefix . '_contact_us_show',
-            $prefix . '_contact_us_title',
+            $prefix . '_contact_us_general_title',
             $prefix . '_contact_us_entry',
-            $prefix . '_contact_us_address_title',
-            $prefix . '_contact_us_customer_support_title',
+            $prefix . '_contact_us_general_address_title',
+            $prefix . '_contact_us_general_customer_support_title',
         );
 
 		if ( illdy_is_not_active_contact_form_7() ) {
