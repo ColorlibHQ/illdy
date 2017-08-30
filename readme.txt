@@ -4,12 +4,10 @@ Contributors: Colorlib
 Tags: blog, e-commerce, education, entertainment, news, food-and-drink, holiday, photography, portfolio
 
 Requires at least: 4.0
-Tested up to: 4.5.1
-Stable tag: 1.0.16
+Tested up to: 4.7.2
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-A starter theme called Illdy.
 
 == Description ==
 
@@ -37,7 +35,7 @@ The exceptions to this license are as follows:
 	License under Creative Commons Zero.
 
 
-	https://pixabay.com/en/lens­photo­photograph­camera­456638/
+	https://pixabay.com/en/bed-bedroom-door-girl-house-1850893/
 
 
 	Sources for images used:
