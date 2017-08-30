@@ -56,7 +56,7 @@ if ( ( is_single() || is_page() || is_archive() ) && get_theme_mod( 'illdy_archi
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<?php if ( $preloader_enable == 1 ): ?>
+<?php if ( $preloader_enable == 1 && ! is_customize_preview() ): ?>
 	<div class="pace-overlay"></div>
 <?php endif; ?>
 <header id="header" class="<?php if ( get_option( 'show_on_front' ) == 'page' && is_front_page() ): echo 'header-front-page';

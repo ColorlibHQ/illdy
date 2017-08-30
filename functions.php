@@ -186,7 +186,7 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 		wp_register_style( 'illdy-google-fonts', add_query_arg( $google_fonts_args, 'https://fonts.googleapis.com/css' ), array(), null );
 
 		// WP Enqueue Style
-		if ( get_theme_mod( 'illdy_preloader_enable', 1 ) == 1 ) {
+		if ( 1 == get_theme_mod( 'illdy_preloader_enable', 1 ) && ! is_customize_preview() ) {
 			wp_enqueue_style( 'illdy-pace', get_template_directory_uri() . '/layout/css/pace.min.css', array(), '', 'all' );
 		}
 
