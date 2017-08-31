@@ -8,6 +8,7 @@
 });
 
 ( function( api ) {
+    var sections = [ 'illdy_jumbotron_general', 'illdy_panel_about', 'illdy_panel_projects', 'illdy_testimonials_general', 'illdy_panel_services', 'illdy_latest_news_general', 'illdy_counter_general', 'illdy_panel_team', 'illdy_contact_us', 'illdy_full_width' ];
 
 	// Extends our custom "illdy-pro-section" section.
 	api.sectionConstructor['illdy-pro-section'] = api.Section.extend( {
@@ -31,6 +32,18 @@
 			return true;
 		}
 	} );
+
+    // Detect when the front page sections section is expanded (or closed) so we can adjust the preview accordingly.
+    jQuery.each( sections, function ( index, section ){
+        api.section( section, function( section ) {
+            section.expanded.bind( function( isExpanding ) {
+
+                // Value of isExpanding will = true if you're entering the section, false if you're leaving it.
+                api.previewer.send( 'section-highlight', { expanded: isExpanding, section: section.id });
+            } );
+        } );
+    });
+    
 
 } )( wp.customize );
 

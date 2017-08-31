@@ -205,6 +205,7 @@ if ( ! function_exists( 'illdy_customizer_live_preview' ) ) {
 
 	function illdy_customizer_live_preview() {
 		wp_enqueue_script( 'illdy-handlebars', get_template_directory_uri() . '/inc/customizer/assets/js/handlebars.js', array(), '1.0', true );
+		wp_enqueue_script( 'illdy-scrollto', get_template_directory_uri() . '/inc/customizer/assets/js/jquery.scrollTo.js', array(), '1.0', true );
 		wp_enqueue_script( 'illdy-customizer-live-preview', get_template_directory_uri() . '/inc/customizer/assets/js/illdy-customizer-live-preview.js', array( 'customize-preview' ), '1.0', true );
 
 		wp_localize_script( 'illdy-customizer-live-preview', 'WPUrls', array(
