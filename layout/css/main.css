@@ -2784,6 +2784,23 @@ p.mb32 {
 	}
 }
 
+@media screen and (max-width: 768px) {
+	body #header .bottom-header {
+		padding-top: 70px; padding-bottom: 70px;
+	}
+	body #header .bottom-header h1 {
+		line-height: 54px; font-size: 50px;
+	}
+	body #header .bottom-header .section-description {
+		margin-bottom: 0;
+	}
+}
+@media screen and (max-width: 500px) {
+	body #header .bottom-header h1 { line-height: 44px; font-size: 40px; }
+	body #header .bottom-header .section-description h5 { font-size: 18px; line-height: 24px; }
+	body #header .bottom-header { padding-bottom: 50px; }
+}
+
 /* 18. Gallery */
 
 .gallery.gallery-columns-4 .gallery-item:nth-child(4n+1),
