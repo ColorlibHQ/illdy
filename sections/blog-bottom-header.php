@@ -30,11 +30,9 @@
 
 					$custom_blog_archive_title        = get_bloginfo( 'name' );
 
-					// check if the current page being displayed is the same one set in Settings -> Reading as the blog page.
-					// Only for this page we're employing some custom logic to display a custom title.
-					// 1. Custom Page title
-					// 2. the_archive_title used as fallback
-
+					if ( is_home() && ! is_front_page() ) {
+						$custom_blog_archive_title = get_the_title( get_option('page_for_posts', true) );
+					}
 
 					if ( ! empty( $custom_blog_archive_title ) && is_home() ) {
 						echo '<h2>' . esc_html( $custom_blog_archive_title ) . '</h2>';
