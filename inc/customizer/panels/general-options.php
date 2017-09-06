@@ -170,7 +170,7 @@ $wp_customize->add_control( $prefix . '_404_subtitle', array(
 	'priority'    => 2,
 ) );
 $wp_customize->selective_refresh->add_partial( $prefix .'_404_subtitle', array(
-    'selector' => '.error404 .404-subheading',
+    'selector' => '.error404 .subheading-404',
 ) );
 
 $wp_customize->add_setting( $prefix .'_404_content', array(
@@ -185,7 +185,7 @@ $wp_customize->add_control( new Epsilon_Control_Text_Editor( $wp_customize, $pre
     'priority'      => 3,
 ) ) );
 $wp_customize->selective_refresh->add_partial( $prefix .'_404_content', array(
-    'selector' => '.error404 .404-content',
+    'selector' => '.error404 .content-404',
 ) );
 
 $wp_customize->add_setting( $prefix . '_404_button_label', array(
@@ -200,7 +200,7 @@ $wp_customize->add_control( $prefix . '_404_button_label', array(
 	'priority'    => 4,
 ) );
 $wp_customize->selective_refresh->add_partial( $prefix .'_404_button_label', array(
-    'selector' => '.error404 .404-button',
+    'selector' => '.error404 .button-404',
 ) );
 
 /***********************************************/

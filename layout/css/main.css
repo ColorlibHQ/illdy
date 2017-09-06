@@ -345,7 +345,7 @@ a:hover, a:focus {
     color: #545454;
     font-weight: 700;
 }
-.row-404 p {
+.row-404 .content-404 {
 	margin: 40px 0 30px;
 }
 #header .bottom-header.blog p {
