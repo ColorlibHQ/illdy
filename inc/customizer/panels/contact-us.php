@@ -65,7 +65,7 @@ $wp_customize->add_setting( $prefix . '_contact_us_show',
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize,
     $prefix . '_contact_us_show',
     array(
-        'type'      => 'mte-toggle',
+        'type'      => 'epsilon-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_contact_us',
         'priority'  => 1
@@ -102,7 +102,7 @@ if ( get_theme_mod( $prefix .'_contact_us_entry' ) ) {
             'transport'         => 'postMessage'
         )
     );
-    $wp_customize->add_control( new Epsilon_Editor_Custom_Control(
+    $wp_customize->add_control( new Epsilon_Control_Text_Editor(
         $wp_customize,
         $prefix .'_contact_us_entry',
         array(
@@ -110,7 +110,7 @@ if ( get_theme_mod( $prefix .'_contact_us_entry' ) ) {
             'description'   => __( 'Add the content for this section.', 'illdy'),
             'section'       => $prefix . '_contact_us',
             'priority'      => 3,
-            'type'          => 'textarea'
+            'type' => 'epsilon-text-editor',
         ) )
     );
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {

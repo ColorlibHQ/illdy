@@ -23,7 +23,7 @@ $wp_customize->add_setting( $prefix . '_jumbotron_enable_featured_image', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_jumbotron_enable_featured_image', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Featured image as jumbotron ?', 'illdy' ),
 	'description' => __( 'This will remove the featured image from inside the post content and use it in the jumbotron as a background image. Works for single posts & pages.', 'illdy' ),
 	'section'     => $prefix . '_jumbotron_general',
@@ -37,7 +37,7 @@ $wp_customize->add_setting( $prefix . '_jumbotron_enable_parallax_effect', array
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_jumbotron_enable_parallax_effect', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Enable parallax effect ?', 'illdy' ),
 	'description' => __( 'Enabling this will add a parallax scrolling effect for the header image.', 'illdy' ),
 	'section'     => $prefix . '_jumbotron_general',
@@ -48,11 +48,12 @@ $wp_customize->add_setting( $prefix . '_jumbotron_title', array(
 	'default'           => __( 'Clean <span class="span-dot">.</span> Slick<span class="span-dot">.</span> Pixel Perfect', 'illdy' ),
 	'transport'         => 'postMessage',
 ) );
-$wp_customize->add_control(  new Epsilon_Editor_Custom_Control(
+$wp_customize->add_control(  new Epsilon_Control_Text_Editor(
     $wp_customize, $prefix . '_jumbotron_title', array(
 	'label'       => __( 'Title', 'illdy' ),
 	'description' => __( 'Add the title for this section.', 'illdy' ),
 	'section'     => $prefix . '_jumbotron_general',
+	'type' => 'epsilon-text-editor',
 ) ) );
 $wp_customize->selective_refresh->add_partial( $prefix .'_jumbotron_title', array(
     'selector' => '#header .bottom-header.front-page h1',
@@ -67,11 +68,12 @@ if ( get_theme_mod( $prefix . '_jumbotron_general_entry' ) ) {
 		'default'           => __( 'lldy is a great one-page theme, perfect for developers and designers but also for someone who just wants a new website for his business. Try it now!', 'illdy' ),
 		'transport'         => 'postMessage',
 	) );
-	$wp_customize->add_control(  new Epsilon_Editor_Custom_Control(
+	$wp_customize->add_control(  new Epsilon_Control_Text_Editor(
         $wp_customize, $prefix . '_jumbotron_general_entry', array(
 		'label'       => __( 'Entry', 'illdy' ),
 		'description' => __( 'The content added in this field will show below the title.', 'illdy' ),
 		'section'     => $prefix . '_jumbotron_general',
+		'type' => 'epsilon-text-editor',
 	) ) );
 
 }
@@ -227,7 +229,7 @@ $wp_customize->add_setting( $prefix . '_jumbotron_background_repeat', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_jumbotron_background_repeat', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Repeat Background Image', 'illdy' ),
 	'section'     => $prefix . '_jumbotron_general',
 ) ) );
@@ -239,7 +241,7 @@ $wp_customize->add_setting( $prefix . '_jumbotron_background_attachment', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_jumbotron_background_attachment', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Scroll with Page', 'illdy' ),
 	'section'     => $prefix . '_jumbotron_general',
 ) ) );

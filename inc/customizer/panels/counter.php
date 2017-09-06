@@ -25,7 +25,7 @@ $wp_customize->add_setting( $prefix . '_counter_general_show',
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize,
     $prefix . '_counter_general_show',
     array(
-        'type'      => 'mte-toggle',
+        'type'      => 'epsilon-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_counter_general',
         'priority'  => 1

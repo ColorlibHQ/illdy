@@ -3,8 +3,6 @@
  *  Customizer
  */
 
-require_once get_template_directory() . '/inc/customizer/class-epsilon-color-scheme.php';
-
 if ( ! function_exists( 'illdy_customize_register' ) ) {
 	function illdy_customize_register( $wp_customize ) {
 
@@ -24,43 +22,17 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		// Custom Controls
 		require_once get_template_directory() . '/inc/customizer/custom-controls.php';
 		require_once get_template_directory() . '/inc/customizer/custom-section.php';
-		require_once get_template_directory() . '/inc/customizer/custom-recommend-action-section.php';
-		require_once get_template_directory() . '/inc/customizer/control-epsilon-color-scheme.php';
 		
 		$wp_customize->register_control_type( 'Epsilon_Control_Tab' );
 		$wp_customize->register_control_type( 'Epsilon_Control_Button' );
-		$wp_customize->register_section_type( 'Illdy_Customize_Section_Pro' );
-		$wp_customize->register_section_type( 'Illdy_Customize_Section_Recommend' );
 
-		// Recomended Actions
-		$wp_customize->add_section(
-			new Illdy_Customize_Section_Recommend(
-				$wp_customize,
-				'illdy-recomended-section',
-				array(
-					'title'    => esc_html__( 'Recomended Actions', 'illdy' ),
-					'social_text'	=> esc_html__( 'We are social :', 'illdy' ),
-					'plugin_text'	=> esc_html__( 'Recomended Plugins :', 'illdy' ),
-					'facebook' => 'https://www.facebook.com/colorlib',
-					'twitter' => 'https://twitter.com/colorlib',
-					'wp_review' => true,
-					'priority' => 0
-				)
-			)
-		);
 		// Pro Section
-		$wp_customize->add_section(
-			new Illdy_Customize_Section_Pro(
-				$wp_customize,
-				'illdy-pro-section',
-				array(
-					'title'    => esc_html__( 'Illdy', 'illdy' ),
-					'pro_text' => esc_html__( 'Documentation',         'illdy' ),
-					'pro_url'  => 'https://colorlib.com/wp/support/illdy/',
-					'priority' => 0
-				)
-			)
-		);
+		$wp_customize->add_section( new Epsilon_Section_Pro( $wp_customize, 'illdy-pro-section', array(
+			'title'    => esc_html__( 'Illdy', 'illdy' ),
+			'button_text' => esc_html__( 'Documentation', 'illdy' ),
+			'button_url'  => 'https://colorlib.com/wp/support/illdy/',
+			'priority' => 0
+		) ) );
 
 		// Front Page sections panel
 		$wp_customize->add_panel( 'illdy_frontpage_panel', array(
@@ -70,92 +42,87 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		) );
 
 		// Color Scheme
-		$wp_customize->add_setting( 'illdy_color_scheme',
-	                    array(
-	                        'sanitize_callback' => 'esc_html',
-	                        'default'           => 'default',
-	                        'transport'         => 'postMessage',
-	                    ) );
-		$wp_customize->add_control( new Epsilon_Control_Color_Scheme(
-                        $wp_customize,
-                        'illdy_color_scheme',
-                        array(
-                            'label'       => esc_html__( 'Color scheme', 'illdy' ),
-                            'description' => esc_html__( 'Select a color scheme', 'illdy' ),
-                            'choices'     => array(
-	                            array(
-		                            'id'     => 'Illdy',
-		                            'name'   => 'Default',
-		                            'colors' => array(
-			                            'accent'        		=> '#f1d204',
-			                            'secondary_accent'		=> '#f18b6d',
-			                            'text' 					=> '#545454',
-			                            'contrast'            	=> '#8c9597',
-			                            'hover'  				=> '#6a4d8a',
-		                            ),
-	                            ),
-	                            array(
-		                            'id'     => 'palette-1',
-		                            'name'   => 'Palette 1',
-		                            'colors' => array(
-			                            'accent'        		=> '#ff004f',
-			                            'secondary_accent'		=> '#f18b6d',
-			                            'text' 					=> '#545454',
-			                            'contrast'            	=> '#8c9597',
-			                            'hover'  				=> '#482c54',
-		                            ),
-	                            ),
-	                            array(
-		                            'id'     => 'palette-2',
-		                            'name'   => 'Palette 2',
-		                            'colors' => array(
-			                            'accent'        		=> '#f66f6d',
-			                            'secondary_accent'		=> '#f18b6d',
-			                            'text' 					=> '#545454',
-			                            'contrast'            	=> '#8c9597',
-			                            'hover'  				=> '#195962',
-		                            ),
-	                            ),
-	                            array(
-		                            'id'     => 'palette-3',
-		                            'name'   => 'Palette 3',
-		                            'colors' => array(
-			                            'accent'        		=> '#f79e27',
-			                            'secondary_accent'		=> '#f18b6d',
-			                            'text' 					=> '#545454',
-			                            'contrast'            	=> '#8c9597',
-			                            'hover'  				=> '#e95e4e',
-		                            ),
-	                            ),
-	                            array(
-		                            'id'     => 'palette-4',
-		                            'name'   => 'Palette 4',
-		                            'colors' => array(
-			                            'accent'        		=> '#6ebbdc',
-			                            'secondary_accent'		=> '#f18b6d',
-			                            'text' 					=> '#545454',
-			                            'contrast'            	=> '#8c9597',
-			                            'hover'  				=> '#2e3d51',
-		                            ),
-	                            ),
-	                            array(
-		                            'id'     => 'palette-5',
-		                            'name'   => 'Palette 5',
-		                            'colors' => array(
-			                            'accent'        		=> '#507fe2',
-			                            'secondary_accent'		=> '#f18b6d',
-			                            'text' 					=> '#545454',
-			                            'contrast'            	=> '#8c9597',
-			                            'hover'  				=> '#1acdcb',
-		                            ),
-	                            ),
-                            ),
-                            'priority'    => 0,
-                            'default'     => 'red',
-                            'section'     => 'colors',
-                        )
-                    )
-		);
+		$wp_customize->add_setting( 'illdy_color_scheme', array(
+            'sanitize_callback' => 'esc_html',
+            'default'           => 'default',
+            'transport'         => 'postMessage',
+        ) );
+		$wp_customize->add_control( new Epsilon_Control_Color_Scheme( $wp_customize, 'illdy_color_scheme', array(
+			'type'        => 'epsilon-color-scheme',
+            'label'       => esc_html__( 'Color scheme', 'illdy' ),
+            'description' => esc_html__( 'Select a color scheme', 'illdy' ),
+            'choices'     => array(
+                array(
+                    'id'     => 'default',
+                    'name'   => 'Default',
+                    'colors' => array(
+                        'epsilon_accent_color'        		=> '#f1d204',
+                        'epsilon_secondary_accent_color'	=> '#f18b6d',
+                        'epsilon_text_color' 				=> '#545454',
+                        'epsilon_contrast_color'         	=> '#8c9597',
+                        'epsilon_hover_color'  				=> '#6a4d8a',
+                    ),
+                ),
+                array(
+                    'id'     => 'palette-1',
+                    'name'   => 'Palette 1',
+                    'colors' => array(
+                        'epsilon_accent_color'        		=> '#ff004f',
+                        'epsilon_secondary_accent_color'	=> '#f18b6d',
+                        'epsilon_text_color' 				=> '#545454',
+                        'epsilon_contrast_color'        	=> '#8c9597',
+                        'epsilon_hover_color'  				=> '#482c54',
+                    ),
+                ),
+                array(
+                    'id'     => 'palette-2',
+                    'name'   => 'Palette 2',
+                    'colors' => array(
+                        'epsilon_accent_color'        		=> '#f66f6d',
+                        'epsilon_secondary_accent_color'	=> '#f18b6d',
+                        'epsilon_text_color' 				=> '#545454',
+                        'epsilon_contrast_color'       		=> '#8c9597',
+                        'epsilon_hover_color'  				=> '#195962',
+                    ),
+                ),
+                array(
+                    'id'     => 'palette-3',
+                    'name'   => 'Palette 3',
+                    'colors' => array(
+                        'epsilon_accent_color'        		=> '#f79e27',
+                        'epsilon_secondary_accent_color'	=> '#f18b6d',
+                        'epsilon_text_color' 				=> '#545454',
+                        'epsilon_contrast_color'        	=> '#8c9597',
+                        'epsilon_hover_color'  				=> '#e95e4e',
+                    ),
+                ),
+                array(
+                    'id'     => 'palette-4',
+                    'name'   => 'Palette 4',
+                    'colors' => array(
+                        'epsilon_accent_color'        		=> '#6ebbdc',
+                        'epsilon_secondary_accent_color'	=> '#f18b6d',
+                        'epsilon_text_color' 				=> '#545454',
+                        'epsilon_contrast_color'          	=> '#8c9597',
+                        'epsilon_hover_color'  				=> '#2e3d51',
+                    ),
+                ),
+                array(
+                    'id'     => 'palette-5',
+                    'name'   => 'Palette 5',
+                    'colors' => array(
+                        'epsilon_accent_color'        		=> '#507fe2',
+                        'epsilon_secondary_accent_color'	=> '#f18b6d',
+                        'epsilon_text_color' 				=> '#545454',
+                        'epsilon_contrast_color'        	=> '#8c9597',
+                        'epsilon_hover_color'  				=> '#1acdcb',
+                    ),
+                ),
+            ),
+            'priority'    => 0,
+            'default'     => 'red',
+            'section'     => 'colors',
+        ) ) );
 
 		// General Options
 		require_once get_template_directory() . '/inc/customizer/panels/general-options.php';
@@ -606,37 +573,6 @@ function illdy_sanitize_background_size( $value, $setting ) {
 	}
 	return $value;
 }
-
-
-// Wp Editor
-class Epsilon_Editor_Scripts {
-    /**
-     * Enqueue scripts/styles.
-     *
-     * @since  1.0.0
-     * @access public
-     * @return void
-     */
-    public static function enqueue() {
-        if ( ! class_exists( '_WP_Editors' ) ) {
-            require(ABSPATH . WPINC . '/class-wp-editor.php');
-        }
-        add_action( 'customize_controls_print_footer_scripts', array( __CLASS__, 'enqueue_editor' ),  2 );
-        add_action( 'customize_controls_print_footer_scripts', array( '_WP_Editors', 'editor_js' ), 50 );
-        add_action( 'customize_controls_print_footer_scripts', array( '_WP_Editors', 'enqueue_scripts' ), 1 );
-    }
-    public  static function enqueue_editor(){
-        if( ! isset( $GLOBALS['__wp_mce_editor__'] ) || ! $GLOBALS['__wp_mce_editor__'] ) {
-            $GLOBALS['__wp_mce_editor__'] = true;
-            ?>
-            <script id="_wp-mce-editor-tpl" type="text/html">
-                <?php wp_editor('', '__wp_mce_editor__'); ?>
-            </script>
-            <?php
-        }
-    }
-}
-add_action( 'customize_controls_enqueue_scripts', array( 'Epsilon_Editor_Scripts', 'enqueue' ), 95 );
 
 add_action( 'wp_footer', 'illdy_print_customizer_templates' );
 

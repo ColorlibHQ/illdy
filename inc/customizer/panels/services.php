@@ -29,7 +29,7 @@ $wp_customize->add_setting( $prefix . '_services_general_show', array(
 		'transport'         => 'postMessage',
 	) );
 $wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, $prefix . '_services_general_show', array(
-		'type'     => 'mte-toggle',
+		'type'     => 'epsilon-toggle',
 		'label'    => __( 'Show this section?', 'illdy' ),
 		'section'  => $panel_id,
 		'priority' => 1,
@@ -59,12 +59,13 @@ if ( get_theme_mod( $prefix . '_services_general_entry' ) ) {
 			'default'           => __( 'In order to help you grow your business, our carefully selected experts can advise you in in the following areas:', 'illdy' ),
 			'transport'         => 'postMessage',
 		) );
-	$wp_customize->add_control(  new Epsilon_Editor_Custom_Control(
+	$wp_customize->add_control(  new Epsilon_Control_Text_Editor(
         	$wp_customize, $prefix . '_services_general_entry', array(
 			'label'       => __( 'Entry', 'illdy' ),
 			'description' => __( 'Add the content for this section.', 'illdy' ),
 			'section'     => $panel_id,
 			'priority'    => 3,
+            'type'        => 'epsilon-text-editor',
 		) ) );
 	$wp_customize->selective_refresh->add_partial( $prefix .'_services_general_entry', array(
 	    'selector' => '#services .section-header .section-description',
@@ -200,7 +201,7 @@ $wp_customize->add_setting( $prefix . '_services_background_repeat', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_services_background_repeat', array(
-    'type'        => 'mte-toggle',
+    'type'        => 'epsilon-toggle',
     'label'       => __( 'Repeat Background Image', 'illdy' ),
     'section'     => $panel_id,
 ) ) );
@@ -212,7 +213,7 @@ $wp_customize->add_setting( $prefix . '_services_background_attachment', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_services_background_attachment', array(
-    'type'        => 'mte-toggle',
+    'type'        => 'epsilon-toggle',
     'label'       => __( 'Scroll with Page', 'illdy' ),
     'section'     => $panel_id,
 ) ) );

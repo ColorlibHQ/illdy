@@ -27,7 +27,7 @@ $wp_customize->add_setting( $prefix . '_full_width_general_show',
 $wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, 
     $prefix . '_full_width_general_show',
     array(
-        'type'      => 'mte-toggle',
+        'type'      => 'epsilon-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $panel_id,
         'priority'  => 1
@@ -45,7 +45,7 @@ $wp_customize->add_setting( $prefix . '_full_width_padding',
 $wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, 
     $prefix . '_full_width_padding',
     array(
-        'type'      => 'mte-toggle',
+        'type'      => 'epsilon-toggle',
         'label'     => __( 'Add padding to section ?', 'illdy' ),
         'section'   => $panel_id,
         'priority'  => 1
@@ -80,7 +80,7 @@ $wp_customize->add_setting( $prefix .'_full_width_general_entry',
         'transport'         => 'postMessage'
     )
 );
-$wp_customize->add_control( new Epsilon_Editor_Custom_Control(
+$wp_customize->add_control( new Epsilon_Control_Text_Editor(
     $wp_customize,
     $prefix .'_full_width_general_entry',
     array(
@@ -88,6 +88,7 @@ $wp_customize->add_control( new Epsilon_Editor_Custom_Control(
         'description'   => __( 'Add the content for this section.', 'illdy'),
         'section'       => $panel_id,
         'priority'      => 3,
+        'type' => 'epsilon-text-editor',
     ) )
 );
 $wp_customize->selective_refresh->add_partial( $prefix .'_full_width_general_entry', array(
@@ -199,7 +200,7 @@ $wp_customize->add_setting( $prefix . '_full_width_background_repeat', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_full_width_background_repeat', array(
-    'type'        => 'mte-toggle',
+    'type'        => 'epsilon-toggle',
     'label'       => __( 'Repeat Background Image', 'illdy' ),
     'section'     => $panel_id,
 ) ) );
@@ -211,7 +212,7 @@ $wp_customize->add_setting( $prefix . '_full_width_background_attachment', array
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_full_width_background_attachment', array(
-    'type'        => 'mte-toggle',
+    'type'        => 'epsilon-toggle',
     'label'       => __( 'Scroll with Page', 'illdy' ),
     'section'     => $panel_id,
 ) ) );

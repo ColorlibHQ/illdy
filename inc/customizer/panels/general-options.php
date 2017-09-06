@@ -54,7 +54,7 @@ $wp_customize->add_setting( $prefix . '_preloader_enable', array(
 	'default'           => 1,
 ) );
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_preloader_enable', array(
-	'type'     => 'mte-toggle',
+	'type'     => 'epsilon-toggle',
 	'label'    => __( 'Enable the site preloader?', 'illdy' ),
 	'section'  => $prefix . '_preloader_section',
 	'priority' => 1,

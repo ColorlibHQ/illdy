@@ -853,6 +853,7 @@ a:hover, a:focus {
 	color: #545454;
 }
 .top-parallax-section h1,
+.top-parallax-section div,
 .top-parallax-section p {
 	color: #fff;
 }
@@ -2543,6 +2544,7 @@ a.button:hover {
     overflow: hidden;
     padding: 96px 0;
 }
+.mb32,
 p.mb32 {
 	margin-bottom: 32px;
 }

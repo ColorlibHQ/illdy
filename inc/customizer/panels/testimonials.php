@@ -26,7 +26,7 @@ $wp_customize->add_setting( $prefix . '_testimonials_general_show',
 $wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize,
     $prefix . '_testimonials_general_show',
     array(
-        'type'      => 'mte-toggle',
+        'type'      => 'epsilon-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_testimonials_general',
         'priority'  => 1,
@@ -164,7 +164,7 @@ $wp_customize->add_setting( $prefix . '_testimonials_background_repeat', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_testimonials_background_repeat', array(
-    'type'        => 'mte-toggle',
+    'type'        => 'epsilon-toggle',
     'label'       => __( 'Repeat Background Image', 'illdy' ),
     'section'     => $panel_id,
 ) ) );
@@ -176,7 +176,7 @@ $wp_customize->add_setting( $prefix . '_testimonials_background_attachment', arr
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_testimonials_background_attachment', array(
-    'type'        => 'mte-toggle',
+    'type'        => 'epsilon-toggle',
     'label'       => __( 'Scroll with Page', 'illdy' ),
     'section'     => $panel_id,
 ) ) );

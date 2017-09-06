@@ -75,7 +75,7 @@ $wp_customize->add_setting( $prefix . '_disable_random_featured_image', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_disable_random_featured_image', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Random featured image', 'illdy' ),
 	'description' => __( 'Toggling this to off will disable theme provided blog images. These images are used in the theme when users don\'t provide a featured image. It\'s purposes is merely cosmetic and meant to improve the blog layout.', 'illdy' ),
 	'section'     => $prefix . '_blog_featured_section',
@@ -100,7 +100,7 @@ $wp_customize->add_setting( $prefix . '_enable_post_posted_on_blog_posts', array
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_posted_on_blog_posts', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Show Posted on', 'illdy' ),
 	'description' => __( 'This will disable the posted on zone as well as the author name', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
@@ -113,7 +113,7 @@ $wp_customize->add_setting( $prefix . '_enable_post_category_blog_posts', array(
 	'transport'         => 'postMessage',
 ) );
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_category_blog_posts', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Show category', 'illdy' ),
 	'description' => __( 'This will disable the posted in zone.', 'illdy' ),
 	'section'       => $prefix.'_blog_global_section',
@@ -127,7 +127,7 @@ $wp_customize->add_setting( $prefix . '_enable_post_tags_blog_posts', array(
 	'transport'         => 'postMessage',
 ) );
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_tags_blog_posts', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Show tags', 'illdy' ),
 	'description' => __( 'This will disable the tagged with zone.', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
@@ -141,7 +141,7 @@ $wp_customize->add_setting( $prefix . '_enable_post_comments_blog_posts', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_post_comments_blog_posts', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Show comments number', 'illdy' ),
 	'description' => __( 'This will disable the comments header zone.', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',
@@ -154,7 +154,7 @@ $wp_customize->add_setting( $prefix . '_enable_author_box_blog_posts', array(
 	'transport'         => 'postMessage',
 ) );
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_enable_author_box_blog_posts', array(
-	'type'        => 'mte-toggle',
+	'type'        => 'epsilon-toggle',
 	'label'       => __( 'Show author box', 'illdy' ),
 	'description' => __( 'Displayed right at the end of the post', 'illdy' ),
 	'section'     => $prefix . '_blog_global_section',

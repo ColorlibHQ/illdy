@@ -1,3 +1,14 @@
+<?php
+/**
+ * Template part for the support tab in welcome screen
+ *
+ * @package Epsilon Framework
+ */
+
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+?>
 <div class="feature-section two-col">
 
 	<div class="col">
@@ -20,3 +31,4 @@
 		</p>
 	</div><!--/.col-->
 </div><!--/.feature-section-->
+

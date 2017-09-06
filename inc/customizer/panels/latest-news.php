@@ -26,7 +26,7 @@ $wp_customize->add_setting( $prefix . '_latest_news_general_show',
 $wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize,
     $prefix . '_latest_news_general_show',
     array(
-        'type'      => 'mte-toggle',
+        'type'      => 'epsilon-toggle',
         'label'     => __( 'Show this section?', 'illdy' ),
         'section'   => $prefix . '_latest_news_general',
         'priority'  => 1
@@ -63,7 +63,7 @@ if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
             'transport'         => 'postMessage'
         )
     );
-    $wp_customize->add_control(  new Epsilon_Editor_Custom_Control(
+    $wp_customize->add_control(  new Epsilon_Control_Text_Editor(
         $wp_customize,
         $prefix .'_latest_news_general_entry',
         array(
@@ -71,6 +71,7 @@ if ( get_theme_mod( $prefix .'_latest_news_general_entry' ) ) {
             'description'   => __( 'Add the content for this section.', 'illdy'),
             'section'       => $prefix . '_latest_news_general',
             'priority'      => 3,
+            'type' => 'epsilon-text-editor',
         ) )
     );
 }elseif ( !defined( "ILLDY_COMPANION" ) ) {
@@ -269,7 +270,7 @@ $wp_customize->add_setting( $prefix . '_latest_news_background_repeat', array(
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_latest_news_background_repeat', array(
-    'type'        => 'mte-toggle',
+    'type'        => 'epsilon-toggle',
     'label'       => __( 'Repeat Background Image', 'illdy' ),
     'section'     => $prefix . '_latest_news_general',
 ) ) );
@@ -281,7 +282,7 @@ $wp_customize->add_setting( $prefix . '_latest_news_background_attachment', arra
 ) );
 
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_latest_news_background_attachment', array(
-    'type'        => 'mte-toggle',
+    'type'        => 'epsilon-toggle',
     'label'       => __( 'Scroll with Page', 'illdy' ),
     'section'     => $prefix . '_latest_news_general',
 ) ) );
