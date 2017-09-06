@@ -207,6 +207,7 @@ if ( ! function_exists( 'illdy_customizer_js_load' ) ) {
 		$IlldyCustomizer['sections'] = illdy_get_sections_position();
 		$IlldyCustomizer['ajax_url'] = admin_url( 'admin-ajax.php' );
 		$IlldyCustomizer['template_directory'] = get_template_directory_uri();
+		$IlldyCustomizer['site_url'] = site_url();
 
 		wp_localize_script( 'illdy-customizer', 'IlldyCustomizer', $IlldyCustomizer );
 

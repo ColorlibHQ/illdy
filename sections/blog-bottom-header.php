@@ -10,9 +10,10 @@
 <div class="bottom-header blog">
 	<div class="container">
 		<div class="row">
-			<?php if ( is_404() ) { ?>
-				<h1><?php _e( 'Page not found', 'illdy' ) ?></h1>			 
-			<?php }elseif ( is_page_template( 'page-templates/blog.php' ) || is_singular() ){ ?>
+			<?php if ( is_404() ) {
+				$page_title = get_theme_mod( 'illdy_404_title', esc_html__( 'Page not found', 'illdy' ) );
+				echo '<h1>' . wp_kses_post( $page_title ) . '</h1>';
+			}elseif ( is_page_template( 'page-templates/blog.php' ) || is_singular() ){ ?>
 				<div class="col-sm-12">
 					<?php
 

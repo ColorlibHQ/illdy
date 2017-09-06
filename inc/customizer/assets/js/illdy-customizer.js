@@ -557,6 +557,21 @@ jQuery(document).ready(function(){
 
     var api = wp.customize;
 
+    api.section( 'illdy_404', function( section ) {
+        section.expanded.bind( function( isExpanding ) {
+            var newURL = IlldyCustomizer.site_url + '/ihopethisisa404page';
+            if ( isExpanding ) {
+                if ( ! $.inArray( newURL, api.previewer.allowedUrls ) ) {
+                    api.previewer.allowedUrls.push( newURL );
+                }
+                wp.customize.previewer.previewUrl.set( newURL );
+            }else{
+                wp.customize.previewer.previewUrl.set( IlldyCustomizer.site_url );
+            }
+
+        } );
+    } );
+
     api.EpsilonNavigateButton = api.Control.extend({
 
         ready: function () {
