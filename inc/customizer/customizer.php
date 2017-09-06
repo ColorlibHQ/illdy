@@ -21,7 +21,6 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 
 		// Custom Controls
 		require_once get_template_directory() . '/inc/customizer/custom-controls.php';
-		require_once get_template_directory() . '/inc/customizer/custom-section.php';
 		
 		$wp_customize->register_control_type( 'Epsilon_Control_Tab' );
 		$wp_customize->register_control_type( 'Epsilon_Control_Button' );

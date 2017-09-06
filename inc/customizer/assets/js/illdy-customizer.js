@@ -10,18 +10,6 @@
 ( function( api ) {
     var sections = [ 'illdy_jumbotron_general', 'illdy_panel_about', 'illdy_panel_projects', 'illdy_testimonials_general', 'illdy_panel_services', 'illdy_latest_news_general', 'illdy_counter_general', 'illdy_panel_team', 'illdy_contact_us', 'illdy_full_width' ];
 
-	// Extends our custom "illdy-pro-section" section.
-	api.sectionConstructor['illdy-recomended-section'] = api.Section.extend( {
-
-		// No events for this type of section.
-		attachEvents: function () {},
-
-		// Always make the section active.
-		isContextuallyActive: function () {
-			return true;
-		}
-	} );
-
     // Detect when the front page sections section is expanded (or closed) so we can adjust the preview accordingly.
     jQuery.each( sections, function ( index, section ){
         api.section( section, function( section ) {
@@ -211,13 +199,7 @@ jQuery( document ).ready( function( $ ) {
 			}
 		});
 
-		$('.epsilon-button').on( 'click', function( evt ){
-			evt.preventDefault();
-			section = $(this).data('section');
-			if ( section ) {
-				wp.customize.section( section ).focus();
-			}
-		});
+		
 
 	});
 
@@ -568,3 +550,98 @@ jQuery(document).ready(function(){
         });
     });
 });
+
+(function( wp, $ ){
+
+    if ( ! wp || ! wp.customize ) { return; }
+
+    var api = wp.customize;
+
+    api.EpsilonNavigateButton = api.Control.extend({
+
+        ready: function () {
+            var control = this;
+            control.container.find( 'a.epsilon-button' ).click( function( evt ){
+                var newSection = $(this).data('section'),
+                    oldSection = control.params.section;
+                evt.preventDefault();
+                if ( undefined !== newSection ) {
+                    api.IlldyNavigateTo = oldSection;
+                    api.section( newSection ).focus();
+                }
+            });
+        }
+
+    });
+
+    api.NewSidebarSection = api.Widgets.SidebarSection.extend({
+
+        attachEvents: function () {
+            var meta, content, section = this;
+
+            if ( section.container.hasClass( 'cannot-expand' ) ) {
+                return;
+            }
+
+            // Expand/Collapse accordion sections on click.
+            section.container.find( '.accordion-section-title' ).on( 'click keydown', function( event ) {
+                if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
+                    return;
+                }
+                event.preventDefault(); // Keep this AFTER the key filter above
+
+                if ( section.expanded() ) {
+                    section.collapse();
+                } else {
+                    section.expand();
+                }
+            });
+
+            section.container.find( '.customize-section-back' ).on( 'click keydown', function( event ) {
+                if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
+                    return;
+                }
+                event.preventDefault(); // Keep this AFTER the key filter above
+
+                console.log( 'we are in' );
+
+                if ( section.expanded() ) {
+                    if ( api.IlldyNavigateTo ) {
+                        api.section( api.IlldyNavigateTo ).expand();
+                        api.IlldyNavigateTo = false;
+                    }else{
+                        section.collapse();
+                    }
+                } else {
+                    section.expand();
+                }
+            });
+
+            // This is very similar to what is found for api.Panel.attachEvents().
+            section.container.find( '.customize-section-title .customize-help-toggle' ).on( 'click', function() {
+
+                meta = section.container.find( '.section-meta' );
+                if ( meta.hasClass( 'cannot-expand' ) ) {
+                    return;
+                }
+                content = meta.find( '.customize-section-description:first' );
+                content.toggleClass( 'open' );
+                content.slideToggle();
+                content.attr( 'aria-expanded', function ( i, attr ) {
+                    return 'true' === attr ? 'false' : 'true';
+                });
+            });
+        },
+
+    });
+
+    // Extend epsilon button constructor
+    $.extend( api.controlConstructor, {
+        'epsilon-button': api.EpsilonNavigateButton,
+    });
+
+    $.extend( api.sectionConstructor, {
+        sidebar: api.NewSidebarSection
+    });
+
+})( window.wp, jQuery );
