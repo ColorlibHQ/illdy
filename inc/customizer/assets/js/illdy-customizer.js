@@ -3,9 +3,9 @@
  *
  */
 
- jQuery(document).on( 'wp-plugin-update-success', function( evt, response ){
-    location.reload();
-});
+//  jQuery(document).on( 'wp-plugin-update-success', function( evt, response ){
+//     location.reload();
+// });
 
 ( function( api ) {
     var sections = [ 'illdy_jumbotron_general', 'illdy_panel_about', 'illdy_panel_projects', 'illdy_testimonials_general', 'illdy_panel_services', 'illdy_latest_news_general', 'illdy_counter_general', 'illdy_panel_team', 'illdy_contact_us', 'illdy_full_width' ];
@@ -64,33 +64,7 @@ jQuery( document ).ready( function( $ ) {
 
  	});
 
-	wp.customize.section.each( function ( section ) {
-
-		var sectionID = '#sub-accordion-section-'+section.id;
-		if ( $(sectionID).find('.epsilon-tabs').length > 0 ) {
-			var current_tab = $(sectionID).find('.epsilon-tabs a.epsilon-tab.active');
-			var current_control = current_tab.parent().parent().parent();
-			var current_controlID = current_control.attr('id');
-			$(sectionID+' #'+current_controlID).nextAll().hide().addClass('tab-element');
-			var fields = current_tab.data('fields');
-			$(sectionID).find(fields).show();
-			
-			$(sectionID).find('.epsilon-tabs a.epsilon-tab').click(function(evt){
-				evt.preventDefault();
-
-				var section = $(this).parent().parent().parent().parent();
-				var sectionID = section.attr('id');
-				section.find('.epsilon-tabs a').removeClass('active');
-				$(this).addClass('active');
-				var field = $(this).parent().parent().parent();
-				var fieldID = field.attr('id');
-				$('#'+sectionID+' #'+fieldID).nextAll().hide();
-				var fields = $(this).data('fields');
-				section.find(fields).show();
-			});
-		}
-
-	});
+	
 
 	$('#sub-accordion-panel-illdy_frontpage_panel').sortable({
 		helper: 'clone',
@@ -556,6 +530,7 @@ jQuery(document).ready(function(){
     if ( ! wp || ! wp.customize ) { return; }
 
     var api = wp.customize;
+    api.EpsilonTabs = [];
 
     api.section( 'illdy_404', function( section ) {
         section.expanded.bind( function( isExpanding ) {
@@ -583,6 +558,39 @@ jQuery(document).ready(function(){
                 if ( undefined !== newSection ) {
                     api.IlldyNavigateTo = oldSection;
                     api.section( newSection ).focus();
+                }
+            });
+        }
+
+    });
+
+    api.EpsilonTab = api.Control.extend({
+
+        ready: function () {
+            var control = this;
+            control.container.find( 'a.epsilon-tab' ).click( function( evt ){
+                var tab = $(this).data( 'tab' );
+                evt.preventDefault();
+                control.container.find( 'a.epsilon-tab' ).removeClass( 'active' );
+                $(this).addClass( 'active' );
+                control.toggleActiveControls( tab );
+            });
+
+            api.EpsilonTabs.push( control.id );
+        },
+
+        toggleActiveControls: function( tab ){
+            var control = this,
+                currentFields = control.params.buttons[ tab ].fields;
+            _.each(  control.params.fields, function( id ){
+                var tabControl = api.control( id );
+                if ( undefined !== tabControl ) {
+                    tabControl.container.addClass( 'tab-element' );
+                    if ( tabControl.active() && $.inArray( id, currentFields ) >= 0 ) {
+                        tabControl.toggle( true );
+                    }else{
+                        tabControl.toggle( false );
+                    }
                 }
             });
         }
@@ -617,9 +625,6 @@ jQuery(document).ready(function(){
                     return;
                 }
                 event.preventDefault(); // Keep this AFTER the key filter above
-
-                console.log( 'we are in' );
-
                 if ( section.expanded() ) {
                     if ( api.IlldyNavigateTo ) {
                         api.section( api.IlldyNavigateTo ).expand();
@@ -653,10 +658,18 @@ jQuery(document).ready(function(){
     // Extend epsilon button constructor
     $.extend( api.controlConstructor, {
         'epsilon-button': api.EpsilonNavigateButton,
+        'epsilon-tab': api.EpsilonTab,
     });
 
     $.extend( api.sectionConstructor, {
         sidebar: api.NewSidebarSection
+    });
+
+    api.bind( 'ready', function(){
+        _.each( api.EpsilonTabs, function( epsilonTab ){
+            var control = api.control( epsilonTab );
+            control.toggleActiveControls( 0 );
+        });
     });
 
 })( window.wp, jQuery );

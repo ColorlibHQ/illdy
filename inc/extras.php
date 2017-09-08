@@ -639,3 +639,47 @@ function illdy_output_customizer_class($classes) {
         }
         return $classes;
 }
+
+// Background video related functions
+function illdy_get_video_url(){
+
+    $id = absint( get_theme_mod( 'illdy_jumbotron_video' ) );
+    $url = esc_url( get_theme_mod( 'illdy_jumbotron_external_video' ) );
+
+    if ( $id ) {
+        // Get the file URL from the attachment ID.
+        $url = wp_get_attachment_url( $id );
+    }
+
+    if ( ! $id && ! $url ) {
+        return false;
+    }
+    return esc_url_raw( set_url_scheme( $url ) );
+}
+
+function illdy_get_video_settings() {
+    $header     = get_custom_header();
+    $video_url  = illdy_get_video_url();
+    $video_type = wp_check_filetype( $video_url, wp_get_mime_types() );
+    $settings = array(
+        'mimeType'  => '',
+        'posterUrl' => '',
+        'videoUrl'  => $video_url,
+        'width'     => 1920,
+        'height'    => 1080,
+        'minWidth'  => 900,
+        'minHeight' => 500,
+        'l10n'      => array(
+            'pause'      => __( 'Pause', 'illdy' ),
+            'play'       => __( 'Play', 'illdy' ),
+            'pauseSpeak' => __( 'Video is paused.', 'illdy' ),
+            'playSpeak'  => __( 'Video is playing.', 'illdy' ),
+        ),
+    );
+    if ( preg_match( '#^https?://(?:www\.)?(?:youtube\.com/watch|youtu\.be/)#', $video_url ) ) {
+        $settings['mimeType'] = 'video/x-youtube';
+    } elseif ( ! empty( $video_type['type'] ) ) {
+        $settings['mimeType'] = $video_type['type'];
+    }
+    return apply_filters( 'header_video_settings', $settings );
+}

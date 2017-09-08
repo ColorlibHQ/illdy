@@ -552,6 +552,36 @@ if ( ! function_exists( 'illdy_get_section_position' ) ) {
 	}
 }
 
+if ( ! function_exists( 'illdy_is_jumbotron_image' ) ) {
+	function illdy_is_jumbotron_image() {
+		$jumbotron_type = get_theme_mod( 'illdy_jumbotron_background_type', 'image' );
+		if ( 'image' == $jumbotron_type ) {
+			return true;
+		}
+		return false;
+	}
+}
+
+if ( ! function_exists( 'illdy_is_jumbotron_video' ) ) {
+	function illdy_is_jumbotron_video() {
+		$jumbotron_type = get_theme_mod( 'illdy_jumbotron_background_type', 'image' );
+		if ( 'video' == $jumbotron_type ) {
+			return true;
+		}
+		return false;
+	}
+}
+
+if ( ! function_exists( 'illdy_is_jumbotron_slider' ) ) {
+	function illdy_is_jumbotron_slider() {
+		$jumbotron_type = get_theme_mod( 'illdy_jumbotron_background_type', 'image' );
+		if ( 'slider' == $jumbotron_type ) {
+			return true;
+		}
+		return false;
+	}
+}
+
 function illdy_sanitize_background_repeat( $value, $setting ) {
 	if ( ! in_array( $value, array( 'repeat-x', 'repeat-y', 'repeat', 'no-repeat' ) ) ) {
 		return new WP_Error( 'invalid_value', __( 'Invalid value for background repeat.', 'illdy' ) );

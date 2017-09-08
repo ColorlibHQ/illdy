@@ -43,16 +43,8 @@ class Illdy {
 	}
 
 	public function init_epsilon(){
-
-		$args = array(
-			'controls' => array( 'slider', 'toggle', 'typography', 'color-scheme' ), // array of controls to load
-			'sections' => array( 'recommended-actions', 'pro' ), // array of sections to load
-			'path'     => '/inc/libraries' // path to your epsilon framework in your theme, e.g. theme-name*/inc/libraries*/epsilon-framework
-		);
-
-		new Epsilon_Framework( $args );
+		new Epsilon_Framework();
 		$this->init_color_scheme();
-
 	}
 
 	public function init_color_scheme(){

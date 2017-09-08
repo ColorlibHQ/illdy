@@ -44,13 +44,13 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		) );
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 		add_theme_support( 'custom-header', array(
-			'default-image'  => esc_url( get_template_directory_uri() . '/layout/images/blog/blog-header.png' ),
-			'width'          => 1920,
-			'height'         => 532,
-			'flex-height'    => true,
-			'flex-width'    => true,
-			'random-default' => true,
-			'header-text'    => false,
+			'default-image'  	=> esc_url( get_template_directory_uri() . '/layout/images/blog/blog-header.png' ),
+			'width'          	=> 1920,
+			'height'         	=> 532,
+			'flex-height'    	=> true,
+			'flex-width'    	=> true,
+			'random-default'	=> true,
+			'header-text'    	=> false,
 		) );
 		add_theme_support( 'customize-selective-refresh-widgets' );
 		register_default_headers( array(
@@ -186,10 +186,15 @@ if ( ! function_exists( 'illdy_enqueue_javascripts' ) ) {
 			wp_add_inline_script( 'illdy-fancybox', 'jQuery(".fancybox").fancybox();' );
 		}
 		wp_enqueue_script( 'illdy-parallax', get_template_directory_uri() . '/layout/js/parallax.min.js', array( 'jquery' ), '1.0.16', true );
-		wp_enqueue_script( 'illdy-plugins', get_template_directory_uri() . '/layout/js/plugins.min.js', array( 'jquery' ), '1.0.16', true );
+		wp_enqueue_script( 'illdy-plugins', get_template_directory_uri() . '/layout/js/plugins.js', array( 'jquery' ), '1.0.16', true );
 		wp_enqueue_script( 'illdy-scripts', get_template_directory_uri() . '/layout/js/scripts.min.js', array( 'jquery' ), '1.0.16', true );
-		if ( is_front_page() ) {\
+		if ( is_front_page() ) {
 			wp_add_inline_script( 'illdy-scripts', 'if( jQuery(\'.blog-carousel > .illdy-blog-post\').length > 3 ){jQuery(\'.blog-carousel\').owlCarousel({\'items\': 3,\'loop\': true,\'dots\': false,\'nav\' : true, \'navText\':[\'<i class="fa fa-angle-left" aria-hidden="true"></i>\',\'<i class="fa fa-angle-right" aria-hidden="true"></i>\'], responsive : { 0 : { items : 1 }, 480 : { items : 2 }, 900 : { items : 3 } }});}' );
+			$jumbotron_type = get_theme_mod( 'illdy_jumbotron_background_type', 'image' );
+			if ( 'video' == $jumbotron_type ) {
+				wp_enqueue_script( 'wp-custom-header' );
+				wp_localize_script( 'wp-custom-header', '_wpCustomHeaderSettings', illdy_get_video_settings() );
+			}
 		}
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
