@@ -16,10 +16,10 @@ module.exports = function(grunt){
                         'x-poedit-keywordslist': true // Include a list of all possible gettext functions.
                     },                                // Headers to add to the generated POT file.
                     processPot: function( pot, options ) {
-                        pot.headers['report-msgid-bugs-to'] = 'http://www.machothemes.com/';
-                        pot.headers['language-team'] = 'Macho Themes <support@machothemes.com>';
-                        pot.headers['last-translator'] = 'Macho Themes <support@machothemes.com>';
-                        pot.headers['language-team'] = 'Macho Themes <support@machothemes.com>';
+                        pot.headers[ 'report-msgid-bugs-to' ] = 'https://www.colorlib.com/';
+                        pot.headers[ 'language-team' ] = 'Colorlib <office@colorlib.com>';
+                        pot.headers[ 'last-translator' ] = 'Colorlib <office@colorlib.com>';
+                        pot.headers[ 'language-team' ] = 'Colorlib <office@colorlib.com>';
                         return pot;
                     },
                     updateTimestamp: true,             // Whether the POT-Creation-Date should be updated without other changes.
@@ -57,7 +57,21 @@ module.exports = function(grunt){
             },
             build: {
                 expand: true,
-                src: ['**', '!node_modules/**', '!build/**', '!readme.md', '!Gruntfile.js', '!package.json' ],
+                src: [
+                    '**',
+                    '!node_modules/**',
+                    '!vendor/**',
+                    '!build/**',
+                    '!readme.md',
+                    '!README.md',
+                    '!phpcs.ruleset.xml',
+                    '!Gruntfile.js',
+                    '!package.json',
+                    '!composer.json',
+                    '!composer.lock',
+                    '!set_tags.sh',
+                    '!illdy.zip',
+                    '!nbproject/**' ],
                 dest: 'build/'
             }
         },
@@ -66,7 +80,7 @@ module.exports = function(grunt){
             build: {
                 options: {
                     pretty: true,                           // Pretty print file sizes when logging.
-                    archive: 'build/<%= pkg.name %>.zip'
+                    archive: '<%= pkg.name %>.zip'
                 },
                 expand: true,
                 cwd: 'build/',
@@ -85,7 +99,7 @@ module.exports = function(grunt){
                     {
                         expand: true,     // Enable dynamic expansion.
                         cwd: 'layout/js/',      // Src matches are relative to this path.
-                        src: ['**/*.js'], // Actual pattern(s) to match.
+                        src: ['**/*.js', '!jquery.fancybox.js'], // Actual pattern(s) to match.
                         dest: 'layout/js/',   // Destination path prefix.
                         ext: '.min.js',   // Dest filepaths will have this extension.
                         extDot: 'first'   // Extensions in filenames begin after the first dot
@@ -152,7 +166,7 @@ module.exports = function(grunt){
                 files: [{
                     expand: true,
                     cwd: 'layout/css',
-                    src: ['*.css', '!*.min.css'],
+                    src: ['*.css', '!*.min.css', '!style-overrides.css'],
                     dest: 'layout/css',
                     ext: '.min.css'
                 }]
@@ -205,6 +219,6 @@ module.exports = function(grunt){
         'clean:init',
         'copy',
         'compress:build',
-        'clean:build'
+        'clean:init'
     ]);
 };

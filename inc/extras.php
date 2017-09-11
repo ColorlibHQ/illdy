@@ -354,7 +354,7 @@ if ( ! function_exists( 'illdy_fullwidth_css' ) ) {
 			$css .= '#full-width {background-attachment: scroll !important;}';
 		}
 		if ( $illdy_full_width_general_color ) {
-			$css .= '#full-width {background-color: ' . esc_attr( $illdy_full_width_general_color ) . ';}';
+			$css .= '#full-width:before {background-color: ' . esc_attr( $illdy_full_width_general_color ) . ';}';
 		}
 		if ( $illdy_full_width_title_color ) {
 			$css .= '#full-width .section-header h3 {color: ' . esc_attr( $illdy_full_width_title_color ) . ';}';
