@@ -20,10 +20,9 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		require_once trailingslashit( get_template_directory() ) . 'inc/jetpack.php';
 
 		// Components
-		require_once trailingslashit( get_template_directory() ) . 'inc/components/entry-meta/class.mt-entry-meta.php';
-		require_once trailingslashit( get_template_directory() ) . 'inc/components/author-box/class.mt-author-box.php';
-		require_once trailingslashit( get_template_directory() ) . 'inc/components/related-posts/class.mt-related-posts.php';
-
+		require_once trailingslashit( get_template_directory() ) . 'inc/components/entry-meta/class-illdy-entry-meta-output.php';
+		require_once trailingslashit( get_template_directory() ) . 'inc/components/author-box/class-illdy-author-box-output.php';
+		require_once trailingslashit( get_template_directory() ) . 'inc/components/related-posts/class-illdy-related-posts-output.php';
 
 		// Load Theme Textdomain
 		load_theme_textdomain( 'illdy', get_template_directory() . '/languages' );
@@ -33,34 +32,33 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		add_theme_support( 'wc-product-gallery-zoom' );
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
-		
+
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'custom-logo', array(
 			'height'      => 75,
-   			'flex-height' => false,
+			'flex-height' => false,
 			'flex-width'  => true,
 		) );
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 		add_theme_support( 'custom-header', array(
-			'default-image'  	=> esc_url( get_template_directory_uri() . '/layout/images/blog/blog-header.png' ),
-			'width'          	=> 1920,
-			'height'         	=> 532,
-			'flex-height'    	=> true,
-			'flex-width'    	=> true,
-			'random-default'	=> true,
-			'header-text'    	=> false,
+			'default-image'     => esc_url( get_template_directory_uri() . '/layout/images/blog/blog-header.png' ),
+			'width'             => 1920,
+			'height'            => 532,
+			'flex-height'       => true,
+			'flex-width'        => true,
+			'random-default'    => true,
+			'header-text'       => false,
 		) );
 		add_theme_support( 'customize-selective-refresh-widgets' );
 		register_default_headers( array(
 			'default' => array(
 				'url'           => '%s/layout/images/blog/blog-header.png',
 				'thumbnail_url' => '%s/layout/images/blog/blog-header.png',
-				'description'   => __( 'Coffe', 'illdy' )
+				'description'   => __( 'Coffe', 'illdy' ),
 			),
 		) );
-
 
 		// Add Image Size
 		add_image_size( 'illdy-blog-list', 750, 500, true );
@@ -90,7 +88,7 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 	// Add Editor Style
 	add_editor_style( 'illdy-google-fonts' );
 
-}
+}// End if().
 
 if ( ! function_exists( 'illdy_is_not_latest_posts' ) ) {
 	function illdy_is_not_latest_posts() {
@@ -101,7 +99,7 @@ if ( ! function_exists( 'illdy_is_not_latest_posts' ) ) {
 if ( ! function_exists( 'illdy_is_not_imported' ) ) {
 	function illdy_is_not_imported() {
 
-		if ( defined( "ILLDY_COMPANION" ) ) {
+		if ( defined( 'ILLDY_COMPANION' ) ) {
 			$illdy_show_required_actions = get_option( 'illdy_show_required_actions' );
 			if ( isset( $illdy_show_required_actions['illdy-req-import-content'] ) ) {
 				return true;
@@ -368,7 +366,7 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			) );
 		}
 	}
-}
+}// End if().
 
 
 /**
@@ -376,7 +374,7 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
  */
 if ( ! function_exists( 'illdy_value_checkbox_helper' ) ) {
 	function illdy_value_checkbox_helper( $value ) {
-		if ( $value == 1 ) {
+		if ( 1 == $value ) {
 			return 1;
 		} else {
 			return 0;
@@ -384,7 +382,7 @@ if ( ! function_exists( 'illdy_value_checkbox_helper' ) ) {
 	}
 }
 
-add_action( 'illdy_after_content_above_footer', "illdy_pagination", 1 );
+add_action( 'illdy_after_content_above_footer', 'illdy_pagination', 1 );
 
 function illdy_pagination() {
 	the_posts_pagination( array(
@@ -395,7 +393,7 @@ function illdy_pagination() {
 }
 
 
-if ( !function_exists( 'illdy_get_random_featured_image' ) ) {
+if ( ! function_exists( 'illdy_get_random_featured_image' ) ) {
 	function illdy_get_random_featured_image() {
 		$featured_image_list = array(
 			'random-blog-post-1.jpg',
@@ -404,12 +402,12 @@ if ( !function_exists( 'illdy_get_random_featured_image' ) ) {
 			'random-blog-post-4.jpg',
 			'random-blog-post-5.jpg',
 		);
-		$number = rand(0,4);
-		return get_template_directory_uri().'/layout/images/blog/'.$featured_image_list[$number];
+		$number = rand( 0,4 );
+		return get_template_directory_uri() . '/layout/images/blog/' . $featured_image_list[ $number ];
 	}
 }
 
-if ( !function_exists( 'illdy_get_recommended_actions_url' ) ) {
+if ( ! function_exists( 'illdy_get_recommended_actions_url' ) ) {
 	function illdy_get_recommended_actions_url() {
 		return self_admin_url( 'themes.php?page=illdy-welcome&tab=recommended_actions' );
 	}
@@ -417,6 +415,6 @@ if ( !function_exists( 'illdy_get_recommended_actions_url' ) ) {
 
 // Include theme files
 require get_template_directory() . '/inc/libraries/epsilon-framework/class-epsilon-autoloader.php';
-require get_template_directory() . '/inc/notify-system-checks.php';
+require get_template_directory() . '/inc/class-mt-notify-system.php';
 require get_template_directory() . '/inc/libraries/welcome-screen/class-epsilon-welcome-screen.php';
 require get_template_directory() . '/inc/class-illdy.php';

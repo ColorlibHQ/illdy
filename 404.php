@@ -1,9 +1,9 @@
 <?php
 /**
- *	The template for dispalying the archive.
+ *  The template for dispalying the archive.
  *
- *	@package WordPress
- *	@subpackage illdy
+ *  @package WordPress
+ *  @subpackage illdy
  */
 ?>
 <?php get_header(); ?>

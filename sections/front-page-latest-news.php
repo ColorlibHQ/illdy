@@ -25,7 +25,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$number_of_posts = get_theme_mod( 'illdy_latest_news_number_of_posts', absint( 3 ) );
 }
 
-$number_of_words = get_theme_mod( 'illdy_latest_news_words_number', absint( 20 ));
+$number_of_words = get_theme_mod( 'illdy_latest_news_words_number', absint( 20 ) );
 
 $post_query_args = array(
 	'post_type'              => array( 'post' ),
@@ -39,7 +39,7 @@ $post_query_args = array(
 
 $post_query = new WP_Query( $post_query_args );
 
-if ( $post_query->have_posts() || $general_title != '' || $general_entry != '' || $button_text != '' ) {
+if ( $post_query->have_posts() || '' != $general_title || '' != $general_entry || '' != $button_text ) {
 
 	?>
 
@@ -47,38 +47,39 @@ if ( $post_query->have_posts() || $general_title != '' || $general_entry != '' |
 		<div class="section-header">
 			<div class="container">
 				<div class="row">
-					<?php if ( $general_title ): ?>
+					<?php if ( $general_title ) : ?>
 						<div class="col-sm-12">
-							<h3><?php echo do_shortcode(wp_kses_post( $general_title )); ?></h3>
+							<h3><?php echo do_shortcode( wp_kses_post( $general_title ) ); ?></h3>
 						</div><!--/.col-sm-12-->
 					<?php endif; ?>
-					<?php if ( $general_entry ): ?>
+					<?php if ( $general_entry ) : ?>
 						<div class="col-sm-10 col-sm-offset-1">
-							<div class="section-description"><?php echo do_shortcode(wp_kses_post( $general_entry )); ?></div>
+							<div class="section-description"><?php echo do_shortcode( wp_kses_post( $general_entry ) ); ?></div>
 						</div><!--/.col-sm-10.col-sm-offset-1-->
 					<?php endif; ?>
 				</div><!--/.row-->
 			</div><!--/.container-->
 		</div><!--/.section-header-->
-		<?php if ( $button_text ): ?>
+		<?php if ( $button_text ) : ?>
 			<a href="<?php echo esc_url( $button_url ); ?>" title="<?php echo esc_attr( $button_text ); ?>" class="latest-news-button"><i class="fa fa-chevron-circle-right"></i><?php echo esc_html( $button_text ); ?>
 			</a>
 		<?php endif; ?>
 
-		<?php if ( $post_query->have_posts() ): ?>
+		<?php if ( $post_query->have_posts() ) : ?>
 			<div class="section-content">
 				<div class="container">
 					<div class="row blog-carousel">
 						<?php $counter = 0; ?>
-						<?php while ( $post_query->have_posts() ): ?>
+						<?php while ( $post_query->have_posts() ) : ?>
 							<?php $post_query->the_post(); ?>
 							<?php $post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illdy-front-page-latest-news' ); ?>
 
 							<div class="illdy-blog-post col-md-4 col-sm-6 col-xs-12">
-								<div class="post" style="<?php if ( ! $post_thumbnail && !get_theme_mod( 'illdy_disable_random_featured_image' ) ): echo 'padding-top: 40px;'; endif; ?>">
-									<?php if ( has_post_thumbnail() ){ ?>
+								<div class="post" style="<?php if ( ! $post_thumbnail && ! get_theme_mod( 'illdy_disable_random_featured_image' ) ) : echo 'padding-top: 40px;';
+endif; ?>">
+									<?php if ( has_post_thumbnail() ) { ?>
 										<div class="post-image" style="background-image: url('<?php echo esc_url( $post_thumbnail[0] ); ?>');"></div>
-									<?php }elseif ( get_theme_mod( 'illdy_disable_random_featured_image' ) ) { ?>
+									<?php } elseif ( get_theme_mod( 'illdy_disable_random_featured_image' ) ) { ?>
 										<div class="post-image"  style="background-image: url('<?php echo illdy_get_random_featured_image(); ?>');"></div><!--/.blog-post-image-->
 									<?php } ?>
 									<h5><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="post-title"><?php the_title(); ?></a></h5>
@@ -98,4 +99,5 @@ if ( $post_query->have_posts() || $general_title != '' || $general_entry != '' |
 		<?php wp_reset_postdata(); ?>
 	</section><!--/#latest-news.front-page-section-->
 
-<?php } ?>
+<?php }// End if().
+	?>

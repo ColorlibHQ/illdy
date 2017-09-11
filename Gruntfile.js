@@ -97,7 +97,7 @@ module.exports = function(grunt){
         checktextdomain: {
             standard: {
                 options:{
-                    text_domain: [ 'illdy'], //Specify allowed domain(s)
+                    text_domain: [ 'illdy', 'epsilon-framework' ], //Specify allowed domain(s)
                     create_report_file: "true",
                     keywords: [ //List keyword specifications
                         '__:1,2d',
@@ -120,9 +120,6 @@ module.exports = function(grunt){
                     src: [
                         '**/*.php',
                         '!**/node_modules/**',
-                        '!**/framework/updater/**',
-                        '!**/framework/importer/**',
-                        '!**/framework/plugins/**',
                     ], //all php
                     expand: true,
                 }],
@@ -148,73 +145,6 @@ module.exports = function(grunt){
                     dest: 'layout/images/'
                 }]
             }
-        },
-
-        'ftp-deploy': {
-            lite: {
-                auth: {
-                    // Your hostname.
-                    host: 'machothemes.com',
-
-                    // Default FTP port, leave this alone.
-                    port: 21,
-
-                    // Key name defined in `.ftppass` for your FTP account.
-                    authKey: 'key1'
-                },
-
-                // Path to the folder you're interested in relative to `Gruntfile.js`.
-                src: './',
-
-                // Path to your destination folder, relative to the server root.
-                dest: '/public_html/pixova-lite/wp-content/themes/pixova-lite/',
-
-                // Files you don't want uploaded, relative to `Gruntfile.js`
-                exclusions: [
-                    '.DS_Store',
-                    '.gitignore',
-                    '.ftppass',
-                    'node_modules',
-                    'bower_components',
-                    '.standard.json',
-                    '.Gruntfile.js',
-                    'bower.json',
-                    '_.bowerrc',
-                    'package.json'
-                ]
-            },
-            premium: {
-                auth: {
-                    // Your hostname.
-                    host: 'machothemes.com',
-
-                    // Default FTP port, leave this alone.
-                    port: 21,
-
-                    // Key name defined in `.ftppass` for your FTP account.
-                    authKey: 'key1'
-                },
-
-                // Path to the folder you're interested in relative to `Gruntfile.js`.
-                src: './',
-
-                // Path to your destination folder, relative to the server root.
-                dest: '/public_html/pixova/wp-content/themes/pixova-premium/',
-
-                // Files you don't want uploaded, relative to `Gruntfile.js`
-                exclusions: [
-                    '.DS_Store',
-                    '.gitignore',
-                    '.ftppass',
-                    'node_modules',
-                    'bower_components',
-                    '.standard.json',
-                    '.Gruntfile.js',
-                    'bower.json',
-                    '_.bowerrc',
-                    'package.json'
-                ]
-            },
         },
 
         cssmin: {
@@ -266,16 +196,6 @@ module.exports = function(grunt){
         'minimg',
         'mincss',
         'minjs'
-    ]);
-
-    // FTP deploy -> lite version
-    grunt.registerTask( 'deploy-prod-lite', [
-        'ftp-deploy:lite'
-    ]);
-
-    // FTP deploy -> pro version
-    grunt.registerTask( 'deploy-prod-pro', [
-        'ftp-deploy:premium'
     ]);
 
     // Build task

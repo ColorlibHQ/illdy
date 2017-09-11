@@ -59,7 +59,9 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		 * @return bool
 		 */
 		public static function illdy_has_posts() {
-			$args  = array( "s" => 'Gary Johns: \'What is Aleppo\'' );
+			$args  = array(
+				's' => 'Gary Johns: \'What is Aleppo\'',
+			);
 			$query = get_posts( $args );
 
 			if ( ! empty( $query ) ) {
@@ -115,14 +117,14 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		 */
 		public static function check_plugin_is_active( $slug ) {
 			$plugin_path = MT_Notify_System::_get_plugin_basename_from_slug( $slug );
-			if ( file_exists( ABSPATH . 'wp-content/plugins/' .$plugin_path ) ) {
+			if ( file_exists( ABSPATH . 'wp-content/plugins/' . $plugin_path ) ) {
 				include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 				return is_plugin_active( $plugin_path );
 			}
 		}
 
-		public static function has_import_plugin( $slug = NULL ) {
+		public static function has_import_plugin( $slug = null ) {
 			$return = self::has_content();
 
 			if ( $return ) {
@@ -130,7 +132,7 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 			}
 			$check = array(
 				'installed' => self::check_plugin_is_installed( $slug ),
-				'active'    => self::check_plugin_is_active( $slug )
+				'active'    => self::check_plugin_is_active( $slug ),
 			);
 
 			if ( ! $check['installed'] || ! $check['active'] ) {
@@ -142,9 +144,9 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 
 		public static function check_plugin_need_update( $slug ) {
 
-			$update_plugin_transient = get_site_transient('update_plugins');
+			$update_plugin_transient = get_site_transient( 'update_plugins' );
 
-			if ( isset($update_plugin_transient->response) ) {
+			if ( isset( $update_plugin_transient->response ) ) {
 				$plugins = $update_plugin_transient->response;
 
 				foreach ( $plugins as $key => $plugin ) {
@@ -163,7 +165,7 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 			$check = array(
 				'installed' => self::check_plugin_is_installed( $slug ),
 				'active'    => self::check_plugin_is_active( $slug ),
-				'update'	=> self::check_plugin_need_update( $slug )
+				'update'    => self::check_plugin_need_update( $slug ),
 			);
 
 			if ( ! $check['installed'] || ! $check['active'] || ! $check['update'] ) {
@@ -176,8 +178,14 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 
 		public static function has_import_plugins() {
 			$check = array(
-				'wordpress-importer'       => array( 'installed' => false, 'active' => false ),
-				'widget-importer-exporter' => array( 'installed' => false, 'active' => false )
+				'wordpress-importer'       => array(
+					'installed' => false,
+					'active' => false,
+				),
+				'widget-importer-exporter' => array(
+					'installed' => false,
+					'active' => false,
+				),
 			);
 
 			$content = self::has_content();
@@ -199,7 +207,6 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 					$return = true;
 					$stop   = true;
 				}
-
 			}
 
 			return $return;
@@ -265,39 +272,39 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 
 		}
 
-		public static function create_plugin_requirement_title( $install_text, $activate_text, $plugin_slug ){
+		public static function create_plugin_requirement_title( $install_text, $activate_text, $plugin_slug ) {
 
-			if ( $plugin_slug == '' ) {
+			if ( '' == $plugin_slug ) {
 				return;
 			}
-			if ( $install_text == '' && $activate_text = '' ) {
+			if ( '' == $install_text && '' == $activate_text ) {
 				return;
 			}
-			if ( $install_text == '' &&  $activate_text != '' ) {
+			if ( '' == $install_text &  '' != $activate_text ) {
 				$install_text = $activate_text;
-			}elseif ( $activate_text == '' &&  $install_text != '' ) {
+			} elseif ( '' == $activate_text &&  '' != $install_text ) {
 				$activate_text = $install_text;
 			}
 
 			$installed = self::check_plugin_is_installed( $plugin_slug );
 			if ( ! $installed ) {
 				return $install_text;
-			}elseif ( ! self::check_plugin_is_active( $plugin_slug ) && $installed ) {
+			} elseif ( ! self::check_plugin_is_active( $plugin_slug ) && $installed ) {
 				return $activate_text;
-			}else{
+			} else {
 				return '';
 			}
 
 		}
 
-		public static function create_plugin_title( $plugin_title, $plugin_slug ){
+		public static function create_plugin_title( $plugin_title, $plugin_slug ) {
 			$installed = self::check_plugin_is_installed( $plugin_slug );
 			if ( ! $installed ) {
-				return __( 'Install : ', 'illdy' ).$plugin_title;
-			}elseif ( ! self::check_plugin_is_active( $plugin_slug ) && $installed ) {
-				return __( 'Activate : ', 'illdy' ).$plugin_title;
-			}else{
-				return __( 'Update : ', 'illdy' ).$plugin_title;
+				return __( 'Install : ', 'illdy' ) . $plugin_title;
+			} elseif ( ! self::check_plugin_is_active( $plugin_slug ) && $installed ) {
+				return __( 'Activate : ', 'illdy' ) . $plugin_title;
+			} else {
+				return __( 'Update : ', 'illdy' ) . $plugin_title;
 			}
 		}
 
@@ -310,4 +317,4 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 			return get_page_template_slug( $page_id ) == 'page-templates/frontpage-template.php' ? true : false;
 		}
 	}
-}
+}// End if().
