@@ -23,6 +23,7 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-tab.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-cf7-custom-control.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-text-custom-control.php';
+		require_once get_template_directory() . '/inc/customizer/class-epsilon-editor-custom-control.php';
 
 		$wp_customize->register_control_type( 'Epsilon_Control_Tab' );
 		$wp_customize->register_control_type( 'Epsilon_Control_Button' );
