@@ -605,12 +605,6 @@
 				$.scrollTo( $( selectors[ data.section ] ), {
 					duration: 600,
 				});
-
-			// If we've left the panel, hide the placeholders and scroll back to the top.
-			} else {
-				$.scrollTo( 0, {
-					duration: 600,
-				});
 			}
 		});
 
