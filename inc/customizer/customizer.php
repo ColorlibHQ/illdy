@@ -584,6 +584,23 @@ if ( ! function_exists( 'illdy_is_jumbotron_slider' ) ) {
 	}
 }
 
+if ( ! function_exists( 'illdy_is_jumbotron_slider_autoplay' ) ) {
+	function illdy_is_jumbotron_slider_autoplay() {
+		$jumbotron_type = get_theme_mod( 'illdy_jumbotron_background_type', 'image' );
+		$autoplay = get_theme_mod( 'illdy_jumbotron_slider_autoplay', true );
+		if ( 'slider' != $jumbotron_type ) {
+			return false;
+		}
+
+		if ( ! $autoplay ) {
+			return false;
+		}
+
+		return true;
+	}
+}
+
+
 function illdy_sanitize_background_repeat( $value, $setting ) {
 	if ( ! in_array( $value, array( 'repeat-x', 'repeat-y', 'repeat', 'no-repeat' ) ) ) {
 		return new WP_Error( 'invalid_value', __( 'Invalid value for background repeat.', 'illdy' ) );

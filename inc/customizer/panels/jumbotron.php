@@ -324,7 +324,7 @@ Epsilon_Customizer::add_field( $prefix . '_jumbotron_slides', array(
 $wp_customize->add_setting( $prefix . '_jumbotron_slider_autoplay', array(
 	'sanitize_callback' => $prefix . '_sanitize_checkbox',
 	'default'           => 1,
-	'transport'         => 'postMessage',
+	'transport'         => 'refresh',
 ) );
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_jumbotron_slider_autoplay', array(
 	'type'        => 'epsilon-toggle',
@@ -336,19 +336,19 @@ $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix 
 $wp_customize->add_setting( $prefix . '_jumbotron_slider_autoplay_time', array(
 	'sanitize_callback' => 'absint',
 	'default'           => 5000,
-	'transport'         => 'postMessage',
+	'transport'         => 'refresh',
 ) );
 $wp_customize->add_control( $prefix . '_jumbotron_slider_autoplay_time', array(
 	'label'         => __( 'Slider Timeout', 'illdy' ),
 	'description'   => __( 'Autoplay interval timeout.', 'illdy' ),
 	'section'       => $prefix . '_jumbotron_general',
-	'active_callback' => 'illdy_is_jumbotron_slider',
+	'active_callback' => 'illdy_is_jumbotron_slider_autoplay',
 ) );
 
 $wp_customize->add_setting( $prefix . '_jumbotron_slider_nav', array(
 	'sanitize_callback' => $prefix . '_sanitize_checkbox',
 	'default'           => 1,
-	'transport'         => 'postMessage',
+	'transport'         => 'refresh',
 ) );
 $wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_jumbotron_slider_nav', array(
 	'type'        => 'epsilon-toggle',
