@@ -1,14 +1,7 @@
 ul.accordion-section {
     min-height: 100% !important;
 }
-.description.customize-section-description {
-	background-color: #FFF;
-	border-radius: 5px;
-	padding: 15px;
-	border: 1px solid #CCC;
-	font-style: italic;
-	line-height: 1.5;
-}
+
 .wp-admin .checkbox_switch {
     display: inline-block;
     width: 100%;
