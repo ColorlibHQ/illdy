@@ -2564,6 +2564,22 @@ p.mb32 {
 .illdy_home_parallax .cast-shadow.img-responsive {
 	display: inline-block;
 }
+.illdy_home_parallax .fullscreen {
+    height: 100vh;
+}
+.illdy_home_parallax .fullscreen .align-transform {
+    position: relative;
+    transform: translate3d(0, -50%, 0);
+    -webkit-transform: translate3d(0, -50%, 0);
+    top: 50%;
+    z-index: 2;
+}
+#full-width .widget.illdy_home_parallax {
+	margin-bottom: 0;
+}
+#full-width .widget.illdy_home_parallax a.button {
+	margin-bottom: 0;
+}
 .illdy-customizer-preview .parallax-mirror {
 	z-index: 0 !important;
 }
