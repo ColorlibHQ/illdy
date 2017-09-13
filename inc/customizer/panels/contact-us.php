@@ -87,7 +87,6 @@ if ( get_theme_mod( $prefix . '_contact_us_entry' ) ) {
 	) );
 	$wp_customize->add_control( new Epsilon_Control_Text_Editor( $wp_customize, $prefix . '_contact_us_entry', array(
 		'label'         => __( 'Entry', 'illdy' ),
-		'description'   => __( 'Add the content for this section.', 'illdy' ),
 		'section'       => $prefix . '_contact_us',
 		'priority'      => 3,
 		'type' => 'epsilon-text-editor',

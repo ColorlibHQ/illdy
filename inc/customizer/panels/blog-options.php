@@ -13,18 +13,12 @@ $site_title->panel = $panel_id;
 
 // Change priority for Site Title
 $site_title           = $wp_customize->get_control( 'blogname' );
-$site_title->label    = __( 'Default site title', 'illdy' );
 $site_title->priority = 15;
 
 // Change priority for Site Tagline
 $site_title              = $wp_customize->get_control( 'blogdescription' );
-$site_title->label       = __( 'Default site tagline', 'illdy' );
 $site_title->description = __( 'The tagline will be shown on archive pages, in the blog page right below the title.', 'illdy' );
 $site_title->priority    = 17;
-
-// site title
-$site_logo              = $wp_customize->get_control( 'blogname' );
-$site_logo->description = __( 'This is the default WordPress title. This will be used in the blog page.', 'illdy' );
 
 $wp_customize->add_panel( $panel_id, array(
 	'priority'       => 2,

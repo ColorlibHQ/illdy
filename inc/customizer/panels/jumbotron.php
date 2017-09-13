@@ -50,7 +50,6 @@ $wp_customize->add_setting( $prefix . '_jumbotron_title', array(
 ) );
 $wp_customize->add_control( new Epsilon_Control_Text_Editor( $wp_customize, $prefix . '_jumbotron_title', array(
 	'label'       => __( 'Title', 'illdy' ),
-	'description' => __( 'Add the title for this section.', 'illdy' ),
 	'section'     => $prefix . '_jumbotron_general',
 	'type' => 'epsilon-text-editor',
 ) ) );
@@ -69,7 +68,6 @@ if ( get_theme_mod( $prefix . '_jumbotron_general_entry' ) ) {
 	) );
 	$wp_customize->add_control(  new Epsilon_Control_Text_Editor( $wp_customize, $prefix . '_jumbotron_general_entry', array(
 		'label'       => __( 'Entry', 'illdy' ),
-		'description' => __( 'The content added in this field will show below the title.', 'illdy' ),
 		'section'     => $prefix . '_jumbotron_general',
 		'type' => 'epsilon-text-editor',
 	) ) );
