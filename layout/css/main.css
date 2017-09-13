@@ -1190,7 +1190,7 @@ a.button:hover {
 	margin: 26px 0 0 0;
 	padding: 0;
 	display: block;
-	float: left;
+	clear: both;
 }
 
 #contact-us .section-content .wpcf7-form p:nth-of-type(5) {
