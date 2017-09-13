@@ -99,16 +99,7 @@ a:hover, a:focus {
 #full-width.width-padding {
 	padding-top: 130px;
 }
-#full-width:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: -101;
-}
+
 .front-page-section .section-header {
 	width: 100%;
 }
@@ -444,9 +435,12 @@ a:hover, a:focus {
 #about,
 #static-page-content {
 	width: 100%;
-	background: #fff;
 	padding: 65px 0 85px 0;
 	text-align: center;
+}
+
+#static-page-content {
+	background: #fff;
 }
 
 #about .section-header {
@@ -704,7 +698,6 @@ a:hover, a:focus {
 /* 06. Services */
 #services {
 	width: 100%;
-	background: #fff;
 	padding: 65px 0 75px 0;
 	text-align: center;
 }
@@ -972,7 +965,6 @@ a.button:hover {
 /* 09. Team */
 #team {
 	width: 100%;
-	background: #fff;
 	padding: 80px 0 100px 0;
 	text-align: center;
 }
@@ -2855,13 +2847,30 @@ p.mb32 {
 
 /* Homepage ssctions background image */
 
-#latest-news,
-#full-width,
-#about,
-#projects {
+#latest-news {
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#full-width:before,
+#testimonials:before,
+#about:before,
+#team:before,
+#counter:before,
+#services:before,
+#projects:before {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -101;
 }
 
 .pace-overlay {

@@ -47,6 +47,7 @@ class Illdy {
 		$this->init_welcome_screen();
 
 		add_action( 'customize_register', array( $this, 'init_customizer' ) );
+		add_filter( 'sidebars_widgets', array( $this, 'remove_specific_widget' ) );
 
 	}
 
@@ -132,6 +133,43 @@ class Illdy {
 			)
 		);
 
+	}
+
+	/**
+	 * Filter widgets, we don`t allow normal widgets in the homepage builder
+	 *
+	 * @param $sidebars_widgets
+	 *
+	 * @return mixed
+	 */
+	public function remove_specific_widget( $sidebars_widgets ) {
+
+
+		if ( apply_filters( 'illdy_remove_custom_widgets', false ) ) {
+			return $sidebars_widgets;
+		}
+
+		$front_page_sidebars = array( 'front-page-about-sidebar', 'front-page-projects-sidebar', 'front-page-services-sidebar', 'front-page-counter-sidebar', 'front-page-team-sidebar', 'front-page-full-width-sidebar', 'front-page-testimonials-sidebar' );
+
+		/**
+		 * Start filtering the widgets
+		 */
+		foreach ( $sidebars_widgets as $widget_area => $widget_list ) {
+
+			/**
+			 * In the content area of the frontend page, we can only use builder widgets
+			 */
+			if ( ! in_array( $widget_area, $front_page_sidebars ) && ! empty( $widget_list ) ) {
+				foreach ( $widget_list as $pos => $widget_id ) {
+					if ( strpos( $widget_id, 'illdy_home_parallax' ) !== false ) {
+						unset( $sidebars_widgets[ $widget_area ][ $pos ] );
+					}
+				}
+			}
+
+		}
+
+		return $sidebars_widgets;
 	}
 
 }
