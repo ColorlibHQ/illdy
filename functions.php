@@ -173,6 +173,11 @@ if ( ! function_exists( 'illdy_enqueue_javascripts' ) ) {
 	function illdy_enqueue_javascripts() {
 		if ( get_theme_mod( 'illdy_preloader_enable', 1 ) == 1 ) {
 			wp_enqueue_script( 'illdy-pace', get_template_directory_uri() . '/layout/js/pace/pace.min.js', array( 'jquery' ), '', false );
+			$pace_options = array(
+				'restartOnRequestAfter' => 0,
+				'restartOnPushState' => 0,
+			);
+			wp_localize_script( 'illdy-pace', 'paceOptions', $pace_options );
 		}
 		wp_enqueue_script( 'jquery-ui-progressbar', '', array( 'jquery' ), '', true );
 		wp_enqueue_script( 'illdy-bootstrap', get_template_directory_uri() . '/layout/js/bootstrap/bootstrap.min.js', array( 'jquery' ), '3.3.6', true );
