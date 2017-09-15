@@ -1,16 +1,16 @@
 <?php
 /**
- *	The template for displaying the front page.
+ *  The template for displaying the front page.
  *
- *	@package WordPress
- *	@subpackage illdy
+ *  @package WordPress
+ *  @subpackage illdy
  */
 
 
 get_header();
 
 
-if( get_option( 'show_on_front' ) == 'posts' ): ?>
+if ( get_option( 'show_on_front' ) == 'posts' ) : ?>
 	
 	<div class="container">
 		<div class="row">
@@ -18,12 +18,12 @@ if( get_option( 'show_on_front' ) == 'posts' ): ?>
 				<section id="blog">
 					<?php do_action( 'illdy_above_content_after_header' ); ?>
 					<?php
-					if( have_posts() ):
-						while( have_posts() ):
+					if ( have_posts() ) :
+						while ( have_posts() ) :
 							the_post();
 							get_template_part( 'template-parts/content', get_post_format() );
 						endwhile;
-					else:
+					else :
 						get_template_part( 'template-parts/content', 'none' );
 					endif;
 					?>
@@ -35,7 +35,7 @@ if( get_option( 'show_on_front' ) == 'posts' ): ?>
 	</div><!--/.container-->
 
 <?php
-else:
+else :
 
 	$sections_order_first_section = get_theme_mod( 'illdy_general_sections_order_first_section', 1 );
 	$sections_order_second_section = get_theme_mod( 'illdy_general_sections_order_second_section', 2 );
@@ -45,11 +45,11 @@ else:
 	$sections_order_sixth_section = get_theme_mod( 'illdy_general_sections_order_sixth_section', 6 );
 	$sections_order_seventh_section = get_theme_mod( 'illdy_general_sections_order_seventh_section', 7 );
 	$sections_order_eighth_section = get_theme_mod( 'illdy_general_sections_order_eighth_section', 8 );
-	
-	if( have_posts() ):
-		while( have_posts() ): the_post();
+
+	if ( have_posts() ) :
+		while ( have_posts() ) : the_post();
 			$static_page_content = get_the_content();
-			if ( $static_page_content != '' ) : ?>
+			if ( '' != $static_page_content ) : ?>
 				<section class="front-page-section" id="static-page-content">
 					<div class="section-header">
 						<div class="container">

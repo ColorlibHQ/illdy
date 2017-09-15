@@ -1,9 +1,9 @@
 <?php
 /**
- *	The template for displaying WooCommerce.
+ *  The template for displaying WooCommerce.
  *
- *	@package WordPress
- *	@subpackage illdy
+ *  @package WordPress
+ *  @subpackage illdy
  */
 ?>
 <?php get_header(); ?>
@@ -14,21 +14,21 @@
 				<?php woocommerce_content(); ?>
 			</section><!--/#blog-->
 		</div><!--/.col-sm-7-->
-		<?php if( is_active_sidebar( 'woocommerce-sidebar' ) ): ?>
+		<?php if ( is_active_sidebar( 'woocommerce-sidebar' ) ) : ?>
 			<div class="col-sm-4">
 				<div id="sidebar">
 					<?php dynamic_sidebar( 'woocommerce-sidebar' ); ?>
 				</div><!--/#sidebar-->
 			</div><!--/.col-sm-4-->
-		<?php else: ?>
+		<?php else : ?>
 			<div class="col-sm-4">
 				<div id="sidebar">
 					<?php
 					$the_widget_title = array(
-						'before_widget'	=> '<div class="widget">',
-						'after_widget'	=> '</div>',
-						'before_title'	=> '<div class="widget-title"><h3>',
-						'after_title'	=> '</h3></div>'
+						'before_widget' => '<div class="widget">',
+						'after_widget'  => '</div>',
+						'before_title'  => '<div class="widget-title"><h3>',
+						'after_title'   => '</h3></div>',
 					);
 
 					the_widget( 'WC_Widget_Cart', 'title=' . __( 'WooCommerce Title', 'illdy' ), $the_widget_title );

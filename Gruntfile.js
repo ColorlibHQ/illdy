@@ -16,10 +16,10 @@ module.exports = function(grunt){
                         'x-poedit-keywordslist': true // Include a list of all possible gettext functions.
                     },                                // Headers to add to the generated POT file.
                     processPot: function( pot, options ) {
-                        pot.headers['report-msgid-bugs-to'] = 'http://www.machothemes.com/';
-                        pot.headers['language-team'] = 'Macho Themes <support@machothemes.com>';
-                        pot.headers['last-translator'] = 'Macho Themes <support@machothemes.com>';
-                        pot.headers['language-team'] = 'Macho Themes <support@machothemes.com>';
+                        pot.headers[ 'report-msgid-bugs-to' ] = 'https://www.colorlib.com/';
+                        pot.headers[ 'language-team' ] = 'Colorlib <office@colorlib.com>';
+                        pot.headers[ 'last-translator' ] = 'Colorlib <office@colorlib.com>';
+                        pot.headers[ 'language-team' ] = 'Colorlib <office@colorlib.com>';
                         return pot;
                     },
                     updateTimestamp: true,             // Whether the POT-Creation-Date should be updated without other changes.
@@ -57,7 +57,21 @@ module.exports = function(grunt){
             },
             build: {
                 expand: true,
-                src: ['**', '!node_modules/**', '!build/**', '!readme.md', '!Gruntfile.js', '!package.json' ],
+                src: [
+                    '**',
+                    '!node_modules/**',
+                    '!vendor/**',
+                    '!build/**',
+                    '!readme.md',
+                    '!README.md',
+                    '!phpcs.ruleset.xml',
+                    '!Gruntfile.js',
+                    '!package.json',
+                    '!composer.json',
+                    '!composer.lock',
+                    '!set_tags.sh',
+                    '!illdy.zip',
+                    '!nbproject/**' ],
                 dest: 'build/'
             }
         },
@@ -66,7 +80,7 @@ module.exports = function(grunt){
             build: {
                 options: {
                     pretty: true,                           // Pretty print file sizes when logging.
-                    archive: 'build/<%= pkg.name %>.zip'
+                    archive: '<%= pkg.name %>.zip'
                 },
                 expand: true,
                 cwd: 'build/',
@@ -85,7 +99,7 @@ module.exports = function(grunt){
                     {
                         expand: true,     // Enable dynamic expansion.
                         cwd: 'layout/js/',      // Src matches are relative to this path.
-                        src: ['**/*.js'], // Actual pattern(s) to match.
+                        src: ['**/*.js', '!jquery.fancybox.js'], // Actual pattern(s) to match.
                         dest: 'layout/js/',   // Destination path prefix.
                         ext: '.min.js',   // Dest filepaths will have this extension.
                         extDot: 'first'   // Extensions in filenames begin after the first dot
@@ -97,7 +111,7 @@ module.exports = function(grunt){
         checktextdomain: {
             standard: {
                 options:{
-                    text_domain: [ 'illdy'], //Specify allowed domain(s)
+                    text_domain: [ 'illdy', 'epsilon-framework' ], //Specify allowed domain(s)
                     create_report_file: "true",
                     keywords: [ //List keyword specifications
                         '__:1,2d',
@@ -120,9 +134,6 @@ module.exports = function(grunt){
                     src: [
                         '**/*.php',
                         '!**/node_modules/**',
-                        '!**/framework/updater/**',
-                        '!**/framework/importer/**',
-                        '!**/framework/plugins/**',
                     ], //all php
                     expand: true,
                 }],
@@ -150,79 +161,12 @@ module.exports = function(grunt){
             }
         },
 
-        'ftp-deploy': {
-            lite: {
-                auth: {
-                    // Your hostname.
-                    host: 'machothemes.com',
-
-                    // Default FTP port, leave this alone.
-                    port: 21,
-
-                    // Key name defined in `.ftppass` for your FTP account.
-                    authKey: 'key1'
-                },
-
-                // Path to the folder you're interested in relative to `Gruntfile.js`.
-                src: './',
-
-                // Path to your destination folder, relative to the server root.
-                dest: '/public_html/pixova-lite/wp-content/themes/pixova-lite/',
-
-                // Files you don't want uploaded, relative to `Gruntfile.js`
-                exclusions: [
-                    '.DS_Store',
-                    '.gitignore',
-                    '.ftppass',
-                    'node_modules',
-                    'bower_components',
-                    '.standard.json',
-                    '.Gruntfile.js',
-                    'bower.json',
-                    '_.bowerrc',
-                    'package.json'
-                ]
-            },
-            premium: {
-                auth: {
-                    // Your hostname.
-                    host: 'machothemes.com',
-
-                    // Default FTP port, leave this alone.
-                    port: 21,
-
-                    // Key name defined in `.ftppass` for your FTP account.
-                    authKey: 'key1'
-                },
-
-                // Path to the folder you're interested in relative to `Gruntfile.js`.
-                src: './',
-
-                // Path to your destination folder, relative to the server root.
-                dest: '/public_html/pixova/wp-content/themes/pixova-premium/',
-
-                // Files you don't want uploaded, relative to `Gruntfile.js`
-                exclusions: [
-                    '.DS_Store',
-                    '.gitignore',
-                    '.ftppass',
-                    'node_modules',
-                    'bower_components',
-                    '.standard.json',
-                    '.Gruntfile.js',
-                    'bower.json',
-                    '_.bowerrc',
-                    'package.json'
-                ]
-            },
-        },
-
         cssmin: {
             target: {
                 files: [{
                     expand: true,
                     cwd: 'layout/css',
-                    src: ['*.css', '!*.min.css'],
+                    src: ['*.css', '!*.min.css', '!style-overrides.css'],
                     dest: 'layout/css',
                     ext: '.min.css'
                 }]
@@ -268,16 +212,6 @@ module.exports = function(grunt){
         'minjs'
     ]);
 
-    // FTP deploy -> lite version
-    grunt.registerTask( 'deploy-prod-lite', [
-        'ftp-deploy:lite'
-    ]);
-
-    // FTP deploy -> pro version
-    grunt.registerTask( 'deploy-prod-pro', [
-        'ftp-deploy:premium'
-    ]);
-
     // Build task
     grunt.registerTask( 'build-archive', [
         // 'makepot',
@@ -285,6 +219,6 @@ module.exports = function(grunt){
         'clean:init',
         'copy',
         'compress:build',
-        'clean:build'
+        'clean:init'
     ]);
 };

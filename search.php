@@ -1,9 +1,9 @@
 <?php
 /**
- *	The template for displaying the search.
+ *  The template for displaying the search.
  *
- *	@package WordPress
- *	@subpackage illdy
+ *  @package WordPress
+ *  @subpackage illdy
  */
 ?>
 <?php get_header(); ?>
@@ -13,12 +13,12 @@
 			<section id="blog">
 				<?php do_action( 'illdy_above_content_after_header' ); ?>
 				<?php
-				if( have_posts() ):
-					while( have_posts() ):
+				if ( have_posts() ) :
+					while ( have_posts() ) :
 						the_post();
 						get_template_part( 'template-parts/content', get_post_format() );
 					endwhile;
-				else:
+				else :
 					get_template_part( 'template-parts/content', 'none' );
 				endif;
 				?>

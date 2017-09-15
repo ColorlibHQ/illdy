@@ -44,10 +44,37 @@ jQuery( document ).ready( function($) {
 		}
 	}
 
+	// Front Page jumbotron Slider
+	function illdyJumbotronSlider(){
+		var illdySlider;
+		if ( jQuery( '.illdy-slider' ).length > 0 ) {
+			illdySlider = jQuery( '.illdy-slider' );
+			illdySlider.owlCarousel({
+				'items': 1,
+				'loop': true,
+				'dots': false,
+				'autoplay' : illdySlider.data( 'autoplay' ),
+				'autoplayTimeout' : illdySlider.data( 'autoplay-time' ),
+			});
+			if ( jQuery( '.illdy-slider-navigation' ).length > 0 ) {
+				jQuery( '.illdy-slider-navigation #prev' ).click( function(evt){
+					evt.preventDefault();
+					illdySlider.trigger('prev.owl.carousel');
+				});
+				jQuery( '.illdy-slider-navigation #next' ).click( function(evt){
+					evt.preventDefault();
+					illdySlider.trigger('next.owl.carousel');
+				});
+			}
+		}
+		
+	}
+
 	// Called Functions
 	$( function() {
 		illdyProgressBar();
 		testimonialsOwlCarousel();
+		illdyJumbotronSlider();
 
 		$( window ).scroll( function() {
 			var counterVisible = $( '#counter' ).visible();

@@ -10,7 +10,7 @@ $jumbotron_single_image  = get_theme_mod( 'illdy_jumbotron_enable_featured_image
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'blog-post' ); ?>>
-	<?php if ( has_post_thumbnail() && $jumbotron_single_image != true ) { ?>
+	<?php if ( has_post_thumbnail() && true != $jumbotron_single_image ) { ?>
 		<div class="blog-post-image">
 			<?php the_post_thumbnail( 'illdy-blog-list' ); ?>
 		</div><!--/.blog-post-image-->

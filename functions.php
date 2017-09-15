@@ -20,43 +20,45 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		require_once trailingslashit( get_template_directory() ) . 'inc/jetpack.php';
 
 		// Components
-		require_once trailingslashit( get_template_directory() ) . 'inc/components/entry-meta/class.mt-entry-meta.php';
-		require_once trailingslashit( get_template_directory() ) . 'inc/components/author-box/class.mt-author-box.php';
-		require_once trailingslashit( get_template_directory() ) . 'inc/components/related-posts/class.mt-related-posts.php';
-
+		require_once trailingslashit( get_template_directory() ) . 'inc/components/entry-meta/class-illdy-entry-meta-output.php';
+		require_once trailingslashit( get_template_directory() ) . 'inc/components/author-box/class-illdy-author-box-output.php';
+		require_once trailingslashit( get_template_directory() ) . 'inc/components/related-posts/class-illdy-related-posts-output.php';
 
 		// Load Theme Textdomain
 		load_theme_textdomain( 'illdy', get_template_directory() . '/languages' );
 
 		// Add Theme Support
 		add_theme_support( 'woocommerce' );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'custom-logo', array(
 			'height'      => 75,
-   			'flex-height' => false,
+			'flex-height' => false,
 			'flex-width'  => true,
 		) );
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 		add_theme_support( 'custom-header', array(
-			'default-image'  => esc_url( get_template_directory_uri() . '/layout/images/blog/blog-header.png' ),
-			'width'          => 1920,
-			'height'         => 532,
-			'flex-height'    => true,
-			'flex-width'    => true,
-			'random-default' => true,
-			'header-text'    => false,
+			'default-image'     => esc_url( get_template_directory_uri() . '/layout/images/blog/blog-header.png' ),
+			'width'             => 1920,
+			'height'            => 532,
+			'flex-height'       => true,
+			'flex-width'        => true,
+			'random-default'    => true,
+			'header-text'       => false,
 		) );
 		add_theme_support( 'customize-selective-refresh-widgets' );
 		register_default_headers( array(
 			'default' => array(
 				'url'           => '%s/layout/images/blog/blog-header.png',
 				'thumbnail_url' => '%s/layout/images/blog/blog-header.png',
-				'description'   => __( 'Coffe', 'illdy' )
+				'description'   => __( 'Coffe', 'illdy' ),
 			),
 		) );
-
 
 		// Add Image Size
 		add_image_size( 'illdy-blog-list', 750, 500, true );
@@ -81,55 +83,12 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		/*************  Welcome screen *************/
 		/*******************************************/
 
-		// Welcome screen
-		if ( is_admin() ) {
-			require get_template_directory() . '/inc/notify-system-checks.php';
-			global $illdy_required_actions, $illdy_recommended_plugins;
-			$illdy_recommended_plugins = array(
-				'kiwi-social-share'			=> array( 'recommended' => true ),
-				'contact-form-7'  			=> array( 'recommended' => false ),
-				'simple-custom-post-order' 	=> array( 'recommended' => false ),
-				'fancybox-for-wordpress' 	=> array( 'recommended' => false ),
-			);
-			/*
-			 * id - unique id; required
-			 * title
-			 * description
-			 * check - check for plugins (if installed)
-			 * plugin_slug - the plugin's slug (used for installing the plugin)
-			 *
-			 */
-
-			$illdy_required_actions = array(
-				array(
-					"id"          => 'illdy-req-ac-install-illdy-companion',
-					"title"       => MT_Notify_System::create_plugin_title( __( 'Illdy Companion', 'illdy' ), 'illdy-companion' ),
-					"description" => __( 'It is highly recommended that you install the Illdy Companion.', 'illdy' ),
-					"check"       => MT_Notify_System::check_plugin_update( 'illdy-companion' ),
-					"type"		  => 'plugin',
-					"plugin_slug" => 'illdy-companion'
-				),
-				array(
-					"id"          => 'illdy-req-ac-install-contact-form-7',
-					"title"       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Contact Form 7', 'illdy' ), __( 'Activate: Contact Form 7', 'illdy' ), 'contact-form-7' ),
-					"description" => __( 'It is highly recommended that you install the Contact Form 7.', 'illdy' ),
-					"check"       => MT_Notify_System::has_import_plugin( 'contact-form-7' ),
-					"type"		  => 'plugin',
-					"plugin_slug" => 'contact-form-7'
-				)
-			);
-
-			$illdy_required_actions = apply_filters( 'illdy_required_actions', $illdy_required_actions );
-
-			require get_template_directory() . '/inc/admin/welcome-screen/welcome-screen.php';
-		}
-
 	}
 
 	// Add Editor Style
 	add_editor_style( 'illdy-google-fonts' );
 
-}
+}// End if().
 
 if ( ! function_exists( 'illdy_is_not_latest_posts' ) ) {
 	function illdy_is_not_latest_posts() {
@@ -140,7 +99,7 @@ if ( ! function_exists( 'illdy_is_not_latest_posts' ) ) {
 if ( ! function_exists( 'illdy_is_not_imported' ) ) {
 	function illdy_is_not_imported() {
 
-		if ( defined( "ILLDY_COMPANION" ) ) {
+		if ( defined( 'ILLDY_COMPANION' ) ) {
 			$illdy_show_required_actions = get_option( 'illdy_show_required_actions' );
 			if ( isset( $illdy_show_required_actions['illdy-req-import-content'] ) ) {
 				return true;
@@ -186,7 +145,7 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 		wp_register_style( 'illdy-google-fonts', add_query_arg( $google_fonts_args, 'https://fonts.googleapis.com/css' ), array(), null );
 
 		// WP Enqueue Style
-		if ( get_theme_mod( 'illdy_preloader_enable', 1 ) == 1 ) {
+		if ( 1 == get_theme_mod( 'illdy_preloader_enable', 1 ) && ! is_customize_preview() ) {
 			wp_enqueue_style( 'illdy-pace', get_template_directory_uri() . '/layout/css/pace.min.css', array(), '', 'all' );
 		}
 
@@ -198,7 +157,7 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 		if ( get_theme_mod( 'illdy_projects_lightbox', 0 ) == 1 ) {
 			wp_enqueue_style( 'illdy-fancybox', get_template_directory_uri() . '/layout/css/jquery.fancybox.css', array(), '', 'all' );
 		}
-		wp_enqueue_style( 'illdy-main', get_template_directory_uri() . '/layout/css/main.css', array(), '', 'all' );
+		wp_enqueue_style( 'illdy-main', get_template_directory_uri() . '/layout/css/main.min.css', array(), '', 'all' );
 		wp_enqueue_style( 'illdy-custom', get_template_directory_uri() . '/layout/css/custom.min.css', array(), '', 'all' );
 		wp_enqueue_style( 'illdy-style', get_stylesheet_uri(), array(), '1.0.16', 'all' );
 	}
@@ -214,6 +173,11 @@ if ( ! function_exists( 'illdy_enqueue_javascripts' ) ) {
 	function illdy_enqueue_javascripts() {
 		if ( get_theme_mod( 'illdy_preloader_enable', 1 ) == 1 ) {
 			wp_enqueue_script( 'illdy-pace', get_template_directory_uri() . '/layout/js/pace/pace.min.js', array( 'jquery' ), '', false );
+			$pace_options = array(
+				'restartOnRequestAfter' => 0,
+				'restartOnPushState' => 0,
+			);
+			wp_localize_script( 'illdy-pace', 'paceOptions', $pace_options );
 		}
 		wp_enqueue_script( 'jquery-ui-progressbar', '', array( 'jquery' ), '', true );
 		wp_enqueue_script( 'illdy-bootstrap', get_template_directory_uri() . '/layout/js/bootstrap/bootstrap.min.js', array( 'jquery' ), '3.3.6', true );
@@ -224,11 +188,16 @@ if ( ! function_exists( 'illdy_enqueue_javascripts' ) ) {
 			wp_enqueue_script( 'illdy-fancybox', get_template_directory_uri() . '/layout/js/jquery.fancybox.js', array( 'jquery' ), '', true );
 			wp_add_inline_script( 'illdy-fancybox', 'jQuery(".fancybox").fancybox();' );
 		}
-		wp_enqueue_script( 'illdy-parallax', get_template_directory_uri() . '/layout/js/parallax.min.js', array( 'jquery' ), '1.0.16', true );
+		wp_enqueue_script( 'illdy-parallax', get_template_directory_uri() . '/layout/js/parallax/parallax.min.js', array( 'jquery' ), '1.0.16', true );
 		wp_enqueue_script( 'illdy-plugins', get_template_directory_uri() . '/layout/js/plugins.min.js', array( 'jquery' ), '1.0.16', true );
 		wp_enqueue_script( 'illdy-scripts', get_template_directory_uri() . '/layout/js/scripts.min.js', array( 'jquery' ), '1.0.16', true );
-		if ( is_front_page() ) {\
+		if ( is_front_page() ) {
 			wp_add_inline_script( 'illdy-scripts', 'if( jQuery(\'.blog-carousel > .illdy-blog-post\').length > 3 ){jQuery(\'.blog-carousel\').owlCarousel({\'items\': 3,\'loop\': true,\'dots\': false,\'nav\' : true, \'navText\':[\'<i class="fa fa-angle-left" aria-hidden="true"></i>\',\'<i class="fa fa-angle-right" aria-hidden="true"></i>\'], responsive : { 0 : { items : 1 }, 480 : { items : 2 }, 900 : { items : 3 } }});}' );
+			$jumbotron_type = get_theme_mod( 'illdy_jumbotron_background_type', 'image' );
+			if ( 'video' == $jumbotron_type ) {
+				wp_enqueue_script( 'wp-custom-header' );
+				wp_localize_script( 'wp-custom-header', '_wpCustomHeaderSettings', illdy_get_video_settings() );
+			}
 		}
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -402,7 +371,7 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
 			) );
 		}
 	}
-}
+}// End if().
 
 
 /**
@@ -410,7 +379,7 @@ if ( ! function_exists( 'illdy_widgets' ) ) {
  */
 if ( ! function_exists( 'illdy_value_checkbox_helper' ) ) {
 	function illdy_value_checkbox_helper( $value ) {
-		if ( $value == 1 ) {
+		if ( 1 == $value ) {
 			return 1;
 		} else {
 			return 0;
@@ -418,7 +387,7 @@ if ( ! function_exists( 'illdy_value_checkbox_helper' ) ) {
 	}
 }
 
-add_action( 'illdy_after_content_above_footer', "illdy_pagination", 1 );
+add_action( 'illdy_after_content_above_footer', 'illdy_pagination', 1 );
 
 function illdy_pagination() {
 	the_posts_pagination( array(
@@ -429,7 +398,7 @@ function illdy_pagination() {
 }
 
 
-if ( !function_exists( 'illdy_get_random_featured_image' ) ) {
+if ( ! function_exists( 'illdy_get_random_featured_image' ) ) {
 	function illdy_get_random_featured_image() {
 		$featured_image_list = array(
 			'random-blog-post-1.jpg',
@@ -438,13 +407,19 @@ if ( !function_exists( 'illdy_get_random_featured_image' ) ) {
 			'random-blog-post-4.jpg',
 			'random-blog-post-5.jpg',
 		);
-		$number = rand(0,4);
-		return get_template_directory_uri().'/layout/images/blog/'.$featured_image_list[$number];
+		$number = rand( 0,4 );
+		return get_template_directory_uri() . '/layout/images/blog/' . $featured_image_list[ $number ];
 	}
 }
 
-if ( !function_exists( 'illdy_get_recommended_actions_url' ) ) {
+if ( ! function_exists( 'illdy_get_recommended_actions_url' ) ) {
 	function illdy_get_recommended_actions_url() {
 		return self_admin_url( 'themes.php?page=illdy-welcome&tab=recommended_actions' );
 	}
 }
+
+// Include theme files
+require get_template_directory() . '/inc/libraries/epsilon-framework/class-epsilon-autoloader.php';
+require get_template_directory() . '/inc/class-mt-notify-system.php';
+require get_template_directory() . '/inc/libraries/welcome-screen/class-epsilon-welcome-screen.php';
+require get_template_directory() . '/inc/class-illdy.php';

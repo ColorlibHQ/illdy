@@ -1,9 +1,9 @@
 <?php
 /**
- *	The template for dispalying the archive.
+ *  The template for dispalying the archive.
  *
- *	@package WordPress
- *	@subpackage illdy
+ *  @package WordPress
+ *  @subpackage illdy
  */
 ?>
 <?php get_header(); ?>
@@ -13,13 +13,13 @@
 			<section id="blog">
 				<?php do_action( 'illdy_above_content_after_header' ); ?>
 				<?php
-				if( have_posts() ):
-					while( have_posts() ):
+				if ( have_posts() ) :
+					while ( have_posts() ) :
 						the_post();
 						get_template_part( 'template-parts/content', get_post_format() );
 					endwhile;
 					wp_reset_query();
-				else:
+				else :
 					get_template_part( 'template-parts/content', 'none' );
 				endif;
 				?>

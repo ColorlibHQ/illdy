@@ -581,6 +581,33 @@
 			style.html(html);
 		});
 
+		wp.customize.preview.bind( 'section-highlight', function( data ) {
+			var selectors = {
+				'illdy_jumbotron_general' : '#header',
+				'illdy_panel_about' : '#about',
+				'illdy_panel_projects' : '#projects',
+				'illdy_testimonials_general' : '#testimonials',
+				'illdy_panel_services' : '#services',
+				'illdy_latest_news_general' : '#latest-news',
+				'illdy_counter_general' : '#counter',
+				'illdy_panel_team' : '#team',
+				'illdy_contact_us' : '#contact-us',
+				'illdy_full_width' : '#full-width',
+			};
+
+			// Only on the front page.
+			if ( ! $( selectors[ data.section ] ).length ) {
+				return;
+			}
+
+			// When the section is expanded, show and scroll to the content placeholders, exposing the edit links.
+			if ( true === data.expanded ) {
+				$.scrollTo( $( selectors[ data.section ] ), {
+					duration: 600,
+				});
+			}
+		});
+
 	});
 
 	$(document).ready(function(){

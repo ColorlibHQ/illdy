@@ -11,23 +11,24 @@ $logo_id                   = get_theme_mod( 'custom_logo' );
 $logo_image                = wp_get_attachment_image_src( $logo_id, 'full' );
 $text_logo                 = get_theme_mod( 'illdy_text_logo', __( 'Illdy', 'illdy' ) );
 $jumbotron_general_image   = get_theme_mod( 'illdy_jumbotron_general_image', esc_url( get_template_directory_uri() . '/layout/images/front-page/front-page-header.png' ) );
+$jumbotron_type            = get_theme_mod( 'illdy_jumbotron_background_type', 'image' );
 $jumbotron_single_image    = get_theme_mod( 'illdy_jumbotron_enable_featured_image', false );
 $jumbotron_parallax_enable = get_theme_mod( 'illdy_jumbotron_enable_parallax_effect', true );
 $preloader_enable          = get_theme_mod( 'illdy_preloader_enable', 1 );
-$isMobileSafari            = preg_match('/(iPod|iPhone|iPad)/', $_SERVER['HTTP_USER_AGENT']);
+$is_mobile_safari          = preg_match( '/(iPod|iPhone|iPad)/', $_SERVER['HTTP_USER_AGENT'] );
 
 $style = '';
 
-if ( get_option( 'show_on_front' ) == 'page' && is_front_page() ) {
-	if ( $jumbotron_general_image ) {
+if ( 'page' == get_option( 'show_on_front' ) && is_front_page() ) {
+	if ( $jumbotron_general_image && 'image' == $jumbotron_type ) {
 		$style = 'background-image: url(' . esc_url( $jumbotron_general_image ) . ');';
 	}
-} else if ( ( is_single() || is_page() ) && $jumbotron_single_image == true ) {
+} elseif ( ( is_single() || is_page() ) && true == $jumbotron_single_image ) {
 
 	global $post;
 	if ( has_post_thumbnail( $post->ID ) ) {
 		$style = 'background-image: url(' . esc_url( get_the_post_thumbnail_url( $post->ID, 'full' ) ) . ');';
-	}else {
+	} else {
 		$style = 'background-image: url(' . get_header_image() . ');';
 	}
 } else {
@@ -37,9 +38,9 @@ if ( get_option( 'show_on_front' ) == 'page' && is_front_page() ) {
 $url = get_theme_mod( 'header_image', get_theme_support( 'custom-header', 'default-image' ) );
 
 // append the parallax effect
-if ( $isMobileSafari == true ) {
+if ( $is_mobile_safari ) {
 	$style .= 'background-attachment: scroll;';
-} elseif ( $jumbotron_parallax_enable == true ) {
+} elseif ( $jumbotron_parallax_enable ) {
 	$style .= 'background-attachment: fixed;';
 }
 
@@ -56,11 +57,12 @@ if ( ( is_single() || is_page() || is_archive() ) && get_theme_mod( 'illdy_archi
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<?php if ( $preloader_enable == 1 ): ?>
+<?php if ( 1 == $preloader_enable && ! is_customize_preview() ) : ?>
 	<div class="pace-overlay"></div>
 <?php endif; ?>
-<header id="header" class="<?php if ( get_option( 'show_on_front' ) == 'page' && is_front_page() ): echo 'header-front-page';
-else: echo 'header-blog'; endif; ?>" style="<?php echo $style ?>">
+<header id="header" class="<?php if ( 'page' == get_option( 'show_on_front' ) && is_front_page() ) : echo 'header-front-page';
+else : echo 'header-blog';
+endif; ?>" style="<?php echo $style ?>">
 	<div class="top-header">
 		<div class="container">
 			<div class="row">
@@ -111,10 +113,15 @@ else: echo 'header-blog'; endif; ?>" style="<?php echo $style ?>">
 		</ul>
 	</nav><!--/.responsive-menu-->
 	<?php
-	if ( get_option( 'show_on_front' ) == 'page' && is_front_page() ):
+	if ( get_option( 'show_on_front' ) == 'page' && is_front_page() ) {
+		if ( 'video' == $jumbotron_type ) {
+			get_template_part( 'sections/front-page', 'header-video' );
+		} elseif ( 'slider' == $jumbotron_type ) {
+			get_template_part( 'sections/front-page', 'header-slider' );
+		}
 		get_template_part( 'sections/front-page', 'bottom-header' );
-	else:
+	} else {
 		get_template_part( 'sections/blog', 'bottom-header' );
-	endif;
+	}
 	?>
 </header><!--/#header-->
