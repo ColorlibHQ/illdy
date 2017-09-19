@@ -1,3 +1,12 @@
+### V 2.2.0
+ - When opening a front-page panel now, it automatically scrolls you to it.
+- The theme now handles the 404 Page Content. It works really nice, by loading the 404 page in the Customizer so you can live-edit it. When hitting back, it returns you to the panel you were in, before.
+- Tabs used in all of the front-page sections now use AJAX to load. This means that they load instantly with a nice expand effect
+- For the Jumbotron area, the theme now supports: slides (with repeater from Epsilon Framework) as well as videos (core support). Changes show up in real-time.
+- The theme's preloader doesn't show up anymore when users are changing values from the Customizer.
+- Color scheme picker has been implemented.
+- Theme widgets now support basic HTML (by using TinyMCE instances) 
+
 ### V2.0.1
 	- Fixed left sidebar mobile issue. ( https://github.com/puikinsh/illdy/issues/176 )
 	- Woocommerce "Additional Information" Tab issue. ( https://github.com/puikinsh/illdy/issues/179 )
