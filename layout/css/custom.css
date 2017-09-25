@@ -1,13 +1,16 @@
 #header .top-header .header-navigation ul li.menu-item-has-children .sub-menu .sub-menu {
-	width: 250px;
 	padding-top: 0;
 	top: 0;
-	left: 250px;
+	left: 200px;
 }
 
 #header .top-header .header-navigation ul li.menu-item-has-children .sub-menu {
 	display: block;
 	visibility: hidden;
+	z-index: 99;
+}
+#header .top-header .header-navigation ul li.menu-item-has-children:hover > .sub-menu {
+	visibility: visible;
 }
 
 .woocommerce {}

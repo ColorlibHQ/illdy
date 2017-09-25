@@ -236,7 +236,7 @@ a:hover, a:focus {
 
 #header .top-header .header-navigation ul li.menu-item-has-children .sub-menu {
 	width: 200px;
-	margin: 0;
+	margin: -5px 0 0;
 	padding: 0;
 	position: absolute;
 	left: 50%;
@@ -2905,7 +2905,11 @@ header#header {
     height: 100%;
     z-index: 1;
 }
-#header .top-header,
+#header .top-header {
+	position: relative;
+	z-index: 3;
+}
+
 .responsive-menu,
 #header .bottom-header {
 	position: relative;
