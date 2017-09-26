@@ -61,5 +61,15 @@ cache:
   directories:
   - node_modules
 after_success:
-  - if [[ "$DEPLOY" == "1" ]]; then grunt build-archive; fi
-  - if [[ "$DEPLOY" == "1" ]]; then sh set_tags.sh; fi
+- if [[ "$DEPLOY" == "1" ]]; then grunt build-archive; fi
+- if [[ "$DEPLOY" == "1" ]]; then sh set_tags.sh; fi
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: FSgyXXwuQGFOfh3JgR1bPmzDabRAxQKObyR7bK9nP3eUIPGoGMc6mufLwqhaOjUYKh3qR9gXL7sGw5Hh0sjc9Tu7pg8g4RAKftvWn0ER8MDCjs58Yh/dpVmsZ/JQHUufTlBsqeOv+5h8dzELDaMjBiinZ/qBF02wIDvf/MpxtbFfUxPOkIGzHTt5Uc5AtVtZHoNBM0vHeDWWb3RKdIryU9eHUYNyG+rAjTots1KNsc0//57J+uHbWRA/15gm/omuB9aHeLweTtTH+vEj7RIli8Sx0EaxPXWB+pnMK2qtNec6SgET9DgXC3FJZOybfazFQaR21OZxvS5OnYBEnZdztsHWDI7EELrD6NVtkfPZ97cXBAsv1jZDeVn42k4feCfo9sBazEjati1BiWJbWCnJ8LCyVUntyl3Iy7do6KjihwnxVOJU+wvBTQR1e+wyLjLoBFKnWMNW7U4AauXwFJe0oa25/cUT2Ydzn9XYrbCsmgrG8XYocXvrxQxpAT1r8xOrTnqN04CYdZffVrw4L0NwQLvLdK6EtMywCo+UC8rBtDlPE1rD2K8qX4+P59AeRZt/4+KvtIxedlau5PrXPqTAIQo8Sdv4UxVkO535K8r9ICWoMk2WpOs8NRyBBNQBdN3ZcWi3SWlcqrFrqA4JxltUO1fMMfqcsrPzb/Y0DedgJYk=
+  file: illdy.zip
+  on:
+    repo: puikinsh/illdy
+    branch: 'master'
+    condition: "$DEPLOY = 1"
