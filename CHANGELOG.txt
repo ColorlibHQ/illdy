@@ -1,3 +1,6 @@
+### V 2.0.4
+	- Fixed Customizer issue ( https://github.com/puikinsh/illdy/issues/230 )
+
 ### V 2.0.3
 	- Fixed Submenu issue ( https://github.com/puikinsh/illdy/issues/226 )
 
