@@ -171,3 +171,10 @@ if ( version_compare( $theme->version, '1.0.36', '>=' ) ) {
 		remove_theme_mod( 'illdy_contact_us_customer_support_title' );
 	}
 }// End if().
+
+if ( is_admin() ) {
+	$color_scheme = get_theme_mod( 'illdy_color_scheme' );
+	if ( 'Illdy' == $color_scheme ) {
+		remove_theme_mod( 'illdy_color_scheme' );
+	}
+}
