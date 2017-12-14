@@ -100,7 +100,7 @@ if ( ! function_exists( 'illdy_get_image_id_from_image_url' ) ) {
 /**
  *  Sections order
  */
-if ( ! function_exists( 'illdy_sections_show' ) ) {
+if ( ! function_exists( 'illdy_sections_order' ) ) {
 	function illdy_sections_order( $section ) {
 
 		$controls = array(
