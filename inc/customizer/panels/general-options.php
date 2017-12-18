@@ -34,12 +34,47 @@ $wp_customize->add_panel( $panel_id, array(
 ) );
 
 /***********************************************/
+/******************* Header  *******************/
+/***********************************************/
+
+$wp_customize->add_section( $prefix . '_header_section', array(
+	'title'    => __( 'Header', 'illdy' ),
+	'priority' => 1,
+	'panel'    => $panel_id,
+) );
+
+// Enable sticky header
+$wp_customize->add_setting( $prefix . '_sticky_header_enable', array(
+	'sanitize_callback' => $prefix . '_value_checkbox_helper',
+	'default'           => 0,
+) );
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_sticky_header_enable', array(
+	'type'     => 'epsilon-toggle',
+	'label'    => __( 'Enable the sticky header?', 'illdy' ),
+	'section'  => $prefix . '_header_section',
+	'priority' => 1,
+) ) );
+
+$wp_customize->add_setting( $prefix . '_sticky_header_background_color', array(
+	'sanitize_callback' => 'sanitize_hex_color',
+	'default'           => '#000',
+) );
+$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $prefix . '_sticky_header_background_color', array(
+	'label'       => __( 'Sticky header background color', 'illdy' ),
+	'description' => __( 'Controls the background color for header when this is sticky', 'illdy' ),
+	'section'     => $prefix . '_header_section',
+	'settings'    => $prefix . '_sticky_header_background_color',
+	'priority'    => 2,
+	'active_callback' => 'illdy_is_sticky_header',
+) ) );
+
+/***********************************************/
 /****************** Preloader  *****************/
 /***********************************************/
 
 $wp_customize->add_section( $prefix . '_preloader_section', array(
 	'title'    => __( 'Preloader', 'illdy' ),
-	'priority' => 1,
+	'priority' => 2,
 	'panel'    => $panel_id,
 ) );
 
@@ -100,7 +135,7 @@ $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $pref
 
 $wp_customize->add_section( $prefix . '_general_logo_section', array(
 	'title'    => __( 'Logo', 'illdy' ),
-	'priority' => 2,
+	'priority' => 3,
 	'panel'    => $panel_id,
 ) );
 
@@ -226,3 +261,13 @@ $wp_customize->selective_refresh->add_partial( $prefix . '_footer_copyright', ar
 	'selector' => '#footer .bottom-copyright',
 ) );
 
+$wp_customize->add_setting( $prefix . '_go_to_top', array(
+	'sanitize_callback' => $prefix . '_value_checkbox_helper',
+	'default'           => 0,
+) );
+$wp_customize->add_control(  new Epsilon_Control_Toggle( $wp_customize, $prefix . '_go_to_top', array(
+	'type'     => 'epsilon-toggle',
+	'label'    => __( 'Enable go to top icon ?', 'illdy' ),
+	'section'  => $prefix . '_general_footer_section',
+	'priority' => 3,
+) ) );
