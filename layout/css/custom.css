@@ -122,11 +122,13 @@
 	height: 31px;
 }
 
-.woocommerce input,
+.woocommerce input:not( [type="checkbox"] ):not( [type="radio"] ),
 .woocommerce textarea {
 	border: 1px solid #cccccc;
 }
-
+.woocommerce-checkout-payment input[type="submit"] {
+	border: 0 none;
+}
 
 @media only screen and (max-width: 560px) {
 	#contact-us .section-content .contact-us-box .box-left {
