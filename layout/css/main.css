@@ -71,6 +71,7 @@ h6 {
 textarea,
 input[type="text"],
 input[type="email"],
+input[type="search"],
 input[type="email"] {
 	-webkit-appearance: none;
 	border-radius: 0;
@@ -172,7 +173,11 @@ a:hover, a:focus {
 
 #header .top-header {
 	width: 100%;
-	padding-top: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#header .is-sticky .top-header {
+	background-color: #000;
 }
 
 #header .top-header .header-logo {
@@ -2474,7 +2479,8 @@ span.rss-date:before,
 
 input[type="text"],
 input[type="email"],
-input[type="email"],
+input[type="number"],
+input[type="search"],
 textarea {
 	width: 100%;
 	padding: 5px 10px;
@@ -2894,7 +2900,7 @@ p.mb32 {
 }
 
 .pace-overlay {
-	z-index: 5;
+	z-index: 100;
 }
 
 header#header {
@@ -2981,4 +2987,31 @@ header#header {
     position: absolute !important;
     width: 1px;
     word-wrap: normal !important;
+}
+
+a.illdy-top {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    display: block;
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    background: #000;
+    border-radius: 100%;
+    color: #fff;
+    z-index: 99;
+    opacity: 0;
+    -webkit-transition: opacity 1s ease-in-out;
+  	-moz-transition: opacity 1s ease-in-out;
+  	-ms-transition: opacity 1s ease-in-out;
+ 	-o-transition: opacity 1s ease-in-out;
+  	transition: opacity 1s ease-in-out;
+}
+a.illdy-top.is-active {
+	opacity: 1;
+}
+a.illdy-top i {
+	font-size: 25px;
+	line-height: 36px;
 }

@@ -92,6 +92,29 @@ jQuery( document ).ready( function($) {
 		}
 	}
 
+	// Scroll To Top
+	function scrollToTop(){
+		var item = $( '.illdy-top' );
+		if ( item.length > 0 ) {
+			item.click( function( event ){
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: 0
+				}, 1000);
+			});
+
+			$( document ).scroll( function(){
+				var y = window.scrollY;
+				if (y >= 300) {
+			        item.addClass( 'is-active' );
+			    } else {
+			        item.removeClass( 'is-active' );
+			    }
+			});
+
+		}
+	}
+
 	// Called Functions
 	$( function() {
 		isIsIOS();
@@ -101,6 +124,7 @@ jQuery( document ).ready( function($) {
 		setColorOnFrontPageService();
 		setColorOnFrontPagePerson();
 		alignSubSubMenu();
+		scrollToTop();
 	});
 
 	// Window Resize

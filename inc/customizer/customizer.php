@@ -361,6 +361,18 @@ if ( ! function_exists( 'illdy_sanitize_html' ) ) {
 }
 
 /**
+ *  Active callbacks
+ */
+
+function illdy_is_sticky_header(){
+	$sticky_header = get_theme_mod( 'illdy_sticky_header_enable', false );
+	if ( $sticky_header ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  *  Sanitize Select
  */
 if ( ! function_exists( 'illdy_sanitize_select' ) ) {
