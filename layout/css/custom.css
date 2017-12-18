@@ -129,6 +129,9 @@
 .woocommerce-checkout-payment input[type="submit"] {
 	border: 0 none;
 }
+.woocommerce form .form-row .input-checkbox {
+	position: relative;
+}
 
 @media only screen and (max-width: 560px) {
 	#contact-us .section-content .contact-us-box .box-left {
