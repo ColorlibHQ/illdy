@@ -69,7 +69,9 @@ h6 {
 	font-weight: 700;
 }
 textarea,
-input {
+input[type="text"],
+input[type="email"],
+input[type="email"] {
 	-webkit-appearance: none;
 	border-radius: 0;
 }
@@ -869,7 +871,7 @@ a:hover, a:focus {
 #latest-news .latest-news-button,
 a.button {
 	width: auto;
-	height: 45px;
+	min-height: 45px;
 	line-height: 45px;
 	background: #f1d204;
 	margin-bottom: 50px;
@@ -2179,7 +2181,7 @@ span.rss-date:before,
 	list-style-type: disc;
 }
 
-.markup-format ul li {
+.markup-format ul:not(.wc_payment_methods) li {
 	list-style-position: inside;
 	list-style-type: disc;
 }
@@ -2470,7 +2472,9 @@ span.rss-date:before,
 	color: #8c9597;
 }
 
-input,
+input[type="text"],
+input[type="email"],
+input[type="email"],
 textarea {
 	width: 100%;
 	padding: 5px 10px;
