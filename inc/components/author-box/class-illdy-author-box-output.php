@@ -61,7 +61,7 @@ if ( ! class_exists( 'Illdy_Author_Box_Output' ) ) {
 			$output .= '<div class="blog-post-author clearfix">';
 				$output .= get_avatar( get_the_author_meta( 'user_email' ), 98 );
 				$output .= '<h4>' . esc_html( get_the_author() ) . '</h4>';
-				$output .= ( get_the_author_meta( 'description' ) ) ? '<p>' . esc_html( get_the_author_meta( 'description' ) ) . '</p>' : '';
+				$output .= ( get_the_author_meta( 'description' ) ) ? '<div>' . wp_kses_post( get_the_author_meta( 'description' ) ) . '</div>' : '';
 			$output .= '</div><!--/.blog-post-author.clearfix-->';
 
 			echo $output;
