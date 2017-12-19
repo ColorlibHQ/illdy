@@ -191,7 +191,7 @@ class EDD_Theme_Helper {
 
 		$license_key = trim( get_option( $instance->theme_slug . '_license_key', false ) );
 		if ( '' !== $instance->download_id && $license_key ) {
-			$url = esc_url( $theme->get( 'AuthorURI' ) );
+			$url  = esc_url( $theme->get( 'AuthorURI' ) );
 			$url .= '/checkout/?edd_license_key=' . $license_key . '&download_id=' . $instance->download_id;
 
 			return $url;

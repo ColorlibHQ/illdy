@@ -9,9 +9,9 @@
 <?php
 
 if ( current_user_can( 'edit_theme_options' ) ) {
-	$footer_copyright  = get_theme_mod( 'illdy_footer_copyright', __( '&copy; Copyright 2016. All Rights Reserved.', 'illdy' ) );
+	$footer_copyright = get_theme_mod( 'illdy_footer_copyright', __( '&copy; Copyright 2016. All Rights Reserved.', 'illdy' ) );
 } else {
-	$footer_copyright  = get_theme_mod( 'illdy_footer_copyright' );
+	$footer_copyright = get_theme_mod( 'illdy_footer_copyright' );
 }
 ?>
 <footer id="footer">
@@ -73,7 +73,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	</div>
 </footer><!--/#footer-->
 
-<?php if ( 'page' == get_option( 'show_on_front' ) && is_front_page() && get_theme_mod( 'illdy_go_to_top', false ) ): ?>
+<?php if ( 'page' == get_option( 'show_on_front' ) && is_front_page() && get_theme_mod( 'illdy_go_to_top', false ) ) : ?>
 	<a href="#" class="illdy-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 <?php endif ?>
 
