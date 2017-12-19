@@ -19,8 +19,13 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 
 <?php if ( '' != $general_title || '' != $general_entry || is_active_sidebar( 'front-page-projects-sidebar' ) ) { ?>
 
-<section id="projects" class="front-page-section" style="<?php if ( ! $general_title && ! $general_entry ) : echo 'padding-top: 0;';
-endif; ?>">
+<section id="projects" class="front-page-section" style="
+<?php
+if ( ! $general_title && ! $general_entry ) :
+	echo 'padding-top: 0;';
+endif;
+?>
+">
 	<?php if ( $general_title || $general_entry ) : ?>
 		<div class="section-header">
 			<div class="container">

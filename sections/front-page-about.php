@@ -14,12 +14,15 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$general_title = get_theme_mod( 'illdy_about_general_title' );
 	$general_entry = get_theme_mod( 'illdy_about_general_entry' );
 }
+$custom_css = '';
+if ( ! $general_title && ! $general_entry ) {
+	$custom_css = 'padding-top: 130px;';
+}
 ?>
 
 <?php if ( '' != $general_title || '' != $general_entry || is_active_sidebar( 'front-page-about-sidebar' ) ) { ?>
 
-<section id="about" class="front-page-section" style="<?php if ( ! $general_title && ! $general_entry ) : echo 'padding-top: 130px;';
-endif; ?>">
+<section id="about" class="front-page-section" style="<?php echo $custom_css; ?>">
 	<?php if ( $general_title || $general_entry ) : ?>
 		<div class="section-header">
 			<div class="container">
