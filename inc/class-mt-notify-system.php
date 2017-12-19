@@ -180,11 +180,11 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 			$check = array(
 				'wordpress-importer'       => array(
 					'installed' => false,
-					'active' => false,
+					'active'    => false,
 				),
 				'widget-importer-exporter' => array(
 					'installed' => false,
-					'active' => false,
+					'active'    => false,
 				),
 			);
 
@@ -280,9 +280,9 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 			if ( '' == $install_text && '' == $activate_text ) {
 				return;
 			}
-			if ( '' == $install_text &  '' != $activate_text ) {
+			if ( '' == $install_text & '' != $activate_text ) {
 				$install_text = $activate_text;
-			} elseif ( '' == $activate_text &&  '' != $install_text ) {
+			} elseif ( '' == $activate_text && '' != $install_text ) {
 				$activate_text = $install_text;
 			}
 

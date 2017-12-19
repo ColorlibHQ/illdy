@@ -54,10 +54,12 @@ if ( post_password_required() ) {
 				</h3>
 				<ul class="comments">
 					<?php
-					wp_list_comments( array(
-						'callback'  => 'illdy_comment',
-						'max_depth' => 5,
-					) );
+					wp_list_comments(
+						array(
+							'callback'  => 'illdy_comment',
+							'max_depth' => 5,
+						)
+					);
 					?>
 				</ul><!--/.comments-->
 			</div><!--/#comments-list-->
@@ -84,8 +86,8 @@ if ( post_password_required() ) {
 
 	<?php
 	$commenter = wp_get_current_commenter();
-	$req = get_option( 'require_name_email' );
-	$aria_req = ( $req ? " aria-required='true'" : '' );
+	$req       = get_option( 'require_name_email' );
+	$aria_req  = ( $req ? " aria-required='true'" : '' );
 
 	if ( '' != $commenter['comment_author'] ) {
 		$name = esc_attr( $commenter['comment_author'] );
@@ -107,8 +109,8 @@ if ( post_password_required() ) {
 
 	$fields = array(
 		'author' => '<div class="row"><div class="col-sm-4"><input class="input-full" placeholder="' . __( 'Name', 'illdy' ) . '" name="author" type="text" value="' . esc_attr( $name ) . '" ' . $aria_req . ' /></div>',
-		'email' => '<div class="col-sm-4"><input class="input-full" placeholder="' . __( 'Email', 'illdy' ) . '" name="email" type="email" value="' . esc_attr( $email ) . '" ' . $aria_req . ' /></div>',
-		'url' => '<div class="col-sm-4"><input class="input-full" placeholder="' . __( 'Website', 'illdy' ) . '" name="url" type="url" value="' . esc_url( $url ) . '" /></div>',
+		'email'  => '<div class="col-sm-4"><input class="input-full" placeholder="' . __( 'Email', 'illdy' ) . '" name="email" type="email" value="' . esc_attr( $email ) . '" ' . $aria_req . ' /></div>',
+		'url'    => '<div class="col-sm-4"><input class="input-full" placeholder="' . __( 'Website', 'illdy' ) . '" name="url" type="url" value="' . esc_url( $url ) . '" /></div>',
 	);
 
 	if ( is_user_logged_in() ) {
@@ -118,13 +120,15 @@ if ( post_password_required() ) {
 	}
 	?>
 	<?php
-	comment_form( array(
-		'fields' => $fields,
-		'comment_field' => $comment_textarea,
-		'id_submit' => 'input-submit',
-		'label_submit' => esc_attr__( 'Send', 'illdy' ),
-		'title_reply' => esc_attr__( 'Leave a comment', 'illdy' ),
-		'title_reply_to' => esc_attr__( 'Leave a comment to %s', 'illdy' ),
-	) );
+	comment_form(
+		array(
+			'fields'         => $fields,
+			'comment_field'  => $comment_textarea,
+			'id_submit'      => 'input-submit',
+			'label_submit'   => esc_attr__( 'Send', 'illdy' ),
+			'title_reply'    => esc_attr__( 'Leave a comment', 'illdy' ),
+			'title_reply_to' => esc_attr__( 'Leave a comment to %s', 'illdy' ),
+		)
+	);
 	?>
 </div><!--/#comments-->

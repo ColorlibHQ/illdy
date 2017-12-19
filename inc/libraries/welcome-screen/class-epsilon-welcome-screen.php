@@ -151,14 +151,18 @@ class Epsilon_Welcome_Screen {
 		/**
 		 * Ajax callbacks
 		 */
-		add_action( 'wp_ajax_welcome_screen_ajax_callback', array(
-			$this,
-			'welcome_screen_ajax_callback',
-		) );
-		add_action( 'wp_ajax_nopriv_welcome_screen_ajax_callback', array(
-			$this,
-			'welcome_screen_ajax_callback',
-		) );
+		add_action(
+			'wp_ajax_welcome_screen_ajax_callback', array(
+				$this,
+				'welcome_screen_ajax_callback',
+			)
+		);
+		add_action(
+			'wp_ajax_nopriv_welcome_screen_ajax_callback', array(
+				$this,
+				'welcome_screen_ajax_callback',
+			)
+		);
 
 		if ( $this->edd ) {
 			/**
@@ -687,26 +691,28 @@ class Epsilon_Welcome_Screen {
 		$call_api = get_transient( $this->theme_slug . '_plugin_information_transient_' . $slug );
 
 		if ( false === $call_api ) {
-			$call_api = plugins_api( 'plugin_information', array(
-				'slug'   => $slug,
-				'fields' => array(
-					'downloaded'        => false,
-					'rating'            => false,
-					'description'       => false,
-					'short_description' => true,
-					'donate_link'       => false,
-					'tags'              => false,
-					'sections'          => true,
-					'homepage'          => true,
-					'added'             => false,
-					'last_updated'      => false,
-					'compatibility'     => false,
-					'tested'            => false,
-					'requires'          => false,
-					'downloadlink'      => false,
-					'icons'             => true,
-				),
-			) );
+			$call_api = plugins_api(
+				'plugin_information', array(
+					'slug'   => $slug,
+					'fields' => array(
+						'downloaded'        => false,
+						'rating'            => false,
+						'description'       => false,
+						'short_description' => true,
+						'donate_link'       => false,
+						'tags'              => false,
+						'sections'          => true,
+						'homepage'          => true,
+						'added'             => false,
+						'last_updated'      => false,
+						'compatibility'     => false,
+						'tested'            => false,
+						'requires'          => false,
+						'downloadlink'      => false,
+						'icons'             => true,
+					),
+				)
+			);
 			set_transient( $this->theme_slug . '_plugin_information_transient_' . $slug, $call_api, 30 * MINUTE_IN_SECONDS );
 		}
 

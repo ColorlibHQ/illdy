@@ -32,8 +32,8 @@ if ( ! class_exists( 'Illdy_CF7_Custom_Control' ) ) {
 			if ( $this->active_callback() ) {
 
 				$args = array(
-					'post_type' => 'wpcf7_contact_form',
-					'post_status' => 'publish',
+					'post_type'      => 'wpcf7_contact_form',
+					'post_status'    => 'publish',
 					'posts_per_page' => -1,
 				);
 
@@ -55,7 +55,8 @@ if ( ! class_exists( 'Illdy_CF7_Custom_Control' ) ) {
 			if ( ! empty( $contact_forms ) ) { ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<select <?php esc_url( $this->link() ); ?> style="width:100%;">
-				<?php echo '<option value="default">' . __( 'Select your contact form', 'illdy' ) . '</option>';
+				<?php
+				echo '<option value="default">' . __( 'Select your contact form', 'illdy' ) . '</option>';
 				foreach ( $contact_forms as $form_id => $form_title ) {
 					echo '<option value="' . sanitize_key( $form_id ) . '" >' . esc_html( $form_title ) . '</option>';
 				}

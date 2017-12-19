@@ -60,9 +60,15 @@ if ( ( is_single() || is_page() || is_archive() ) && get_theme_mod( 'illdy_archi
 <?php if ( 1 == $preloader_enable && ! is_customize_preview() ) : ?>
 	<div class="pace-overlay"></div>
 <?php endif; ?>
-<header id="header" class="<?php if ( 'page' == get_option( 'show_on_front' ) && is_front_page() ) : echo 'header-front-page';
-else : echo 'header-blog';
-endif; ?>" style="<?php echo $style ?>">
+<header id="header" class="
+<?php
+if ( 'page' == get_option( 'show_on_front' ) && is_front_page() ) :
+	echo 'header-front-page';
+else :
+	echo 'header-blog';
+endif;
+?>
+" style="<?php echo $style; ?>">
 	<div class="top-header">
 		<div class="container">
 			<div class="row">
@@ -73,7 +79,7 @@ endif; ?>" style="<?php echo $style ?>">
 					<?php } else { ?>
 						<?php if ( get_option( 'show_on_front' ) == 'page' ) { ?>
 							<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( $text_logo ); ?>" class="header-logo"><?php echo esc_html( $text_logo ); ?></a>
-						<?php } else { // front-page option ?>
+						<?php } else { ?>
 							<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="header-logo"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a>
 						<?php } ?>
 					<?php } ?>
@@ -82,13 +88,15 @@ endif; ?>" style="<?php echo $style ?>">
 				<div class="col-sm-8 col-xs-4">
 					<nav class="header-navigation">
 					<?php
-						wp_nav_menu( array(
-							'theme_location'  => 'primary-menu',
-							'menu'            => '',
-							'container'       => false,
-							'menu_class'      => 'clearfix',
-							'menu_id'         => '',
-						) );
+						wp_nav_menu(
+							array(
+								'theme_location' => 'primary-menu',
+								'menu'           => '',
+								'container'      => false,
+								'menu_class'     => 'clearfix',
+								'menu_id'        => '',
+							)
+						);
 					?>
 					</nav>
 					<button class="open-responsive-menu"><i class="fa fa-bars"></i></button>
@@ -99,16 +107,18 @@ endif; ?>" style="<?php echo $style ?>">
 	<nav class="responsive-menu">
 		<ul>
 			<?php
-			wp_nav_menu( array(
-				'theme_location'  => 'primary-menu',
-				'menu'            => '',
-				'container'       => '',
-				'container_class' => '',
-				'container_id'    => '',
-				'menu_class'      => '',
-				'menu_id'         => '',
-				'items_wrap'      => '%3$s',
-			) );
+			wp_nav_menu(
+				array(
+					'theme_location'  => 'primary-menu',
+					'menu'            => '',
+					'container'       => '',
+					'container_class' => '',
+					'container_id'    => '',
+					'menu_class'      => '',
+					'menu_id'         => '',
+					'items_wrap'      => '%3$s',
+				)
+			);
 			?>
 		</ul>
 	</nav><!--/.responsive-menu-->

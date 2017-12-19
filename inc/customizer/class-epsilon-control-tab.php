@@ -2,16 +2,16 @@
 
 if ( ! class_exists( 'Epsilon_Control_Tab' ) ) {
 	class Epsilon_Control_Tab extends WP_Customize_Control {
-		public $type = 'epsilon-tab';
+		public $type    = 'epsilon-tab';
 		public $buttons = '';
 		public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
 			parent::__construct( $manager, $id, $args );
 		}
 		public function to_json() {
 			parent::to_json();
-			$first = true;
+			$first             = true;
 			$formatted_buttons = array();
-			$all_fields = array();
+			$all_fields        = array();
 			foreach ( $this->buttons as $button ) {
 				$fields = array();
 				$active = isset( $button['active'] ) ? $button['active'] : false;
@@ -22,13 +22,13 @@ if ( ! class_exists( 'Epsilon_Control_Tab' ) ) {
 				}
 
 				$formatted_buttons[] = array(
-					'name'      => $button['name'],
-					'fields'    => $button['fields'],
-					'active'    => $active,
+					'name'   => $button['name'],
+					'fields' => $button['fields'],
+					'active' => $active,
 				);
-				$all_fields = array_merge( $all_fields, $button['fields'] );
+				$all_fields          = array_merge( $all_fields, $button['fields'] );
 			}
-			$this->json['buttons']  = $formatted_buttons;
+			$this->json['buttons'] = $formatted_buttons;
 			$this->json['fields']  = $all_fields;
 
 		}
@@ -45,7 +45,8 @@ if ( ! class_exists( 'Epsilon_Control_Tab' ) ) {
 
 				<# } #>
 			</div>
-			 <div class="epsilon-after-tab"><div></div></div>
-		<?php }
+			<div class="epsilon-after-tab"><div></div></div>
+		<?php
+		}
 	}
 }// End if().
