@@ -253,7 +253,7 @@ $wp_customize->add_control(
 $wp_customize->add_setting(
 	$prefix . '_about_background_attachment', array(
 		'sanitize_callback' => $prefix . '_sanitize_checkbox',
-		'default'           => 0,
+		'default'           => 1,
 		'transport'         => 'postMessage',
 	)
 );
