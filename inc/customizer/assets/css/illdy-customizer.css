@@ -117,22 +117,12 @@ ul.accordion-section {
 }
 
 .mte-tooltip {
-    width: 150px;
-    position: absolute;
-    background: #55AAD3;
-    color: #EEE;
-    font-size: 12px;
-    min-height: 50px;
-    border-radius: 5px;
     right: -75px;
     top: -10px;
     z-index: 10;
-    display: none;
-    padding: 12px;
-    line-height: 1.5;
-    font-family: 'Arial', sans-serif;
     transform: translateY(-100%);
     left: auto;
+    bottom: auto;
 }
 
 .dashicons.dashicons-editor-help {
