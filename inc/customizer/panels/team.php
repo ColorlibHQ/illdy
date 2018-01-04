@@ -182,7 +182,7 @@ $wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, $prefix .
 
 $wp_customize->add_setting( $prefix . '_team_background_attachment', array(
 	'sanitize_callback' => $prefix . '_sanitize_checkbox',
-	'default'           => 0,
+	'default'           => 1,
 	'transport'         => 'postMessage',
 ) );
 

@@ -171,7 +171,7 @@ if ( ! function_exists( 'illdy_jumbotron_css' ) ) {
 		$illdy_jumbotron_background_position_y          = get_theme_mod( 'illdy_jumbotron_background_position_y' );
 		$illdy_jumbotron_background_position_x          = get_theme_mod( 'illdy_jumbotron_background_position_x' );
 		$illdy_jumbotron_background_repeat              = get_theme_mod( 'illdy_jumbotron_background_repeat' );
-		$illdy_jumbotron_background_attachment          = get_theme_mod( 'illdy_jumbotron_background_attachment' );
+		$illdy_jumbotron_background_attachment          = get_theme_mod( 'illdy_jumbotron_background_attachment', 1 );
 		$illdy_jumbotron_general_color                  = get_theme_mod( 'illdy_jumbotron_general_color' );
 		$illdy_jumbotron_first_border_color             = get_theme_mod( 'illdy_jumbotron_first_button_background' );
 		$illdy_jumbotron_first_button_background        = illdy_hex2rgb( $illdy_jumbotron_first_border_color, '.2' );
@@ -202,7 +202,7 @@ if ( ! function_exists( 'illdy_jumbotron_css' ) ) {
 		if ( $illdy_jumbotron_background_repeat ) {
 			$css .= '#header.header-front-page {background-repeat: repeat !important;}';
 		}
-		if ( $illdy_jumbotron_background_attachment ) {
+		if ( ! $illdy_jumbotron_background_attachment ) {
 			$css .= '#header.header-front-page {background-attachment: scroll !important;}';
 		}
 		if ( $illdy_jumbotron_general_color ) {
@@ -261,7 +261,7 @@ if ( ! function_exists( 'illdy_latestnews_css' ) ) {
 		$illdy_latest_news_general_image           = get_theme_mod( 'illdy_latest_news_general_image' );
 		$illdy_latest_news_background_size         = get_theme_mod( 'illdy_latest_news_background_size' );
 		$illdy_latest_news_background_repeat       = get_theme_mod( 'illdy_latest_news_background_repeat' );
-		$illdy_latest_news_background_attachment   = get_theme_mod( 'illdy_latest_news_background_attachment' );
+		$illdy_latest_news_background_attachment   = get_theme_mod( 'illdy_latest_news_background_attachment', 1 );
 		$illdy_latest_news_background_position_y   = get_theme_mod( 'illdy_latest_news_background_position_y' );
 		$illdy_latest_news_background_position_x   = get_theme_mod( 'illdy_latest_news_background_position_x' );
 
@@ -281,7 +281,7 @@ if ( ! function_exists( 'illdy_latestnews_css' ) ) {
 		if ( $illdy_latest_news_background_repeat ) {
 			$css .= '#latest-news {background-repeat: repeat !important;}';
 		}
-		if ( $illdy_latest_news_background_attachment ) {
+		if ( ! $illdy_latest_news_background_attachment ) {
 			$css .= '#latest-news {background-attachment: scroll !important;}';
 		}
 		if ( $illdy_latest_news_general_color ) {
@@ -335,7 +335,7 @@ if ( ! function_exists( 'illdy_fullwidth_css' ) ) {
 		$illdy_full_width_general_image         = get_theme_mod( 'illdy_full_width_general_image' );
 		$illdy_full_width_background_size       = get_theme_mod( 'illdy_full_width_background_size' );
 		$illdy_full_width_background_repeat     = get_theme_mod( 'illdy_full_width_background_repeat' );
-		$illdy_full_width_background_attachment = get_theme_mod( 'illdy_full_width_background_attachment' );
+		$illdy_full_width_background_attachment = get_theme_mod( 'illdy_full_width_background_attachment', 1 );
 		$illdy_full_width_background_position_y = get_theme_mod( 'illdy_full_width_background_position_y' );
 		$illdy_full_width_background_position_x = get_theme_mod( 'illdy_full_width_background_position_x' );
 
@@ -355,7 +355,7 @@ if ( ! function_exists( 'illdy_fullwidth_css' ) ) {
 		if ( $illdy_full_width_background_repeat ) {
 			$css .= '#full-width:before {background-repeat: repeat !important;}';
 		}
-		if ( $illdy_full_width_background_attachment ) {
+		if ( ! $illdy_full_width_background_attachment ) {
 			$css .= '#full-width:before {background-attachment: scroll !important;}';
 		}
 		if ( $illdy_full_width_general_color ) {
@@ -384,7 +384,7 @@ if ( ! function_exists( 'illdy_about_css' ) ) {
 		$illdy_about_general_image         = get_theme_mod( 'illdy_about_general_image' );
 		$illdy_about_background_size       = get_theme_mod( 'illdy_about_background_size' );
 		$illdy_about_background_repeat     = get_theme_mod( 'illdy_about_background_repeat' );
-		$illdy_about_background_attachment = get_theme_mod( 'illdy_about_background_attachment' );
+		$illdy_about_background_attachment = get_theme_mod( 'illdy_about_background_attachment', 1 );
 		$illdy_about_background_position_y = get_theme_mod( 'illdy_about_background_position_y' );
 		$illdy_about_background_position_x = get_theme_mod( 'illdy_about_background_position_x' );
 
@@ -404,7 +404,7 @@ if ( ! function_exists( 'illdy_about_css' ) ) {
 		if ( $illdy_about_background_repeat ) {
 			$css .= '#about:before {background-repeat: repeat !important;}';
 		}
-		if ( $illdy_about_background_attachment ) {
+		if ( ! $illdy_about_background_attachment ) {
 			$css .= '#about:before {background-attachment: scroll !important;}';
 		}
 		if ( $illdy_about_general_color ) {
@@ -430,7 +430,7 @@ if ( ! function_exists( 'illdy_projects_css' ) ) {
 		$illdy_projects_general_image         = get_theme_mod( 'illdy_projects_general_image', get_template_directory_uri() . '/layout/images/front-page/pattern.png' );
 		$illdy_projects_background_size       = get_theme_mod( 'illdy_projects_background_size', 'auto' );
 		$illdy_projects_background_repeat     = get_theme_mod( 'illdy_projects_background_repeat', 1 );
-		$illdy_projects_background_attachment = get_theme_mod( 'illdy_projects_background_attachment' );
+		$illdy_projects_background_attachment = get_theme_mod( 'illdy_projects_background_attachment', 1 );
 		$illdy_projects_background_position_y = get_theme_mod( 'illdy_projects_background_position_y' );
 		$illdy_projects_background_position_x = get_theme_mod( 'illdy_projects_background_position_x' );
 
@@ -450,7 +450,7 @@ if ( ! function_exists( 'illdy_projects_css' ) ) {
 		if ( $illdy_projects_background_repeat ) {
 			$css .= '#projects:before {background-repeat: repeat !important;}';
 		}
-		if ( $illdy_projects_background_attachment ) {
+		if ( ! $illdy_projects_background_attachment ) {
 			$css .= '#projects:before {background-attachment: scroll !important;}';
 		}
 		if ( $illdy_projects_general_color ) {
@@ -476,7 +476,7 @@ if ( ! function_exists( 'illdy_services_css' ) ) {
 		$illdy_services_general_image         = get_theme_mod( 'illdy_services_general_image' );
 		$illdy_services_background_size       = get_theme_mod( 'illdy_services_background_size' );
 		$illdy_services_background_repeat     = get_theme_mod( 'illdy_services_background_repeat' );
-		$illdy_services_background_attachment = get_theme_mod( 'illdy_services_background_attachment' );
+		$illdy_services_background_attachment = get_theme_mod( 'illdy_services_background_attachment', 1 );
 		$illdy_services_background_position_y = get_theme_mod( 'illdy_services_background_position_y' );
 		$illdy_services_background_position_x = get_theme_mod( 'illdy_services_background_position_x' );
 
@@ -496,7 +496,7 @@ if ( ! function_exists( 'illdy_services_css' ) ) {
 		if ( $illdy_services_background_repeat ) {
 			$css .= '#services:before {background-repeat: repeat !important;}';
 		}
-		if ( $illdy_services_background_attachment ) {
+		if ( ! $illdy_services_background_attachment ) {
 			$css .= '#services:before {background-attachment: scroll !important;}';
 		}
 		if ( $illdy_services_general_color ) {
@@ -522,7 +522,7 @@ if ( ! function_exists( 'illdy_team_css' ) ) {
 		$illdy_team_general_image         = get_theme_mod( 'illdy_team_general_image', get_template_directory_uri() . '/layout/images/front-page/pattern.png' );
 		$illdy_team_background_size       = get_theme_mod( 'illdy_team_background_size', 'auto' );
 		$illdy_team_background_repeat     = get_theme_mod( 'illdy_team_background_repeat', 1 );
-		$illdy_team_background_attachment = get_theme_mod( 'illdy_team_background_attachment' );
+		$illdy_team_background_attachment = get_theme_mod( 'illdy_team_background_attachment', 1 );
 		$illdy_team_background_position_y = get_theme_mod( 'illdy_team_background_position_y' );
 		$illdy_team_background_position_x = get_theme_mod( 'illdy_team_background_position_x' );
 
@@ -542,7 +542,7 @@ if ( ! function_exists( 'illdy_team_css' ) ) {
 		if ( $illdy_team_background_repeat ) {
 			$css .= '#team:before {background-repeat: repeat !important;}';
 		}
-		if ( $illdy_team_background_attachment ) {
+		if ( ! $illdy_team_background_attachment ) {
 			$css .= '#team:before {background-attachment: scroll !important;}';
 		}
 		if ( $illdy_team_general_color ) {
@@ -593,7 +593,7 @@ if ( ! function_exists( 'illdy_testimonials_css' ) ) {
 		if ( $illdy_testimonials_background_repeat ) {
 			$css .= '#testimonials:before {background-repeat: repeat !important;}';
 		}
-		if ( $illdy_testimonials_background_attachment ) {
+		if ( ! $illdy_testimonials_background_attachment ) {
 			$css .= '#testimonials:before {background-attachment: scroll !important;}';
 		}
 		if ( $illdy_testimonials_general_color ) {
