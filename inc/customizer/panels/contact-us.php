@@ -118,7 +118,7 @@ if ( get_theme_mod( $prefix . '_contact_us_entry' ) ) {
 		)
 	);
 
-} elseif ( ! defined( ILLDY_COMPANION ) ) {
+} elseif ( ! defined( 'ILLDY_COMPANION' ) ) {
 
 	$wp_customize->add_setting(
 		$prefix . '_contact_us_entry', array(

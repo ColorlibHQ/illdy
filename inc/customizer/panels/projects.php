@@ -109,7 +109,7 @@ if ( get_theme_mod( $prefix . '_projects_general_entry' ) ) {
 		)
 	);
 
-} elseif ( ! defined( ILLDY_COMPANION ) ) {
+} elseif ( ! defined( 'ILLDY_COMPANION' ) ) {
 
 	$wp_customize->add_setting(
 		$prefix . '_projects_entry_text', array(
