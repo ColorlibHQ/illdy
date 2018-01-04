@@ -15,28 +15,6 @@ $wp_customize->add_section(
 	)
 );
 
-
-
-// Featured image in header
-$wp_customize->add_setting(
-	$prefix . '_jumbotron_enable_featured_image', array(
-		'sanitize_callback' => $prefix . '_sanitize_checkbox',
-		'default'           => 0,
-		'transport'         => 'postMessage',
-	)
-);
-
-$wp_customize->add_control(
-	new Epsilon_Control_Toggle(
-		$wp_customize, $prefix . '_jumbotron_enable_featured_image', array(
-			'type'        => 'epsilon-toggle',
-			'label'       => __( 'Featured image as jumbotron ?', 'illdy' ),
-			'description' => __( 'This will remove the featured image from inside the post content and use it in the jumbotron as a background image. Works for single posts & pages.', 'illdy' ),
-			'section'     => $prefix . '_jumbotron_general',
-		)
-	)
-);
-
 // Featured image in header
 $wp_customize->add_setting(
 	$prefix . '_jumbotron_enable_parallax_effect', array(
