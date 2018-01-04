@@ -64,7 +64,7 @@ if ( get_theme_mod( $prefix . '_team_general_entry' ) ) {
 		'selector' => '#team .section-header .section-description',
 	) );
 
-} elseif ( ! defined( ILLDY_COMPANION ) ) {
+} elseif ( ! defined( 'ILLDY_COMPANION' ) ) {
 
 	$wp_customize->add_setting( $prefix . '_team_entry_text', array(
 		'sanitize_callback' => 'esc_html',

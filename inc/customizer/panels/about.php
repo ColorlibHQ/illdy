@@ -86,7 +86,7 @@ if ( get_theme_mod( $prefix . '_about_general_entry' ) ) {
 		)
 	);
 
-} elseif ( ! defined( ILLDY_COMPANION ) ) {
+} elseif ( ! defined( 'ILLDY_COMPANION' ) ) {
 
 	$wp_customize->add_setting(
 		$prefix . '_about_general_text', array(
