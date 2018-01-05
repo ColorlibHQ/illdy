@@ -33,6 +33,13 @@ jQuery( document ).ready( function( $ ) {
   // Open Responsive Menu
   function openResponsiveMenu() {
     $( '.open-responsive-menu' ).click( function() {
+      var top = $( '.top-header' ).outerHeight(),
+          height = $( window ).height() - top;
+
+      if ( $( '#header' ).hasClass( 'header-has-sticky-menu' ) ) {
+        $( '.responsive-menu' ).css( { 'top': top, 'max-height': height } );
+      }
+
       $( '.responsive-menu' ).toggle( 'slow', function() {
         $( this ).toggleClass( 'active' );
       } );
