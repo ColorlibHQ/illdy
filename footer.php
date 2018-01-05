@@ -9,7 +9,7 @@
 <?php
 
 if ( current_user_can( 'edit_theme_options' ) ) {
-	$footer_copyright = get_theme_mod( 'illdy_footer_copyright', __( '&copy; Copyright 2016. All Rights Reserved.', 'illdy' ) );
+	$footer_copyright = get_theme_mod( 'illdy_footer_copyright', sprintf( __( '&copy; Copyright %s. All Rights Reserved.', 'illdy' ), date( 'Y' ) ) );
 } else {
 	$footer_copyright = get_theme_mod( 'illdy_footer_copyright' );
 }

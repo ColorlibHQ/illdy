@@ -349,7 +349,7 @@ $wp_customize->add_section(
 $wp_customize->add_setting(
 	$prefix . '_footer_copyright', array(
 		'sanitize_callback' => 'illdy_sanitize_html',
-		'default'           => __( '&copy; Copyright 2016. All Rights Reserved.', 'illdy' ),
+		'default'           => sprintf( __( '&copy; Copyright %s. All Rights Reserved.', 'illdy' ), date( 'Y' ) ),
 		'transport'         => 'postMessage',
 	)
 );
