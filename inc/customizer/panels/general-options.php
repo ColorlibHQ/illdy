@@ -338,7 +338,7 @@ $wp_customize->selective_refresh->add_partial(
 /***********************************************/
 $wp_customize->add_section(
 	$prefix . '_general_footer_section', array(
-		'title'       => __( 'Copyright', 'illdy' ),
+		'title'       => __( 'Footer', 'illdy' ),
 		'description' => __( 'From this section, you\'ll be able to alter the footer settings. Manage your copyright message as well as the logo shown in the footer of the theme.', 'illdy' ),
 		'priority'    => 5,
 		'panel'       => $panel_id,

@@ -180,6 +180,11 @@ a:hover, a:focus {
 	background-color: #000;
 }
 
+#header .top-header .row {
+	display: flex;
+	align-items: center;
+}
+
 #header .top-header .header-logo {
 	display: block;
 	font-size: 60px;
