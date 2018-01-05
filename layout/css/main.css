@@ -152,6 +152,11 @@ a:hover, a:focus {
 	display: none;
 }
 
+.header-has-sticky-menu .responsive-menu {
+	position: fixed;
+	z-index: 99;
+}
+
 .customizer-display-none {
 	display: none;
 }
@@ -2629,6 +2634,11 @@ p.mb32 {
 		background-color: #fff;
 		margin-top: 20px;
 		display: none;
+	}
+
+	.header-has-sticky-menu .responsive-menu {
+		margin-top: 0;
+		overflow-y: scroll;
 	}
 
 	.responsive-menu ul {
