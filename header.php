@@ -72,7 +72,7 @@ if ( get_theme_mod( 'illdy_sticky_header_enable', false ) ) {
 <?php if ( 1 == $preloader_enable && ! is_customize_preview() ) : ?>
 	<div class="pace-overlay"></div>
 <?php endif; ?>
-<header id="header" class="<?php echo $header_class ?>" style="<?php echo $style; ?>">
+<header id="header" class="<?php echo $header_class; ?>" style="<?php echo $style; ?>">
 	<div class="top-header">
 		<div class="container">
 			<div class="row">
