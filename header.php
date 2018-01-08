@@ -83,7 +83,14 @@ if ( get_theme_mod( 'illdy_sticky_header_enable', false ) ) {
 			<div class="row">
 				<div class="col-sm-4 col-xs-8">
 
-					<?php if ( ! empty( $logo_image ) ) { ?><?php echo '<a href="' . esc_url( home_url() ) . '"><img src="' . esc_url( $logo_image[0] ) . '" /></a>'; ?><?php } else { ?><?php if ( get_option( 'show_on_front' ) == 'page' ) { ?>
+					<?php
+					if ( ! empty( $logo_image ) ) {
+?>
+<?php echo '<a href="' . esc_url( home_url() ) . '"><img src="' . esc_url( $logo_image[0] ) . '" /></a>'; ?>
+			<?php
+					} else {
+					?>
+					<?php if ( get_option( 'show_on_front' ) == 'page' ) { ?>
 						<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( $text_logo ); ?>" class="header-logo"><?php echo esc_html( $text_logo ); ?></a>
 					<?php } else { ?>
 						<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="header-logo"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a>
