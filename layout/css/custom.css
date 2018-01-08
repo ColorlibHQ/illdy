@@ -132,7 +132,9 @@
 .woocommerce form .form-row .input-checkbox {
 	position: relative;
 }
-
+.woocommerce a.button {
+    min-height: auto;
+}
 @media only screen and (max-width: 560px) {
 	#contact-us .section-content .contact-us-box .box-left {
 		width: 100%;
