@@ -16,6 +16,7 @@ $jumbotron_single_image    = get_theme_mod( 'illdy_jumbotron_enable_featured_ima
 $jumbotron_parallax_enable = get_theme_mod( 'illdy_jumbotron_enable_parallax_effect', true );
 $preloader_enable          = get_theme_mod( 'illdy_preloader_enable', 1 );
 $is_mobile_safari          = preg_match( '/(iPod|iPhone|iPad)/', $_SERVER['HTTP_USER_AGENT'] );
+$accent_color 			   = get_theme_mod( 'epsilon_accent_color', '#f1d204' );
 
 $style = '';
 
@@ -28,11 +29,15 @@ if ( 'page' == get_option( 'show_on_front' ) && is_front_page() ) {
 	global $post;
 	if ( has_post_thumbnail( $post->ID ) ) {
 		$style = 'background-image: url(' . esc_url( get_the_post_thumbnail_url( $post->ID, 'full' ) ) . ');';
-	} else {
+	} elseif ( has_header_image() ) {
 		$style = 'background-image: url(' . get_header_image() . ');';
+	} else {
+		$style = 'background-color: ' . $accent_color . ';';
 	}
-} else {
+} elseif ( has_header_image() ) {
 	$style = 'background-image: url(' . get_header_image() . ');';
+} else {
+	$style = 'background-color: ' . $accent_color . ';';
 }
 
 $url = get_theme_mod( 'header_image', get_theme_support( 'custom-header', 'default-image' ) );

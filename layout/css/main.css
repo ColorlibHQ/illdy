@@ -1175,6 +1175,12 @@ a.button:hover {
 	width: 100%;
 	display: block;
 }
+#contact-us .section-content .wpcf7-form p input[type="radio"] + span,
+#contact-us .section-content .wpcf7-form p input[type="checkbox"] + span {
+	display: inline-block;
+	width: auto;
+    margin-left: 5px;
+}
 
 #contact-us .section-content .wpcf7-form p span.wpcf7-not-valid-tip {
 	font-weight: 400;
@@ -1208,14 +1214,6 @@ a.button:hover {
 	padding: 0;
 	display: block;
 	clear: both;
-}
-
-#contact-us .section-content .wpcf7-form p:nth-of-type(5) {
-	margin: 0;
-	padding: 0;
-	display: block;
-	float: right;
-	width: auto;
 }
 
 #contact-us .section-content .wpcf7-form .wpcf7-response-output.wpcf7-mail-sent-ng {
