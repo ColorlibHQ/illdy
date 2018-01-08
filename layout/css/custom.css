@@ -122,12 +122,19 @@
 	height: 31px;
 }
 
-.woocommerce input,
+.woocommerce input:not( [type="checkbox"] ):not( [type="radio"] ),
 .woocommerce textarea {
 	border: 1px solid #cccccc;
 }
-
-
+.woocommerce-checkout-payment input[type="submit"] {
+	border: 0 none;
+}
+.woocommerce form .form-row .input-checkbox {
+	position: relative;
+}
+.woocommerce a.button {
+    min-height: auto;
+}
 @media only screen and (max-width: 560px) {
 	#contact-us .section-content .contact-us-box .box-left {
 		width: 100%;

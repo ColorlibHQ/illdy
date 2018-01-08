@@ -15,11 +15,13 @@
 if ( ! function_exists( '_s_jetpack_setup' ) ) {
 	function _s_jetpack_setup() {
 		// Add theme support for Infinite Scroll.
-		add_theme_support( 'infinite-scroll', array(
-			'container' => 'main',
-			'render'    => '_s_infinite_scroll_render',
-			'footer'    => 'page',
-		) );
+		add_theme_support(
+			'infinite-scroll', array(
+				'container' => 'main',
+				'render'    => '_s_infinite_scroll_render',
+				'footer'    => 'page',
+			)
+		);
 		// Add theme support for Responsive Videos.
 		add_theme_support( 'jetpack-responsive-videos' );
 	}

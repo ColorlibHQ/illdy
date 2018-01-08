@@ -47,49 +47,6 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		/**
 		 * @return bool
 		 */
-		public static function has_widgets() {
-			if ( ! is_active_sidebar( 'homepage-slider' ) && ! is_active_sidebar( 'content-area' ) ) {
-				return false;
-			}
-
-			return true;
-		}
-
-		/**
-		 * @return bool
-		 */
-		public static function illdy_has_posts() {
-			$args  = array(
-				's' => 'Gary Johns: \'What is Aleppo\'',
-			);
-			$query = get_posts( $args );
-
-			if ( ! empty( $query ) ) {
-				return true;
-			}
-
-			return false;
-		}
-
-		/**
-		 * @return bool
-		 */
-		public static function has_content() {
-			$check = array(
-				'widgets' => self::has_widgets(),
-				'posts'   => self::illdy_has_posts(),
-			);
-
-			if ( $check['widgets'] && $check['posts'] ) {
-				return true;
-			}
-
-			return false;
-		}
-
-		/**
-		 * @return bool
-		 */
 		public static function check_wordpress_importer() {
 			if ( file_exists( ABSPATH . 'wp-content/plugins/wordpress-importer/wordpress-importer.php' ) ) {
 				include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -125,11 +82,7 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		}
 
 		public static function has_import_plugin( $slug = null ) {
-			$return = self::has_content();
 
-			if ( $return ) {
-				return true;
-			}
 			$check = array(
 				'installed' => self::check_plugin_is_installed( $slug ),
 				'active'    => self::check_plugin_is_active( $slug ),
@@ -180,20 +133,15 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 			$check = array(
 				'wordpress-importer'       => array(
 					'installed' => false,
-					'active' => false,
+					'active'    => false,
 				),
 				'widget-importer-exporter' => array(
 					'installed' => false,
-					'active' => false,
+					'active'    => false,
 				),
 			);
 
-			$content = self::has_content();
 			$return  = false;
-			if ( $content ) {
-				return true;
-			}
-
 			$stop = false;
 			foreach ( $check as $plugin => $val ) {
 				if ( $stop ) {
@@ -280,9 +228,9 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 			if ( '' == $install_text && '' == $activate_text ) {
 				return;
 			}
-			if ( '' == $install_text &  '' != $activate_text ) {
+			if ( '' == $install_text & '' != $activate_text ) {
 				$install_text = $activate_text;
-			} elseif ( '' == $activate_text &&  '' != $install_text ) {
+			} elseif ( '' == $activate_text && '' != $install_text ) {
 				$activate_text = $install_text;
 			}
 

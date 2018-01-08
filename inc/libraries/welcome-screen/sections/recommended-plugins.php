@@ -35,5 +35,5 @@ add_thickbox();
 				<a data-slug="<?php echo esc_attr( $plugin ); ?>" class="<?php echo esc_attr( $info['class'] ); ?>" href="<?php echo esc_url( $info['url'] ); ?>"> <?php echo esc_attr( $info['label'] ); ?> </a>
 			</span>
 		</div>
-	<?php }// End foreach(). ?>
+	<?php } ?>
 </div>

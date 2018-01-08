@@ -76,28 +76,28 @@ if ( ! class_exists( 'Illdy_Related_Posts_Output' ) ) {
 			$output = '';
 
 			$post_query_args = array(
-				'post_type'                 => array( 'post' ),
-				'category__in'              => wp_get_post_categories( $post->ID ),
-				'nopaging'                  => false,
-				'posts_per_page'            => 3,
-				'ignore_sticky_posts'       => true,
-				'cache_results'             => true,
-				'update_post_meta_cache'    => true,
-				'update_post_term_cache'    => true,
-				'post__not_in'              => array( $post->ID ),
-				'meta_key'                  => '_thumbnail_id',
+				'post_type'              => array( 'post' ),
+				'category__in'           => wp_get_post_categories( $post->ID ),
+				'nopaging'               => false,
+				'posts_per_page'         => 3,
+				'ignore_sticky_posts'    => true,
+				'cache_results'          => true,
+				'update_post_meta_cache' => true,
+				'update_post_term_cache' => true,
+				'post__not_in'           => array( $post->ID ),
+				'meta_key'               => '_thumbnail_id',
 			);
 
 			$post_query = new WP_Query( $post_query_args );
 
 			if ( $post_query->have_posts() ) {
-				$output .= '<div class="blog-post-related-articles">';
-					$output .= '<div class="row">';
-						$output .= '<div class="col-sm-12">';
-							$output .= '<div class="related-article-title">';
+				$output                 .= '<div class="blog-post-related-articles">';
+					$output             .= '<div class="row">';
+						$output         .= '<div class="col-sm-12">';
+							$output     .= '<div class="related-article-title">';
 								$output .= __( 'Related Articles', 'illdy' );
-							$output .= '</div><!--/.related-article-title-->';
-						$output .= '</div><!--/.col-sm-12-->';
+							$output     .= '</div><!--/.related-article-title-->';
+						$output         .= '</div><!--/.col-sm-12-->';
 
 				while ( $post_query->have_posts() ) {
 					$post_query->the_post();
@@ -111,7 +111,7 @@ if ( ! class_exists( 'Illdy_Related_Posts_Output' ) ) {
 					$output .= '</div><!--/.col-sm-4-->';
 				}
 					$output .= '</div><!--/.row-->';
-				$output .= '</div><!--/.blog-post-related-articles-->';
+				$output     .= '</div><!--/.blog-post-related-articles-->';
 			}
 
 			wp_reset_postdata();

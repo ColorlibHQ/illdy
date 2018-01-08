@@ -8,23 +8,23 @@
 ?>
 <?php
 if ( current_user_can( 'edit_theme_options' ) ) {
-	$general_title = get_theme_mod( 'illdy_testimonials_general_title', __( 'Testimonials', 'illdy' ) );
+	$general_title            = get_theme_mod( 'illdy_testimonials_general_title', __( 'Testimonials', 'illdy' ) );
 	$general_background_image = get_theme_mod( 'illdy_testimonials_general_background_image', '' );
-	$number_of_posts = get_theme_mod( 'illdy_testimonials_number_of_posts', absint( 4 ) );
+	$number_of_posts          = get_theme_mod( 'illdy_testimonials_number_of_posts', absint( 4 ) );
 } else {
-	$general_title = get_theme_mod( 'illdy_testimonials_general_title' );
+	$general_title            = get_theme_mod( 'illdy_testimonials_general_title' );
 	$general_background_image = get_theme_mod( 'illdy_testimonials_general_background_image' );
-	$number_of_posts = get_theme_mod( 'illdy_testimonials_number_of_posts', absint( 4 ) );
+	$number_of_posts          = get_theme_mod( 'illdy_testimonials_number_of_posts', absint( 4 ) );
 }
 
 $jetpack_testimonial_query_args = array(
-	'post_type'                 => array( 'jetpack-testimonial' ),
-	'nopaging'                  => false,
-	'ignore_sticky_posts'       => true,
-	'posts_per_page'            => absint( $number_of_posts ),
-	'cache_results'             => true,
-	'update_post_meta_cache'    => true,
-	'update_post_term_cache'    => true,
+	'post_type'              => array( 'jetpack-testimonial' ),
+	'nopaging'               => false,
+	'ignore_sticky_posts'    => true,
+	'posts_per_page'         => absint( $number_of_posts ),
+	'cache_results'          => true,
+	'update_post_meta_cache' => true,
+	'update_post_term_cache' => true,
 );
 
 $jetpack_testimonial_query = new WP_Query( $jetpack_testimonial_query_args );
@@ -33,8 +33,13 @@ $jetpack_testimonial_query = new WP_Query( $jetpack_testimonial_query_args );
 
 <?php if ( '' != $general_title || $jetpack_testimonial_query->have_posts() ) { ?>
 
-<section id="testimonials" class="front-page-section" style="<?php if ( $general_background_image ) : echo 'background-image: url(' . esc_url( $general_background_image ) . ')';
-endif; ?>">
+<section id="testimonials" class="front-page-section" style="
+<?php
+if ( $general_background_image ) :
+	echo 'background-image: url(' . esc_url( $general_background_image ) . ')';
+endif;
+?>
+">
 	<?php if ( $general_title ) : ?>
 		<div class="section-header">
 			<div class="container">
@@ -47,20 +52,28 @@ endif; ?>">
 		</div><!--/.section-header-->
 	<?php endif; ?>
 	<?php if ( post_type_exists( 'jetpack-testimonial' ) ) : ?>
-		<?php
-			?>
-		<?php $count_posts = wp_count_posts( 'jetpack-testimonial' ); ?>
+				<?php $count_posts = wp_count_posts( 'jetpack-testimonial' ); ?>
 		<?php if ( $jetpack_testimonial_query->have_posts() ) : ?>
 			<div class="section-content">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-10 col-sm-offset-1 no-padding">
-							<div class="testimonials-carousel <?php if ( $count_posts->publish > 1 ) : echo 'owl-carousel-enabled';
-endif; ?>">
+							<div class="testimonials-carousel 
+							<?php
+							if ( $count_posts->publish > 1 ) :
+								echo 'owl-carousel-enabled';
+endif;
+?>
+">
 								<?php while ( $jetpack_testimonial_query->have_posts() ) : ?>
 									<?php $jetpack_testimonial_query->the_post(); ?>
-									<div class="carousel-testimonial" style="<?php if ( 1 == $count_posts->publish ) : echo 'margin-bottom: 42px;';
-endif; ?>">
+									<div class="carousel-testimonial" style="
+									<?php
+									if ( 1 == $count_posts->publish ) :
+										echo 'margin-bottom: 42px;';
+endif;
+?>
+">
 										<div class="testimonial-image">
 											<?php the_post_thumbnail( $post->ID, 'illdy-front-page-testimonials' ); ?>
 										</div><!--/.testimonial-image-->

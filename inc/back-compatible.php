@@ -4,7 +4,7 @@ $theme = wp_get_theme();
 if ( version_compare( $theme->version, '1.0.17', '>' ) ) {
 
 	$current_logo = get_theme_mod( 'illdy_img_logo', '' );
-	$logo = get_custom_logo();
+	$logo         = get_custom_logo();
 	if ( '' != $current_logo && ! $logo ) {
 		$logo_id = attachment_url_to_postid( $current_logo );
 		if ( $logo_id ) {
@@ -43,7 +43,7 @@ if ( version_compare( $theme->version, '1.0.36', '>=' ) ) {
 
 	foreach ( $old_order as $key ) {
 		if ( $key ) {
-			$index = $key -1;
+			$index               = $key - 1;
 			$new_order[ $index ] = $defaults[ $index ];
 			unset( $defaults[ $index ] );
 		}
@@ -69,16 +69,16 @@ if ( version_compare( $theme->version, '1.0.36', '>=' ) ) {
 	if ( class_exists( 'Illdy_Widget_Testimonial' ) && ! $illdy_testimonials_update ) {
 
 		$jetpack_testimonial_query_args = array(
-			'post_type'         => array( 'jetpack-testimonial' ),
-			'post_status'       => 'publish',
-			'posts_per_page'    => -1,
+			'post_type'      => array( 'jetpack-testimonial' ),
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
 		);
 
 		$jetpack_testimonial_query = new WP_Query( $jetpack_testimonial_query_args );
 
 		if ( $jetpack_testimonial_query->have_posts() ) {
 			$sidebars_widgets = get_option( 'sidebars_widgets' );
-			$widgets = get_option( 'widget_illdy_testimonial' );
+			$widgets          = get_option( 'widget_illdy_testimonial' );
 
 			if ( ! empty( $widgets ) ) {
 				$aux_widgets = $widgets;
@@ -97,12 +97,12 @@ if ( version_compare( $theme->version, '1.0.36', '>=' ) ) {
 
 			foreach ( $jetpack_testimonial_query->posts as $index => $post ) {
 
-				$url = get_the_post_thumbnail_url( $post->ID, 'illdy-front-page-testimonials' );
-				$name = $post->post_title;
-				$testimonial = $post->post_content;
+				$url             = get_the_post_thumbnail_url( $post->ID, 'illdy-front-page-testimonials' );
+				$name            = $post->post_title;
+				$testimonial     = $post->post_content;
 				$widgets[ $key ] = array(
-					'name' => $name,
-					'image'  => $url,
+					'name'        => $name,
+					'image'       => $url,
 					'testimonial' => $testimonial,
 				);
 				array_push( $sidebars_widgets['front-page-testimonials-sidebar'], 'illdy_testimonial-' . $key );
@@ -119,9 +119,9 @@ if ( version_compare( $theme->version, '1.0.36', '>=' ) ) {
 
 
 	// Jumbotron Title
-	$first_word = get_theme_mod( 'illdy_jumbotron_general_first_row_from_title' );
+	$first_word  = get_theme_mod( 'illdy_jumbotron_general_first_row_from_title' );
 	$second_word = get_theme_mod( 'illdy_jumbotron_general_second_row_from_title' );
-	$third_word = get_theme_mod( 'illdy_jumbotron_general_third_row_from_title' );
+	$third_word  = get_theme_mod( 'illdy_jumbotron_general_third_row_from_title' );
 
 	if ( $first_word || $second_word || $third_word ) {
 

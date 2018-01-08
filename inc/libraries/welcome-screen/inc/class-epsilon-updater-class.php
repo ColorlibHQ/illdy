@@ -124,10 +124,12 @@ class Epsilon_Updater_Class {
 				'author'     => $this->author,
 			);
 
-			$response = wp_remote_post( $this->remote_api_url, array(
-				'timeout' => 30,
-				'body'    => $api_params,
-			) );
+			$response = wp_remote_post(
+				$this->remote_api_url, array(
+					'timeout' => 30,
+					'body'    => $api_params,
+				)
+			);
 
 			// Make sure the response was successful.
 			if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
