@@ -181,7 +181,7 @@ class Epsilon_Import_Data {
 	 * Build the HTML Container
 	 */
 	public function generate_import_data_container() {
-		$html = '<p><a class="button button-primary epsilon-ajax-button" id="add_default_sections" href="#">' . __( 'Import Demo Content', 'epsilon-framework' ) . '</a>';
+		$html  = '<p><a class="button button-primary epsilon-ajax-button" id="add_default_sections" href="#">' . __( 'Import Demo Content', 'epsilon-framework' ) . '</a>';
 		$html .= '<a class="button epsilon-hidden-content-toggler" href="#" data-toggle="welcome-hidden-content">' . __( 'Advanced', 'epsilon-framework' ) . '</a></p>';
 		$html .= '<div class="import-content-container" id="welcome-hidden-content">';
 
@@ -396,7 +396,7 @@ class Epsilon_Import_Data {
 			}
 
 			$widget_instance   = get_option( 'widget_' . $widget_type );
-			$widget_instance   = ! empty( $widget_instance ) ? $widget_instance : array( '_multiwidget' => 1, );
+			$widget_instance   = ! empty( $widget_instance ) ? $widget_instance : array( '_multiwidget' => 1 );
 			$widget_instance[] = $this->widgets[ $this->slug ][ $sidebar ][ $widget ];
 
 			// Get the key it was given.
@@ -424,7 +424,7 @@ class Epsilon_Import_Data {
 				$sidebars_widgets = array();
 			}
 
-			$new_instance_id   = $widget_type . '-' . $new_id;
+			$new_instance_id = $widget_type . '-' . $new_id;
 
 			// Add new instance to sidebar.
 			$sidebars_widgets[ $prop['sidebar_id'] ][] = $new_instance_id;

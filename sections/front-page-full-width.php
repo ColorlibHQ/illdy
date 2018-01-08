@@ -10,13 +10,13 @@
 
 $general_title = get_theme_mod( 'illdy_full_width_general_title' );
 $general_entry = get_theme_mod( 'illdy_full_width_general_entry' );
-$padding = get_theme_mod( 'illdy_full_width_padding', 1 );
+$padding       = get_theme_mod( 'illdy_full_width_padding', 1 );
 
 ?>
 
 <?php if ( '' != $general_title || '' != $general_entry || is_active_sidebar( 'front-page-full-width-sidebar' ) ) { ?>
 
-<section id="full-width" class="front-page-section <?php echo $padding ? 'width-padding' : '' ?>">
+<section id="full-width" class="front-page-section <?php echo $padding ? 'width-padding' : ''; ?>">
 	<?php if ( $general_title || $general_entry ) : ?>
 		<div class="section-header">
 			<div class="container">

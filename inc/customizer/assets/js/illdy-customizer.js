@@ -46,7 +46,6 @@ jQuery( document ).ready( function( $ ) {
 		.done( function( data ) {
 			wp.customize.previewer.refresh();
 		});
-
  	}
 
  	$('.recomended-actions_container').on( 'actions_complete', function( evt,  element ){

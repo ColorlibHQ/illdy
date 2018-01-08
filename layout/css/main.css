@@ -69,7 +69,10 @@ h6 {
 	font-weight: 700;
 }
 textarea,
-input {
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="email"] {
 	-webkit-appearance: none;
 	border-radius: 0;
 }
@@ -149,6 +152,11 @@ a:hover, a:focus {
 	display: none;
 }
 
+.header-has-sticky-menu .responsive-menu {
+	position: fixed;
+	z-index: 99;
+}
+
 .customizer-display-none {
 	display: none;
 }
@@ -170,7 +178,16 @@ a:hover, a:focus {
 
 #header .top-header {
 	width: 100%;
-	padding-top: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#header .is-sticky .top-header {
+	background-color: #000;
+}
+
+#header .top-header .row {
+	display: flex;
+	align-items: center;
 }
 
 #header .top-header .header-logo {
@@ -869,7 +886,7 @@ a:hover, a:focus {
 #latest-news .latest-news-button,
 a.button {
 	width: auto;
-	height: 45px;
+	min-height: 45px;
 	line-height: 45px;
 	background: #f1d204;
 	margin-bottom: 50px;
@@ -1158,6 +1175,12 @@ a.button:hover {
 	width: 100%;
 	display: block;
 }
+#contact-us .section-content .wpcf7-form p input[type="radio"] + span,
+#contact-us .section-content .wpcf7-form p input[type="checkbox"] + span {
+	display: inline-block;
+	width: auto;
+    margin-left: 5px;
+}
 
 #contact-us .section-content .wpcf7-form p span.wpcf7-not-valid-tip {
 	font-weight: 400;
@@ -1191,14 +1214,6 @@ a.button:hover {
 	padding: 0;
 	display: block;
 	clear: both;
-}
-
-#contact-us .section-content .wpcf7-form p:nth-of-type(5) {
-	margin: 0;
-	padding: 0;
-	display: block;
-	float: right;
-	width: auto;
 }
 
 #contact-us .section-content .wpcf7-form .wpcf7-response-output.wpcf7-mail-sent-ng {
@@ -2179,7 +2194,7 @@ span.rss-date:before,
 	list-style-type: disc;
 }
 
-.markup-format ul li {
+.markup-format ul:not(.wc_payment_methods) li {
 	list-style-position: inside;
 	list-style-type: disc;
 }
@@ -2470,7 +2485,10 @@ span.rss-date:before,
 	color: #8c9597;
 }
 
-input,
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
 textarea {
 	width: 100%;
 	padding: 5px 10px;
@@ -2614,6 +2632,11 @@ p.mb32 {
 		background-color: #fff;
 		margin-top: 20px;
 		display: none;
+	}
+
+	.header-has-sticky-menu .responsive-menu {
+		margin-top: 0;
+		overflow-y: scroll;
 	}
 
 	.responsive-menu ul {
@@ -2890,7 +2913,7 @@ p.mb32 {
 }
 
 .pace-overlay {
-	z-index: 5;
+	z-index: 100;
 }
 
 header#header {
@@ -2977,4 +3000,31 @@ header#header {
     position: absolute !important;
     width: 1px;
     word-wrap: normal !important;
+}
+
+a.illdy-top {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    display: block;
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    background: #000;
+    border-radius: 100%;
+    color: #fff;
+    z-index: 99;
+    opacity: 0;
+    -webkit-transition: opacity 1s ease-in-out;
+  	-moz-transition: opacity 1s ease-in-out;
+  	-ms-transition: opacity 1s ease-in-out;
+ 	-o-transition: opacity 1s ease-in-out;
+  	transition: opacity 1s ease-in-out;
+}
+a.illdy-top.is-active {
+	opacity: 1;
+}
+a.illdy-top i {
+	font-size: 25px;
+	line-height: 36px;
 }
