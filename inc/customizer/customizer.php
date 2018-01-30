@@ -496,7 +496,7 @@ if ( ! function_exists( 'illdy_custom_logo' ) ) {
 		$logo_id    = get_theme_mod( 'custom_logo' );
 		$logo_image = wp_get_attachment_image_src( $logo_id, 'full' );
 
-		return '<img src="' . esc_url( $logo_image[0] ) . '" />';
+		return '<img src="' . esc_url( $logo_image[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" />';
 	}
 }
 if ( ! function_exists( 'illdy_contact_us_social' ) ) {
