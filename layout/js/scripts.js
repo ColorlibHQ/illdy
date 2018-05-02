@@ -6,7 +6,7 @@ jQuery( document ).ready( function( $ ) {
 
   // If is IOS
   function isIsIOS() {
-    $.browser.device = (/iphone|ipad|ipod/i.test( navigator.userAgent.toLowerCase() ));
+    $.browser.device = ( /iphone|ipad|ipod/i.test( navigator.userAgent.toLowerCase() ) );
     if ( true === $.browser.device ) {
       $( '#counter' ).css( 'background-attachment', 'scroll' );
       $( '#testimonials' ).css( 'background-attachment', 'scroll' );
@@ -91,7 +91,7 @@ jQuery( document ).ready( function( $ ) {
       subSubMenu = $( '#header .top-header .header-navigation ul li.menu-item-has-children ul' );
 
       $( subSubMenu ).each( function() {
-        if ( (windowWidth - $( this ).offset().left) < 200 ) {
+        if ( ( windowWidth - $( this ).offset().left ) < 200 ) {
           $( this ).css( 'left', '-200px' );
         }
       } );
