@@ -4,16 +4,19 @@
 class Illdy {
 
 	public $recommended_plugins = array(
-		'kiwi-social-share'        => array(
+		'kiwi-social-share'         => array(
 			'recommended' => true,
 		),
-		'contact-form-7'           => array(
+		'contact-form-7'            => array(
 			'recommended' => false,
 		),
-		'simple-custom-post-order' => array(
+		'simple-custom-post-order'  => array(
 			'recommended' => false,
 		),
-		'fancybox-for-wordpress'   => array(
+		'fancybox-for-wordpress'    => array(
+			'recommended' => false,
+		),
+		'colorlib-login-customizer' => array(
 			'recommended' => false,
 		),
 	);
