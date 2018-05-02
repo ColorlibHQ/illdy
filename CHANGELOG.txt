@@ -1,6 +1,8 @@
 ### V 2.0.6
 - updated grunt package.json
--
+- Fixed #256
+- Updated FancyBox to latest version
+
 
 ### V 2.0.4
 	- Fixed Customizer issue ( https://github.com/puikinsh/illdy/issues/230 )
