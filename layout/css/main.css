@@ -1382,29 +1382,28 @@ a.button:hover {
 #footer {
     width: 100%;
     background-color: #292825;
-    padding: 40px 0 0;
+    padding: 40px 0;
 }
 
-#footer .bottom-footer {
-    margin-top: 50px;
+.bottom-footer {
     padding: 30px 0;
     text-align: center;
     background-color: #242320;
 }
 
-#footer .footer-logo {
+.footer-logo {
     width: 100%;
     margin-bottom: 20px;
     display: block;
     text-align: right;
 }
 
-#footer .footer-logo img {
+.footer-logo img {
     max-width: 100%;
     height: auto;
 }
 
-#footer .copyright {
+.copyright {
     width: 100%;
     line-height: 1.2;
     color: #8c9597;
@@ -1412,16 +1411,16 @@ a.button:hover {
     font-size: 15px;
 }
 
-#footer .bottom-copyright {
+.bottom-copyright {
     color: #fff;
 }
 
-#footer .copyright a {
+.copyright a {
     color: #8c9597;
     text-decoration: none;
 }
 
-#footer .copyright a:hover {
+.copyright a:hover {
     text-decoration: underline;
 }
 
