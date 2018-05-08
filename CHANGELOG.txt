@@ -1,4 +1,4 @@
-### V 2.0.6
+### V 2.1.0
 - updated grunt package.json
 - Fixed #256 (videos in project section, they need an image backup)
 - Updated FancyBox to latest version
