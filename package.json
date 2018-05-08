@@ -2,7 +2,7 @@
   "name": "illdy",
   "main": "Gruntfile.js",
   "author": "Colorlib",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "repository": "https://github.com/puikinsh/illdy",
   "license": "GPL v3",
   "devDependencies": {
