@@ -346,11 +346,13 @@ $wp_customize->add_section(
 );
 
 /* Footer Copyright */
+
 $wp_customize->add_setting(
 	$prefix . '_footer_copyright', array(
-		'sanitize_callback' => 'illdy_sanitize_html',
-		'default'           => sprintf( __( '&copy; Copyright %s. All Rights Reserved.', 'illdy' ), date( 'Y' ) ),
-		'transport'         => 'postMessage',
+		'sanitize_callback'       => 'illdy_sanitize_html',
+		// translators: copyright footer message
+						'default' => sprintf( __( '&copy; Copyright %s. All Rights Reserved.', 'illdy' ), date( 'Y' ) ),
+		'transport'               => 'postMessage',
 	)
 );
 
@@ -383,5 +385,50 @@ $wp_customize->add_control(
 			'section'  => $prefix . '_general_footer_section',
 			'priority' => 3,
 		)
+	)
+);
+
+$wp_customize->add_setting(
+	$prefix . '_show_footer', array(
+		'sanitize_callback' => $prefix . '_value_checkbox_helper',
+		'default'           => 1,
+	)
+);
+$wp_customize->add_control(
+	new Epsilon_Control_Toggle(
+		$wp_customize, $prefix . '_show_footer', array(
+			'type'     => 'epsilon-toggle',
+			'label'    => __( 'Show footer widget area?', 'illdy' ),
+			'section'  => $prefix . '_general_footer_section',
+			'priority' => 4,
+		)
+	)
+);
+
+$wp_customize->selective_refresh->add_partial(
+	$prefix . '_show_footer', array(
+		'selector' => '#footer',
+	)
+);
+$wp_customize->add_setting(
+	$prefix . '_show_footer_copyright', array(
+		'sanitize_callback' => $prefix . '_value_checkbox_helper',
+		'default'           => 1,
+	)
+);
+$wp_customize->add_control(
+	new Epsilon_Control_Toggle(
+		$wp_customize, $prefix . '_show_footer_copyright', array(
+			'type'     => 'epsilon-toggle',
+			'label'    => __( 'Show footer copyright area?', 'illdy' ),
+			'section'  => $prefix . '_general_footer_section',
+			'priority' => 4,
+		)
+	)
+);
+
+$wp_customize->selective_refresh->add_partial(
+	$prefix . '_show_footer', array(
+		'selector' => '.bottom-footer',
 	)
 );
