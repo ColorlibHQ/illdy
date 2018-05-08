@@ -67,10 +67,10 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	new WP_Customize_Image_Control(
 		$wp_customize, $prefix . '_counter_background_image', array(
-			'label'    => __( 'Background Image', 'illdy' ),
-			'section'  => $prefix . '_counter_general',
-			'settings' => $prefix . '_counter_background_image',
-			'priority' => 2,
+			'label'           => __( 'Background Image', 'illdy' ),
+			'section'         => $prefix . '_counter_general',
+			'settings'        => $prefix . '_counter_background_image',
+			'priority'        => 2,
 		)
 	)
 );

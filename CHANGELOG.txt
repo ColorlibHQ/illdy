@@ -1,3 +1,10 @@
+### V 2.1.0
+- updated grunt package.json
+- Fixed #256 (videos in project section, they need an image backup)
+- Updated FancyBox to latest version
+- Added Colorlib Login Customizer as recommended plugin
+- Fixes #267 (add option to hide footer widget area || footer copyright message area)
+
 ### V 2.0.4
 	- Fixed Customizer issue ( https://github.com/puikinsh/illdy/issues/230 )
 
