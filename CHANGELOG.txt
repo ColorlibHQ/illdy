@@ -1,3 +1,6 @@
+### V 2.1.1
+- fixed a wrong URL for loading fancybox JS
+
 ### V 2.1.0
 - updated grunt package.json
 - Fixed #256 (videos in project section, they need an image backup)
