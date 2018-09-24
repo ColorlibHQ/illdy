@@ -1,6 +1,6 @@
 <?php
 /**
- *    The template for dispalying the content.
+ *    The template for displaying the content.
  *
  * @package    WordPress
  * @subpackage illdy

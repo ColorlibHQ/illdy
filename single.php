@@ -1,6 +1,6 @@
 <?php
 /**
- *    The template for dispalying the single.
+ *    The template for displaying the single.
  *
  * @package    WordPress
  * @subpackage illdy
