@@ -1,6 +1,6 @@
 <?php
 /**
- *  The template for dispalying the sidebar.
+ *  The template for displaying the sidebar.
  *
  *  @package WordPress
  *  @subpackage illdy

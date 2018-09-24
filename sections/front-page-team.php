@@ -1,6 +1,6 @@
 <?php
 /**
- *  The template for dispalying the team section in front page.
+ *  The template for displaying the team section in front page.
  *
  *  @package WordPress
  *  @subpackage illdy

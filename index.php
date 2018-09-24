@@ -1,6 +1,6 @@
 <?php
 /**
- *    The template for dispalying the index.
+ *    The template for displaying the index.
  *
  * @package    WordPress
  * @subpackage illdy
