@@ -1,6 +1,6 @@
 <?php
 /**
- *    The template for dispalying the bottom header section in blog.
+ *    The template for displaying the bottom header section in blog.
  *
  * @package    WordPress
  * @subpackage illdy
