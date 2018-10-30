@@ -1,6 +1,6 @@
 <?php
 /**
- *    The template for dispalying the footer.
+ *    The template for displaying the footer.
  *
  * @package    WordPress
  * @subpackage illdy

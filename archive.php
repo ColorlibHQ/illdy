@@ -1,6 +1,6 @@
 <?php
 /**
- *  The template for dispalying the archive.
+ *  The template for displaying the archive.
  *
  *  @package WordPress
  *  @subpackage illdy
