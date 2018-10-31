@@ -11,7 +11,7 @@ $site_title->panel = $panel_id;
 
 // Change Logo section
 $site_logo              = $wp_customize->get_control( 'custom_logo' );
-$site_logo->description = __( 'The site logo is used as a graphical representation of your company name. Recommended size: 105 (width) x 75 (height) pixels(px).', 'illdy' );
+$site_logo->description = __( 'The site logo is used as a graphical representation of your company name.', 'illdy' );
 $site_logo->label       = __( 'Site logo', 'illdy' );
 $site_logo->section     = $prefix . '_general_logo_section';
 $site_logo->priority    = 1;
@@ -212,6 +212,26 @@ $wp_customize->selective_refresh->add_partial(
 		'render_callback' => $prefix . '_custom_logo',
 	)
 );
+
+/* Logo Width */
+$wp_customize->add_setting(
+	$prefix . '_logo_width', array(
+		'sanitize_callback' => 'absint',
+		'validate_callback' => 'illdy_validate_logo_width',
+		'default'           => 150,
+	)
+);
+
+$wp_customize->add_control(
+	$prefix . '_logo_width', array(
+		'label'       => __( 'Logo Width', 'illdy' ),
+		'description' => __( 'Site logo width (in pixels)', 'illdy' ),
+		'section'     => $prefix . '_general_logo_section',
+		'type'        => 'number',
+		'priority'    => 1,
+	)
+);
+
 
 /* Company text logo */
 $wp_customize->add_setting(
