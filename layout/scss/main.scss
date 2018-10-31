@@ -107,6 +107,10 @@ input {
 		width: 100%;
 		padding-top: 40px;
 
+		.header-logo-img {
+			max-width: 100%;
+		}
+
 		.header-logo {
 			display: block;
 			font-size: 38px;
@@ -224,7 +228,7 @@ input {
 
 		&.blog {
 			padding: 130px 0;
-			
+
 			p {
 				margin-bottom: 0;
 			}
@@ -1051,7 +1055,7 @@ input {
 					&:-ms-input-placeholder {
 					  color: #ffffff;
 					}
-					
+
 					&:-moz-placeholder {
 					  color: #ffffff;
 					}
