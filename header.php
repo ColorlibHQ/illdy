@@ -9,6 +9,7 @@
 <?php
 $logo_id                   = get_theme_mod( 'custom_logo' );
 $logo_image                = wp_get_attachment_image_src( $logo_id, 'full' );
+$logo_width                = get_theme_mod( 'illdy_logo_width' );
 $text_logo                 = get_theme_mod( 'illdy_text_logo', __( 'Illdy', 'illdy' ) );
 $jumbotron_general_image   = get_theme_mod( 'illdy_jumbotron_general_image', esc_url( get_template_directory_uri() . '/layout/images/front-page/front-page-header.png' ) );
 $jumbotron_type            = get_theme_mod( 'illdy_jumbotron_background_type', 'image' );
@@ -83,18 +84,17 @@ if ( get_theme_mod( 'illdy_sticky_header_enable', false ) ) {
 			<div class="row">
 				<div class="col-sm-4 col-xs-8">
 
-					<?php
-					if ( ! empty( $logo_image ) ) {
-?>
-<?php echo '<a href="' . esc_url( home_url() ) . '"><img src="' . esc_url( $logo_image[0] ) . '" /></a>'; ?>
-			<?php
-					} else {
-					?>
+					<?php if ( ! empty( $logo_image ) ) : ?>
+						<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+							<img class="header-logo-img" src="<?php echo esc_url( $logo_image[0] ); ?>" width="<?php echo $logo_width ? esc_attr( $logo_width ) : ''; ?>"/>
+						</a>
+					<?php else : ?>
 					<?php if ( get_option( 'show_on_front' ) == 'page' ) { ?>
 						<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( $text_logo ); ?>" class="header-logo"><?php echo esc_html( $text_logo ); ?></a>
 					<?php } else { ?>
 						<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="header-logo"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a>
-					<?php } ?><?php } ?>
+					<?php } ?>
+					<?php endif; ?>
 
 				</div><!--/.col-sm-2-->
 				<div class="col-sm-8 col-xs-4">

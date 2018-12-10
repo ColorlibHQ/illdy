@@ -348,6 +348,22 @@ if ( ! function_exists( 'illdy_create_contact_tab_sections' ) ) {
 	}
 }
 
+if ( ! function_exists( 'illdy_validate_logo_width' ) ) {
+	function illdy_validate_logo_width( $validity, $value ) {
+		$value = intval( $value );
+
+		if ( empty( $value ) || ! is_numeric( $value ) ) {
+			$validity->add( 'required', __( 'You must supply a numeric value', 'illdy' ) );
+		}
+
+		if ( $value < 0 ) {
+			$validity->add( 'required', __( 'You must supply a positive number', 'illdy' ) );
+		}
+
+		return $validity;
+	}
+}
+
 /**
  *  Sanitize HTML
  */

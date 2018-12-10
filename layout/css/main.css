@@ -207,6 +207,10 @@ a:hover, a:focus {
     align-items: center;
 }
 
+#header .header-logo-img {
+	max-width: 100%;
+}
+
 #header .top-header .header-logo {
     display: block;
     font-size: 60px;
