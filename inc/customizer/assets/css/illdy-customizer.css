@@ -554,6 +554,10 @@ body .wp-full-overlay{
     color: #e34113;
 }
 
+#customize-control-illdy_contact_us_general_contact_form_7 .customize-control-title {
+    height:auto;
+}
+
 @media (max-width: 700px) {
     .modal-wp-js-editor {
         z-index: 99999;
