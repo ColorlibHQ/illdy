@@ -1,3 +1,8 @@
+### V 2.1.2
+- Update npm deps (https://github.com/ColorlibHQ/illdy/issues/276)
+- Logo image size not defined (https://github.com/ColorlibHQ/illdy/issues/282)
+- Strange output of illdy even on our demo (https://github.com/ColorlibHQ/illdy/issues/284)
+
 ### V 2.1.1
 - fixed a wrong URL for loading fancybox JS
 
