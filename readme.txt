@@ -13,6 +13,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Illdy is a free premium one page WordPress theme.
 
+== Translation ==
+
+Theme can be translated directly on https://translate.wordpress.org/projects/wp-themes/illdy without relying on the .po file. All the translatable strings are pulled automatically. For more info please check this link https://make.wordpress.org/polyglots/handbook/tools/glotpress-translate-wordpress-org/
+
 == Installation ==
 	
 1. In your admin panel, go to Appearance > Themes and click the Add New button.

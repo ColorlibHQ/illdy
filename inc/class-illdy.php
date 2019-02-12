@@ -22,9 +22,6 @@ class Illdy {
 		'fancybox-for-wordpress'    => array(
 			'recommended' => false,
 		),
-		'kiwi-social-share'         => array(
-			'recommended' => false,
-		),
 	);
 
 	public $recommended_actions;
