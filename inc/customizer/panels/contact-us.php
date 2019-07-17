@@ -188,26 +188,26 @@ $wp_customize->selective_refresh->add_partial(
 	)
 );
 
-// Contact Form 7
+// Kaliforms
 $wp_customize->add_setting(
-	'illdy_contact_us_general_contact_form_7', array(
+	'illdy_contact_us_general_kali_forms', array(
 		'sanitize_callback' => 'sanitize_key',
 	)
 );
 $wp_customize->add_control(
-	new Illdy_CF7_Custom_Control(
-		$wp_customize, 'illdy_contact_us_general_contact_form_7', array(
-			'label'    => __( 'Select the contact form you\'d like to display (powered by Contact Form 7)', 'illdy' ),
+	new Illdy_Kaliforms_Custom_Control(
+		$wp_customize, 'illdy_contact_us_general_kali_forms', array(
+			'label'    => __( 'Select the contact form you\'d like to display (powered by Kaliforms)', 'illdy' ),
 			'section'  => $prefix . '_contact_us',
 			'priority' => 6,
-			'type'     => 'illdy_contact_form_7',
+			'type'     => 'illdy_kaliforms',
 		)
 	)
 );
 
 // Contact Form Creation
 $wp_customize->add_setting(
-	$prefix . '_contact_us_install_contact_form_7', array(
+	$prefix . '_contact_us_install_kali_forms', array(
 		'sanitize_callback' => 'esc_html',
 		'default'           => '',
 		'transport'         => 'refresh',
@@ -215,19 +215,19 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Illdy_Text_Custom_Control(
-		$wp_customize, $prefix . '_contact_us_install_contact_form_7', array(
+		$wp_customize, $prefix . '_contact_us_install_kali_forms', array(
 			'label'           => __( 'Contact Form Creation', 'illdy' ),
-			'description'     => sprintf( '%s %s %s', __( 'Install', 'illdy' ), '<a href="https://wordpress.org/plugins/contact-form-7/" title="Contact Form 7" target="_blank">Contact Form 7</a>', __( 'and select a contact form to work this setting.', 'illdy' ) ),
+			'description'     => sprintf( '%s %s %s', __( 'Install', 'illdy' ), '<a href="https://wordpress.org/plugins/kali-forms" title="Kaliforms" target="_blank">Kaliforms</a>', __( 'and select a contact form to work this setting.', 'illdy' ) ),
 			'section'         => $prefix . '_contact_us',
-			'settings'        => $prefix . '_contact_us_install_contact_form_7',
+			'settings'        => $prefix . '_contact_us_install_kali_forms',
 			'priority'        => 7,
-			'active_callback' => 'illdy_is_not_active_contact_form_7',
+			'active_callback' => 'illdy_is_not_active_kali_forms',
 		)
 	)
 );
 
 $wp_customize->add_setting(
-	$prefix . '_contact_us_create_contact_form_7', array(
+	$prefix . '_contact_us_create_kali_forms', array(
 		'sanitize_callback' => 'esc_html',
 		'default'           => '',
 		'transport'         => 'refresh',
@@ -235,13 +235,13 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Illdy_Text_Custom_Control(
-		$wp_customize, $prefix . '_contact_us_create_contact_form_7', array(
+		$wp_customize, $prefix . '_contact_us_create_kali_forms', array(
 			'label'           => __( 'Contact Form Creation', 'illdy' ),
-			'description'     => sprintf( '%s %s', __( 'Create a contact form from ', 'illdy' ), '<a href="' . admin_url( 'admin.php?page=wpcf7-new' ) . '" title="Contact Form 7" target="_blank">here</a>' ),
+			'description'     => sprintf( '%s %s', __( 'Create a contact form from ', 'illdy' ), '<a href="' . admin_url( 'post-new.php?post_type=kaliforms_forms' ) . '" title="Kaliforms" target="_blank">here</a>' ),
 			'section'         => $prefix . '_contact_us',
-			'settings'        => $prefix . '_contact_us_create_contact_form_7',
+			'settings'        => $prefix . '_contact_us_create_kali_forms',
 			'priority'        => 7,
-			'active_callback' => 'illdy_have_not_contact_form_7',
+			'active_callback' => 'illdy_have_not_kali_forms',
 		)
 	)
 );

@@ -21,7 +21,7 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		// Custom Controls
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-button.php';
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-tab.php';
-		require_once get_template_directory() . '/inc/customizer/class-illdy-cf7-custom-control.php';
+		require_once get_template_directory() . '/inc/customizer/class-illdy-kaliforms-custom-control.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-text-custom-control.php';
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-editor-custom-control.php';
 
@@ -291,11 +291,11 @@ if ( ! function_exists( 'illdy_sanitize_checkbox' ) ) {
 }
 
 /**
- *  Active Callback: Is not active Contact Form 7
+ *  Active Callback: Is not active Kaliforms
  */
-if ( ! function_exists( 'illdy_is_not_active_contact_form_7' ) ) {
-	function illdy_is_not_active_contact_form_7() {
-		if ( ! class_exists( 'WPCF7' ) ) {
+if ( ! function_exists( 'illdy_is_not_active_kali_forms' ) ) {
+	function illdy_is_not_active_kali_forms() {
+		if ( ! defined( 'KALIFORMS_VERSION7' ) ) {
 			return true;
 		} else {
 			return false;
@@ -304,13 +304,13 @@ if ( ! function_exists( 'illdy_is_not_active_contact_form_7' ) ) {
 }
 
 /**
- *  Active Callback: Without Contact Form 7
+ *  Active Callback: Without Kaliforms
  */
-if ( ! function_exists( 'illdy_have_not_contact_form_7' ) ) {
-	function illdy_have_not_contact_form_7() {
-		if ( class_exists( 'WPCF7' ) ) {
+if ( ! function_exists( 'illdy_have_not_kali_forms' ) ) {
+	function illdy_have_not_kali_forms() {
+		if ( defined( 'KALIFORMS_VERSION7' ) ) {
 			$args  = array(
-				'post_type'      => 'wpcf7_contact_form',
+				'post_type'      => 'kaliforms_forms',
 				'post_status'    => 'publish',
 				'posts_per_page' => -1,
 			);
@@ -337,12 +337,12 @@ if ( ! function_exists( 'illdy_create_contact_tab_sections' ) ) {
 			$prefix . '_contact_us_general_customer_support_title',
 		);
 
-		if ( illdy_is_not_active_contact_form_7() ) {
-			$sections[] = $prefix . '_contact_us_install_contact_form_7';
-		} elseif ( illdy_have_not_contact_form_7() ) {
-			$sections[] = $prefix . '_contact_us_create_contact_form_7';
+		if ( illdy_is_not_active_kali_forms() ) {
+			$sections[] = $prefix . '_contact_us_install_kali_forms';
+		} elseif ( illdy_have_not_kali_forms() ) {
+			$sections[] = $prefix . '_contact_us_create_kali_forms';
 		} else {
-			$sections[] = $prefix . '_contact_us_general_contact_form_7';
+			$sections[] = $prefix . '_contact_us_general_kali_forms';
 		}
 		return $sections;
 	}

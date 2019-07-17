@@ -23,7 +23,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$address2                  = get_theme_mod( 'illdy_address2', __( 'London, UK', 'illdy' ) );
 	$general_title             = get_theme_mod( 'illdy_contact_us_general_title', __( 'Contact us', 'illdy' ) );
 	$general_entry             = get_theme_mod( 'illdy_contact_us_entry', __( 'And we will get in touch as soon as possible.', 'illdy' ) );
-	$general_contact_form_7    = get_theme_mod( 'illdy_contact_us_general_contact_form_7' );
+	$general_contact_form      = defined('KALIFORMS_VERSION') ? get_theme_mod( 'illdy_contact_us_general_kali_forms' ) : get_theme_mod( 'illdy_contact_us_general_contact_form_7' );
 	$general_address_title     = get_theme_mod( 'illdy_contact_us_general_address_title', __( 'Address', 'illdy' ) );
 	$customer_support_title    = get_theme_mod( 'illdy_contact_us_general_customer_support_title', __( 'Customer Support', 'illdy' ) );
 } else {
@@ -41,12 +41,12 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$address2                  = get_theme_mod( 'illdy_address2' );
 	$general_title             = get_theme_mod( 'illdy_contact_us_general_title' );
 	$general_entry             = get_theme_mod( 'illdy_contact_us_entry' );
-	$general_contact_form_7    = get_theme_mod( 'illdy_contact_us_general_contact_form_7' );
+	$general_contact_form      = defined('KALIFORMS_VERSION') ? get_theme_mod( 'illdy_contact_us_general_kali_forms' ) : get_theme_mod( 'illdy_contact_us_general_contact_form_7' );
 	$general_address_title     = get_theme_mod( 'illdy_contact_us_general_address_title' );
 	$customer_support_title    = get_theme_mod( 'illdy_contact_us_general_customer_support_title' );
 }// End if().
 
-if ( '' != $general_title || '' != $general_entry || '' != $general_address_title || '' != $address1 || '' != $address2 || '' != $customer_support_title || '' != $email || '' != $phone || '' != $contact_bar_twitter_url || '' != $contact_bar_facebook_url || '' != $contact_bar_linkedin_url || '' != $contact_bar_googlep_url || '' != $contact_bar_instagram_url || '' != $contact_bar_vimeo_url || '' != $contact_bar_pinterest_url || '' != $contact_bar_youtube_url || null != $general_contact_form_7 && 'default' != $general_contact_form_7 ) {
+if ( '' != $general_title || '' != $general_entry || '' != $general_address_title || '' != $address1 || '' != $address2 || '' != $customer_support_title || '' != $email || '' != $phone || '' != $contact_bar_twitter_url || '' != $contact_bar_facebook_url || '' != $contact_bar_linkedin_url || '' != $contact_bar_googlep_url || '' != $contact_bar_instagram_url || '' != $contact_bar_vimeo_url || '' != $contact_bar_pinterest_url || '' != $contact_bar_youtube_url || null != $general_contact_form && 'default' != $general_contact_form ) {
 
 	?>
 	<section id="contact-us" class="front-page-section">
@@ -143,8 +143,8 @@ if ( '' != $general_title || '' != $general_entry || '' != $general_address_titl
 				</div><!--/.row-->
 				<div class="row">
 					<div class="col-sm-12">
-						<?php if ( class_exists( 'WPCF7' ) && null != $general_contact_form_7 && 'default' != $general_contact_form_7 && get_post( $general_contact_form_7 ) ) : ?>
-							<?php $shortcode = '[contact-form-7 id="' . esc_html( $general_contact_form_7 ) . '"]'; ?>
+						<?php if ( null != $general_contact_form && 'default' != $general_contact_form && get_post( $general_contact_form ) ) : ?>
+							<?php $shortcode = defined('KALIFORMS_VERSION') ? '[kaliform id="' . esc_html( $general_contact_form ) . '"]' : '[contact-form-7 id="' . esc_html( $general_contact_form ) . '"]'; ?>
 							<?php echo do_shortcode( $shortcode ); ?>
 						<?php endif; ?>
 					</div><!--/.col-sm-12-->

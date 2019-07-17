@@ -571,12 +571,12 @@ class Epsilon_Welcome_Screen {
 			'label'     => __( 'Install and Activate', 'epsilon-framework' ),
 		);
 
-		if ( in_array( $slug, array( 'contact-form-7' ) ) ) {
+		if ( in_array( $slug, array( 'kali-forms' ) ) ) {
 			switch ( $slug ) {
-				case 'contact-form-7':
-					if ( file_exists( ABSPATH . 'wp-content/plugins/contact-form-7' ) ) {
+				case 'kali-forms':
+					if ( file_exists( ABSPATH . 'wp-content/plugins/kali-forms' ) ) {
 						$arr['installed'] = true;
-						$arr['active']    = defined( 'WPCF7_VERSION' );
+						$arr['active']    = defined( 'KALIFORMS_VERSION' );
 					}
 					break;
 				default:
