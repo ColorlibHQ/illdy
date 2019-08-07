@@ -9,7 +9,9 @@
 	visibility: hidden;
 	z-index: 99;
 }
-#header .top-header .header-navigation ul li.menu-item-has-children:hover > .sub-menu {
+
+#header .top-header .header-navigation ul li.menu-item-has-children:hover > .sub-menu,
+#header .top-header .header-navigation ul li.menu-item-has-children:focus-within > .sub-menu {
 	visibility: visible;
 }
 
@@ -48,13 +50,22 @@
 	transition: all .3s;
 }
 
-.woocommerce #respond input#submit, .woocommerce a.button:hover,
+.woocommerce #respond input#submit,
+.woocommerce a.button:hover,
+.woocommerce a.button:focus,
 .woocommerce button.button:hover,
+.woocommerce button.button:focus,
 .woocommerce input.button:hover,
+.woocommerce input.button:focus,
 .woocommerce div.product form.cart .button:hover,
+.woocommerce div.product form.cart .button:focus,
 .woocommerce #review_form #respond .form-submit input:hover,
+.woocommerce #review_form #respond .form-submit input:focus,
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover,
-.woocommerce #payment #place_order, .woocommerce-page #payment #place_order:hover {
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
+.woocommerce #payment #place_order,
+.woocommerce-page #payment #place_order:hover,
+.woocommerce-page #payment #place_order:focus {
 	background: rgba(241, 210, 4, 0.9);
 	color: #ffffff;
 }

@@ -212,7 +212,7 @@ if ( ! function_exists( 'illdy_jumbotron_css' ) ) {
 			$css .= '#header.header-front-page .bottom-header .header-button-one {background-color: ' . esc_attr( $illdy_jumbotron_first_button_background ) . ';}';
 		}
 		if ( $illdy_jumbotron_first_button_background_hover ) {
-			$css .= '#header.header-front-page .bottom-header .header-button-one:hover {background-color: ' . esc_attr( $illdy_jumbotron_first_button_background_hover ) . ';}';
+			$css .= '#header.header-front-page .bottom-header .header-button-one:hover, #header.header-front-page .bottom-header .header-button-one:focus {background-color: ' . esc_attr( $illdy_jumbotron_first_button_background_hover ) . ';}';
 		}
 		if ( $illdy_jumbotron_first_border_color ) {
 			$css .= '#header.header-front-page .bottom-header .header-button-one {border-color: ' . esc_attr( $illdy_jumbotron_first_border_color ) . ';}';
@@ -221,7 +221,7 @@ if ( ! function_exists( 'illdy_jumbotron_css' ) ) {
 			$css .= '#header.header-front-page .bottom-header .header-button-two {background-color: ' . esc_attr( $illdy_jumbotron_second_button_background ) . ';}';
 		}
 		if ( $illdy_jumbotron_second_button_background_hover ) {
-			$css .= '#header.header-front-page .bottom-header .header-button-two:hover {background-color: ' . esc_attr( $illdy_jumbotron_second_button_background_hover ) . ';}';
+			$css .= '#header.header-front-page .bottom-header .header-button-two:hover, #header.header-front-page .bottom-header .header-button-two:focus {background-color: ' . esc_attr( $illdy_jumbotron_second_button_background_hover ) . ';}';
 		}
 		if ( $illdy_jumbotron_title_color ) {
 			$css .= '#header.header-front-page .bottom-header h1 {color: ' . esc_attr( $illdy_jumbotron_title_color ) . ';}';
@@ -291,7 +291,7 @@ if ( ! function_exists( 'illdy_latestnews_css' ) ) {
 			$css .= '#latest-news .latest-news-button {background-color: ' . esc_attr( $illdy_latest_news_button_background ) . ';}';
 		}
 		if ( $illdy_latest_news_button_background_hover ) {
-			$css .= '#latest-news .latest-news-button:hover {background-color: ' . esc_attr( $illdy_latest_news_button_background_hover ) . ';}';
+			$css .= '#latest-news .latest-news-button:hover, #latest-news .latest-news-button:focus {background-color: ' . esc_attr( $illdy_latest_news_button_background_hover ) . ';}';
 		}
 		if ( $illdy_latest_news_button_color ) {
 			$css .= '#latest-news .latest-news-button {color: ' . esc_attr( $illdy_latest_news_button_color ) . ';}';
@@ -303,7 +303,7 @@ if ( ! function_exists( 'illdy_latestnews_css' ) ) {
 			$css .= '#latest-news .section-content .post .post-title {color: ' . esc_attr( $illdy_latest_news_post_text_color ) . ';}';
 		}
 		if ( $illdy_latest_news_post_text_hover_color ) {
-			$css .= '#latest-news .section-content .post .post-title:hover {color: ' . esc_attr( $illdy_latest_news_post_text_hover_color ) . ';}';
+			$css .= '#latest-news .section-content .post .post-title:hover, #latest-news .section-content .post .post-title:focus {color: ' . esc_attr( $illdy_latest_news_post_text_hover_color ) . ';}';
 		}
 		if ( $illdy_latest_news_post_content_color ) {
 			$css .= '#latest-news .section-content .post .post-entry {color: ' . esc_attr( $illdy_latest_news_post_content_color ) . ';}';
@@ -312,7 +312,7 @@ if ( ! function_exists( 'illdy_latestnews_css' ) ) {
 			$css .= '#latest-news .section-content .post .post-button {color: ' . esc_attr( $illdy_latest_news_post_button_color ) . ';}';
 		}
 		if ( $illdy_latest_news_post_button_hover_color ) {
-			$css .= '#latest-news .section-content .post .post-button:hover {color: ' . esc_attr( $illdy_latest_news_post_button_hover_color ) . ';}';
+			$css .= '#latest-news .section-content .post .post-button:hover, #latest-news .section-content .post .post-button:focus {color: ' . esc_attr( $illdy_latest_news_post_button_hover_color ) . ';}';
 		}
 		if ( $illdy_latest_news_title_color ) {
 			$css .= '#latest-news .section-header h3 {color: ' . esc_attr( $illdy_latest_news_title_color ) . ';}';
@@ -613,7 +613,7 @@ if ( ! function_exists( 'illdy_testimonials_css' ) ) {
 			$css .= '#testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-content:after {border-color: ' . esc_attr( $illdy_testimonials_container_background_color ) . ' transparent transparent transparent;}';
 		}
 		if ( $illdy_testimonials_dots_color ) {
-			$css .= '#testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot:hover, #testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot.active {border-color: ' . $illdy_testimonials_dots_color . ';}';
+			$css .= '#testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot:hover, #testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot:focus, #testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot.active {border-color: ' . $illdy_testimonials_dots_color . ';}';
 			$css .= '#testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot {background-color: ' . esc_attr( $illdy_testimonials_dots_color ) . ';}';
 		}
 
