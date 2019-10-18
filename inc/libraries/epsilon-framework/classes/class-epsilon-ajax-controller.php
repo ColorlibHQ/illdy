@@ -19,10 +19,6 @@ class Epsilon_Ajax_Controller {
 			$this,
 			'epsilon_framework_ajax_action',
 		) );
-		add_action( 'wp_ajax_nopriv_epsilon_framework_ajax_action', array(
-			$this,
-			'epsilon_framework_ajax_action',
-		) );
 	}
 
 	/**
@@ -53,6 +49,8 @@ class Epsilon_Ajax_Controller {
 			);
 		}
 
+        $class = Epsilon_Ajax_Controller::sanitize_class_name( $args_action[0] );
+
 		if ( ! class_exists( $args_action[0] ) ) {
 			wp_die(
 				wp_json_encode(
@@ -64,7 +62,6 @@ class Epsilon_Ajax_Controller {
 			);
 		}
 
-		$class  = $args_action[0];
 		$method = $args_action[1];
 
 		if ( 'generate_partial_section' === $method ) {
@@ -113,6 +110,20 @@ class Epsilon_Ajax_Controller {
 			return sanitize_text_field( $args );
 		}
 	}
+
+    /**
+     * Sanitize class name
+     *
+     * @param $args
+     */
+    public static function sanitize_class_name( $class ) {
+        $allowed_classes = array( 'Epsilon_Helper', 'Epsilon_Notify_System', 'Epsilon_Page_Generator', 'Epsilon_Typography', 'Epsilon_Color_Scheme', 'Epsilon_Notifications' );
+        if ( in_array( $class, $allowed_classes ) ) {
+            return $class;
+        }else{
+            return false;
+        }
+    }
 
 	/**
 	 * Sanitize arguments for output
