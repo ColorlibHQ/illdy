@@ -157,12 +157,6 @@ class Epsilon_Welcome_Screen {
 				'welcome_screen_ajax_callback',
 			)
 		);
-		add_action(
-			'wp_ajax_nopriv_welcome_screen_ajax_callback', array(
-				$this,
-				'welcome_screen_ajax_callback',
-			)
-		);
 
 		if ( $this->edd ) {
 			/**
