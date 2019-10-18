@@ -51,7 +51,7 @@ class Epsilon_Ajax_Controller {
 
         $class = Epsilon_Ajax_Controller::sanitize_class_name( $args_action[0] );
 
-		if ( ! class_exists( $args_action[0] ) ) {
+		if ( ! $class || ! class_exists( $class )) {
 			wp_die(
 				wp_json_encode(
 					array(
