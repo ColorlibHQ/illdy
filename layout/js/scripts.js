@@ -6,8 +6,7 @@ jQuery( document ).ready( function( $ ) {
 
   // If is IOS
   function isIsIOS() {
-    $.browser.device = ( /iphone|ipad|ipod/i.test( navigator.userAgent.toLowerCase() ) );
-    if ( true === $.browser.device ) {
+    if ( iOS_check()) {
       $( '#counter' ).css( 'background-attachment', 'scroll' );
       $( '#testimonials' ).css( 'background-attachment', 'scroll' );
     }
@@ -141,4 +140,19 @@ jQuery( document ).ready( function( $ ) {
       addHeightToFrontPageProject();
     } );
   } );
+
+  // check operating system
+  function iOS_check() {
+    return [
+             'iPad Simulator',
+             'iPhone Simulator',
+             'iPod Simulator',
+             'iPad',
+             'iPhone',
+             'iPod'
+           ].includes(navigator.platform)
+           // iPad on iOS 13 detection
+           || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  }
+
 } );
