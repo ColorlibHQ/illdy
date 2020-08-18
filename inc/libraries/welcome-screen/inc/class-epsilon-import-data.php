@@ -188,7 +188,7 @@ class Epsilon_Import_Data {
 		foreach ( $this->all_slugs as $demo_slug ) {
 			$html .= '<div class="demo-content-container" data-slug="' . esc_attr( $demo_slug ) . '" >';
 			if ( defined( 'WPCF7_VERSION' ) ) {
-				unset( $this->plugins[ $demo_slug ]['contact-form-7'] );
+				unset( $this->plugins[ $demo_slug ]['kali-forms'] );
 			}
 			if ( ! empty( $this->plugins[ $demo_slug ] ) ) {
 				$html .= '<div class="checkbox-group">';

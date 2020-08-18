@@ -4,8 +4,8 @@
 class Illdy {
 
 	public $recommended_plugins = array(
-		'contact-form-7'            => array(
-			'recommended' => false,
+		'kali-forms'            => array(
+			'recommended' => true,
 		),
 		'colorlib-login-customizer' => array(
 			'recommended' => false,
@@ -20,9 +20,6 @@ class Illdy {
 			'recommended' => false,
 		),
 		'fancybox-for-wordpress'    => array(
-			'recommended' => false,
-		),
-		'kiwi-social-share'         => array(
 			'recommended' => false,
 		),
 	);
@@ -44,12 +41,12 @@ class Illdy {
 					'plugin_slug' => 'illdy-companion',
 				),
 				array(
-					'id'          => 'illdy-req-ac-install-contact-form-7',
-					'title'       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Contact Form 7', 'illdy' ), __( 'Activate: Contact Form 7', 'illdy' ), 'contact-form-7' ),
-					'description' => __( 'It is highly recommended that you install the Contact Form 7.', 'illdy' ),
-					'check'       => MT_Notify_System::check_plugin_update( 'contact-form-7' ),
+					'id'          => 'illdy-req-ac-install-kaliforms',
+					'title'       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Kaliforms', 'illdy' ), __( 'Activate: Kaliforms', 'illdy' ), 'kali-forms' ),
+					'description' => __( 'It is highly recommended that you install the Kaliforms plugin.', 'illdy' ),
+					'check'       => MT_Notify_System::check_plugin_update( 'kali-forms' ),
 					'type'        => 'plugin',
-					'plugin_slug' => 'contact-form-7',
+					'plugin_slug' => 'kali-forms',
 				),
 			)
 		);

@@ -43,7 +43,8 @@
 						echo '<h2>' . esc_html( $custom_blog_archive_title ) . '</h2>';
 					} else {
 						$archive_title = get_the_archive_title();
-						echo '<h2>' . esc_html( $archive_title ) . '</h2>';
+
+						echo '<h2>' .  wp_kses_post($archive_title)  . '</h2>';
 					}
 
 								?>

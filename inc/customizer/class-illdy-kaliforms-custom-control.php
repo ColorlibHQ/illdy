@@ -1,12 +1,12 @@
 <?php
 
 /**
- *  Custom Control: Contact Form 7
+ *  Custom Control: Kaliforms
  */
-if ( ! class_exists( 'Illdy_CF7_Custom_Control' ) ) {
-	class Illdy_CF7_Custom_Control extends WP_Customize_Control {
+if ( ! class_exists( 'Illdy_Kaliforms_Custom_Control' ) ) {
+	class Illdy_Kaliforms_Custom_Control extends WP_Customize_Control {
 		/**
-		 * Returns true / false if the plugin: Contact Form 7 is activated;
+		 * Returns true / false if the plugin: Kaliforms is activated;
 		 *
 		 * This right here disables the control for selecting a contact form IF the plugin isn\'t active
 		 *
@@ -16,31 +16,31 @@ if ( ! class_exists( 'Illdy_CF7_Custom_Control' ) ) {
 		 */
 		public function active_callback() {
 
-			if ( class_exists( 'WPCF7' ) ) {
+			if ( defined('KALIFORMS_VERSION') ) {
 				return true;
 			} else {
 				return false;
 			}
 		}
 
-		public function get_cf7_forms() {
+		public function get_kaliforms_forms() {
 
 			// no more php warnings
 			$contact_forms = array();
 
-			// check if CF7 is activated
+			// check if Kaliforms is activated
 			if ( $this->active_callback() ) {
 
 				$args = array(
-					'post_type'      => 'wpcf7_contact_form',
+					'post_type'      => 'kaliforms_forms',
 					'post_status'    => 'publish',
 					'posts_per_page' => -1,
 				);
 
-				$cf7forms = new WP_Query( $args );
-				if ( $cf7forms->have_posts() ) {
-					foreach ( $cf7forms->posts as $cf7form ) {
-						$contact_forms[ $cf7form->ID ] = $cf7form->post_title;
+				$kali_forms = new WP_Query( $args );
+				if ( $kali_forms->have_posts() ) {
+					foreach ( $kali_forms->posts as $kali_form ) {
+						$contact_forms[ $kali_form->ID ] = $kali_form->post_title;
 					}
 				} else {
 					$contact_forms[0] = __( 'No contact forms found', 'illdy' );
@@ -50,7 +50,7 @@ if ( ! class_exists( 'Illdy_CF7_Custom_Control' ) ) {
 		}
 
 		public function render_content() {
-			$contact_forms = $this->get_cf7_forms();
+			$contact_forms = $this->get_kaliforms_forms();
 
 			if ( ! empty( $contact_forms ) ) { ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>

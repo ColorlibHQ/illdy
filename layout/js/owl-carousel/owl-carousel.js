@@ -2727,7 +2727,7 @@
 
 		// create the indicator template
 		if (!options.dotsData) {
-			this._templates = [ $('<div>')
+			this._templates = [ $('<button>')
 				.addClass(options.dotClass)
 				.append($('<span>'))
 				.prop('outerHTML') ];
@@ -2744,7 +2744,7 @@
 		this._controls.$indicators = options.dotsContainer ? $(options.dotsContainer)
 			: $('<div>').hide().addClass(options.dotsClass).appendTo(this._controls.$container);
 
-		this._controls.$indicators.on('click', 'div', $.proxy(function(e) {
+		this._controls.$indicators.on('click', 'button', $.proxy(function(e) {
 			var index = $(e.target).parent().is(this._controls.$indicators)
 				? $(e.target).index() : $(e.target).parent().index();
 

@@ -1,3 +1,14 @@
+### V 2.1.6
+- Compatibility fixes for WordPress 5.5
+
+### V 2.1.5
+- Security Fix
+
+### V 2.1.4
+- Improved accesibility with keyboard navigation
+- Replaced notification design with core design
+- Improved compatibility with Kaliforms plugin
+
 ### V 2.1.2
 - Update npm deps (https://github.com/ColorlibHQ/illdy/issues/276)
 - Logo image size not defined (https://github.com/ColorlibHQ/illdy/issues/282)
@@ -26,7 +37,7 @@
 	- For the Jumbotron area, the theme now supports: slides (with repeater from Epsilon Framework) as well as videos (core support). Changes show up in real-time.
 	- The theme's preloader doesn't show up anymore when users are changing values from the Customizer.
 	- Color scheme picker has been implemented.
-	- Theme widgets now support basic HTML (by using TinyMCE instances) 
+	- Theme widgets now support basic HTML (by using TinyMCE instances)
 
 ### V2.0.1
 	- Fixed left sidebar mobile issue. ( https://github.com/puikinsh/illdy/issues/176 )
@@ -85,7 +96,7 @@
 	- Resolved #94 - Button Style improvements (https://github.com/puikinsh/illdy/issues/94)
 	- Resolved #95 - Latest News Section Improvements (https://github.com/puikinsh/illdy/issues/95)
 
-	
+
 ### V1.0.35
 	- Resolved #57 - Removed link attribution. (https://github.com/MachoThemes/illdy/issues/57)
 
@@ -98,7 +109,7 @@
 	- Resolved #53 - Style contact form 7 outside of homepage.( https://github.com/MachoThemes/illdy/issues/53 )
 	- Resolved #54 - Random number in sections.( https://github.com/MachoThemes/illdy/issues/54 )
 	- Resolved #55 - Projects cannot be created.( https://github.com/MachoThemes/illdy/issues/55 )
-	
+
 ### V1.0.32
     - we had two panels for the counter section and we made them into a single one.
     - added a new CSS stylesheet to beautify section descriptions (make them more visible). /inc/customizer/assets/css/illdy-customizer.css
@@ -152,7 +163,7 @@
 	- Resolved "CSS Stylesheets should be enqueued not @Imported" (#18)
 	- Resolved "Contact form send message succesfully display bug" (#5)
 	- Resolved repo ticket : https://themes.trac.wordpress.org/ticket/29912#comment:45
-	
+
 ### V1.0.17
 	- Updated TGMPA to latest version (2.6.1).
 	- Fixed a few strings which weren't available for translation.
@@ -201,7 +212,7 @@
 
 ### v1.0.10
 	- Has been fixed OWL Carousel when JetPack plugin is not installed.
-	- Has been added "max-width" in CSS for logo on responsive. 
+	- Has been added "max-width" in CSS for logo on responsive.
 
 ### v1.0.9
 	- Has been fixed Phone Number and E-mail Address from Customizer.
