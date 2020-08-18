@@ -3,9 +3,9 @@
 Contributors: Colorlib
 Tags: blog, e-commerce, education, entertainment, news, food-and-drink, holiday, photography, portfolio
 
-Requires at least: 4.0
-Tested up to: 4.7.2
-Stable tag: 2.0.1
+Requires at least: 5.3
+Tested up to: 5.5
+Stable tag: 2.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
