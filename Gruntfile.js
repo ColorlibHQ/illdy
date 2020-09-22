@@ -215,7 +215,7 @@ module.exports = function(grunt){
     // Build task
     grunt.registerTask( 'build-archive', [
         // 'makepot',
-        'allmin',
+        // 'allmin',
         'clean:init',
         'copy',
         'compress:build',
