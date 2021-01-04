@@ -100,7 +100,7 @@ endif;
 						<div class="testimonials-carousel owl-carousel-enabled">
 							<div class="carousel-testimonial">
 								<div class="testimonial-image">
-									<img src="<?php echo get_template_directory_uri(); ?>/layout/images/front-page/front-page-testimonial-1.jpg" alt="<?php _e( 'Jane Smith', 'illdy' ); ?>" title="<?php _e( 'Jane Smith', 'illdy' ); ?>" />
+									<img src="<?php echo esc_url(get_template_directory_uri()); ?>/layout/images/front-page/front-page-testimonial-1.jpg" alt="<?php _e( 'Jane Smith', 'illdy' ); ?>" title="<?php _e( 'Jane Smith', 'illdy' ); ?>" />
 								</div><!--/.testimonial-image-->
 								<div class="testimonial-content">
 									<blockquote><q><?php _e( 'Awesome theme with great design and helpfull support. If you do not know how to code your own WordPress theme, but you still want a good-looking website for your business, Illdy might be exactly what you need. It is a slick theme with a lot of of features to choose from. You can customize whatever section you  want and you can rest assure that no matter what device your website is viewed on it looks  great.', 'illdy' ); ?></q></blockquote>
@@ -111,7 +111,7 @@ endif;
 							</div><!--/.carousel-testimonial-->
 							<div class="carousel-testimonial">
 								<div class="testimonial-image">
-									<img src="<?php echo get_template_directory_uri(); ?>/layout/images/front-page/front-page-testimonial-2.jpg" alt="<?php _e( 'Jane Smith', 'illdy' ); ?>" title="<?php _e( 'Jane Smith', 'illdy' ); ?>" />
+									<img src="<?php echo esc_url(get_template_directory_uri()); ?>/layout/images/front-page/front-page-testimonial-2.jpg" alt="<?php _e( 'Jane Smith', 'illdy' ); ?>" title="<?php _e( 'Jane Smith', 'illdy' ); ?>" />
 								</div><!--/.testimonial-image-->
 								<div class="testimonial-content">
 									<blockquote><q><?php _e( 'Awesome theme with great design and helpfull support. If you do not know how to code your own WordPress theme, but you still want a good-looking website for your business, Illdy might be exactly what you need. It is a slick theme with a lot of of features to choose from. You can customize whatever section you  want and you can rest assure that no matter what device your website is viewed on it looks  great.', 'illdy' ); ?></q></blockquote>
@@ -122,7 +122,7 @@ endif;
 							</div><!--/.carousel-testimonial-->
 							<div class="carousel-testimonial">
 								<div class="testimonial-image">
-									<img src="<?php echo get_template_directory_uri(); ?>/layout/images/front-page/front-page-testimonial-3.jpg" alt="<?php _e( 'Jane Smith', 'illdy' ); ?>" title="<?php _e( 'Jane Smith', 'illdy' ); ?>" />
+									<img src="<?php echo esc_url(get_template_directory_uri()); ?>/layout/images/front-page/front-page-testimonial-3.jpg" alt="<?php _e( 'Jane Smith', 'illdy' ); ?>" title="<?php _e( 'Jane Smith', 'illdy' ); ?>" />
 								</div><!--/.testimonial-image-->
 								<div class="testimonial-content">
 									<blockquote><q><?php _e( 'Awesome theme with great design and helpfull support. If you do not know how to code your own WordPress theme, but you still want a good-looking website for your business, Illdy might be exactly what you need. It is a slick theme with a lot of of features to choose from. You can customize whatever section you  want and you can rest assure that no matter what device your website is viewed on it looks  great.', 'illdy' ); ?></q></blockquote>
@@ -133,7 +133,7 @@ endif;
 							</div><!--/.carousel-testimonial-->
 							<div class="carousel-testimonial">
 								<div class="testimonial-image">
-									<img src="<?php echo get_template_directory_uri(); ?>/layout/images/front-page/front-page-testimonial-4.jpg" alt="<?php _e( 'Jane Smith', 'illdy' ); ?>" title="<?php _e( 'Jane Smith', 'illdy' ); ?>" />
+									<img src="<?php echo esc_url(get_template_directory_uri()); ?>/layout/images/front-page/front-page-testimonial-4.jpg" alt="<?php _e( 'Jane Smith', 'illdy' ); ?>" title="<?php _e( 'Jane Smith', 'illdy' ); ?>" />
 								</div><!--/.testimonial-image-->
 								<div class="testimonial-content">
 									<blockquote><q><?php _e( 'Awesome theme with great design and helpfull support. If you do not know how to code your own WordPress theme, but you still want a good-looking website for your business, Illdy might be exactly what you need. It is a slick theme with a lot of of features to choose from. You can customize whatever section you  want and you can rest assure that no matter what device your website is viewed on it looks  great.', 'illdy' ); ?></q></blockquote>

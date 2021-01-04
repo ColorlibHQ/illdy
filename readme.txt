@@ -5,7 +5,7 @@ Tags: blog, e-commerce, education, entertainment, news, food-and-drink, holiday,
 
 Requires at least: 5.3
 Tested up to: 5.5
-Stable tag: 2.1.6
+Stable tag: 2.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,38 +31,32 @@ The exceptions to this license are as follows:
     Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 
 * Images:
-	All images are from Unsplash (	www.unsplash.com	) and Pixabay( www.pixabay.com	)
+	All images are from Pxhere(	https://pxhere.com/	) and Stocksnap( https://stocksnap.io	)
 	License under Creative Commons Zero.
 
 
-	https://pixabay.com/en/bed-bedroom-door-girl-house-1850893/
+	https://pxhere.com/en/photo/146431
 
 
 	Sources for images used:
-		https://unsplash.com/photos/VviFtDJakYk
-		https://unsplash.com/photos/hoCXpPUMCoE
-		https://pixabay.com/en/coffee­tablet­headphones­work­1128140/
-		https://unsplash.com/photos/T0bQdp74I0U
-		https://unsplash.com/photos/VLT62­JzddA
-		https://pixabay.com/en/turntable­top­view­audio­equipment­1109588/
-		https://pixabay.com/en/computer­apple­imac­keyboard­mouse­791392/
-		https://pixabay.com/en/man­reading­touchscreen­blog­791049/
-		https://pixabay.com/en/workspace­place­of­work­work­766045/
-		https://pixabay.com/en/coffee­coffe­latte­516186/
-		https://unsplash.com/photos/zCevd81eJDU
-		https://unsplash.com/photos/2UE1givDiPM
-		https://unsplash.com/photos/lZlfHGqx44Q
-		https://unsplash.com/photos/71cd1rWqO8M
-		https://unsplash.com/photos/HALe2SmkWAI
-		https://unsplash.com/photos/hiAdjnXZxl8
-		https://unsplash.com/photos/eqsEZNCm4­c
-		https://pixabay.com/en/fashion­beauty­model­portrait­girl­1063100/
-		https://pixabay.com/en/home­office­notebook­home­couch­569153/
-		https://pixabay.com/en/adult-beach-enjoyment-1867618/
-		https://stocksnap.io/photo/7LQZXYOHL9
-		https://stocksnap.io/photo/PLFB4I53U4
-		https://stocksnap.io/photo/D3WN2GEYA3
-		https://pixabay.com/en/canine-cute-dog-footwear-hammock-1851504/
+		https://pxhere.com/en/photo/775198
+        https://stocksnap.io/photo/coffee-latte-KSXYWXNBTA
+        https://pxhere.com/en/photo/1364696
+        https://pxhere.com/en/photo/147868
+        https://pxhere.com/en/photo/730845
+        https://pxhere.com/en/photo/722541
+        https://pxhere.com/en/photo/722807
+        https://pxhere.com/en/photo/693860
+        https://pxhere.com/en/photo/1067952
+        https://stocksnap.io/photo/shirt-tshirt-PLFB4I53U4
+        https://pxhere.com/en/photo/667247
+        https://pxhere.com/en/photo/1587291
+        https://pxhere.com/en/photo/956553
+        https://pxhere.com/en/photo/1258788
+        https://pxhere.com/en/photo/1260525
+        https://pxhere.com/en/photo/1238378
+        https://pxhere.com/en/photo/1260525
+
 
 * Font Awesome:
 	License: SIL OFL 1.1

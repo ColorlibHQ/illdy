@@ -75,6 +75,7 @@ if ( get_theme_mod( 'illdy_sticky_header_enable', false ) ) {
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
 <?php if ( 1 == $preloader_enable && ! is_customize_preview() ) : ?>
 	<div class="pace-overlay"></div>
 <?php endif; ?>
