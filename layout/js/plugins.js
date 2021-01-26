@@ -74,11 +74,11 @@ jQuery( document ).ready( function( $ ) {
         'autoplayTimeout': illdySlider.data( 'autoplay-time' )
       } );
       if ( jQuery( '.illdy-slider-navigation' ).length > 0 ) {
-        jQuery( '.illdy-slider-navigation #prev' ).click( function( evt ) {
+        jQuery( '.illdy-slider-navigation #prev' ).on('click', function( evt ) {
           evt.preventDefault();
           illdySlider.trigger( 'prev.owl.carousel' );
         } );
-        jQuery( '.illdy-slider-navigation #next' ).click( function( evt ) {
+        jQuery( '.illdy-slider-navigation #next' ).on('click', function( evt ) {
           evt.preventDefault();
           illdySlider.trigger( 'next.owl.carousel' );
         } );
@@ -93,7 +93,7 @@ jQuery( document ).ready( function( $ ) {
     testimonialsOwlCarousel();
     illdyJumbotronSlider();
 
-    $( window ).scroll( function() {
+    $( window ).on('scroll', function() {
       var counterVisible = $( '#counter' ).visible();
 
       if ( true === counterVisible ) {
