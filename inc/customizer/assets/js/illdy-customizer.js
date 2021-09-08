@@ -458,7 +458,7 @@ jQuery( document ).ready( function( $ ) {
 
 jQuery(document).ready(function(){
 
-    jQuery(".illdy-dismiss-required-action").click(function () {
+    jQuery(".illdy-dismiss-required-action").on('click', function () {
 
         var id = jQuery(this).attr('id'),
             action = jQuery(this).attr('data-action');
@@ -494,7 +494,7 @@ jQuery(document).ready(function(){
         });
     });
 
-    jQuery(".illdy-recommended-plugin-button").click(function () {
+    jQuery(".illdy-recommended-plugin-button").on('click', function () {
 
         var id = jQuery(this).attr('id'),
             action = jQuery(this).attr('data-action');
@@ -550,13 +550,13 @@ jQuery(document).ready(function(){
 
         ready: function () {
             var control = this;
-            control.container.find( 'a.epsilon-button' ).click( function( evt ){
+            control.container.find( 'a.epsilon-button' ).on('click', function( evt ){
                 var newSection = $(this).data('section'),
                     oldSection = control.params.section;
                 evt.preventDefault();
                 if ( undefined !== newSection ) {
                     api.IlldyNavigateTo = oldSection;
-                    api.section( newSection ).focus();
+                    api.section( newSection ).trigger('focus');
                 }
             });
         }
@@ -567,7 +567,7 @@ jQuery(document).ready(function(){
 
         ready: function () {
             var control = this;
-            control.container.find( 'a.epsilon-tab' ).click( function( evt ){
+            control.container.find( 'a.epsilon-tab' ).on('click', function( evt ){
                 var tab = $(this).data( 'tab' );
                 evt.preventDefault();
                 control.container.find( 'a.epsilon-tab' ).removeClass( 'active' );

@@ -22,6 +22,12 @@ class Illdy {
 		'fancybox-for-wordpress'    => array(
 			'recommended' => false,
 		),
+		'rsvp'                      => array(
+			'recommended' => false,
+		),
+		'kb-support'                => array(
+			'recommended' => false,
+		),
 	);
 
 	public $recommended_actions;

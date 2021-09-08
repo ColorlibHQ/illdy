@@ -31,7 +31,7 @@ jQuery( document ).ready( function( $ ) {
 
   // Open Responsive Menu
   function openResponsiveMenu() {
-    $( '.open-responsive-menu' ).click( function() {
+    $( '.open-responsive-menu' ).on('click',function() {
       var top = $( '.top-header' ).outerHeight(),
           height = $( window ).height() - top;
 
@@ -101,14 +101,14 @@ jQuery( document ).ready( function( $ ) {
   function scrollToTop() {
     var item = $( '.illdy-top' );
     if ( item.length > 0 ) {
-      item.click( function( event ) {
+      item.on('click', function( event ) {
         event.preventDefault();
         $( 'html,body' ).animate( {
           scrollTop: 0
         }, 1000 );
       } );
 
-      $( document ).scroll( function() {
+      $( document ).on('scroll', function() {
         var y = window.scrollY;
         if ( y >= 300 ) {
           item.addClass( 'is-active' );
