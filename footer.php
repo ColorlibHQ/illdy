@@ -74,7 +74,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	<div class="bottom-footer">
 		<div class="container">
 			<p class="copyright">
-				<span><?php printf( '%s <a href="%s" title="%s" target="_blank">%s</a>.', __( 'Theme:', 'illdy' ), esc_url( 'http://colorlib.com/wp/themes/illdy' ), __( 'Illdy', 'illdy' ), __( 'Illdy', 'illdy' ) ); ?></span>
+				<span><?php printf( '%s <a href="%s" title="%s" target="_blank">%s</a>.', __( 'Theme:', 'illdy' ), esc_url( 'http://colorlib.com/wp/themes/illdy/' ), __( 'Illdy', 'illdy' ), __( 'Illdy', 'illdy' ) ); ?></span>
 				<span class="bottom-copyright" data-customizer="copyright-credit"><?php echo illdy_sanitize_html( $footer_copyright ); ?></span>
 			</p>
 		</div>
