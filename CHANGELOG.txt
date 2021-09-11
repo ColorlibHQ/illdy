@@ -1,3 +1,7 @@
+### V 2.2.0
+- update with wpChill Fork.
+- fixed some bugs
+
 ### V 2.1.6
 - Compatibility fixes for WordPress 5.5
 
