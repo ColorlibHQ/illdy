@@ -368,7 +368,7 @@ if ( ! function_exists( 'illdy_fullwidth_css' ) ) {
 			$css .= '#full-width .section-header .section-description {color: ' . esc_attr( $illdy_full_width_descriptions_color ) . ';}';
 		}
 		if ( $illdy_full_width_descriptions_color ) {
-			$css .= '#full-width .top-parallax-section h1, #full-width .top-parallax-section p {color: ' . esc_attr( $illdy_full_width_full_text ) . ';}';
+			$css .= '#full-width .top-parallax-section h1, #full-width .top-parallax-section p {color: ' . esc_attr( $illdy_full_width_descriptions_color ) . ';}';
 		}
 
 		return $css;
