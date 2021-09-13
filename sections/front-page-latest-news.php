@@ -72,7 +72,7 @@ if ( $post_query->have_posts() || '' != $general_title || '' != $general_entry |
 						<?php $counter = 0; ?>
 						<?php while ( $post_query->have_posts() ) : ?>
 							<?php $post_query->the_post(); ?>
-							<?php $post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'illdy-front-page-latest-news' ); ?>
+							<?php $post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID), 'large'  ); ?>
 
 							<div class="illdy-blog-post col-md-4 col-sm-6 col-xs-12">
 								<div class="post" style="
