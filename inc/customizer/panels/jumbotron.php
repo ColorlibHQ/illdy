@@ -201,6 +201,7 @@ $wp_customize->add_control(
 						$prefix . '_jumbotron_external_video',
 						$prefix . '_jumbotron_slides',
 						$prefix . '_jumbotron_slider_autoplay',
+						$prefix . '_jumbotron_slider_shuffle',
 						$prefix . '_jumbotron_slider_autoplay_time',
 						$prefix . '_jumbotron_slider_nav',
 					),
@@ -411,6 +412,23 @@ $wp_customize->add_control(
 		$wp_customize, $prefix . '_jumbotron_slider_autoplay', array(
 			'type'            => 'epsilon-toggle',
 			'label'           => __( 'Slider Autoplay ?', 'illdy' ),
+			'section'         => $prefix . '_jumbotron_general',
+			'active_callback' => 'illdy_is_jumbotron_slider',
+		)
+	)
+);
+$wp_customize->add_setting(
+	$prefix . '_jumbotron_slider_shuffle', array(
+		'sanitize_callback' => $prefix . '_sanitize_checkbox',
+		'default'           => 0,
+		'transport'         => 'refresh',
+	)
+);
+$wp_customize->add_control(
+	new Epsilon_Control_Toggle(
+		$wp_customize, $prefix . '_jumbotron_slider_shuffle', array(
+			'type'            => 'epsilon-toggle',
+			'label'           => __( 'Slider Shuffle ?', 'illdy' ),
 			'section'         => $prefix . '_jumbotron_general',
 			'active_callback' => 'illdy_is_jumbotron_slider',
 		)
