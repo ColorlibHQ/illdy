@@ -9,7 +9,11 @@ if ( ! $slides ) {
 $autoplay      = get_theme_mod( 'illdy_jumbotron_slider_autoplay', true );
 $navigation    = get_theme_mod( 'illdy_jumbotron_slider_nav', true );
 $autoplay_time = get_theme_mod( 'illdy_jumbotron_slider_autoplay_time', 5000 );
-
+$shuffle    = get_theme_mod( 'illdy_jumbotron_slider_shuffle', false );
+if($shuffle){
+	srand((float)microtime()*1000000);
+	shuffle ($slides);
+}
 ?>
 <div class="illdy-slider illdy-jumbotron-background owl-carousel" data-autoplay="<?php echo esc_attr( $autoplay ); ?>" data-autoplay-time="<?php echo esc_attr( $autoplay_time ); ?>">
 	<?php
