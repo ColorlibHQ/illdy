@@ -217,12 +217,6 @@ if ( ! function_exists( 'illdy_jumbotron_css' ) ) {
 		if ( $illdy_jumbotron_first_border_color ) {
 			$css .= '#header.header-front-page .bottom-header .header-button-one {border-color: ' . esc_attr( $illdy_jumbotron_first_border_color ) . ';}';
 		}
-		if ( $illdy_jumbotron_second_button_background ) {
-			$css .= '#header.header-front-page .bottom-header .header-button-two {background-color: ' . esc_attr( $illdy_jumbotron_second_button_background ) . ';}';
-		}
-		if ( $illdy_jumbotron_second_button_background_hover ) {
-			$css .= '#header.header-front-page .bottom-header .header-button-two:hover, #header.header-front-page .bottom-header .header-button-two:focus {background-color: ' . esc_attr( $illdy_jumbotron_second_button_background_hover ) . ';}';
-		}
 		if ( $illdy_jumbotron_title_color ) {
 			$css .= '#header.header-front-page .bottom-header h1 {color: ' . esc_attr( $illdy_jumbotron_title_color ) . ';}';
 		}
