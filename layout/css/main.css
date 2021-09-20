@@ -19,6 +19,107 @@
  *	18. Gallery
  */
 /* 01. General */
+
+/* Lato fonts */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Lato Regular'), url('./fonts/Lato-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Lato Italic'), url('./fonts/Lato-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), url('./fonts/Lato-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Lato Light Italic'), url('./fonts/Lato-LightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Lato Bold'), url('./fonts/Lato-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: bold;
+  src: local('Lato Bold Italic'), url('./fonts/Lato-BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Lato Black'), url('./fonts/Lato-Black.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 900;
+  src: local('Lato Black Italic'), url('./fonts/Lato-BlackItalic.woff') format('woff');
+}
+
+/* Poppins fonts */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Poppins Regular'), url('./fonts/Poppins-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Poppins Italic'), url('./fonts/Poppins-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Poppins ExtraLight'), url('./fonts/Poppins-ExtraLight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Poppins Medium'), url('./fonts/Poppins-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Poppins SemiBold'), url('./fonts/Poppins-SemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Poppins ExtraBold'), url('./fonts/Poppins-ExtraBold.woff') format('woff');
+}
+
 html,
 body {
   width: 100%;
