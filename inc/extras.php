@@ -672,8 +672,8 @@ function illdy_get_video_settings() {
 		'videoUrl'  => $video_url,
 		'width'     => 1920,
 		'height'    => 1080,
-		'minWidth'  => 900,
-		'minHeight' => 500,
+		'minWidth'  => 100,
+		'minHeight' => 100,
 		'l10n'      => array(
 			'pause'      => __( 'Pause', 'illdy' ),
 			'play'       => __( 'Play', 'illdy' ),
