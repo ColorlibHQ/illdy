@@ -1,7 +1,7 @@
 <?php
 /**
  *  The template for displaying the front page.
- *
+ * Template Name: Front page layout
  *  @package WordPress
  *  @subpackage illdy
  */
