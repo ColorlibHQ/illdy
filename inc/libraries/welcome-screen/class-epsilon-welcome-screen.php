@@ -215,8 +215,7 @@ class Epsilon_Welcome_Screen {
 				)
 			);
 		}
-
-		if ( ! in_array( $args_action[0], array( 'Epsilon_Import_Data', 'Epsilon_Welcome_Screen' ) ) || ! class_exists( $args_action[0] ) ) {
+		if ( ! in_array( $args_action[0], array( 'Illdy_Companion_Import_Data', 'Epsilon_Welcome_Screen' ) ) || ! class_exists( $args_action[0] ) ) {
 			wp_die(
 				wp_json_encode(
 					array(
