@@ -22,7 +22,7 @@ jQuery(document).ready(function ($) {
         if (target.length) {
           $('html,body').animate(
             {
-              scrollTop: target.offset().top - $('#sticky-wrapper').outerHeight(true),
+              scrollTop: target.offset().top - ( $( '#sticky-wrapper' ).outerHeight( true ) || 0 )
             },
             1000
           );
