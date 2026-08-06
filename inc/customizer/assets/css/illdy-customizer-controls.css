@@ -1,0 +1,26 @@
+/**
+ * Illdy Customizer control styling.
+ *
+ * Deliberately minimal: core supplies the look for every control the theme uses, so
+ * this only smooths the few places where a control needs breathing room.
+ */
+
+.customize-control-illdy-text-editor .illdy-text-editor {
+	width: 100%;
+	font-family: Menlo, Consolas, monaco, monospace;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.customize-control-illdy-text-editor .wp-editor-container {
+	border: 1px solid #dcdcde;
+}
+
+.customize-control-illdy-text-editor .customize-control-description {
+	margin-bottom: 6px;
+}
+
+/* Keep the media button row from overlapping the toolbar when it is hidden. */
+.customize-control-illdy-text-editor .wp-media-buttons {
+	display: none;
+}

@@ -106,12 +106,12 @@ if ( get_theme_mod( $prefix . '_contact_us_entry' ) ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Epsilon_Control_Text_Editor(
+		new Illdy_Control_Text_Editor(
 			$wp_customize, $prefix . '_contact_us_entry', array(
 				'label'    => __( 'Entry', 'illdy' ),
 				'section'  => $prefix . '_contact_us',
 				'priority' => 3,
-				'type'     => 'epsilon-text-editor',
+				'type'     => 'illdy-text-editor',
 			)
 		)
 	);

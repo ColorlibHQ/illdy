@@ -65,12 +65,12 @@ if ( get_theme_mod( $prefix . '_latest_news_general_entry' ) ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Epsilon_Control_Text_Editor(
+		new Illdy_Control_Text_Editor(
 			$wp_customize, $prefix . '_latest_news_general_entry', array(
 				'label'    => __( 'Entry', 'illdy' ),
 				'section'  => $prefix . '_latest_news_general',
 				'priority' => 3,
-				'type'     => 'epsilon-text-editor',
+				'type'     => 'illdy-text-editor',
 			)
 		)
 	);

@@ -28,6 +28,7 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		/**********************************************/
 
 		// Custom Controls
+		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-text-editor.php';
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-button.php';
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-tab.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-kaliforms-custom-control.php';

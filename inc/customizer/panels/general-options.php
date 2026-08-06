@@ -311,9 +311,9 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Epsilon_Control_Text_Editor(
+	new Illdy_Control_Text_Editor(
 		$wp_customize, $prefix . '_404_content', array(
-			'type'     => 'epsilon-text-editor',
+			'type'     => 'illdy-text-editor',
 			'label'    => __( '404 Page Entry', 'illdy' ),
 			'section'  => $prefix . '_404',
 			'priority' => 3,
