@@ -150,10 +150,8 @@ class Epsilon_Ajax_Controller {
 		// Epsilon_Page_Generator and Epsilon_Typography were unused by this theme and
 		// have been removed, so their entries are gone too.
 		$allowed = array(
-			'Epsilon_Helper'        => array( 'get_image_sizes' ),
 			'Epsilon_Notifications' => array( 'dismiss_notice' ),
 			'Epsilon_Notify_System' => array( 'dismiss_required_action' ),
-			'Epsilon_Color_Scheme'  => array( 'epsilon_generate_color_scheme_css' ),
 		);
 
 		/**
@@ -176,7 +174,7 @@ class Epsilon_Ajax_Controller {
      * @param $args
      */
     public static function sanitize_class_name( $class ) {
-        $allowed_classes = array( 'Epsilon_Helper', 'Epsilon_Notify_System', 'Epsilon_Color_Scheme', 'Epsilon_Notifications' );
+        $allowed_classes = array( 'Epsilon_Notify_System', 'Epsilon_Notifications' );
         if ( in_array( $class, $allowed_classes ) ) {
             return $class;
         }else{

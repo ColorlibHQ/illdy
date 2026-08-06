@@ -20,24 +20,13 @@ class Epsilon_Framework {
 	 * controls were never used by this theme and have been removed. 'separator' stays
 	 * because Epsilon_Color_Scheme renders one.
 	 */
-	private $controls = array(
-		'toggle',
-		'slider',
-		'repeater',
-		'image',
-		'text-editor',
-		'color-scheme',
-		'separator',
-	);
+	private $controls = array();
 	/**
 	 * By default, it loads all sections
 	 *
 	 * @var array|mixed
 	 */
-	private $sections = array(
-		'recommended-actions',
-		'pro',
-	);
+	private $sections = array( 'recommended-actions' );
 	/**
 	 * By default, load all panels
 	 *
@@ -114,7 +103,6 @@ class Epsilon_Framework {
 		/**
 		 * Add quick links
 		 */
-		$this->add_action_links();
 
 		/**
 		 * AJAX handling moved to a different class
@@ -148,18 +136,6 @@ class Epsilon_Framework {
 				require_once EPSILON_PATH . '/customizer/panels/class-epsilon-panel-' . $panel . '.php';
 			}
 		}
-
-		/**
-		 * Expose Manager to the Epsilon Customizer class.
-		 */
-		Epsilon_Customizer::get_instance( $wp_customize );
-	}
-
-	/**
-	 * Add quick links to point in customizer
-	 */
-	public function add_action_links() {
-		add_filter( 'page_row_actions', array( 'Epsilon_Customizer', 'add_action_links' ), 99, 2 );
 	}
 
 	/**
@@ -180,17 +156,6 @@ class Epsilon_Framework {
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customizer_enqueue_scripts' ), 25 );
 		add_action( 'customize_preview_init', array( $this, 'customize_preview_styles' ), 25 );
 
-		/**
-		 * Repeater fields templates
-		 */
-		add_action( 'customize_controls_print_footer_scripts', array(
-			'Epsilon_Repeater_Templates',
-			'field_repeater_js_template',
-		), 0 );
-		add_action( 'customize_controls_print_footer_scripts', array(
-			'Epsilon_Repeater_Templates',
-			'section_repeater_js_template',
-		), 0 );
 	}
 
 	/**

@@ -36,6 +36,8 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		require_once get_template_directory() . '/inc/customizer/sections/class-illdy-section-pro.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-kaliforms-custom-control.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-text-custom-control.php';
+		// Loaded last so the Illdy_* classes it wraps already exist.
+		require_once get_template_directory() . '/inc/customizer/class-illdy-deprecated.php';
 
 		$wp_customize->register_control_type( 'Illdy_Control_Tab' );
 		$wp_customize->register_control_type( 'Illdy_Control_Button' );
