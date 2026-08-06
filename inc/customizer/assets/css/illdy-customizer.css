@@ -441,25 +441,52 @@ div.recomended-actions_container {
     padding-top: 4px;
 }
 
-/* Reorder */
+/* Reorder
+ *
+ * WordPress wraps the section title in a full-width flex
+ * <button class="accordion-trigger">, and sets the <h3> padding to 0 when it does, so
+ * an inline-block :before on the h3 is pushed onto its own line above the title.
+ * Taking the icon out of flow and insetting the button keeps the handle vertically
+ * centred beside the name. */
+#sub-accordion-panel-illdy_frontpage_panel > li.control-section > h3 {
+    position: relative;
+    cursor: move;
+}
+
 #sub-accordion-panel-illdy_frontpage_panel > li.control-section > h3:before {
     content: "\f545";
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
     opacity: 0.5;
-    font: 400 20px/21px dashicons;
-    speak: none;
-    display: inline-block;
-    padding: 0;
+    font: 400 20px/1 dashicons;
+    speak: never;
     text-indent: 0;
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-decoration: none!important;
-    vertical-align: middle;
-    margin-right: 10px;
+    text-decoration: none !important;
+    pointer-events: none;
 }
-#sub-accordion-panel-illdy_frontpage_panel > li.control-section#accordion-section-illdy_jumbotron_general > h3:before{
-    content: ""
+
+#sub-accordion-panel-illdy_frontpage_panel > li.control-section > h3 button.accordion-trigger,
+#sub-accordion-panel-illdy_frontpage_panel > li.control-section > h3.accordion-section-title {
+    padding-left: 42px;
 }
+
+/* The jumbotron always renders first and is excluded from the sortable, so it shows a
+ * padlock rather than a drag handle. */
+#sub-accordion-panel-illdy_frontpage_panel > li.control-section#accordion-section-illdy_jumbotron_general > h3 {
+    cursor: default;
+}
+
+#sub-accordion-panel-illdy_frontpage_panel > li.control-section#accordion-section-illdy_jumbotron_general > h3:before {
+    content: "\f160";
+    opacity: 0.35;
+}
+
 #sub-accordion-panel-illdy_frontpage_panel .description {
     display: block !important;
     background: transparent !important;
