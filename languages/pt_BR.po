@@ -1,0 +1,766 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Language: pt_BR\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#. Text in function
+#: illdy/inc/extras.php:47
+msgid "%1$s at %2$s"
+msgstr "%1$s em %2$s"
+
+#. Text in function
+#: illdy/inc/extras.php:46
+msgid "%s"
+msgstr "%s"
+
+#. Text in function
+#: illdy/footer.php:9
+msgid "&copy; Copyright 2016. All Rights Reserved."
+msgstr "&copy; Copyright 2017. Todos os direitos reservados."
+
+#. Text in function
+#: illdy/sections/front-page-contact-us.php:9
+msgid "(555) 555-5555"
+msgstr "(555) 555-5555"
+
+#. Text in function
+#: illdy/inc/extras.php:32
+msgid "(Edit)"
+msgstr "(Editar)"
+
+#. Text in function
+#: illdy/sections/front-page-bottom-header.php:38
+#: illdy/sections/front-page-bottom-header.php:41
+msgid "."
+msgstr "."
+
+#. Text in function
+#: illdy/sections/front-page-about.php:9
+msgid "About"
+msgstr "Sobre"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/welcome-screen.php:205
+msgid "Actions recomended"
+msgstr "Ações Recomendadas"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/actions-required.php:9
+msgid "Actions recommend to make this theme look like in the demo."
+msgstr "Ações recomendadas para que este tema apareça na demo."
+
+#. Text in function
+#: illdy/sections/front-page-contact-us.php:9
+msgid "Address"
+msgstr "Endereço"
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Affiliates"
+msgstr "Afiliados"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Todos os plugins instalados e ativados com sucesso. %1$s"
+
+#. Text in function
+#: illdy/sections/front-page-contact-us.php:9
+msgid "And we will get in touch as soon as possible."
+msgstr "Entraremos em contato o mais rápido possível."
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Announcement"
+msgstr "Anúncio"
+
+#. Text in function
+#: illdy/sidebar.php:11
+msgid "Archive"
+msgstr "Arquivo"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/github.php:25
+msgid "Are you a polyglot? Want to translate illdy into your own language?"
+msgstr "Você é poliglota: Deseja traduzir Illdy para seu própio idioma?"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/github.php:36
+msgid "Are you enjoying illdy?"
+msgstr "Você está gostando do Illidy?"
+
+#. Text in echo
+#: illdy/sections/front-page-testimonials.php:123
+msgid "Awesome theme with great design and helpfull support. If you do not know how to code your own WordPress theme, but you still want a good-looking website for your business, Illdy might be exactly what you need. It is a slick theme with a lot of of features to choose from. You can customize whatever section you  want and you can rest assure that no matter what device your website is viewed on it looks  great."
+msgstr "Tema impressionante com excelente design e suporte útil. Se você não sabe como codificar seu próprio tema do WordPress, mas ainda quer um bom site para seu negócio, Illdy pode ser exatamente o que você precisa. è um tema limpo com muitos recursos para escolher. Você pode personalizar qualquer seção que você quiser e pode ter certeza que será visto em qualquer dispositivo."
+
+#. Text in function
+#: illdy/sections/blog-bottom-header.php:19 illdy/footer.php:49
+msgid "Blog"
+msgstr "Blog"
+
+#. Text in function
+#: illdy/sidebar.php:11
+msgid "Categories"
+msgstr "Categorias"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/welcome-screen.php:210
+msgid "Changelog"
+msgstr "Mudança"
+
+#. Text in function
+#: illdy/sections/front-page-bottom-header.php:9
+msgid "Clean"
+msgstr "Limpar"
+
+#. Text in function
+#: illdy/sections/front-page-counter.php:39
+msgid "Clients"
+msgstr "Clientes"
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Club"
+msgstr "Clube"
+
+#. Text in function
+#: illdy/sections/front-page-counter.php:39
+msgid "Coffes"
+msgstr "Cafés"
+
+#. Text in echo
+#: illdy/comments.php:46
+msgid "Comment navigation"
+msgstr "Navegação por comentários"
+
+#. Text in echo
+#: illdy/comments.php:61
+msgid "Comments are closed."
+msgstr "Os comentários estão fechados."
+
+#. Text in function
+#: illdy/sections/front-page-services.php:44
+msgid "Consectetur adipiscing elit. Praesent molestie urna hendrerit erat tincidunt tempus. Aliquam a leo risus. Fusce a metus non augue dapibus porttitor at in mauris. Pellentesque commodo..."
+msgstr "Consectetur adipiscing elit. Praesent molestie urna hendrerit erat tincidunt tempus. Aliquam a leo risus. Fusce a metus non augue dapibus porttitor at in mauris. Pellentesque commodo..."
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Contact"
+msgstr "Contato"
+
+#. Text in function
+#: illdy/sections/front-page-contact-us.php:9
+msgid "Contact us"
+msgstr "Contate-nos"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/welcome-screen.php:209
+msgid "Contribute"
+msgstr "Contribuir"
+
+#. Text in function
+#: illdy/sections/front-page-team.php:44
+msgid "Creative, detail-oriented, always focused."
+msgstr "Criativo, detalhista, sempre focado."
+
+#. Text in function
+#: illdy/sections/front-page-team.php:44
+msgid "Curious, tech-geeck and gets serious when it comes to work."
+msgstr "Curioso, tech-geeck e fica sério quando se trata de trabalhar."
+
+#. Text in function
+#: illdy/sections/front-page-contact-us.php:9
+msgid "Customer Support"
+msgstr "Suporte ao cliente"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/getting-started.php:26
+msgid "Customize everything in a single place."
+msgstr "Personalize tudo em um único lugar."
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/welcome-screen.php:207
+msgid "Demo Content"
+msgstr "Conteúdo de demonstração"
+
+#. Text in function
+#: illdy/sections/front-page-about.php:43
+msgid "Design"
+msgstr "Design"
+
+#. Text in function
+#: illdy/sections/front-page-team.php:44
+msgid "Developer"
+msgstr "Desenvolvedor"
+
+#. Text in function
+#: illdy/sections/front-page-about.php:43
+msgid "Development"
+msgstr "Desenvolvimento"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Dismiss this notice"
+msgstr "Descartar essa notificação"
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Documentation"
+msgstr "Documantação"
+
+#. Text in function
+#: illdy/sections/front-page-bottom-header.php:9
+msgid "Download"
+msgstr "Baixar"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:104
+msgid "E-mail:"
+msgstr "E-mail:"
+
+#. Text in function
+#: illdy/comments.php:64
+msgid "Email"
+msgstr "Email"
+
+#. Text in function
+#: illdy/sections/front-page-team.php:44
+msgid "Enthusiastic, passionate with great sense of humor."
+msgstr "Entusiasmado, apaixonado, com grande senso de humor."
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "FAQs"
+msgstr "FAQs"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:120
+msgid "Facebook"
+msgstr "Facebook"
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Forums"
+msgstr "Fóruns"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/github.php:14
+msgid "Found a bug? Want to contribute with a fix or create a new feature?"
+msgstr "Encontrou um bug? Quer contribuir com uma correção ou criar um novo recurso?"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/github.php:27
+msgid "Get involved at WordPress.org."
+msgstr "Envolva-se no WordPress.org."
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/welcome-screen.php:64
+msgid "Get started with Illdy"
+msgstr "Comece com Illdy"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/getting-started.php:24
+#: illdy/inc/admin/welcome-screen/welcome-screen.php:204
+msgid "Getting started"
+msgstr "Começando"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/github.php:16
+msgid "GitHub is the place to go!"
+msgstr "GitHub é o lugar certo!"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/getting-started.php:28
+msgid "Go to Customizer"
+msgstr "Vá para Personalizador"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:126
+msgid "Google+"
+msgstr "Google+"
+
+#. Text in function
+#: illdy/inc/admin/welcome-screen/welcome-screen.php:226
+msgid "Hooray! There are no recomended actions for you right now."
+msgstr "Não há ações recomendadas para você agora."
+
+#. Text in function
+#: illdy/inc/admin/welcome-screen/sections/actions-required.php:38
+msgid "Hooray! There are no required actions for you right now."
+msgstr "Não há ações necessárias para você agora."
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/github.php:9
+msgid "How can I contribute?"
+msgstr "Como posso contribuir?"
+
+#. Text in function
+#: illdy/sections/front-page-latest-news.php:9
+msgid "If you are interested in the latest articles in the industry, take a sneak peek at our blog. You have got nothing to loose!"
+msgstr "Se você estiver interessado nos artigos mais recentes da indústria, dê uma espiada em nosso blog. Você não tem nada a perder!"
+
+#. Text in function
+#: illdy/header.php:9 illdy/footer.php:62
+msgid "Illdy"
+msgstr "Illdy"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/github.php:19
+msgid "Illdy on GitHub"
+msgstr "Illdy no GitHub"
+
+#. Text in function
+#: illdy/sections/front-page-services.php:9
+msgid "In order to help you grow your business, our carefully selected experts can advise you in in the following areas:"
+msgstr "Para ajudar a crescer o seu negócio, nossos especialistas cuidadosamente selecionados podem orientá-lo nas seguintes áreas:"
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Information"
+msgstr "Informação"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:132
+msgid "Instagram"
+msgstr "Instagram"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Install Plugins"
+msgstr "Instalar Plugins"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Install Required Plugins"
+msgstr "Instalar Plugins Requeridos"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Installing Plugin: %s"
+msgstr "Instalando o Plugin: %s"
+
+#. Text in function
+#: illdy/sections/front-page-about.php:9
+msgid "It is an amazng one-page theme with great features that offers an incredible experience. It is easy to install, make changes, adapt for your business. A modern design with clean lines and styling for a wide variety of content, exactly how a business design should be. You can add as many images as you want to the main header area and turn them into slider."
+msgstr "É um tema de uma página com excelentes recursos que oferece uma experiência incrível. É fácil de instalar, fazer alterações, adaptar para o seu negócio. Um design moderno com linhas limpas e estilo para uma grande variedade de conteúdo, exatamente como um design de negócios deve ser. Você pode adicionar tantas imagens quanto quiser na área principal do cabeçalho e transformá-las em controle deslizante."
+
+#. Text in function
+#: illdy/sections/front-page-team.php:44
+msgid "Jane  Stenton"
+msgstr "Jane  Stenton"
+
+#. Text in echo
+#: illdy/sections/front-page-testimonials.php:87
+#: illdy/sections/front-page-testimonials.php:126
+#: illdy/sections/front-page-testimonials.php:98
+#: illdy/sections/front-page-testimonials.php:109
+#: illdy/sections/front-page-testimonials.php:120
+msgid "Jane Smith"
+msgstr "Jane Smith"
+
+#. Text in function
+#: illdy/sections/front-page-team.php:44
+msgid "John Smith"
+msgstr "John Smith"
+
+#. Text in function
+#: illdy/sections/front-page-latest-news.php:9
+msgid "Latest News"
+msgstr "Últimas notícias"
+
+#. Text in function
+#: illdy/sections/front-page-bottom-header.php:9
+msgid "Learn more"
+msgstr "Saiba mais"
+
+#. Text in function
+#: illdy/comments.php:96
+msgid "Leave a comment"
+msgstr "Deixe um comentário"
+
+#. Text in function
+#: illdy/comments.php:96
+msgid "Leave a comment to %s"
+msgstr "Deixe um comentário para %s"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:123
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#. Text in function
+#: illdy/sections/front-page-contact-us.php:9
+msgid "London, UK"
+msgstr "Londres, Reino Unido"
+
+#. Text in function
+#: illdy/sections/front-page-team.php:44
+msgid "Mark Lawrance"
+msgstr "Mark Lawrance"
+
+#. Text in function
+#: illdy/sections/front-page-team.php:9
+msgid "Meet the people that are going to take your business to the next level."
+msgstr "Conheça as pessoas que vão ter o seu negócio para o próximo nível."
+
+#. Text in function
+#: illdy/comments.php:64
+msgid "Message"
+msgstr "Mensagem"
+
+#. Text in function
+#: illdy/comments.php:64
+msgid "Name"
+msgstr "Nome"
+
+#. Text in function
+#: illdy/comments.php:50
+msgid "Newer Comments"
+msgstr "Comentários mais recentes"
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "News"
+msgstr "Notícias"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "Nenhuma ação tomada. O plugin %1$s já estava ativo."
+
+#. Text in function
+#: illdy/inc/customizer/custom-controls.php:1
+msgid "No contact forms found"
+msgstr "Nenhum formulário de contato encontrado"
+
+#. Text in echo
+#: illdy/template-parts/content-none.php:10
+msgid "Nothing Found"
+msgstr "Nada encontrado"
+
+#. Text in function
+#: illdy/comments.php:49
+msgid "Older Comments"
+msgstr "Comentários mais antigos"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/getting-started.php:15
+msgid "Our most popular free one page WordPress theme, Illdy!"
+msgstr "Nosso tema WordPress gratuito mais popular, Illdy!"
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Our work"
+msgstr "Nosso trabalho"
+
+#. Text in function
+#: illdy/template-parts/content-single.php:22
+#: illdy/template-parts/content-page.php:20
+msgid "Pages:"
+msgstr "Páginas:"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:108
+msgid "Phone:"
+msgstr "Telefone:"
+
+#. Text in echo
+#: illdy/inc/extras.php:32
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:129
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#. Text in function
+#: illdy/sections/front-page-bottom-header.php:9
+msgid "Pixel Perfect"
+msgstr "Pixel Perfect"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Please contact the administrator of this site for help."
+msgstr "Entre em contato com o administrador deste site para obter ajuda."
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Plugin activated successfully."
+msgstr "Plugin ativado com sucesso."
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr "Plugin não ativado. É necessária uma versão superior do que %s para este tema. Atualize o plugin."
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Pricing"
+msgstr "Preços"
+
+#. Text in function
+#: illdy/woocommerce.php:26
+msgid "Product Categories"
+msgstr "Categorias de Produtos"
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Products"
+msgstr "Produtos"
+
+#. Text in function
+#: illdy/sections/front-page-projects.php:44
+msgid "Project 1"
+msgstr "Projeto 1"
+
+#. Text in function
+#: illdy/sections/front-page-projects.php:44
+msgid "Project 2"
+msgstr "Projeto 2"
+
+#. Text in function
+#: illdy/sections/front-page-projects.php:44
+msgid "Project 3"
+msgstr "Projeto 3"
+
+#. Text in function
+#: illdy/sections/front-page-projects.php:44
+msgid "Project 4"
+msgstr "Projeto 4"
+
+#. Text in function
+#: illdy/sections/front-page-counter.php:39
+#: illdy/sections/front-page-projects.php:9
+msgid "Projects"
+msgstr "Projetos"
+
+#. Text in function
+#: illdy/inc/admin/welcome-screen/sections/github.php:38
+msgid "Rate our theme on %sWordPress.org%s. We\\'d really appreciate it!"
+msgstr "Avalie o nosso tema em %sWordPress.org%s. Nós realmente apreciamos isso!"
+
+#. Text in echo
+#: illdy/template-parts/content.php:20
+#: illdy/sections/front-page-latest-news.php:84
+msgid "Read more"
+msgstr "Consulte para mais informação"
+
+#. Text in function
+#: illdy/template-parts/content-none.php:12
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Pronto para publicar seu primeiro post? <a href=\"%1$s\">Comece aqui</a>."
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Return to Required Plugins Installer"
+msgstr "Retornar para o instalador de Plugins necessários"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Return to the Dashboard"
+msgstr "Retornar ao Painel de Controle"
+
+#. Text in function
+#: illdy/sections/front-page-services.php:44
+msgid "SEO Analisys"
+msgstr "Análise de SEO"
+
+#. Text in function
+#: illdy/sections/front-page-team.php:44
+msgid "SEO Specialist"
+msgstr "Especialista em SEO"
+
+#. Text in function
+#: illdy/sections/front-page-latest-news.php:9
+msgid "See blog"
+msgstr "Veja o blog"
+
+#. Text in function
+#: illdy/comments.php:96
+msgid "Send"
+msgstr "Enviar"
+
+#. Text in function
+#: illdy/sections/front-page-services.php:9
+msgid "Services"
+msgstr "Serviços"
+
+#. Text in function
+#: illdy/inc/extras.php:149
+msgid "Settings > Readings"
+msgstr "Configurações > Leituras"
+
+#. Text in function
+#: illdy/sections/front-page-bottom-header.php:9
+msgid "Slick"
+msgstr "Slick"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Something went wrong with the plugin API."
+msgstr "Algo deu errado com a API do plugin."
+
+#. Text in function
+#: illdy/sections/front-page-contact-us.php:9
+msgid "Street 221B Baker Street, "
+msgstr "Rua 221B Baker Street, "
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Support"
+msgstr "Suporte"
+
+#. Text in function
+#: illdy/sections/front-page-team.php:9
+msgid "Team"
+msgstr "Equipe"
+
+#. Text in function
+#: illdy/footer.php:49
+msgid "Terms"
+msgstr "Termos"
+
+#. Text in function
+#: illdy/sections/front-page-testimonials.php:9
+msgid "Testimonials"
+msgstr "Depoimentos"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "The following plugin was activated successfully:"
+msgstr "O seguinte plug-in foi ativado com sucesso:"
+
+#. Text in function
+#: illdy/footer.php:62
+msgid "Theme:"
+msgstr "Tema:"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "There are one or more required or recommended plugins to install, update or activate."
+msgstr "Há um ou mais plugins necessários ou recomendados para instalar, atualizar ou ativar."
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr "Este plugin precisa ser atualizado para ser compatível com seu tema."
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/github.php:30
+msgid "Translate Illdy"
+msgstr "Traduzir Illdy"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:117
+msgid "Twitter"
+msgstr "Twitter"
+
+#. Text in function
+#: illdy/sections/front-page-about.php:43
+msgid "Typography"
+msgstr "Tipografia"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Update Required"
+msgstr "Atualização necessária"
+
+#. Text in function
+#: illdy/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:1
+msgid "Updating Plugin: %s"
+msgstr "Atualização do plugin: %s"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/getting-started.php:27
+msgid "Using the WordPress Customizer you can easily customize every aspect of the theme."
+msgstr "Com o Personalizador do WordPress você pode personalizar facilmente todos os aspectos do tema."
+
+#. Text in function
+#: illdy/inc/admin/welcome-screen/welcome-screen.php:226
+msgid "View Theme Info"
+msgstr "Ver informações do tema"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:138
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/getting-started.php:16
+msgid "We want to make sure you have the best experience using Illdy and that is why we gathered here all the necessary information for you. We hope you will enjoy using Illdy, as much as we enjoy creating great products."
+msgstr "Queremos garantir que você tenha a melhor experiência usando o Illdy, é por isso que reunimos aqui todas as informações necessárias para você. Esperamos que você aproveite usando o Illdy, tanto quanto gostamos de criar excelentes produtos."
+
+#. Text in function
+#: illdy/sections/front-page-services.php:44
+msgid "Web Design"
+msgstr "Web Design"
+
+#. Text in function
+#: illdy/sections/front-page-team.php:44
+msgid "Web Designer"
+msgstr "Web Designer"
+
+#. Text in function
+#: illdy/sections/front-page-services.php:44
+msgid "Web Development"
+msgstr "Desenvolvimento web"
+
+#. Text in function
+#: illdy/comments.php:64
+msgid "Website"
+msgstr "Website"
+
+#. Text in echo
+#: illdy/inc/admin/welcome-screen/sections/getting-started.php:13
+msgid "Welcome to Illdy!"
+msgstr "Bem-vindo a Illdy!"
+
+#. Text in function
+#: illdy/inc/admin/welcome-screen/welcome-screen.php:63
+msgid "Welcome! Thank you for choosing Illdy! To fully take advantage of the best our theme can offer please make sure you visit our %swelcome page%s."
+msgstr "Bem vindo! Obrigado por escolher Illdy! Para aproveitar ao máximo do melhor que o nosso tema pode oferecer, certifique-se de visitar nossa página %swelcome page%s."
+
+#. Text in function
+#: illdy/woocommerce.php:26
+msgid "WooCommerce Title"
+msgstr "Título do WooCommerce"
+
+#. Text in echo
+#: illdy/sections/front-page-contact-us.php:135
+msgid "YouTube"
+msgstr "YouTube"
+
+#. Text in function
+#: illdy/sections/front-page-projects.php:9
+msgid "You\\'ll love our work. Check it out!"
+msgstr "Você amará nosso trabalho. Confira!"
+
+#. Text in echo
+#: illdy/inc/extras.php:50
+msgid "Your comment is awaiting moderation."
+msgstr "Seu comentário aguarda moderação."
+
+#. Text in echo
+#: illdy/inc/extras.php:149
+msgid "and set your front page to display a page."
+msgstr "defina sua página inicial para exibir uma página."
+
+#. Text in function
+#: illdy/sections/front-page-contact-us.php:9
+msgid "contact@site.com"
+msgstr "contact@site.com"
+
+#. Text in function
+#: illdy/sections/front-page-bottom-header.php:9
+msgid "lldy is a great one-page theme, perfect for developers and designers but also for someone who just wants a new website for his business. Try it now!"
+msgstr "illdy é um ótimo tema de uma página, perfeito para desenvolvedores e designers, mas também para alguém que apenas quer um novo site para seus negócios. Tente agora!"

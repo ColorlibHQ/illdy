@@ -1,0 +1,20 @@
+// Mixin: Backgorund Size
+@mixin background-size($value) {
+	-webkit-background-size: $value;
+	-moz-background-size: $value;
+	-o-background-size: $value;
+	background-size: $value;
+}
+
+// Mixin: Border Radius
+@mixin border-radius($value) {
+	border-radius: $value;
+}
+
+// Mixin: Transition
+@mixin transition($value) {
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	-o-transition: $value;
+	transition: $value;
+}

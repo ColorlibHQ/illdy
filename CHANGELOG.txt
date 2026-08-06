@@ -1,0 +1,278 @@
+### V 2.1.10
+- Fixed UI for recommended plugins section in admin dashboard
+- Improved layout for plugin boxes and buttons in admin
+- Fixed plugin author links display in recommended plugins
+- Improved spacing and alignment in the admin dashboard
+- Removed kb-support from recommended plugins list
+- Fixed critical bug in demo content import functionality
+- Fixed PHP syntax error in dynamic method calls in companion plugin
+- Fixed undefined variable issue in the import_customizer method
+- Fixed AJAX callback handler to properly process import requests
+- Fixed multiple PHP warnings throughout the theme
+
+### V 2.1.7
+- Compatibility with jQuery 3.0
+
+### V 2.1.6
+- Compatibility fixes for WordPress 5.5
+
+### V 2.1.5
+- Security Fix
+
+### V 2.1.4
+- Improved accesibility with keyboard navigation
+- Replaced notification design with core design
+- Improved compatibility with Kaliforms plugin
+
+### V 2.1.2
+- Update npm deps (https://github.com/ColorlibHQ/illdy/issues/276)
+- Logo image size not defined (https://github.com/ColorlibHQ/illdy/issues/282)
+- Strange output of illdy even on our demo (https://github.com/ColorlibHQ/illdy/issues/284)
+
+### V 2.1.1
+- fixed a wrong URL for loading fancybox JS
+
+### V 2.1.0
+- updated grunt package.json
+- Fixed #256 (videos in project section, they need an image backup)
+- Updated FancyBox to latest version
+- Added Colorlib Login Customizer as recommended plugin
+- Fixes #267 (add option to hide footer widget area || footer copyright message area)
+
+### V 2.0.4
+	- Fixed Customizer issue ( https://github.com/puikinsh/illdy/issues/230 )
+
+### V 2.0.3
+	- Fixed Submenu issue ( https://github.com/puikinsh/illdy/issues/226 )
+
+### V 2.0.2
+	- When opening a front-page panel now, it automatically scrolls you to it.
+	- The theme now handles the 404 Page Content. It works really nice, by loading the 404 page in the Customizer so you can live-edit it. When hitting back, it returns you to the panel you were in, before.
+	- Tabs used in all of the front-page sections now use AJAX to load. This means that they load instantly with a nice expand effect
+	- For the Jumbotron area, the theme now supports: slides (with repeater from Epsilon Framework) as well as videos (core support). Changes show up in real-time.
+	- The theme's preloader doesn't show up anymore when users are changing values from the Customizer.
+	- Color scheme picker has been implemented.
+	- Theme widgets now support basic HTML (by using TinyMCE instances)
+
+### V2.0.1
+	- Fixed left sidebar mobile issue. ( https://github.com/puikinsh/illdy/issues/176 )
+	- Woocommerce "Additional Information" Tab issue. ( https://github.com/puikinsh/illdy/issues/179 )
+	- Allow change of font for title and also make the period optional( https://github.com/puikinsh/illdy/issues/180 )
+	- Contact Us Title not displaying on front end. ( https://github.com/puikinsh/illdy/issues/181 )
+
+### V2.0.0
+	- Added new Welcome Page.
+	- Remove static fronpate action from Illdy theme and added to Illdy companion
+	- Resolved #5 - Add fallback image for jumbotron. (https://github.com/puikinsh/illdy/issues/5)
+	- Resolved #7 - Missing some strings in the POT-file (https://github.com/puikinsh/illdy/issues/7)
+	- Resolved #8 - Submenu not displaying as submenu in mobile version (https://github.com/puikinsh/illdy/issues/8)
+	- Resolved #9 - date display in European not changing (https://github.com/puikinsh/illdy/issues/9)
+	- Resolved #10 - Jumbotron images not show on IOS (https://github.com/puikinsh/illdy/issues/10)
+	- Resolved #12 - https://github.com/puikinsh/illdy/issues/12
+	- Resolved #14 - Search box in sidebar is off the position (https://github.com/puikinsh/illdy/issues/14)
+	- Resolved #15 - Responsive layout issues (https://github.com/puikinsh/illdy/issues/15)
+	- Resolved #16 - Jumbotron buttons does not hide (https://github.com/puikinsh/illdy/issues/16)
+	- Resolved #21 - Remove error-styled notice (https://github.com/puikinsh/illdy/issues/21)
+	- Resolved #22 - Remove grey border around recommended plugin images (https://github.com/puikinsh/illdy/issues/22)
+	- Resolved #24 - Implemented new design (https://github.com/puikinsh/illdy/issues/24)
+	- Resolved #27 - Appereance - About Illdy - Changelog Tab (https://github.com/puikinsh/illdy/issues/27)
+	- Resolved #28 - General option - Site Logo - Cropping issue (https://github.com/puikinsh/illdy/issues/28)
+	- Resolved #29 - Footer Copyright issue (https://github.com/puikinsh/illdy/issues/29)
+	- Resolved #30 - Customizer : footer panel description (https://github.com/puikinsh/illdy/issues/30)
+	- Resolved #32 - Background Image - remove functionality (https://github.com/puikinsh/illdy/issues/32)
+	- Resolved #34 - Jumbotron Section - Titles issue (https://github.com/puikinsh/illdy/issues/34)
+	- Resolved #37 - Blog Archive Header Image - Suggested image not appear (https://github.com/puikinsh/illdy/issues/37)
+	- Resolved #38 - Blog Featured Image - description isn't very clear (https://github.com/puikinsh/illdy/issues/38)
+	- Resolved #40 - Counter Section - Color Background overlay (https://github.com/puikinsh/illdy/issues/40)
+	- Resolved #41 - Contact us Section - Contact Details - Phone number design issue (https://github.com/puikinsh/illdy/issues/41)
+	- Resolved #44 - Team sidebar - Tablet testing issue (https://github.com/puikinsh/illdy/issues/44)
+	- Resolved #46 - Search bar - Remove Uppercase (https://github.com/puikinsh/illdy/issues/46)
+	- Resolved #47 - Blog Index Page - Sidebar issue - Tablet testing (https://github.com/puikinsh/illdy/issues/47)
+	- Resolved #49 - Change theme screenshot (https://github.com/puikinsh/illdy/issues/49)
+	- Resolved #50 - Menu sample with dropdown issues (https://github.com/puikinsh/illdy/issues/50)
+	- Resolved #51 - Headings issue (https://github.com/puikinsh/illdy/issues/51)
+	- Resolved #52 - 3.1 Labels - Style 2 Homepage - issue (https://github.com/puikinsh/illdy/issues/52)
+	- Resolved #53 - Widget - Archive and Categories issues (https://github.com/puikinsh/illdy/issues/53)
+	- Resolved #54 - Widgets - Recent comments issue (https://github.com/puikinsh/illdy/issues/54)
+	- Resolved #55 - Widget - Recent Posts issue (https://github.com/puikinsh/illdy/issues/55)
+	- Resolved #57 - Quick editing icon for nav menu (https://github.com/puikinsh/illdy/issues/57)
+	- Resolved #60 - Widget - Footer Sidebar 3 - RSS issues (https://github.com/puikinsh/illdy/issues/60)
+	- Resolved #66 - Widget - Calendar issues (https://github.com/puikinsh/illdy/issues/66)
+	- Resolved #67 - Widget - Search (https://github.com/puikinsh/illdy/issues/67)
+	- Resolved #73 - Typography - Headings 2,5 and 6 modified (https://github.com/puikinsh/illdy/issues/73)
+	- Resolved #74 - About Us section - Improvements (https://github.com/puikinsh/illdy/issues/74)
+	- Resolved #75 - Logo text - improvement (https://github.com/puikinsh/illdy/issues/75)
+	- Resolved #77 - Testimonials Section Improvements (https://github.com/puikinsh/illdy/issues/77)
+	- Resolved #78 - Services Improvements (https://github.com/puikinsh/illdy/issues/78)
+	- Resolved #79 - Latest News Improvements (https://github.com/puikinsh/illdy/issues/79)
+	- Resolved #80 - Counter Section Improvements (https://github.com/puikinsh/illdy/issues/80)
+	- Resolved #91 - Blog Post - Comment section improvements (https://github.com/puikinsh/illdy/issues/91)
+	- Resolved #93 - Blog Index issue (https://github.com/puikinsh/illdy/issues/93)
+	- Resolved #94 - Button Style improvements (https://github.com/puikinsh/illdy/issues/94)
+	- Resolved #95 - Latest News Section Improvements (https://github.com/puikinsh/illdy/issues/95)
+
+
+### V1.0.35
+	- Resolved #57 - Removed link attribution. (https://github.com/MachoThemes/illdy/issues/57)
+
+### V1.0.34
+	- Resolved #56 - Services and Testimonials Sections are missing the Title field. (https://github.com/MachoThemes/illdy/issues/56)
+
+### V1.0.33
+	- Resolved #51 - Uncheck dedicated page header picture by default.( https://github.com/MachoThemes/illdy/issues/51 )
+	- Resolved #52 - Change Parallax header background position from cover to contain.( https://github.com/MachoThemes/illdy/issues/52 )
+	- Resolved #53 - Style contact form 7 outside of homepage.( https://github.com/MachoThemes/illdy/issues/53 )
+	- Resolved #54 - Random number in sections.( https://github.com/MachoThemes/illdy/issues/54 )
+	- Resolved #55 - Projects cannot be created.( https://github.com/MachoThemes/illdy/issues/55 )
+
+### V1.0.32
+    - we had two panels for the counter section and we made them into a single one.
+    - added a new CSS stylesheet to beautify section descriptions (make them more visible). /inc/customizer/assets/css/illdy-customizer.css
+
+### V1.0.31
+    - w.org requirements: Please change the text in the theme about page "Actions required" there should be no required actions. (fixed)
+    - w.org requirements: The front page sections do not have any options to define where the data is coming from (fixed, if the companion plugin is not installed a notice will be shown that takes you to the TGMPA plugin install page).
+
+### V1.0.30
+    - #26 ( Mobile burger position is off )
+    - #34 ( Position for the (jumbotron) header picture to be center )
+    - #37 ( Blog listing as homepage (your latest posts) always displays Archive as header title )
+    - #38 ( Contact map entry title field is missing from Customizer )
+    - #39 ( Add 5 more social services for contact section )
+    - #40 ( Provide option to make blog and posts full width. Currently all have sidebar )
+    - #41 ( Strange site title and jumbotron behaviour )
+    - #43 ( Add "Demo Content will not display on live website" Message )
+    - #45 ( Fix display for more than 3-4 elements in services, team, news etc )
+    - #46 ( Copyright options not working )
+    - #49 ( Jumbotron parallax effect )
+    - #50 ( Add page sidebar )
+
+### V1.0.29
+    - #35 ( Notice: Undefined index: Illdy_Widget_Recent_Posts  )
+    - #36 ( Missing escape function in header.php )
+
+### V1.0.28
+	- #27 ( single post options, blog header image -> Blog Options )
+	- #28 ( Menu, section order -> general options )
+	- #29 ( add section to about/project/testimonials/etc )
+	- #30 ( general option- contact details + contac us -> General + contact details )
+	- #31 ( footer details -> copyright )
+	- #32 ( site title -> description - apare in archive )
+	- #33 ( company name -> apare doar in static frontpage )
+
+### V1.0.27
+	- #5 ( Contact form send message succesfully display bug  )
+	- #7 ( Aphostrophe renders as &amp;#039; in Service entry text )
+	- #18 ( CSS Stylesheets should be enqueued not @Imported )
+	- #19 ( Update TGMPA nag type to 'updated' )
+	- #21 ( Fix display for less items than the default 3-4 per section )
+	- #23 ( Jumbotron buttons does not hide when there's no information )
+	- #25 ( Change page title from h2 to h1 )
+
+### V1.0.26
+	- Moved widgets to Illdy Companion
+	- Resolved "Change page title from h2 to h1" (#25)
+	- Resolved "Jumbotron buttons does not hide when there's no information" (#23)
+	- Resolved "Fix display for less items than the default 3-4 per section" (#21)
+	- Resolved "Update TGMPA" (#19)
+	- Resolved "CSS Stylesheets should be enqueued not @Imported" (#18)
+	- Resolved "Contact form send message succesfully display bug" (#5)
+	- Resolved repo ticket : https://themes.trac.wordpress.org/ticket/29912#comment:45
+
+### V1.0.17
+	- Updated TGMPA to latest version (2.6.1).
+	- Fixed a few strings which weren't available for translation.
+	- Update tag themes in style.css to match the new ones for the wordpress.org repo.
+	- Fixed a few strings which had 'untranslatable characters' in them.
+	- Added theme support for custom background images.
+	- Loaded the 'Source Sans Pro' font in the back-end editor so fonts resemble the ones on the front-page.
+
+### v1.0.16
+	- Has been fixed paginate links on blog.
+
+### v1.0.15
+	- Has been fixed the jQuery error in console on WordPress v4.5.
+
+### v1.0.14
+	- Has been added theme support function for WooCommerce.
+	- Has been added version on enqueue functions.
+
+### v1.0.13
+	- Has been fixed the third level menu.
+	- Has been fixed E-mail and Phone text from Contact us section on responsive.
+	- Has been fixed buttons alignment from Jumbotron section on responsive.
+	- Has been changed the post/ page title and description on singular header posts/ pages.
+	- Has been added sticky post.
+	- Has been fixed translation string and regenerated new .pot file.
+	- Has been added WooCommerce support.
+	- Has been added dropdown fields in customizer to order the sections on front page.
+
+### v1.0.12
+	- Has been added CSS style for the second sub menu from header navigation.
+	- Has been added the link to Contact Form 7 in Contact Form Creation field from customizer.
+	- Has been changed the title "Contact Form Creation" instead "Contact Form 7".
+
+### v1.0.11
+	- Has been added HTML sanitize function for customizer.
+	- Has been added active calback function for Contact Form 7 from customizer.
+	- Customizer - Contact us: has been changed in section from panel.
+	- Has been removed Social Sharing component.
+	- Customizer - Latest News: has been changed in section from panel.
+	- Has been added active callback functions for Testimonials section from customizer.
+	- Customizer - Testimonials: has been changed in section from panel.
+	- Customizer - Jumotron: has been changed in section from panel.
+	- Has been changed the Footer Logo instead Image Site Logo.
+	- Has been changed the Blog Header Image instead Header Image.
+	- Has been changed the description at Contact Details from customizer.
+
+### v1.0.10
+	- Has been fixed OWL Carousel when JetPack plugin is not installed.
+	- Has been added "max-width" in CSS for logo on responsive.
+
+### v1.0.9
+	- Has been fixed Phone Number and E-mail Address from Customizer.
+
+### v1.0.8
+	- Has been generated POT file.
+	- Has been fixed the checkbox from customizer for Latest News section.
+	- Has been fixed Testimonials section when are added one post.
+
+### v1.0.7
+	- Has been added the background on preloader.
+	- Has been changed the link in footer.
+	- Has been changed the author name from style file.
+
+### v1.0.6
+	- Has been changed the color picker for custom widgets: Skill, Service and Person.
+	- Has been removed alias text from Font Awesome.
+	- Has been added the descriptions on fields from Counter widget.
+	- Has been added sanitize function for checkboxs from customizer.
+
+### v1.0.5
+	- Has been removed JSON widgets importer function.
+	- Has been added the preloader.
+	- Has been resolved the responsive.
+
+### v1.0.4
+	- Has been renamed "illdy_get_cf7_forms()" function instead "pixova_lite_get_cf7_forms()".
+	- Has been changed the footer copyright URL.
+	- Has been fixed the margin button in the subheader.
+
+### v1.0.3
+	- Has been reordered the panels from customizer.
+	- Has been added fields from Site Identity panel on header blog taglines.
+	- Has been added contition on image from Person widget.
+	- On Person widget has been added black color instead white color.
+	- On Skill and Services widgets has been added black color instead white color.
+	- Has been fixed header image for blog in customizer live preview.
+	- Has been added edited the description for social icons from contact section.
+	- Has been fixed logo text in customizer live preview.
+
+### v1.0.2
+	- Has been added textdomain on "Display title?" string.
+
+### v1.0.1
+	- Initial release.
+
+### v1.0.0
+	- Initial release.
