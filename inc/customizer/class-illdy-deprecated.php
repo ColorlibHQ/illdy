@@ -125,6 +125,36 @@ if ( ! class_exists( 'Epsilon_Control_Slider' ) ) {
 	}
 }
 
+if ( ! class_exists( 'Epsilon_Section_Recommended_Actions' ) ) {
+	/**
+	 * The Recommended Actions section was removed in 2.2.0.
+	 *
+	 * It held no settings — only plugin install buttons and social links — so nothing
+	 * stored is lost by it going away. Anything still registering it gets an ordinary
+	 * empty section rather than a fatal.
+	 */
+	class Epsilon_Section_Recommended_Actions extends WP_Customize_Section {
+		public function __construct( $manager, $id, array $args = array() ) {
+			illdy_deprecated_control( __CLASS__, '' );
+
+			foreach ( array( 'actions', 'plugins', 'social_text', 'plugin_text', 'theme_specific_option', 'theme_specific_plugin_option', 'facebook', 'twitter', 'wp_review' ) as $removed ) {
+				unset( $args[ $removed ] );
+			}
+
+			parent::__construct( $manager, $id, $args );
+		}
+
+		/**
+		 * Nothing to show, so keep it out of the panel list entirely.
+		 *
+		 * @return bool
+		 */
+		public function active_callback() {
+			return false;
+		}
+	}
+}
+
 if ( ! class_exists( 'Epsilon_Color_Scheme' ) && class_exists( 'Illdy_Color_Scheme' ) ) {
 	class Epsilon_Color_Scheme extends Illdy_Color_Scheme {
 		/**

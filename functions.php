@@ -559,17 +559,57 @@ if ( ! function_exists( 'illdy_get_random_featured_image' ) ) {
 }
 
 if ( ! function_exists( 'illdy_get_recommended_actions_url' ) ) {
+	/**
+	 * Where to send someone who still needs Illdy Companion.
+	 *
+	 * This used to point at the theme's welcome screen, which no longer exists. The
+	 * only callers are the Customizer descriptions shown while the Companion is
+	 * inactive, so the useful destination is core's plugin installer, which can both
+	 * describe and install the plugin without the theme carrying an onboarding page.
+	 *
+	 * @return string
+	 */
 	function illdy_get_recommended_actions_url() {
-		// The welcome screen registers its sections with hyphens ("recommended-actions").
-		// This returned an underscored slug, so every "Install Illdy Companion" link in
-		// the Customizer opened a tab the welcome screen could not resolve.
-		return self_admin_url( 'themes.php?page=illdy-welcome&tab=recommended-actions' );
+		return self_admin_url( 'plugin-install.php?tab=plugin-information&plugin=illdy-companion' );
 	}
 }
 
+if ( ! function_exists( 'illdy_redirect_legacy_welcome_screen' ) ) {
+	/**
+	 * Sends old "About Illdy" links somewhere useful.
+	 *
+	 * The welcome screen was registered at themes.php?page=illdy-welcome. Requesting an
+	 * admin page that no longer exists makes WordPress wp_die() with a permissions
+	 * error, which is a confusing thing to hand someone following an old bookmark or a
+	 * link in the theme documentation. Redirect instead: to the demo importer when
+	 * Illdy Companion provides it, otherwise to Appearance.
+	 *
+	 * Hooked to `admin_page_access_denied`, which core fires immediately before it
+	 * wp_die()s for an unrecognised page. That scopes this to the exact case it is
+	 * meant for: admin_init would be too late, and anything earlier would have to
+	 * inspect the request itself.
+	 */
+	function illdy_redirect_legacy_welcome_screen() {
+		if ( ! isset( $_GET['page'] ) || 'illdy-welcome' !== $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			return;
+		}
+
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			return;
+		}
+
+		$target = class_exists( 'Illdy_Companion_Importer_Page' )
+			? self_admin_url( 'themes.php?page=' . Illdy_Companion_Importer_Page::SLUG )
+			: self_admin_url( 'themes.php' );
+
+		wp_safe_redirect( $target );
+		exit;
+	}
+
+	add_action( 'admin_page_access_denied', 'illdy_redirect_legacy_welcome_screen' );
+}
+
 // Include theme files
-require get_template_directory() . '/inc/libraries/epsilon-framework/class-epsilon-autoloader.php';
 require get_template_directory() . '/inc/customizer/class-illdy-color-scheme.php';
-require get_template_directory() . '/inc/class-mt-notify-system.php';
-require get_template_directory() . '/inc/libraries/welcome-screen/class-epsilon-welcome-screen.php';
+require get_template_directory() . '/inc/class-illdy-deprecated-onboarding.php';
 require get_template_directory() . '/inc/class-illdy.php';

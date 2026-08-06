@@ -54,6 +54,41 @@ Fixes
 - The jumbotron <style> element shared an id with the About block, so the
   Customizer previewer overwrote the wrong element.
 
+Removed: the Epsilon Framework and the onboarding screens
+The theme was built on a vendored copy of the Epsilon Framework (MachoThemes
+1.2.2) that supplied the Customizer controls, an admin notice system, a generic
+AJAX dispatcher, and the "About Illdy" welcome screen. All of it is gone: 2.5 MB
+and 8,644 lines of third-party PHP, replaced by core WordPress APIs and a small
+set of theme-owned controls.
+
+Your settings are unaffected. Every Customizer option is still stored in the
+same theme mod under the same name, including the five epsilon_*_color values,
+which keep their original ids precisely so existing sites keep their colours.
+Verified by diffing a database with 205 customised options before and after:
+nothing lost, nothing added, nothing changed, and a byte-identical front page.
+
+- Removed the five-tab "About Illdy" screen (Getting Started, Recommended
+  Actions, Recommended Plugins, Support, Registration) and the Recommended
+  Actions Customizer section. Neither stored any content; they listed plugins to
+  install and links to documentation.
+- Old themes.php?page=illdy-welcome links now redirect to the demo importer
+  rather than showing WordPress's "not allowed to access this page" error.
+- Demo content import moved to Illdy Companion, under Appearance -> Import Demo
+  Content. It is the same import, but the plugin now owns the whole flow instead
+  of injecting markup into the theme's onboarding list, and it asks for
+  confirmation first because importing overwrites Customizer settings and
+  widgets.
+- Removed the PRO licensing client (EDD updater, licence key screen), which was
+  unreachable in this free theme and disabled TLS verification when it did run.
+- Removed the vendored Font Awesome, selectize and minicolors copies used only
+  by Customizer controls that no longer exist. Front-end Font Awesome is
+  unaffected.
+- Child themes and snippets still referencing Epsilon_Control_*, Epsilon_Section_*,
+  Epsilon_Welcome_Screen, Epsilon_Notify_System, Epsilon_Notifications,
+  Epsilon_Sanitizers, Epsilon_Framework, Epsilon_Color_Scheme or MT_Notify_System
+  keep working through deprecation shims, which log a notice naming the
+  replacement instead of raising a fatal error.
+
 ### V 2.1.10
 - Fixed UI for recommended plugins section in admin dashboard
 - Improved layout for plugin boxes and buttons in admin

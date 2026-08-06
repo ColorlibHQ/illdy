@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-**Illdy** — a free one-page/multipurpose **WordPress theme** by Colorlib (not a static HTML template). Current stack is Bootstrap **3.3.6 CSS only** + jQuery + Owl Carousel 2, built on the vendored **Epsilon Framework** (MachoThemes) for its Customizer controls.
+**Illdy** — a free one-page/multipurpose **WordPress theme** by Colorlib (not a static HTML template). Current stack is Bootstrap **3.3.6 CSS only** + jQuery + Owl Carousel 2, with Customizer controls built on **core WordPress APIs** plus five theme-owned control classes in `inc/customizer/controls/`.
+
+The theme was previously built on a vendored copy of the **Epsilon Framework** (MachoThemes 1.2.2). It is **entirely removed** as of 2.2.0 — don't re-add it or reach for `Epsilon_*` classes. `inc/customizer/class-illdy-deprecated.php` and `inc/class-illdy-deprecated-onboarding.php` hold thin shims for the old public names so third-party code doesn't fatal; they are BC only, never a target for new code.
+
+There is **no onboarding UI**: no welcome/About screen, no Recommended Actions, no recommended-plugins list, no PRO licensing. Demo content import lives in the Illdy Companion plugin at **Appearance → Import Demo Content**. `themes.php?page=illdy-welcome` redirects there via the `admin_page_access_denied` hook.
 
 Targets WordPress 7 / PHP 8.5; verified to boot with zero PHP notices, warnings or deprecations on WP 7.0.2 / PHP 8.5.6. Bootstrap's **JavaScript is deliberately not loaded** — no template emits a `data-toggle`/`data-target`/`data-ride`/`data-dismiss`/`data-slide` attribute, so no Bootstrap plugin was ever initialised, and every published Bootstrap 3 CVE lives in that code. Don't re-add it; if you need a Bootstrap JS component, add the specific behaviour in `layout/js/scripts.js` instead.
 
@@ -18,7 +22,7 @@ There is no test suite and no lint config. All tooling is Grunt (`npm install` f
 
 ```bash
 npx grunt buildpot        # regenerate languages/illdy.pot via grunt-wp-i18n
-npx grunt textdomain      # audit i18n calls; allowed domains: illdy, epsilon-framework
+npx grunt textdomain      # audit i18n calls; allowed domain: illdy
 npx grunt mincss          # layout/css/*.css -> *.min.css (skips style-overrides.css)
 npx grunt minjs           # layout/js/**/*.js -> *.min.js (skips jquery.fancybox.js)
 npx grunt minimg          # imagemin over layout/images/
@@ -32,7 +36,7 @@ npx grunt build-archive   # produce illdy.zip (excludes node_modules, Gruntfile,
 
 ### Bootstrap order (`functions.php`)
 
-`illdy_setup()` (on `after_setup_theme`, priority 10) requires `inc/extras.php`, `inc/customizer/customizer.php`, `inc/jetpack.php`, the three `inc/components/*` output classes, and `inc/back-compatible.php`, then registers theme support, image sizes, and nav menus. The **bottom of the file** requires the Epsilon autoloader, `inc/class-mt-notify-system.php`, the welcome screen, and `inc/class-illdy.php`.
+`illdy_setup()` (on `after_setup_theme`, priority 10) requires `inc/extras.php`, `inc/customizer/customizer.php`, `inc/jetpack.php`, the three `inc/components/*` output classes, and `inc/back-compatible.php`, then registers theme support, image sizes, and nav menus. The **bottom of the file** requires `inc/customizer/class-illdy-color-scheme.php`, `inc/class-illdy-deprecated-onboarding.php`, and `inc/class-illdy.php`.
 
 **Timing is load-bearing** — this ordering exists to satisfy WordPress 6.7+'s just-in-time translation rules:
 
@@ -40,10 +44,12 @@ npx grunt build-archive   # produce illdy.zip (excludes node_modules, Gruntfile,
 |---|---|
 | file parse | hooks registered only — **no `__()` may run here** |
 | `after_setup_theme` 10 | `illdy_setup()` calls `load_theme_textdomain()` *before* any translated string |
-| `after_setup_theme` 15 | `illdy_boot()` → `new Illdy()` → Epsilon framework + colour scheme |
-| `init` 20 | welcome screen + `illdy_required_actions` filter (Illdy Companion answers this with **its own** text domain) |
+| `after_setup_theme` 15 | `illdy_boot()` → `new Illdy()` → colour scheme (its field labels are translated) |
+| `customize_register` 11 | `illdy_customize_register()` — see the note in `customizer.php` before changing this |
 
-Anything that calls `__()` or fires `illdy_required_actions` must not move earlier, or WP 6.7+ emits `_load_textdomain_just_in_time was called incorrectly` for the `illdy` and `illdy-companion` domains. `Illdy::get_recommended_actions()` is lazy and memoized for exactly this reason.
+Anything that calls `__()` must not move earlier, or WP 6.7+ emits `_load_textdomain_just_in_time was called incorrectly` for the `illdy` domain.
+
+The `illdy_required_actions` filter is **gone** along with the recommended-actions list that consumed it. Illdy Companion no longer hooks it.
 
 ### Front-page section pipeline
 
@@ -64,13 +70,24 @@ Customizer panel priority is derived from the same array via `illdy_get_section_
 
 ### Customizer panels
 
-`inc/customizer/panels/*.php` are plain includes pulled in from inside `illdy_customize_register()`, so `$wp_customize` is in scope at file top level. Each sets `$panel_id` / `$prefix = 'illdy'` and calls `add_setting` / `add_control` directly. Controls are Epsilon classes (`Epsilon_Control_Toggle`, `Epsilon_Control_Text_Editor`, `Epsilon_Control_Color_Picker`, …) plus theme-local ones in `inc/customizer/class-*.php`.
+`inc/customizer/panels/*.php` are plain includes pulled in from inside `illdy_customize_register()`, so `$wp_customize` is in scope at file top level. Each sets `$panel_id` / `$prefix = 'illdy'` and calls `add_setting` / `add_control` directly.
+
+Controls are core types wherever core has one — `checkbox` (was Epsilon's toggle), `range` (was its slider), `select`, `textarea`, `WP_Customize_Color_Control`, `WP_Customize_Image_Control` — plus five theme-owned classes in `inc/customizer/controls/` for the things core lacks:
+
+| Class | Purpose |
+|---|---|
+| `Illdy_Control_Text_Editor` | TinyMCE via `wp_enqueue_editor()` |
+| `Illdy_Control_Color_Scheme` | the palette picker; writes the five `epsilon_*_color` mods |
+| `Illdy_Control_Repeater` | jumbotron slides; stores JSON in one setting |
+| `Illdy_Control_Tab` / `Illdy_Control_Button` | panel chrome, no stored value |
+
+plus `Illdy_Section_Pro` in `inc/customizer/sections/`. `Illdy_Control_Tab` and `Illdy_Control_Button` need `register_control_type()`; `Illdy_Section_Pro` calls `register_section_type()` in its own constructor. **Skip that and the JS template is never printed and the control silently vanishes.**
 
 ### Three parallel styling paths (easy to break)
 
 1. **Server render** — `illdy_jumbotron_css()`, `illdy_about_css()`, `illdy_projects_css()`, etc. in [inc/extras.php](inc/extras.php), all echoed by `illdy_output_sections_css()` on `wp_head` priority 99.
 2. **Customizer live preview** — Handlebars templates printed by `illdy_print_customizer_templates()` on `wp_footer` (only when `is_customize_preview()`), in [inc/customizer/customizer.php](inc/customizer/customizer.php). These *duplicate* the rules from path 1.
-3. **Color scheme** — [layout/css/style-overrides.css](layout/css/style-overrides.css) is a **printf template**, not valid CSS: `%1$s`…`%5$s` map in order to `epsilon_accent_color`, `epsilon_secondary_accent_color`, `epsilon_text_color`, `epsilon_contrast_color`, `epsilon_hover_color`, registered in `Illdy::init_color_scheme()` and consumed by `Epsilon_Color_Scheme::load_css_overrides()`.
+3. **Color scheme** — [layout/css/style-overrides.css](layout/css/style-overrides.css) is a **printf template**, not valid CSS: `%1$s`…`%5$s` map in order to `epsilon_accent_color`, `epsilon_secondary_accent_color`, `epsilon_text_color`, `epsilon_contrast_color`, `epsilon_hover_color`, registered in `Illdy::init_color_scheme()` and consumed by `Illdy_Color_Scheme::load_css_overrides()`. The setting ids keep their `epsilon_` prefix deliberately — they are what existing sites have stored, and renaming them would drop every customer's colours.
 
 Any new color/background Customizer option must be added to **both** path 1 and path 2, or the live preview will diverge from the published front end.
 
@@ -84,9 +101,11 @@ Path 1 emits one `<style>` per section and the id **must** stay `illdy-<section>
 
 Custom actions available to templates and the companion plugin: `illdy_above_content_after_header`, `illdy_after_content_above_footer` (pagination attached in `functions.php`), `illdy_single_entry_meta`, `illdy_archive_meta_content`, `illdy_single_after_content`. The last three are fired into by the singleton output classes in `inc/components/` (entry-meta, author-box, related-posts), each hooked on `wp_loaded`.
 
-### Vendored: Epsilon Framework
+### Demo content import (lives in the plugin)
 
-`inc/libraries/epsilon-framework/` is third-party (MachoThemes v1.2.2) with its own `package.json`, `webpack.config.js`, `tsconfig.json`, and TypeScript sources under `assets/vendors/`. Treat as vendored — don't hand-edit its compiled `assets/js/*.js`, and prefer working around it rather than patching it.
+Illdy Companion owns it end to end: `Illdy_Companion_Importer_Page` renders **Appearance → Import Demo Content** and handles `wp_ajax_illdy_companion_import_demo` (nonce + `manage_options`), calling `Illdy_Companion_Import_Data::process_sample_content()`. Step names from the request are intersected with `get_import_steps()` — never call a method named by request data.
+
+The import **overwrites** theme mods and front-page widgets, which is why the page warns and the JS confirms first. `inc/libraries/` no longer exists; there is nothing vendored in the theme.
 
 ## Gotchas
 

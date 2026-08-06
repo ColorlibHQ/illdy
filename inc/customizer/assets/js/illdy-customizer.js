@@ -49,23 +49,6 @@ jQuery( document ).ready( function( $ ) {
 		});
  	}
 
- 	$('.recomended-actions_container').on( 'actions_complete', function( evt,  element ){
- 		if ( $(element).next( '.epsilon-recommeded-actions-container' ).length > 0 ) {
- 			var nex_actions = $(element).next( '.epsilon-recommeded-actions-container' );
- 			var next_index = nex_actions.data('index');
- 			$('.control-section-illdy-recomended-section .illdy-actions-count .current-index').text( next_index );
- 			$(element).remove();
- 		}else{
- 			$(element).remove();
- 			$('.control-section-illdy-recomended-section .illdy-actions-count').remove();
- 			$('.control-section-illdy-recomended-section .accordion-section-title .section-title').text( $('.control-section-illdy-recomended-section .accordion-section-title .section-title').data('succes') )
- 			$('.recomended-actions_container .succes').show();
- 		}
-
- 	});
-
-	
-
 	$('#sub-accordion-panel-illdy_frontpage_panel').sortable({
 		helper: 'clone',
 		items: '> li.control-section:not(#accordion-section-illdy_jumbotron_general)',
@@ -456,74 +439,6 @@ jQuery( document ).ready( function( $ ) {
 	}
 	
 })(jQuery);
-
-jQuery(document).ready(function(){
-
-    jQuery(".illdy-dismiss-required-action").on('click', function () {
-
-        var id = jQuery(this).attr('id'),
-            action = jQuery(this).attr('data-action');
-        jQuery.ajax({
-            type: "GET",
-            data: { action: 'illdy_dismiss_required_action', id: id, todo: action },
-            dataType: "html",
-            url: IlldyCustomizer.ajax_url,
-            beforeSend: function (data, settings) {
-                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + IlldyCustomizer.template_directory + '/inc/admin/welcome-screen/img/ajax-loader.gif" /></div>');
-            },
-            success: function (data) {
-                var container = jQuery('#' + data).parent().parent();
-                var index = container.next().data('index');
-                jQuery('.illdy-actions-count .current-index').text(index);
-                container.slideToggle().remove();
-                if ( jQuery('.recomended-actions_container > .epsilon-required-actions').length == 0 ) {
-                    
-                    jQuery('#accordion-section-illdy-recomended-section .illdy-actions-count').remove();
-
-                    if ( jQuery('.recomended-actions_container > .epsilon-recommended-plugins').length == 0 ) {
-                        jQuery('.recomended-actions_container .succes').removeClass('hide');
-                        jQuery('#accordion-section-illdy-recomended-section .section-title').text(jQuery('#accordion-section-illdy-recomended-section .section-title').data('social'));
-                    }else{
-                        jQuery('#accordion-section-illdy-recomended-section .section-title').text(jQuery('#accordion-section-illdy-recomended-section .section-title').data('plugin_text'));
-                    }
-                    
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR + " :: " + textStatus + " :: " + errorThrown);
-            }
-        });
-    });
-
-    jQuery(".illdy-recommended-plugin-button").on('click', function () {
-
-        var id = jQuery(this).attr('id'),
-            action = jQuery(this).attr('data-action');
-        jQuery.ajax({
-            type: "GET",
-            data: { action: 'illdy_dismiss_recommended_plugins', id: id, todo: action },
-            dataType: "html",
-            url: IlldyCustomizer.ajax_url,
-            beforeSend: function (data, settings) {
-                jQuery('#' + id).parent().append('<div id="temp_load" style="text-align:center"><img src="' + IlldyCustomizer.template_directory + '/inc/admin/welcome-screen/img/ajax-loader.gif" /></div>');
-            },
-            success: function (data) {
-                var container = jQuery('#' + data).parent().parent();
-                var index = container.next().data('index');
-                jQuery('.illdy-actions-count .current-index').text(index);
-                container.slideToggle().remove();
-
-                if ( jQuery('.recomended-actions_container > .epsilon-recommended-plugins').length == 0 ) {
-                    jQuery('.recomended-actions_container .succes').removeClass('hide');
-                    jQuery('#accordion-section-illdy-recomended-section .section-title').text(jQuery('#accordion-section-illdy-recomended-section .section-title').data('social'));
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR + " :: " + textStatus + " :: " + errorThrown);
-            }
-        });
-    });
-});
 
 (function( wp, $ ){
 

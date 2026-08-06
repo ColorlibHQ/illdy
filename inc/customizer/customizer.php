@@ -190,13 +190,13 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 	}
 
 	/*
-	 * Priority 11, not the default 10. The panels below instantiate Epsilon control and
-	 * section classes and call Epsilon_Customizer::add_field(), all of which depend on
-	 * Epsilon_Framework::init_controls() having run: it loads those class files and
-	 * hands the WP_Customize_Manager to Epsilon_Customizer. That also hooks
-	 * customize_register at 10, so the two used to be separated only by the order in
-	 * which they happened to be registered. Making the dependency explicit means the
-	 * Customizer no longer fatals if that order ever changes.
+	 * Priority 11, not the default 10. This originally existed to run after the Epsilon
+	 * framework's own customize_register callback, which loaded the control classes the
+	 * panels instantiate. That framework is gone and the theme now requires its controls
+	 * directly, but the priority stays: Illdy Companion registers its widgets' controls
+	 * at priority 20 and expects the theme's panels to already exist, and third-party
+	 * code hooking at the default 10 keeps running before the panels are built rather
+	 * than in the middle of them.
 	 */
 	add_action( 'customize_register', 'illdy_customize_register', 11 );
 }// End if().

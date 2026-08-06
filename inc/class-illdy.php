@@ -3,88 +3,14 @@
 
 class Illdy {
 
-	public $recommended_plugins = array(
-		'kali-forms'            => array(
-			'recommended' => true,
-		),
-		'colorlib-login-customizer' => array(
-			'recommended' => false,
-		),
-        'colorlib-404-customizer' => array(
-            'recommended' => false,
-        ),
-        'colorlib-coming-soon-maintenance' => array(
-            'recommended' => false,
-        ),
-		'simple-custom-post-order'  => array(
-			'recommended' => false,
-		),
-		'fancybox-for-wordpress'    => array(
-			'recommended' => false,
-		),
-		'rsvp'                      => array(
-			'recommended' => false,
-		),
-	);
-
-	public $recommended_actions;
-
 	public $theme_slug = 'illdy';
 
 	function __construct() {
 
-		$this->init_epsilon();
+		$this->init_color_scheme();
 
-		add_action( 'init', array( $this, 'init_welcome_screen' ), 20 );
-		add_action( 'customize_register', array( $this, 'init_customizer' ) );
 		add_filter( 'sidebars_widgets', array( $this, 'remove_specific_widget' ) );
 
-	}
-
-	/**
-	 * Builds the recommended actions list on first use, then memoizes it.
-	 *
-	 * Deliberately kept out of the constructor. The strings below are translated,
-	 * and the `illdy_required_actions` filter is answered by Illdy Companion using
-	 * its own text domain. Resolving either before `init` makes WordPress 6.7+ emit
-	 * "_load_textdomain_just_in_time was called incorrectly" for the `illdy` and
-	 * `illdy-companion` domains.
-	 *
-	 * @return array
-	 */
-	public function get_recommended_actions() {
-
-		if ( null !== $this->recommended_actions ) {
-			return $this->recommended_actions;
-		}
-
-		$this->recommended_actions = apply_filters(
-			'illdy_required_actions', array(
-				array(
-					'id'          => 'illdy-req-ac-install-illdy-companion',
-					'title'       => MT_Notify_System::create_plugin_title( __( 'Illdy Companion', 'illdy' ), 'illdy-companion' ),
-					'description' => __( 'It is highly recommended that you install the Illdy Companion.', 'illdy' ),
-					'check'       => MT_Notify_System::check_plugin_update( 'illdy-companion' ),
-					'type'        => 'plugin',
-					'plugin_slug' => 'illdy-companion',
-				),
-				array(
-					'id'          => 'illdy-req-ac-install-kaliforms',
-					'title'       => MT_Notify_System::create_plugin_requirement_title( __( 'Install: Kaliforms', 'illdy' ), __( 'Activate: Kaliforms', 'illdy' ), 'kali-forms' ),
-					'description' => __( 'It is highly recommended that you install the Kaliforms plugin.', 'illdy' ),
-					'check'       => MT_Notify_System::check_plugin_update( 'kali-forms' ),
-					'type'        => 'plugin',
-					'plugin_slug' => 'kali-forms',
-				),
-			)
-		);
-
-		return $this->recommended_actions;
-	}
-
-	public function init_epsilon() {
-		new Epsilon_Framework();
-		$this->init_color_scheme();
 	}
 
 	public function init_color_scheme() {
@@ -133,41 +59,6 @@ class Illdy {
 		);
 
 		new Illdy_Color_Scheme( $handler, $args );
-
-	}
-
-	public function init_customizer( $wp_customize ) {
-		$current_theme = wp_get_theme();
-		$wp_customize->add_section(
-			new Epsilon_Section_Recommended_Actions(
-				$wp_customize, 'epsilon_recomended_section', array(
-					'title'                        => esc_html__( 'Recomended Actions', 'illdy' ),
-					'social_text'                  => esc_html( $current_theme->get( 'Author' ) ) . esc_html__( ' is social :', 'illdy' ),
-					'plugin_text'                  => esc_html__( 'Recomended Plugins :', 'illdy' ),
-					'actions'                      => $this->get_recommended_actions(),
-					'plugins'                      => $this->recommended_plugins,
-					'theme_specific_option'        => $this->theme_slug . '_show_required_actions',
-					'theme_specific_plugin_option' => $this->theme_slug . '_show_required_plugins',
-					'facebook'                     => 'https://www.facebook.com/colorlib',
-					'twitter'                      => 'https://twitter.com/colorlib',
-					'wp_review'                    => true,
-					'priority'                     => 0,
-				)
-			)
-		);
-
-	}
-
-	public function init_welcome_screen() {
-
-		Epsilon_Welcome_Screen::get_instance(
-			$config = array(
-				'theme-name' => 'Illdy',
-				'theme-slug' => 'illdy',
-				'actions'    => $this->get_recommended_actions(),
-				'plugins'    => $this->recommended_plugins,
-			)
-		);
 
 	}
 
@@ -221,9 +112,9 @@ class Illdy {
  * Hooked to `after_setup_theme` at priority 15 rather than run at file-parse time:
  * `illdy_setup()` calls `load_theme_textdomain()` at priority 10, so by the time this
  * runs the `illdy` domain is already registered and no just-in-time translation
- * loading is triggered. Every hook registered downstream of here targets
- * `admin_menu`, `admin_init`, `customize_*`, `wp_ajax_*` or `sidebars_widgets`,
- * all of which fire well after this point.
+ * loading is triggered. The colour scheme labels below are translated, so this must
+ * not move earlier; everything else it registers targets `wp_enqueue_scripts`,
+ * `customize_*` or `sidebars_widgets`, all of which fire well after this point.
  */
 if ( ! function_exists( 'illdy_boot' ) ) {
 	function illdy_boot() {
