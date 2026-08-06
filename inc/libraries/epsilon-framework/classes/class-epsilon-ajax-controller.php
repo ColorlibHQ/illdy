@@ -147,13 +147,13 @@ class Epsilon_Ajax_Controller {
 	 * @return bool
 	 */
 	public static function is_allowed_call( $class, $method ) {
+		// Epsilon_Page_Generator and Epsilon_Typography were unused by this theme and
+		// have been removed, so their entries are gone too.
 		$allowed = array(
 			'Epsilon_Helper'        => array( 'get_image_sizes' ),
 			'Epsilon_Notifications' => array( 'dismiss_notice' ),
 			'Epsilon_Notify_System' => array( 'dismiss_required_action' ),
-			'Epsilon_Page_Generator' => array( 'generate_partial_section' ),
 			'Epsilon_Color_Scheme'  => array( 'epsilon_generate_color_scheme_css' ),
-			'Epsilon_Typography'    => array( 'epsilon_generate_typography_css' ),
 		);
 
 		/**
@@ -176,7 +176,7 @@ class Epsilon_Ajax_Controller {
      * @param $args
      */
     public static function sanitize_class_name( $class ) {
-        $allowed_classes = array( 'Epsilon_Helper', 'Epsilon_Notify_System', 'Epsilon_Page_Generator', 'Epsilon_Typography', 'Epsilon_Color_Scheme', 'Epsilon_Notifications' );
+        $allowed_classes = array( 'Epsilon_Helper', 'Epsilon_Notify_System', 'Epsilon_Color_Scheme', 'Epsilon_Notifications' );
         if ( in_array( $class, $allowed_classes ) ) {
             return $class;
         }else{

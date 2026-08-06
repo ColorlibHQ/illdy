@@ -136,18 +136,12 @@ class Epsilon_Customizer {
 		 */
 		$field_type = self::_get_type( $args['type'], 'control' );
 
-		/**
-		 * This array SHOULD always be backed up
+		/*
+		 * Repeater fields used to be registered with Epsilon_Content_Backup here, which
+		 * mirrored their values into a hidden draft page that nothing ever read back.
+		 * The class is gone; the setting itself is stored as a normal theme mod exactly
+		 * as before, so existing values are unaffected.
 		 */
-		$must_backup = array(
-			'epsilon-section-repeater',
-			'epsilon-repeater',
-		);
-
-		if ( in_array( $args['type'], $must_backup ) || true === $args['backup'] ) {
-			$instance = Epsilon_Content_Backup::get_instance();
-			$instance->add_field( $id, $args );
-		}
 
 		/**
 		 * Register the control
@@ -384,85 +378,18 @@ class Epsilon_Customizer {
 		return $sanitizer;
 	}
 
-	/**
-	 * Page builder functionality
-	 *
-	 * @since 1.2.0
+	/*
+	 * add_page_builder() removed: it had no callers in this theme and was the only
+	 * remaining consumer of Epsilon_Content_Backup and Epsilon_Control_Section_Repeater,
+	 * both of which have been deleted.
 	 */
-	public static function add_page_builder( $id, $args ) {
-		$pages = new WP_Query(
-			array(
-				'post_type'        => 'page',
-				'nopaging'         => true,
-				'suppress_filters' => true,
-				'post__not_in'     => array(
-					Epsilon_Content_Backup::get_instance()->setting_page,
-				),
-			)
-		);
 
-		$ids = array();
-
-		if ( $pages->have_posts() ) {
-			foreach ( $pages->posts as $page ) {
-				$ids[] = $page->ID;
-			}
-		}
-
-		if ( $pages->have_posts() ) {
-			while ( $pages->have_posts() ) {
-				$pages->the_post();
-
-				$args['backup']       = isset( $args['backup'] ) ? $args['backup'] : false;
-				$args['save_as_meta'] = get_the_ID();
-				$args['label']        = esc_html( get_the_title() );
-
-				/**
-				 * Add setting
-				 */
-				self::add_setting( $id . '_' . get_the_ID(), $args );
-
-				/**
-				 * Get class name, if it's an epsilon control, we need to build the class name accordingly
-				 */
-				$field_type = self::_get_type( $args['type'], 'control' );
-
-				/**
-				 * This array SHOULD always be backed up
-				 */
-				$must_backup = array(
-					'epsilon-section-repeater',
-				);
-
-				if ( in_array( $args['type'], $must_backup ) || true === $args['backup'] ) {
-					$instance = Epsilon_Content_Backup::get_instance();
-					$instance->add_pages( get_the_ID(), $id . '_' . get_the_ID(), $args );
-				}
-
-				/**
-				 * Register the control
-				 */
-				self::$manager->add_control(
-					new Epsilon_Control_Section_Repeater(
-						self::$manager,
-						$id . '_' . get_the_ID(),
-						$args
-					)
-				);
-			}// End while().
-		}// End if().
-
-		wp_reset_postdata();
-	}
 
 	/**
 	 * Add quick action links to posts
 	 */
 	public static function add_action_links( $actions, $post ) {
-		if ( absint( Epsilon_Content_Backup::get_instance()->setting_page ) === $post->ID ) {
-			return $actions;
-		}
-
+		// The Epsilon_Content_Backup settings page this used to skip no longer exists.
 		if ( 'draft' === $post->post_status ) {
 			return $actions;
 		}

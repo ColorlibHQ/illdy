@@ -14,9 +14,15 @@ $autoplay_time = get_theme_mod( 'illdy_jumbotron_slider_autoplay_time', 5000 );
 <div class="illdy-slider illdy-jumbotron-background owl-carousel" data-autoplay="<?php echo esc_attr( $autoplay ); ?>" data-autoplay-time="<?php echo esc_attr( $autoplay_time ); ?>">
 	<?php
 
-	foreach ( $slides as $slide ) {
-		if ( isset( $slide['slide_image'] ) ) {
-			echo '<div class="illdy-slide" style="background-image:url(' . $slide['slide_image'] . ')"><img src="' . $slide['slide_image'] . '" style="display:none"></div>';
+	foreach ( (array) $slides as $slide ) {
+		// Repeater rows are arrays; guard in case an older value stored objects.
+		$slide = (array) $slide;
+
+		if ( ! empty( $slide['slide_image'] ) ) {
+			printf(
+				'<div class="illdy-slide" style="background-image:url(%1$s)"><img src="%1$s" alt="" style="display:none"></div>',
+				esc_url( $slide['slide_image'] )
+			);
 		}
 	}
 

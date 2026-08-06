@@ -14,21 +14,20 @@ class Epsilon_Framework {
 	 *
 	 * @var array|mixed
 	 */
+	/*
+	 * Trimmed to the controls Illdy actually registers. The typography, section-repeater,
+	 * icon-picker, customizer-navigation, button-group, page-changer and image-dimensions
+	 * controls were never used by this theme and have been removed. 'separator' stays
+	 * because Epsilon_Color_Scheme renders one.
+	 */
 	private $controls = array(
 		'toggle',
-		'typography',
 		'slider',
 		'repeater',
-		'section-repeater',
 		'image',
 		'text-editor',
-		'icon-picker',
-		'customizer-navigation',
 		'color-scheme',
-		'button-group',
 		'separator',
-		'page-changer',
-		'image-dimensions',
 	);
 	/**
 	 * By default, it loads all sections
@@ -38,16 +37,13 @@ class Epsilon_Framework {
 	private $sections = array(
 		'recommended-actions',
 		'pro',
-		'doubled',
 	);
 	/**
 	 * By default, load all panels
 	 *
 	 * @var array
 	 */
-	private $panels = array(
-		'regular',
-	);
+	private $panels = array();
 	/**
 	 * @var bool
 	 */
@@ -70,12 +66,6 @@ class Epsilon_Framework {
 	 * @var mixed|string
 	 */
 	private $path = '/inc/libraries';
-	/**
-	 * At the current moment, backup is a must
-	 *
-	 * @var bool
-	 */
-	private $backup = true;
 
 	/**
 	 * Epsilon_Framework constructor.
@@ -93,7 +83,6 @@ class Epsilon_Framework {
 					'panels',
 					'plugin',
 					'path',
-					'backup',
 					'plugin_uri',
 					'plugin_dir',
 				)
@@ -105,12 +94,12 @@ class Epsilon_Framework {
 			$this->$k = $v;
 		}
 
-		if ( $this->backup ) {
-			/**
-			 * Let's initiate a backup instance
-			 */
-			$backup = Epsilon_Content_Backup::get_instance();
-		}
+		/*
+		 * Epsilon_Content_Backup used to be instantiated here. It mirrored Customizer
+		 * content into a hidden "<Theme> Backup Settings" draft page on every save and
+		 * nothing ever read it back, so it produced a steadily growing pile of drafts
+		 * for no benefit. Removed along with the class.
+		 */
 
 		/**
 		 * Define Framework uri and paths
@@ -281,6 +270,6 @@ class Epsilon_Framework {
 		 */
 		define( 'EPSILON_URI', $dir_uri . $this->path . '/epsilon-framework' );
 		define( 'EPSILON_PATH', $dir . $this->path . '/epsilon-framework' );
-		define( 'EPSILON_BACKUP', $this->backup );
+		// EPSILON_BACKUP dropped with Epsilon_Content_Backup; nothing ever read it.
 	}
 }

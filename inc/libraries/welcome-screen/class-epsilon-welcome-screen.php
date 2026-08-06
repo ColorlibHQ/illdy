@@ -229,7 +229,9 @@ class Epsilon_Welcome_Screen {
 		$allowed = apply_filters(
 			'epsilon_welcome_screen_allowed_ajax_methods',
 			array(
-				'Epsilon_Import_Data'         => array( 'add_default_sections' ),
+				// Epsilon_Import_Data removed: it was never loaded by this theme, so the
+				// class could not resolve. Illdy's demo import runs through
+				// Illdy_Companion_Import_Data below.
 				'Epsilon_Welcome_Screen'      => array( 'handle_required_action', 'set_frontpage_to_static' ),
 				'Illdy_Companion_Import_Data' => array( 'process_sample_content' ),
 			)
