@@ -263,29 +263,29 @@ ul.accordion-section {
 }
 
 /* Tab Custom Control */
-.epsilon-tabs {
+.illdy-tabs {
     margin-left: -12px;
     margin-right: -12px;
     padding: 0 12px;
 }
-.epsilon-after-tab {
+.illdy-after-tab {
     margin-left: -12px;
     margin-right: -12px;
 }
-.epsilon-after-tab > div {
+.illdy-after-tab > div {
     background: #f4f4f4;
     height: 30px;
     width: 100%;
 }
-.epsilon-tabs .tabs {
+.illdy-tabs .tabs {
     text-align: center;
     padding-top: 5px;
     overflow: hidden;
 }
-/*a.epsilon-tab:first-child {
+/*a.illdy-tab:first-child {
     border-left: 1px solid #CCC;
 }*/
-a.epsilon-tab {
+a.illdy-tab {
     width: 120px;
     text-align: center;
     display: inline-block;
@@ -300,10 +300,10 @@ a.epsilon-tab {
     margin-right: 5px;
     line-height: 32px;
 }
-a.epsilon-tab:focus {
+a.illdy-tab:focus {
     outline: none;
 }
-a.epsilon-tab.active {
+a.illdy-tab.active {
     /*border-bottom-color: #f1f1f1;*/
     background-color: #f4f4f4;
 }
@@ -314,7 +314,7 @@ a.epsilon-tab.active {
     background: #f4f4f4;
     margin-bottom: 0;
 }
-.customize-control.customize-control-epsilon-tab {
+.customize-control.customize-control-illdy-tab {
     margin-bottom: 0;
 }
 
@@ -337,7 +337,7 @@ a.epsilon-tab.active {
 
 /* Widget Button */
 
-a.epsilon-button {
+a.illdy-button {
     font-size: 16px;
     text-align: center;
     display: block;

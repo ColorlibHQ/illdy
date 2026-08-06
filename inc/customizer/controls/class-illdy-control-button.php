@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'Epsilon_Control_Button' ) ) {
-	class Epsilon_Control_Button extends WP_Customize_Control {
-		public $type       = 'epsilon-button';
+if ( ! class_exists( 'Illdy_Control_Button' ) ) {
+	class Illdy_Control_Button extends WP_Customize_Control {
+		public $type       = 'illdy-button';
 		public $text       = '';
 		public $section_id = '';
 		public $icon       = '';
@@ -18,9 +18,9 @@ if ( ! class_exists( 'Epsilon_Control_Button' ) ) {
 
 		public function content_template() {
 	?>
-			<div class="epsilon-button">
+			<div class="illdy-button">
 				<# if ( data.section_id ) { #>
-					<a href="#" class="epsilon-button" data-section="{{ data.section_id }}">
+					<a href="#" class="illdy-button" data-section="{{ data.section_id }}">
 						<# if ( data.icon ) { #>
 							<span class="dashicons {{ data.icon }}"></span>
 						<# } #>

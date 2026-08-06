@@ -180,9 +180,9 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Epsilon_Control_Tab(
+	new Illdy_Control_Tab(
 		$wp_customize, $prefix . '_latest_news_tab', array(
-			'type'    => 'epsilon-tab',
+			'type'    => 'illdy-tab',
 			'section' => $prefix . '_latest_news_general',
 			'buttons' => array(
 				array(

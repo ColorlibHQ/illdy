@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'Epsilon_Control_Tab' ) ) {
-	class Epsilon_Control_Tab extends WP_Customize_Control {
-		public $type    = 'epsilon-tab';
+if ( ! class_exists( 'Illdy_Control_Tab' ) ) {
+	class Illdy_Control_Tab extends WP_Customize_Control {
+		public $type    = 'illdy-tab';
 		public $buttons = '';
 		public function __construct( WP_Customize_Manager $manager, $id, array $args ) {
 			parent::__construct( $manager, $id, $args );
@@ -35,17 +35,17 @@ if ( ! class_exists( 'Epsilon_Control_Tab' ) ) {
 
 		public function content_template() {
 	?>
-			<div class="epsilon-tabs">
+			<div class="illdy-tabs">
 				<# if ( data.buttons ) { #>
 					<div class="tabs">
 						<# for (tab in data.buttons) { #>
-							<a href="#" class="epsilon-tab <# if ( data.buttons[tab].active ) { #> active <# } #>" data-tab="{{ tab }}">{{ data.buttons[tab].name }}</a>
+							<a href="#" class="illdy-tab <# if ( data.buttons[tab].active ) { #> active <# } #>" data-tab="{{ tab }}">{{ data.buttons[tab].name }}</a>
 						<# } #>
 					</div>
 
 				<# } #>
 			</div>
-			<div class="epsilon-after-tab"><div></div></div>
+			<div class="illdy-after-tab"><div></div></div>
 		<?php
 		}
 	}

@@ -551,7 +551,7 @@ jQuery(document).ready(function(){
 
         ready: function () {
             var control = this;
-            control.container.find( 'a.epsilon-button' ).on('click', function( evt ){
+            control.container.find( 'a.illdy-button' ).on('click', function( evt ){
                 var newSection = $(this).data('section'),
                     oldSection = control.params.section;
                 evt.preventDefault();
@@ -568,10 +568,10 @@ jQuery(document).ready(function(){
 
         ready: function () {
             var control = this;
-            control.container.find( 'a.epsilon-tab' ).on('click', function( evt ){
+            control.container.find( 'a.illdy-tab' ).on('click', function( evt ){
                 var tab = $(this).data( 'tab' );
                 evt.preventDefault();
-                control.container.find( 'a.epsilon-tab' ).removeClass( 'active' );
+                control.container.find( 'a.illdy-tab' ).removeClass( 'active' );
                 $(this).addClass( 'active' );
                 control.toggleActiveControls( tab );
             });
@@ -657,8 +657,8 @@ jQuery(document).ready(function(){
 
     // Extend epsilon button constructor
     $.extend( api.controlConstructor, {
-        'epsilon-button': api.EpsilonNavigateButton,
-        'epsilon-tab': api.EpsilonTab,
+        'illdy-button': api.EpsilonNavigateButton,
+        'illdy-tab': api.EpsilonTab,
     });
 
     $.extend( api.sectionConstructor, {

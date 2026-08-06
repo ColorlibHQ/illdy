@@ -86,7 +86,7 @@ $wp_customize->add_setting( $prefix . '_team_widget_button', array(
 	'transport'         => 'postMessage',
 	'sanitize_callback' => 'wp_kses_post',
 ) );
-$wp_customize->add_control( new Epsilon_Control_Button( $wp_customize, $prefix . '_team_widget_button', array(
+$wp_customize->add_control( new Illdy_Control_Button( $wp_customize, $prefix . '_team_widget_button', array(
 	'text'       => __( 'Add & Edit Members', 'illdy' ),
 	'section_id' => 'sidebar-widgets-front-page-team-sidebar',
 	'icon'       => 'dashicons-plus',
@@ -99,8 +99,8 @@ $wp_customize->add_setting( $prefix . '_team_tab', array(
 	'transport'         => 'postMessage',
 	'sanitize_callback' => 'wp_kses_post',
 ) );
-$wp_customize->add_control( new Epsilon_Control_Tab( $wp_customize, $prefix . '_team_tab', array(
-	'type'    => 'epsilon-tab',
+$wp_customize->add_control( new Illdy_Control_Tab( $wp_customize, $prefix . '_team_tab', array(
+	'type'    => 'illdy-tab',
 	'section' => $panel_id,
 	'buttons' => array(
 		array(

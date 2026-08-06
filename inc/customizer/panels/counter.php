@@ -98,7 +98,7 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Epsilon_Control_Button(
+	new Illdy_Control_Button(
 		$wp_customize, $prefix . '_counters_widget_button', array(
 			'text'       => __( 'Add & Edit Counters', 'illdy' ),
 			'section_id' => 'sidebar-widgets-front-page-counter-sidebar',

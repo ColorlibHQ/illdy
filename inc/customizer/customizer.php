@@ -31,18 +31,18 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-text-editor.php';
 		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-color-scheme.php';
 		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-repeater.php';
-		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-button.php';
-		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-tab.php';
+		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-button.php';
+		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-tab.php';
+		require_once get_template_directory() . '/inc/customizer/sections/class-illdy-section-pro.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-kaliforms-custom-control.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-text-custom-control.php';
-		require_once get_template_directory() . '/inc/customizer/class-epsilon-editor-custom-control.php';
 
-		$wp_customize->register_control_type( 'Epsilon_Control_Tab' );
-		$wp_customize->register_control_type( 'Epsilon_Control_Button' );
+		$wp_customize->register_control_type( 'Illdy_Control_Tab' );
+		$wp_customize->register_control_type( 'Illdy_Control_Button' );
 
 		// Pro Section
 		$wp_customize->add_section(
-			new Epsilon_Section_Pro(
+			new Illdy_Section_Pro(
 				$wp_customize, 'illdy-pro-section', array(
 					'title'       => esc_html__( 'Illdy', 'illdy' ),
 					'button_text' => esc_html__( 'Documentation', 'illdy' ),

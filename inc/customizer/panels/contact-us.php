@@ -22,9 +22,9 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Epsilon_Control_Tab(
+	new Illdy_Control_Tab(
 		$wp_customize, $prefix . '_contact_tab', array(
-			'type'     => 'epsilon-tab',
+			'type'     => 'illdy-tab',
 			'section'  => $prefix . '_contact_us',
 			'priority' => 1,
 			'buttons'  => array(

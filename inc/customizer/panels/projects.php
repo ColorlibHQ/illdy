@@ -134,7 +134,7 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Epsilon_Control_Button(
+	new Illdy_Control_Button(
 		$wp_customize, $prefix . '_projects_widget_button', array(
 			'text'       => __( 'Add & Edit Projects', 'illdy' ),
 			'section_id' => 'sidebar-widgets-front-page-projects-sidebar',
@@ -153,9 +153,9 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Epsilon_Control_Tab(
+	new Illdy_Control_Tab(
 		$wp_customize, $prefix . '_projects_tab', array(
-			'type'    => 'epsilon-tab',
+			'type'    => 'illdy-tab',
 			'section' => $panel_id,
 			'buttons' => array(
 				array(
