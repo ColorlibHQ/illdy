@@ -216,7 +216,33 @@ class Epsilon_Welcome_Screen {
 			);
 		}
 
-		if ( ! in_array( $args_action[0], array( 'Epsilon_Import_Data', 'Epsilon_Welcome_Screen', 'Illdy_Companion_Import_Data' ) ) || ! class_exists( $args_action[0] ) ) {
+		/**
+		 * Filters the class/method pairs this endpoint may dispatch.
+		 *
+		 * The class name was checked against an allowlist but the method was taken
+		 * verbatim from the request, so any public static method on those classes
+		 * could be invoked and an unknown name was a fatal error rather than a
+		 * response. Pairing them closes both.
+		 *
+		 * @param array $allowed Class name => list of method names.
+		 */
+		$allowed = apply_filters(
+			'epsilon_welcome_screen_allowed_ajax_methods',
+			array(
+				'Epsilon_Import_Data'         => array( 'add_default_sections' ),
+				'Epsilon_Welcome_Screen'      => array( 'handle_required_action', 'set_frontpage_to_static' ),
+				'Illdy_Companion_Import_Data' => array( 'process_sample_content' ),
+			)
+		);
+
+		$class  = $args_action[0];
+		$method = $args_action[1];
+
+		if ( ! isset( $allowed[ $class ] )
+			|| ! in_array( $method, $allowed[ $class ], true )
+			|| ! class_exists( $class )
+			|| ! is_callable( array( $class, $method ) )
+		) {
 			wp_die(
 				wp_json_encode(
 					array(
@@ -227,9 +253,7 @@ class Epsilon_Welcome_Screen {
 			);
 		}
 
-		$class  = $args_action[0];
-		$method = $args_action[1];
-		$args   = array();
+		$args = array();
 
 		if ( isset( $_POST['args']['args'] ) && is_array( $_POST['args']['args'] ) ) {
 			$args = Epsilon_Sanitizers::array_map_recursive( 'sanitize_text_field', wp_unslash( $_POST['args']['args'] ) );
