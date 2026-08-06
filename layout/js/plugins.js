@@ -1,8 +1,18 @@
 
 jQuery( document ).ready( function( $ ) {
 
+  // Each library below is only enqueued on the front page, so feature-detect before
+  // calling it. Keeps inner pages error-free when the library is intentionally absent.
+  function hasPlugin( name ) {
+    return typeof $.fn[ name ] === 'function';
+  }
+
   // Progress Bar
   function illdyProgressBar() {
+    if ( ! hasPlugin( 'progressbar' ) ) {
+      return;
+    }
+
     if ( $( '#about .skill' ).length ) {
       $( '#about .skill' ).each( function() {
         var skill = $( this );
@@ -45,6 +55,10 @@ jQuery( document ).ready( function( $ ) {
 
   // Testimonials OWL Carousel
   function testimonialsOwlCarousel() {
+    if ( ! hasPlugin( 'owlCarousel' ) ) {
+      return;
+    }
+
     if ( $( '.testimonials-carousel.owl-carousel-enabled .widget_illdy_testimonial' ).length > 1 ) {
       $( '.testimonials-carousel.owl-carousel-enabled' ).owlCarousel( {
         'items': 1,
@@ -55,16 +69,29 @@ jQuery( document ).ready( function( $ ) {
   }
 
   // Counter Number
+  var counterStarted = false;
+
   function counterNumber() {
+    if ( counterStarted || ! hasPlugin( 'countTo' ) ) {
+      return;
+    }
+
     var counter = $( '#counter' ).find( '.counter-number' );
     if ( counter.length ) {
+      // Guarded so the count runs once. It used to restart on every scroll event
+      // while the section stayed in view, which visibly reset the number.
+      counterStarted = true;
       counter.countTo();
     }
   }
 
   // Front Page jumbotron Slider
   function illdyJumbotronSlider() {
-    var illdySlider = jQuery( '.illdy-slider' );
+    if ( ! hasPlugin( 'owlCarousel' ) ) {
+      return;
+    }
+
+    var illdySlider = $( '.illdy-slider' );
     if ( illdySlider.length > 0 ) {
       illdySlider.owlCarousel( {
         'items': 1,
@@ -73,12 +100,12 @@ jQuery( document ).ready( function( $ ) {
         'autoplay': illdySlider.data( 'autoplay' ),
         'autoplayTimeout': illdySlider.data( 'autoplay-time' )
       } );
-      if ( jQuery( '.illdy-slider-navigation' ).length > 0 ) {
-        jQuery( '.illdy-slider-navigation #prev' ).on('click', function( evt ) {
+      if ( $( '.illdy-slider-navigation' ).length > 0 ) {
+        $( '.illdy-slider-navigation #prev' ).on( 'click', function( evt ) {
           evt.preventDefault();
           illdySlider.trigger( 'prev.owl.carousel' );
         } );
-        jQuery( '.illdy-slider-navigation #next' ).on('click', function( evt ) {
+        $( '.illdy-slider-navigation #next' ).on( 'click', function( evt ) {
           evt.preventDefault();
           illdySlider.trigger( 'next.owl.carousel' );
         } );
@@ -93,12 +120,31 @@ jQuery( document ).ready( function( $ ) {
     testimonialsOwlCarousel();
     illdyJumbotronSlider();
 
-    $( window ).on('scroll', function() {
-      var counterVisible = $( '#counter' ).visible();
+    if ( ! $( '#counter' ).length || ! hasPlugin( 'visible' ) ) {
+      return;
+    }
 
-      if ( true === counterVisible ) {
-        counterNumber();
+    // Passive + rAF-throttled: the previous handler ran a layout-reading visibility
+    // test on every single scroll event.
+    var ticking = false;
+
+    function onScroll() {
+      if ( ticking ) {
+        return;
       }
-    } );
+      ticking = true;
+      window.requestAnimationFrame( function() {
+        if ( true === $( '#counter' ).visible() ) {
+          counterNumber();
+          if ( counterStarted ) {
+            window.removeEventListener( 'scroll', onScroll );
+          }
+        }
+        ticking = false;
+      } );
+    }
+
+    window.addEventListener( 'scroll', onScroll, { passive: true } );
+    onScroll();
   } );
 } );

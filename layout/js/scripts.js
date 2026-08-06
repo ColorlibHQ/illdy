@@ -108,14 +108,20 @@ jQuery( document ).ready( function( $ ) {
         }, 1000 );
       } );
 
-      $( document ).on('scroll', function() {
-        var y = window.scrollY;
-        if ( y >= 300 ) {
-          item.addClass( 'is-active' );
-        } else {
-          item.removeClass( 'is-active' );
+      // Passive + rAF-throttled so the listener never blocks scrolling and class
+      // work happens at most once per frame.
+      var ticking = false;
+
+      window.addEventListener( 'scroll', function() {
+        if ( ticking ) {
+          return;
         }
-      } );
+        ticking = true;
+        window.requestAnimationFrame( function() {
+          item.toggleClass( 'is-active', window.scrollY >= 300 );
+          ticking = false;
+        } );
+      }, { passive: true } );
 
     }
   }

@@ -658,19 +658,36 @@ if ( ! function_exists( 'illdy_testimonials_css' ) ) {
 if ( ! function_exists( 'illdy_output_sections_css' ) ) {
 
 	function illdy_output_sections_css() {
-	?>
 
-		<?php // The id must stay "illdy-<section>-section-css": the Customizer previewer resolves these elements by that pattern. ?>
-		<style id="illdy-jumbotron-section-css"><?php echo illdy_jumbotron_css(); ?></style>
-		<style id="illdy-latestnews-section-css"><?php echo illdy_latestnews_css(); ?></style>
-		<style id="illdy-fullwidth-section-css"><?php echo illdy_fullwidth_css(); ?></style>
-		<style id="illdy-about-section-css"><?php echo illdy_about_css(); ?></style>
-		<style id="illdy-projects-section-css"><?php echo illdy_projects_css(); ?></style>
-		<style id="illdy-services-section-css"><?php echo illdy_services_css(); ?></style>
-		<style id="illdy-team-section-css"><?php echo illdy_team_css(); ?></style>
-		<style id="illdy-testimonials-section-css"><?php echo illdy_testimonials_css(); ?></style>
+		$sections = array(
+			'jumbotron'    => 'illdy_jumbotron_css',
+			'latestnews'   => 'illdy_latestnews_css',
+			'fullwidth'    => 'illdy_fullwidth_css',
+			'about'        => 'illdy_about_css',
+			'projects'     => 'illdy_projects_css',
+			'services'     => 'illdy_services_css',
+			'team'         => 'illdy_team_css',
+			'testimonials' => 'illdy_testimonials_css',
+		);
 
-	<?php
+		/*
+		 * The id must stay "illdy-<section>-section-css": the Customizer previewer
+		 * resolves these elements by that exact pattern. Inside the preview every
+		 * element is emitted even when empty so the previewer always finds its target;
+		 * on the front end the empty ones are skipped.
+		 */
+		$keep_empty = is_customize_preview();
+
+		foreach ( $sections as $slug => $callback ) {
+			$css = $callback();
+
+			if ( '' === $css && ! $keep_empty ) {
+				continue;
+			}
+
+			// Values are escaped where each rule is assembled above.
+			echo '<style id="illdy-' . esc_attr( $slug ) . '-section-css">' . $css . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
 	}
 
 	add_action( 'wp_head', 'illdy_output_sections_css', 99 );

@@ -6,6 +6,43 @@
  *    runs before the init hook. The init hook is too late for some features, such
  *    as indicating support for post thumbnails.
  */
+/**
+ * Single source of truth for asset cache-busting.
+ *
+ * Replaces the hard-coded '2.1.9' strings that had drifted from the version declared
+ * in style.css, so a theme update now reliably invalidates cached CSS and JS.
+ */
+if ( ! defined( 'ILLDY_VERSION' ) ) {
+	$illdy_theme = wp_get_theme( get_template() );
+	define( 'ILLDY_VERSION', $illdy_theme->get( 'Version' ) ? $illdy_theme->get( 'Version' ) : '2.1.10' );
+	unset( $illdy_theme );
+}
+
+/**
+ * Whether this request needs the front-page-only libraries.
+ *
+ * Owl Carousel, countTo, jQuery Visible, the parallax script and the jQuery UI
+ * progress bar exist solely for widgets registered against the `front-page-*`
+ * sidebars, so they are dead weight on every other view. The Customizer preview
+ * always loads them because a section can be switched on live.
+ *
+ * @return bool
+ */
+if ( ! function_exists( 'illdy_needs_front_page_assets' ) ) {
+	function illdy_needs_front_page_assets() {
+		$needed = is_front_page() || is_customize_preview();
+
+		/**
+		 * Filters whether the front-page libraries load.
+		 *
+		 * Return true if you surface Illdy Companion widgets outside the front page.
+		 *
+		 * @param bool $needed
+		 */
+		return (bool) apply_filters( 'illdy_needs_front_page_assets', $needed );
+	}
+}
+
 if ( ! function_exists( 'illdy_setup' ) ) {
 	add_action( 'after_setup_theme', 'illdy_setup' );
 	function illdy_setup() {
@@ -145,9 +182,11 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 
 	function illdy_enqueue_stylesheets() {
 
-		// Google Fonts
+		// Google Fonts. display=swap renders text in the fallback face immediately
+		// instead of leaving it invisible while the webfont downloads.
 		$google_fonts_args = array(
-			'family' => 'Source+Sans+Pro:400,900,700,300,300italic|Lato:300,400,700,900|Poppins:300,400,500,600,700',
+			'family'  => 'Source+Sans+Pro:400,900,700,300,300italic|Lato:300,400,700,900|Poppins:300,400,500,600,700',
+			'display' => 'swap',
 		);
 
 		// WP Register Style
@@ -155,7 +194,7 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 
 		// WP Enqueue Style
 		if ( 1 == get_theme_mod( 'illdy_preloader_enable', 1 ) && ! is_customize_preview() ) {
-			wp_enqueue_style( 'illdy-pace', get_template_directory_uri() . '/layout/css/pace.min.css', array(), '', 'all' );
+			wp_enqueue_style( 'illdy-pace', get_template_directory_uri() . '/layout/css/pace.min.css', array(), ILLDY_VERSION, 'all' );
 		}
 
 		wp_enqueue_style( 'illdy-google-fonts' );
@@ -165,20 +204,47 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 		 */
 		wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/layout/css/bootstrap.min.css', array(), '3.3.6', 'all' );
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/layout/css/font-awesome.min.css', array(), '4.5.0', 'all' );
-		wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/layout/css/owl-carousel.min.css', array(), '2.0.0', 'all' );
+
+		// Only the front-page sections carry carousels.
+		if ( illdy_needs_front_page_assets() ) {
+			wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/layout/css/owl-carousel.min.css', array(), '2.0.0', 'all' );
+		}
+
 		if ( get_theme_mod( 'illdy_projects_lightbox', 0 ) == 1 ) {
 			wp_enqueue_style( 'illdy-fancybox', get_template_directory_uri() . '/layout/css/jquery-fancybox.min.css', array(), '3.3.5', 'all' );
 		}
-		wp_enqueue_style( 'illdy-main', get_template_directory_uri() . '/layout/css/main.css', array(), '', 'all' );
+		wp_enqueue_style( 'illdy-main', get_template_directory_uri() . '/layout/css/main.min.css', array(), ILLDY_VERSION, 'all' );
 		if ( get_theme_mod( 'illdy_sticky_header_enable', false ) ) {
-			$background_color = get_theme_mod( 'illdy_sticky_header_background_color', '#000000' );
-			if ( '#000000' != $background_color ) {
-				$custom_css = '#header .is-sticky .top-header {background-color: ' . esc_attr( $background_color ) . ';}';
+			$background_color = sanitize_hex_color( get_theme_mod( 'illdy_sticky_header_background_color', '#000000' ) );
+			if ( $background_color && '#000000' != $background_color ) {
+				$custom_css = '#header .is-sticky .top-header {background-color: ' . $background_color . ';}';
 				wp_add_inline_style( 'illdy-main', $custom_css );
 			}
 		}
-		wp_enqueue_style( 'illdy-custom', get_template_directory_uri() . '/layout/css/custom.css', array(), '', 'all' );
-		wp_enqueue_style( 'illdy-style', get_stylesheet_uri(), array(), '2.1.9', 'all' );
+		wp_enqueue_style( 'illdy-custom', get_template_directory_uri() . '/layout/css/custom.min.css', array(), ILLDY_VERSION, 'all' );
+		wp_enqueue_style( 'illdy-style', get_stylesheet_uri(), array(), ILLDY_VERSION, 'all' );
+	}
+}
+
+/**
+ * Opens the connection to the Google Fonts CDN early.
+ *
+ * Core already emits a dns-prefetch for fonts.googleapis.com; the font files
+ * themselves are served from fonts.gstatic.com, so preconnecting there saves a
+ * DNS + TCP + TLS round trip before the first glyph can be requested.
+ */
+if ( ! function_exists( 'illdy_resource_hints' ) ) {
+	add_filter( 'wp_resource_hints', 'illdy_resource_hints', 10, 2 );
+
+	function illdy_resource_hints( $urls, $relation_type ) {
+		if ( 'preconnect' === $relation_type && wp_style_is( 'illdy-google-fonts', 'enqueued' ) ) {
+			$urls[] = array(
+				'href'        => 'https://fonts.gstatic.com',
+				'crossorigin' => 'anonymous',
+			);
+		}
+
+		return $urls;
 	}
 }
 
@@ -190,36 +256,57 @@ if ( ! function_exists( 'illdy_enqueue_javascripts' ) ) {
 	add_action( 'wp_enqueue_scripts', 'illdy_enqueue_javascripts' );
 
 	function illdy_enqueue_javascripts() {
+		$uri         = get_template_directory_uri();
+		$front_page  = illdy_needs_front_page_assets();
+		$plugin_deps = array( 'jquery' );
+		$script_deps = array( 'jquery' );
+
 		if ( get_theme_mod( 'illdy_preloader_enable', 1 ) == 1 ) {
-			wp_enqueue_script( 'illdy-pace', get_template_directory_uri() . '/layout/js/pace/pace.min.js', array( 'jquery' ), '', false );
+			wp_enqueue_script( 'illdy-pace', $uri . '/layout/js/pace/pace.min.js', array( 'jquery' ), ILLDY_VERSION, false );
 			$pace_options = array(
 				'restartOnRequestAfter' => 0,
 				'restartOnPushState'    => 0,
 			);
 			wp_localize_script( 'illdy-pace', 'paceOptions', $pace_options );
 		}
-		wp_enqueue_script( 'jquery-ui-progressbar' );
+
 		/*
 		 * Bootstrap 3's JavaScript is not loaded any more. No template emits a
 		 * data-toggle / data-target / data-ride / data-dismiss / data-slide attribute,
 		 * so none of its plugins were ever initialised, and every published Bootstrap 3
 		 * advisory (CVE-2016-10735, CVE-2018-14041, CVE-2018-14042, CVE-2019-8331) is an
-		 * XSS in exactly that code. The stylesheet above is unaffected.
+		 * XSS in exactly that code. The stylesheet is unaffected.
+		 *
+		 * The libraries below only drive front-page widgets, so they are skipped
+		 * elsewhere; plugins.js feature-detects each one before calling it.
 		 */
-		wp_enqueue_script( 'illdy-owl-carousel', get_template_directory_uri() . '/layout/js/owl-carousel/owl-carousel.min.js', array( 'jquery' ), '2.0.0', true );
-		wp_enqueue_script( 'illdy-count-to', get_template_directory_uri() . '/layout/js/count-to/count-to.min.js', array( 'jquery' ), '', true );
-		wp_enqueue_script( 'illdy-visible', get_template_directory_uri() . '/layout/js/visible/visible.min.js', array( 'jquery' ), '', true );
+		if ( $front_page ) {
+			wp_enqueue_script( 'jquery-ui-progressbar' );
+			wp_enqueue_script( 'illdy-owl-carousel', $uri . '/layout/js/owl-carousel/owl-carousel.min.js', array( 'jquery' ), '2.0.0', true );
+			wp_enqueue_script( 'illdy-count-to', $uri . '/layout/js/count-to/count-to.min.js', array( 'jquery' ), ILLDY_VERSION, true );
+			wp_enqueue_script( 'illdy-visible', $uri . '/layout/js/visible/visible.min.js', array( 'jquery' ), ILLDY_VERSION, true );
+			wp_enqueue_script( 'illdy-parallax', $uri . '/layout/js/parallax/parallax.min.js', array( 'jquery' ), ILLDY_VERSION, true );
+
+			/*
+			 * Declare the real dependencies rather than relying on enqueue order.
+			 * plugins.js drives the progress bar, carousels and counter; the inline
+			 * blog-carousel initialiser attached to illdy-scripts below calls
+			 * owlCarousel() directly.
+			 */
+			$plugin_deps = array( 'jquery', 'jquery-ui-progressbar', 'illdy-owl-carousel', 'illdy-count-to', 'illdy-visible' );
+			$script_deps = array( 'jquery', 'illdy-owl-carousel' );
+		}
+
 		if ( get_theme_mod( 'illdy_projects_lightbox', 0 ) == 1 ) {
-			wp_enqueue_script( 'illdy-fancybox', get_template_directory_uri() . '/layout/js/fancybox/jquery-fancybox.min.js', array( 'jquery' ), '3.3.5', true );
+			wp_enqueue_script( 'illdy-fancybox', $uri . '/layout/js/fancybox/jquery-fancybox.min.js', array( 'jquery' ), '3.3.5', true );
 			wp_add_inline_script( 'illdy-fancybox', 'jQuery(".fancybox").fancybox();' );
 		}
 		if ( get_theme_mod( 'illdy_sticky_header_enable', false ) ) {
-			wp_enqueue_script( 'illdy-stickyheader', get_template_directory_uri() . '/layout/js/stickyjs/jquery.sticky.js', array( 'jquery' ), '', true );
+			wp_enqueue_script( 'illdy-stickyheader', $uri . '/layout/js/stickyjs/jquery.sticky.js', array( 'jquery' ), ILLDY_VERSION, true );
 			wp_add_inline_script( 'illdy-stickyheader', 'jQuery(".top-header").sticky({topSpacing:0,zIndex:99});' );
 		}
-		wp_enqueue_script( 'illdy-parallax', get_template_directory_uri() . '/layout/js/parallax/parallax.min.js', array( 'jquery' ), '2.1.9', true );
-		wp_enqueue_script( 'illdy-plugins', get_template_directory_uri() . '/layout/js/plugins.min.js', array( 'jquery' ), '2.1.9', true );
-		wp_enqueue_script( 'illdy-scripts', get_template_directory_uri() . '/layout/js/scripts.js', array( 'jquery' ), '2.1.9', true );
+		wp_enqueue_script( 'illdy-plugins', $uri . '/layout/js/plugins.min.js', $plugin_deps, ILLDY_VERSION, true );
+		wp_enqueue_script( 'illdy-scripts', $uri . '/layout/js/scripts.min.js', $script_deps, ILLDY_VERSION, true );
 		if ( is_front_page() ) {
 			wp_add_inline_script( 'illdy-scripts', 'if( jQuery(\'.blog-carousel > .illdy-blog-post\').length > 3 ){jQuery(\'.blog-carousel\').owlCarousel({\'items\': 3,\'loop\': true,\'dots\': false,\'nav\' : true, \'navText\':[\'<i class="fa fa-angle-left" aria-hidden="true"></i>\',\'<i class="fa fa-angle-right" aria-hidden="true"></i>\'], responsive : { 0 : { items : 1 }, 480 : { items : 2 }, 900 : { items : 3 } }});}' );
 			$jumbotron_type = get_theme_mod( 'illdy_jumbotron_background_type', 'image' );
