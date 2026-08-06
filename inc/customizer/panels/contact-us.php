@@ -65,14 +65,12 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Epsilon_Control_Toggle(
-		$wp_customize, $prefix . '_contact_us_show', array(
-			'type'     => 'epsilon-toggle',
+	$prefix . '_contact_us_show', array(
+			'type'     => 'checkbox',
 			'label'    => __( 'Show this section?', 'illdy' ),
 			'section'  => $prefix . '_contact_us',
 			'priority' => 1,
 		)
-	)
 );
 
 // Title

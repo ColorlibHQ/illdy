@@ -23,12 +23,14 @@ $wp_customize->add_setting( $prefix . '_team_general_show', array(
 	'default'           => 1,
 	'transport'         => 'postMessage',
 ) );
-$wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, $prefix . '_team_general_show', array(
-	'type'     => 'epsilon-toggle',
+$wp_customize->add_control(
+	$prefix . '_team_general_show', array(
+	'type'     => 'checkbox',
 	'label'    => __( 'Show this section?', 'illdy' ),
 	'section'  => $panel_id,
 	'priority' => 1,
-) ) );
+)
+);
 
 // Title
 $wp_customize->add_setting( $prefix . '_team_general_title', array(
@@ -174,11 +176,13 @@ $wp_customize->add_setting( $prefix . '_team_background_repeat', array(
 	'transport'         => 'postMessage',
 ) );
 
-$wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, $prefix . '_team_background_repeat', array(
-	'type'    => 'epsilon-toggle',
+$wp_customize->add_control(
+	$prefix . '_team_background_repeat', array(
+	'type'    => 'checkbox',
 	'label'   => __( 'Repeat Background Image', 'illdy' ),
 	'section' => $panel_id,
-) ) );
+)
+);
 
 $wp_customize->add_setting( $prefix . '_team_background_attachment', array(
 	'sanitize_callback' => $prefix . '_sanitize_checkbox',
@@ -186,11 +190,13 @@ $wp_customize->add_setting( $prefix . '_team_background_attachment', array(
 	'transport'         => 'postMessage',
 ) );
 
-$wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, $prefix . '_team_background_attachment', array(
-	'type'    => 'epsilon-toggle',
+$wp_customize->add_control(
+	$prefix . '_team_background_attachment', array(
+	'type'    => 'checkbox',
 	'label'   => __( 'Scroll with Page', 'illdy' ),
 	'section' => $panel_id,
-) ) );
+)
+);
 
 $wp_customize->add_setting( $prefix . '_team_general_color', array(
 	'sanitize_callback' => 'sanitize_hex_color',

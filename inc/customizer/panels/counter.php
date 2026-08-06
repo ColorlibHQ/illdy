@@ -23,14 +23,12 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Epsilon_Control_Toggle(
-		$wp_customize, $prefix . '_counter_general_show', array(
-			'type'     => 'epsilon-toggle',
+	$prefix . '_counter_general_show', array(
+			'type'     => 'checkbox',
 			'label'    => __( 'Show this section?', 'illdy' ),
 			'section'  => $prefix . '_counter_general',
 			'priority' => 1,
 		)
-	)
 );
 
 

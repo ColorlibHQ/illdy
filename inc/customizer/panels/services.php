@@ -33,14 +33,12 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	new Epsilon_Control_Toggle(
-		$wp_customize, $prefix . '_services_general_show', array(
-			'type'     => 'epsilon-toggle',
+	$prefix . '_services_general_show', array(
+			'type'     => 'checkbox',
 			'label'    => __( 'Show this section?', 'illdy' ),
 			'section'  => $panel_id,
 			'priority' => 1,
 		)
-	)
 );
 
 // Title
@@ -239,13 +237,11 @@ $wp_customize->add_setting(
 );
 
 $wp_customize->add_control(
-	new Epsilon_Control_Toggle(
-		$wp_customize, $prefix . '_services_background_repeat', array(
-			'type'    => 'epsilon-toggle',
+	$prefix . '_services_background_repeat', array(
+			'type'    => 'checkbox',
 			'label'   => __( 'Repeat Background Image', 'illdy' ),
 			'section' => $panel_id,
 		)
-	)
 );
 
 $wp_customize->add_setting(
@@ -257,13 +253,11 @@ $wp_customize->add_setting(
 );
 
 $wp_customize->add_control(
-	new Epsilon_Control_Toggle(
-		$wp_customize, $prefix . '_services_background_attachment', array(
-			'type'    => 'epsilon-toggle',
+	$prefix . '_services_background_attachment', array(
+			'type'    => 'checkbox',
 			'label'   => __( 'Scroll with Page', 'illdy' ),
 			'section' => $panel_id,
 		)
-	)
 );
 
 $wp_customize->add_setting(
