@@ -448,7 +448,6 @@ input {
 	background: -moz-linear-gradient(top,  #6a305e 0%, #451c56 100%);
 	background: -webkit-linear-gradient(top,  #6a305e 0%,#451c56 100%);
 	background: linear-gradient(to bottom,  #6a305e 0%,#451c56 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6a305e', endColorstr='#451c56',GradientType=0 );
 	@include background-size(cover);
 	background-attachment: fixed;
 	background-position: center center;

@@ -187,7 +187,6 @@ a:hover, a:focus {
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -217,7 +216,6 @@ a:hover, a:focus {
     color: #fff;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     line-height: 75px;
     font-weight: 700;
@@ -447,7 +445,6 @@ a:hover, a:focus {
     color: #fff;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     font-family: "Lato";
     min-width: 242px;
@@ -473,7 +470,6 @@ a:hover, a:focus {
     color: #fff;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     font-family: "Lato";
     min-width: 242px;
@@ -610,7 +606,6 @@ a:hover, a:focus {
     position: relative;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
 }
 
@@ -634,7 +629,6 @@ a:hover, a:focus {
     z-index: 1;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -647,7 +641,6 @@ a:hover, a:focus {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
@@ -744,7 +737,6 @@ a:hover, a:focus {
     display: inline-block;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
 	border-radius: 50%;
 	border: 1px solid transparent;
@@ -873,7 +865,6 @@ a:hover, a:focus {
     background-position: center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     margin-bottom: 37px;
 }
@@ -888,7 +879,6 @@ a:hover, a:focus {
     color: #5e5e5e;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     display: block;
 }
@@ -915,7 +905,6 @@ a:hover, a:focus {
     color: #f1d204;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     margin-left: 10px;
 }
@@ -956,7 +945,6 @@ a.button {
     border-radius: 3px;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     font-family: "Lato";
 }
@@ -987,7 +975,6 @@ a.button:focus {
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     background-position: center;
 }
@@ -1124,7 +1111,6 @@ a.button:focus {
     text-align: center;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     border: 1px solid;
 }
@@ -1219,7 +1205,6 @@ a.button:focus {
     color: #8c9597;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -1320,10 +1305,6 @@ a.button:focus {
     color: #8c9597;
 }
 
-#contact-us .section-content .wpcf7-form p .wpcf7-text:-ms-input-placeholder {
-    color: #8c9597;
-}
-
 #contact-us .section-content .wpcf7-form p .wpcf7-text:-moz-placeholder {
     color: #8c9597;
 }
@@ -1352,10 +1333,6 @@ a.button:focus {
     color: #8c9597;
 }
 
-#contact-us .section-content .wpcf7-form p .wpcf7-textarea:-ms-input-placeholder {
-    color: #8c9597;
-}
-
 #contact-us .section-content .wpcf7-form p .wpcf7-textarea:-moz-placeholder {
     color: #8c9597;
 }
@@ -1375,7 +1352,6 @@ a.button:focus {
     float: right;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     outline: 0;
     font-family: "Lato";
@@ -1535,7 +1511,6 @@ a.button:focus {
     text-transform: uppercase;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     display: block;
 }
@@ -1626,7 +1601,6 @@ a.button:focus {
     color: #fff;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -1696,7 +1670,6 @@ a.button:focus {
     text-align: center;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -1831,7 +1804,6 @@ a.button:focus {
     line-height: 33px;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -2045,10 +2017,6 @@ a.button:focus {
 }
 
 .widget .search-form .search-form-box #s::-moz-placeholder {
-    color: #a9afb1;
-}
-
-.widget .search-form .search-form-box #s:-ms-input-placeholder {
     color: #a9afb1;
 }
 
@@ -2442,13 +2410,11 @@ span.rss-date:before,
     background-position: center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     display: block;
     position: relative;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -2457,7 +2423,6 @@ span.rss-date:before,
     color: #f1d204;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -2472,7 +2437,6 @@ span.rss-date:before,
     line-height: 1.6;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -2581,10 +2545,6 @@ span.rss-date:before,
     color: #8c9597;
 }
 
-#comments #respond .comment-form textarea:-ms-input-placeholder {
-    color: #8c9597;
-}
-
 #comments #respond .comment-form textarea:-moz-placeholder {
     color: #8c9597;
 }
@@ -2594,10 +2554,6 @@ span.rss-date:before,
 }
 
 #comments #respond .comment-form input.input-full::-moz-placeholder {
-    color: #8c9597;
-}
-
-#comments #respond .comment-form input.input-full:-ms-input-placeholder {
     color: #8c9597;
 }
 
@@ -2644,7 +2600,6 @@ input[type=submit] {
     color: #fff;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
     border-radius: 3px;
 }
@@ -2681,7 +2636,6 @@ a.button:focus {
 .align-children {
     display: -webkit-flex;
     display: -moz-flex;
-    display: -ms-flexbox;
     display: flex;
     align-items: center;
     -webkit-align-items: center;
@@ -3162,10 +3116,8 @@ header#header {
 .illdy-jumbotron-background #wp-custom-header video {
     height: 100%;
     left: 0;
-    -o-object-fit: cover;
     object-fit: cover;
     top: 0;
-    -ms-transform: none;
     -moz-transform: none;
     -webkit-transform: none;
     transform: none;
@@ -3200,8 +3152,6 @@ a.illdy-top {
     opacity: 0;
     -webkit-transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
-    -ms-transition: opacity 1s ease-in-out;
-    -o-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;
 }
 

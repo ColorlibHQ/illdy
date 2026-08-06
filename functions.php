@@ -159,8 +159,11 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 		}
 
 		wp_enqueue_style( 'illdy-google-fonts' );
+		/*
+		 * bootstrap-theme.css was dropped: it only styles .btn-*, .navbar-*, .alert-*,
+		 * .panel-* and .list-group-*, none of which this theme's front-end markup uses.
+		 */
 		wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/layout/css/bootstrap.min.css', array(), '3.3.6', 'all' );
-		wp_enqueue_style( 'bootstrap-theme', get_template_directory_uri() . '/layout/css/bootstrap-theme.min.css', array(), '3.3.6', 'all' );
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/layout/css/font-awesome.min.css', array(), '4.5.0', 'all' );
 		wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/layout/css/owl-carousel.min.css', array(), '2.0.0', 'all' );
 		if ( get_theme_mod( 'illdy_projects_lightbox', 0 ) == 1 ) {
@@ -195,8 +198,14 @@ if ( ! function_exists( 'illdy_enqueue_javascripts' ) ) {
 			);
 			wp_localize_script( 'illdy-pace', 'paceOptions', $pace_options );
 		}
-		wp_enqueue_script( 'jquery-ui-progressbar', '', array( 'jquery' ), '', true );
-		wp_enqueue_script( 'illdy-bootstrap', get_template_directory_uri() . '/layout/js/bootstrap/bootstrap.min.js', array( 'jquery' ), '3.3.6', true );
+		wp_enqueue_script( 'jquery-ui-progressbar' );
+		/*
+		 * Bootstrap 3's JavaScript is not loaded any more. No template emits a
+		 * data-toggle / data-target / data-ride / data-dismiss / data-slide attribute,
+		 * so none of its plugins were ever initialised, and every published Bootstrap 3
+		 * advisory (CVE-2016-10735, CVE-2018-14041, CVE-2018-14042, CVE-2019-8331) is an
+		 * XSS in exactly that code. The stylesheet above is unaffected.
+		 */
 		wp_enqueue_script( 'illdy-owl-carousel', get_template_directory_uri() . '/layout/js/owl-carousel/owl-carousel.min.js', array( 'jquery' ), '2.0.0', true );
 		wp_enqueue_script( 'illdy-count-to', get_template_directory_uri() . '/layout/js/count-to/count-to.min.js', array( 'jquery' ), '', true );
 		wp_enqueue_script( 'illdy-visible', get_template_directory_uri() . '/layout/js/visible/visible.min.js', array( 'jquery' ), '', true );
