@@ -184,7 +184,16 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		require_once get_template_directory() . '/inc/customizer/panels/full-width.php';
 	}
 
-	add_action( 'customize_register', 'illdy_customize_register' );
+	/*
+	 * Priority 11, not the default 10. The panels below instantiate Epsilon control and
+	 * section classes and call Epsilon_Customizer::add_field(), all of which depend on
+	 * Epsilon_Framework::init_controls() having run: it loads those class files and
+	 * hands the WP_Customize_Manager to Epsilon_Customizer. That also hooks
+	 * customize_register at 10, so the two used to be separated only by the order in
+	 * which they happened to be registered. Making the dependency explicit means the
+	 * Customizer no longer fatals if that order ever changes.
+	 */
+	add_action( 'customize_register', 'illdy_customize_register', 11 );
 }// End if().
 
 /**

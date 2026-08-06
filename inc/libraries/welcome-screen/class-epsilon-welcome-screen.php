@@ -467,7 +467,20 @@ class Epsilon_Welcome_Screen {
 				<?php } ?>
 			</h2>
 
-			<?php require_once $this->sections[ $tab ]['path']; ?>
+			<?php
+			/*
+			 * $tab comes from the query string. An unrecognised value used to reach
+			 * require_once with an empty path, which is a fatal error rather than a
+			 * 404 or a fallback. Resolve it against the registered sections first.
+			 */
+			if ( ! isset( $this->sections[ $tab ]['path'] ) || ! file_exists( $this->sections[ $tab ]['path'] ) ) {
+				$tab = key( $this->sections );
+			}
+
+			if ( isset( $this->sections[ $tab ]['path'] ) && file_exists( $this->sections[ $tab ]['path'] ) ) {
+				require_once $this->sections[ $tab ]['path'];
+			}
+			?>
 		</div>
 		<?php
 	}

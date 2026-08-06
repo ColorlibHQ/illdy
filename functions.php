@@ -560,7 +560,10 @@ if ( ! function_exists( 'illdy_get_random_featured_image' ) ) {
 
 if ( ! function_exists( 'illdy_get_recommended_actions_url' ) ) {
 	function illdy_get_recommended_actions_url() {
-		return self_admin_url( 'themes.php?page=illdy-welcome&tab=recommended_actions' );
+		// The welcome screen registers its sections with hyphens ("recommended-actions").
+		// This returned an underscored slug, so every "Install Illdy Companion" link in
+		// the Customizer opened a tab the welcome screen could not resolve.
+		return self_admin_url( 'themes.php?page=illdy-welcome&tab=recommended-actions' );
 	}
 }
 
