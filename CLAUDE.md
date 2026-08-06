@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-**Illdy** — a free one-page/multipurpose **WordPress theme** by Colorlib (not a static HTML template). Current stack is Bootstrap **3.3.6** + jQuery + Owl Carousel 2, built on the vendored **Epsilon Framework** (MachoThemes) for its Customizer controls.
+**Illdy** — a free one-page/multipurpose **WordPress theme** by Colorlib (not a static HTML template). Current stack is Bootstrap **3.3.6 CSS only** + jQuery + Owl Carousel 2, built on the vendored **Epsilon Framework** (MachoThemes) for its Customizer controls.
+
+Targets WordPress 7 / PHP 8.5; verified to boot with zero PHP notices, warnings or deprecations on WP 7.0.2 / PHP 8.5.6. Bootstrap's **JavaScript is deliberately not loaded** — no template emits a `data-toggle`/`data-target`/`data-ride`/`data-dismiss`/`data-slide` attribute, so no Bootstrap plugin was ever initialised, and every published Bootstrap 3 CVE lives in that code. Don't re-add it; if you need a Bootstrap JS component, add the specific behaviour in `layout/js/scripts.js` instead.
 
 Front-page content is driven by **widgets**, not by the Customizer text fields — the widgets themselves live in the separate **Illdy Companion** plugin (guarded by `defined( 'ILLDY_COMPANION' )`). Without that plugin, front-page sections render hardcoded `the_widget()` demo content, and only for users with `edit_theme_options`.
 
@@ -30,7 +32,18 @@ npx grunt build-archive   # produce illdy.zip (excludes node_modules, Gruntfile,
 
 ### Bootstrap order (`functions.php`)
 
-`illdy_setup()` (on `after_setup_theme`) requires `inc/extras.php`, `inc/customizer/customizer.php`, `inc/jetpack.php`, the three `inc/components/*` output classes, and `inc/back-compatible.php`, then registers theme support, image sizes, and nav menus. Separately, the **bottom of the file** requires the Epsilon autoloader, `inc/class-mt-notify-system.php`, the welcome screen, and `inc/class-illdy.php` — which ends in `new Illdy()`. That constructor boots `Epsilon_Framework`, the color scheme, the welcome screen, and the "Recommended Actions" Customizer section.
+`illdy_setup()` (on `after_setup_theme`, priority 10) requires `inc/extras.php`, `inc/customizer/customizer.php`, `inc/jetpack.php`, the three `inc/components/*` output classes, and `inc/back-compatible.php`, then registers theme support, image sizes, and nav menus. The **bottom of the file** requires the Epsilon autoloader, `inc/class-mt-notify-system.php`, the welcome screen, and `inc/class-illdy.php`.
+
+**Timing is load-bearing** — this ordering exists to satisfy WordPress 6.7+'s just-in-time translation rules:
+
+| When | What |
+|---|---|
+| file parse | hooks registered only — **no `__()` may run here** |
+| `after_setup_theme` 10 | `illdy_setup()` calls `load_theme_textdomain()` *before* any translated string |
+| `after_setup_theme` 15 | `illdy_boot()` → `new Illdy()` → Epsilon framework + colour scheme |
+| `init` 20 | welcome screen + `illdy_required_actions` filter (Illdy Companion answers this with **its own** text domain) |
+
+Anything that calls `__()` or fires `illdy_required_actions` must not move earlier, or WP 6.7+ emits `_load_textdomain_just_in_time was called incorrectly` for the `illdy` and `illdy-companion` domains. `Illdy::get_recommended_actions()` is lazy and memoized for exactly this reason.
 
 ### Front-page section pipeline
 
@@ -38,9 +51,12 @@ The front page is a reorderable stack. Three pieces must stay in sync:
 
 | Concern | Location |
 |---|---|
-| Default order + stored order | `illdy_get_sections_position()` in [inc/customizer/customizer.php](inc/customizer/customizer.php) — theme_mod `illdy_frontpage_sections`, an array of **panel IDs** |
+| Canonical id list / allowlist | `illdy_get_default_sections()` in [inc/customizer/customizer.php](inc/customizer/customizer.php) |
+| Stored order (validated on read) | `illdy_get_sections_position()` in [inc/customizer/customizer.php](inc/customizer/customizer.php) — theme_mod `illdy_frontpage_sections`, an array of **panel IDs** |
 | Visibility toggle map | `illdy_sections_order()` in [inc/extras.php](inc/extras.php) — panel ID → `illdy_*_general_show` theme_mod |
 | Panel ID → template map | `illdy_sections()` in [inc/extras.php](inc/extras.php) — renders `sections/front-page-{slug}.php` |
+
+`illdy_get_default_sections()` is both the shipped order **and** the allowlist used by the reorder AJAX endpoint and by `illdy_get_sections_position()`. An id missing from it is silently dropped everywhere, so add new sections there first.
 
 Customizer panel priority is derived from the same array via `illdy_get_section_position()`, so drag-and-drop reordering (AJAX action `wp_ajax_illdy_order_sections`) changes both the render order and the panel order. **Adding a section means editing all three maps plus creating `sections/front-page-*.php` and `inc/customizer/panels/*.php`.**
 
@@ -58,6 +74,8 @@ Customizer panel priority is derived from the same array via `illdy_get_section_
 
 Any new color/background Customizer option must be added to **both** path 1 and path 2, or the live preview will diverge from the published front end.
 
+Path 1 emits one `<style>` per section and the id **must** stay `illdy-<section>-section-css` — the previewer resolves its target by building that exact string (`inc/customizer/assets/js/illdy-customizer-live-preview.js`). Two blocks previously shared `illdy-about-section-css`, so About edits overwrote the jumbotron's CSS. Outside the Customizer preview, sections with no rules are skipped entirely; inside it every id is emitted even when empty so the previewer always finds its element.
+
 ### Header / jumbotron
 
 [header.php](header.php) builds the inline `style` attribute for `#header` itself (background image, parallax `background-attachment`, iOS Safari fallback) and switches jumbotron variant on theme_mod `illdy_jumbotron_background_type` (`image` | `video` | `slider`), delegating to `sections/front-page-header-video.php` or `-header-slider.php`, then always `-bottom-header.php`. Video mode enqueues core `wp-custom-header` with settings from `illdy_get_video_settings()`.
@@ -72,11 +90,19 @@ Custom actions available to templates and the companion plugin: `illdy_above_con
 
 ## Gotchas
 
-- **`layout/scss/` is stale and is NOT the source of the shipped CSS.** The live stylesheet is `layout/css/main.css` (3214 lines); `layout/scss/main.scss` (2295 lines) has diverged — e.g. `.illdy-top` and all `:focus-within` rules exist only in the CSS. Edit `layout/css/main.css` directly; recompiling the SCSS over it would silently drop work.
+- **The theme serves the `.min` assets, so edits to a source file are invisible until you regenerate it.** `functions.php` enqueues `main.min.css`, `custom.min.css`, `bootstrap.min.css`, `plugins.min.js` and `scripts.min.js`. After editing any of those sources run `npx grunt mincss` / `npx grunt minjs`, or directly:
+
+  ```bash
+  npx clean-css-cli@5 -O1 -o layout/css/main.min.css layout/css/main.css
+  npx terser@5 layout/js/scripts.js -c -m -o layout/js/scripts.min.js
+  ```
+
+  Use clean-css `-O1`; `-O2` restructures rules and can shift the cascade.
+- **`layout/scss/` is stale and is NOT the source of the shipped CSS.** The live stylesheet is `layout/css/main.css`; `layout/scss/main.scss` has diverged — `.illdy-top` and all `:focus-within` rules exist only in the CSS. Edit `layout/css/main.css` directly; recompiling the SCSS over it would silently drop work.
 - **`layout/css/style-overrides.css` must never be minified or treated as real CSS** — it's the printf template above. `Gruntfile.js` already excludes it from `cssmin`.
-- **Version strings are out of sync across four files**: `style.css` 2.1.10, `readme.txt` 2.1.10, `package.json` 2.1.1, and the `wp_enqueue_*` cache-busting args in `functions.php` are `'2.1.9'`. Update all of them together on release.
-- `functions.php` enqueues **`scripts.js` unminified** while its siblings load `.min.js`. Regenerating minified files with `grunt minjs` won't change what's served for that handle.
-- `layout/js/stickyjs/jquery.min.js` is a stray bundled jQuery copy; the theme relies on WordPress core's jQuery everywhere.
+- **CSS files use CRLF line endings.** Tools that rewrite them must preserve that, or the diff becomes the whole file.
+- Version lives in `style.css` and is read once into the **`ILLDY_VERSION`** constant, which every enqueue uses for cache busting. On release bump `style.css`, `readme.txt` and `package.json` together; nothing else hard-codes a version.
+- Front-page-only libraries (Owl Carousel, countTo, jQuery Visible, parallax, jQuery UI progress bar) load only when `illdy_needs_front_page_assets()` is true. If you surface Illdy Companion widgets outside the front page, return true from the **`illdy_needs_front_page_assets`** filter. `plugins.js` feature-detects each library, so a missing one degrades silently rather than throwing.
 - Front-page sidebars (`front-page-about-sidebar`, `front-page-projects-sidebar`, …) are special: `Illdy::remove_specific_widget()` strips `illdy_home_parallax` widgets from every *other* sidebar. Override with the `illdy_remove_custom_widgets` filter.
 - `languages/` currently ships `.po`/`.mo` for fr_FR and pt_BR plus `illdy.po`, but **no `.pot`** — run `grunt buildpot` if translators need one.
 - `inc/back-compatible.php` runs migrations of old theme_mods on every load, keyed off `wp_get_theme()->version` comparisons. Bumping the version in `style.css` can re-trigger or newly trigger these blocks.

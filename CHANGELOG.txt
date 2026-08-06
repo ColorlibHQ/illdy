@@ -1,3 +1,59 @@
+### V 2.2.0
+Modernisation pass for WordPress 7 / PHP 8.5. Verified against WordPress 7.0.2
+on PHP 8.5.6: the theme now boots with zero PHP notices, warnings or
+deprecations, where the previous release emitted six.
+
+Compatibility
+- Fixed "Translation loading for the illdy / illdy-companion domain was
+  triggered too early" on WordPress 6.7+. The theme controller was constructed
+  at file-parse time, before load_theme_textdomain(); it now boots on
+  after_setup_theme and the recommended-actions list resolves on init.
+- Fixed 13 calls to the undefined get_theme_mode(). Every Customizer selective
+  refresh callback for the About, Contact, Jumbotron and footer partials was a
+  fatal error.
+- illdy_hex2rgb() no longer passes sscanf() nulls to hexdec(), deprecated since
+  PHP 8.1. Output verified byte-identical across 48 input/alpha combinations.
+- Guarded $_SERVER['HTTP_USER_AGENT'], missing logo attachments, unknown ids in
+  the stored section order, and core Customizer objects that a child theme or
+  plugin may have removed.
+- Requires PHP 7.4 or later.
+
+Security
+- The section-reorder AJAX endpoint required no nonce and no capability, and
+  wrote raw POST data into a theme mod. It now requires edit_theme_options plus
+  a nonce and reconciles the payload against a fixed allowlist.
+- The Epsilon AJAX controller dispatched any public static method named in the
+  request; restricted to an allowlisted class/method map.
+- Escaped the header style and class attributes, the counter inline style, the
+  jumbotron title, the testimonial dot colour and the 404 home link.
+- Preloader CSS is constrained with sanitize_hex_color(); esc_attr() permits
+  ";" and "}" and so allowed CSS injection.
+- Licence requests no longer disable TLS certificate verification.
+
+Browser support
+- Removed Bootstrap 3's JavaScript. No template emits a data-toggle, data-target,
+  data-ride, data-dismiss or data-slide attribute, so no Bootstrap plugin was
+  ever initialised; this eliminates CVE-2016-10735, CVE-2018-14041,
+  CVE-2018-14042 and CVE-2019-8331, which are all XSS in that code.
+- Removed bootstrap-theme.css and a stray bundled copy of jQuery.
+- Stripped progid:DXImageTransform filters, @-ms-viewport, \9 hacks,
+  :-ms-input-placeholder rules and -o-/-ms- prefixed declarations.
+
+Performance (measured on the local install: 361 KB -> 218 KB on inner pages)
+- Owl Carousel, countTo, jQuery Visible, the parallax script and the jQuery UI
+  progress bar load only where the front-page sections that use them render.
+- Serves minified main, custom and scripts assets.
+- Google Fonts requested with display=swap, plus a preconnect to
+  fonts.gstatic.com.
+- Scroll handlers are passive and requestAnimationFrame-throttled; the counter
+  no longer restarts its animation on every scroll event.
+
+Fixes
+- Static front page content now runs through the_content filters, so shortcodes,
+  dynamic blocks and oEmbeds render instead of being dropped.
+- The jumbotron <style> element shared an id with the About block, so the
+  Customizer previewer overwrote the wrong element.
+
 ### V 2.1.10
 - Fixed UI for recommended plugins section in admin dashboard
 - Improved layout for plugin boxes and buttons in admin
