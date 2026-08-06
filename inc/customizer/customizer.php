@@ -30,6 +30,7 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 		// Custom Controls
 		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-text-editor.php';
 		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-color-scheme.php';
+		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-repeater.php';
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-button.php';
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-tab.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-kaliforms-custom-control.php';
@@ -430,6 +431,39 @@ function illdy_is_sticky_header() {
 		return true;
 	}
 	return false;
+}
+
+if ( ! function_exists( 'illdy_sanitize_slides' ) ) {
+	/**
+	 * Sanitizes the jumbotron slides repeater.
+	 *
+	 * Accepts either the array the control posts or a JSON string, and always returns
+	 * the shape the front end reads: a list of arrays each holding a slide_image URL.
+	 *
+	 * @param mixed $value Raw setting value.
+	 *
+	 * @return array
+	 */
+	function illdy_sanitize_slides( $value ) {
+		if ( is_string( $value ) ) {
+			$decoded = json_decode( $value, true );
+			$value   = ( null === $decoded ) ? array() : $decoded;
+		}
+
+		$clean = array();
+
+		foreach ( (array) $value as $row ) {
+			$row = (array) $row;
+
+			if ( empty( $row['slide_image'] ) ) {
+				continue;
+			}
+
+			$clean[] = array( 'slide_image' => esc_url_raw( $row['slide_image'] ) );
+		}
+
+		return $clean;
+	}
 }
 
 /**

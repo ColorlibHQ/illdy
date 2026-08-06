@@ -371,25 +371,28 @@ $wp_customize->add_control(
 );
 
 // Controls for slider
-Epsilon_Customizer::add_field(
+$wp_customize->add_setting(
 	$prefix . '_jumbotron_slides', array(
-		'type'            => 'epsilon-repeater',
-		'section'         => $prefix . '_jumbotron_general',
-		'label'           => esc_html__( 'Slides', 'illdy' ),
-		'button_label'    => esc_html__( 'Add new entries', 'illdy' ),
-		'row_label'       => array(
-			'type'  => 'text',
-			'value' => esc_html__( 'Slide', 'illdy' ),
-		),
-		'fields'          => array(
-			'slide_image' => array(
-				'label'   => esc_html__( 'Slide Image', 'illdy' ),
-				'type'    => 'epsilon-image',
-				'size'    => 'full',
-				'default' => '',
+		'default'           => array(),
+		'sanitize_callback' => 'illdy_sanitize_slides',
+		'transport'         => 'refresh',
+	)
+);
+$wp_customize->add_control(
+	new Illdy_Control_Repeater(
+		$wp_customize, $prefix . '_jumbotron_slides', array(
+			'section'         => $prefix . '_jumbotron_general',
+			'label'           => esc_html__( 'Slides', 'illdy' ),
+			'button_label'    => esc_html__( 'Add new entries', 'illdy' ),
+			'row_label'       => esc_html__( 'Slide', 'illdy' ),
+			'fields'          => array(
+				'slide_image' => array(
+					'label' => esc_html__( 'Slide Image', 'illdy' ),
+					'type'  => 'image',
+				),
 			),
-		),
-		'active_callback' => 'illdy_is_jumbotron_slider',
+			'active_callback' => 'illdy_is_jumbotron_slider',
+		)
 	)
 );
 

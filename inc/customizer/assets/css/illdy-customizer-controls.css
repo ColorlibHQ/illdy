@@ -73,3 +73,63 @@
 .customize-control-illdy-color-scheme .illdy-color-scheme-name {
 	flex: 1 1 auto;
 }
+
+/* Repeater */
+.customize-control-illdy-repeater .illdy-repeater-rows {
+	margin: 8px 0 10px;
+	padding: 0;
+	list-style: none;
+}
+
+.customize-control-illdy-repeater .illdy-repeater-row {
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	margin: 0 0 8px;
+	background: #fff;
+}
+
+.customize-control-illdy-repeater .illdy-repeater-row-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 6px 8px;
+	background: #f6f7f7;
+	border-bottom: 1px solid #dcdcde;
+	cursor: move;
+}
+
+.customize-control-illdy-repeater .illdy-repeater-row-title {
+	font-weight: 600;
+}
+
+.customize-control-illdy-repeater .illdy-repeater-remove {
+	color: #b32d2e;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.customize-control-illdy-repeater .illdy-repeater-field {
+	padding: 8px;
+}
+
+.customize-control-illdy-repeater .illdy-repeater-field-label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+.customize-control-illdy-repeater .illdy-repeater-image-preview img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin-bottom: 6px;
+	border: 1px solid #dcdcde;
+}
+
+.customize-control-illdy-repeater .illdy-repeater-input {
+	margin-bottom: 6px;
+}
+
+.customize-control-illdy-repeater .illdy-repeater-template {
+	display: none;
+}
