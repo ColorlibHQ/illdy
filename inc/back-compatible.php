@@ -80,14 +80,21 @@ if ( version_compare( $theme->version, '1.0.36', '>=' ) ) {
 			$sidebars_widgets = get_option( 'sidebars_widgets' );
 			$widgets          = get_option( 'widget_illdy_testimonial' );
 
-			if ( ! empty( $widgets ) ) {
+			// array_slice() throws a TypeError on PHP 8 if the option holds anything
+			// other than an array, which a partial or third-party write can leave behind.
+			if ( ! empty( $widgets ) && is_array( $widgets ) ) {
 				$aux_widgets = $widgets;
 				if ( isset( $aux_widgets['_multiwidget'] ) ) {
 					unset( $aux_widgets['_multiwidget'] );
 				}
-				$last_key = key( array_slice( $aux_widgets, -1, 1, true ) );
+				$last_key = $aux_widgets ? key( array_slice( $aux_widgets, -1, 1, true ) ) : 1;
 			} else {
+				$widgets  = array();
 				$last_key = 1;
+			}
+
+			if ( ! is_array( $sidebars_widgets ) ) {
+				$sidebars_widgets = array();
 			}
 			$key = intval( $last_key ) + 1;
 

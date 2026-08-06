@@ -193,11 +193,18 @@ class Illdy {
 			/**
 			 * In the content area of the frontend page, we can only use builder widgets
 			 */
-			if ( ! in_array( $widget_area, $front_page_sidebars ) && ! empty( $widget_list ) ) {
-				foreach ( $widget_list as $pos => $widget_id ) {
-					if ( strpos( $widget_id, 'illdy_home_parallax' ) !== false ) {
-						unset( $sidebars_widgets[ $widget_area ][ $pos ] );
-					}
+			/*
+			 * The sidebars_widgets option also carries a scalar `array_version` key, so
+			 * $widget_list is not always a list. Iterating it raised "foreach() argument
+			 * must be of type array|object" on PHP 8.
+			 */
+			if ( ! is_array( $widget_list ) || in_array( $widget_area, $front_page_sidebars, true ) ) {
+				continue;
+			}
+
+			foreach ( $widget_list as $pos => $widget_id ) {
+				if ( is_string( $widget_id ) && strpos( $widget_id, 'illdy_home_parallax' ) !== false ) {
+					unset( $sidebars_widgets[ $widget_area ][ $pos ] );
 				}
 			}
 		}
