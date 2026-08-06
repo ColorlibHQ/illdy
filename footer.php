@@ -12,7 +12,7 @@ $show_footer           = get_theme_mod( 'illdy_show_footer', 1 );
 $show_footer_copyright = get_theme_mod( 'illdy_show_footer_copyright', 1 );
 
 if ( current_user_can( 'edit_theme_options' ) ) {
-	$footer_copyright = get_theme_mod( 'illdy_footer_copyright', sprintf( __( '&copy; Copyright %s. All Rights Reserved.', 'illdy' ), date( 'Y' ) ) );
+	$footer_copyright = get_theme_mod( 'illdy_footer_copyright', sprintf( __( '&copy; Copyright %s. All Rights Reserved.', 'illdy' ), wp_date( 'Y' ) ) );
 } else {
 	$footer_copyright = get_theme_mod( 'illdy_footer_copyright' );
 }

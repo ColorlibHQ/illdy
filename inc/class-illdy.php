@@ -33,6 +33,31 @@ class Illdy {
 
 	function __construct() {
 
+		$this->init_epsilon();
+
+		add_action( 'init', array( $this, 'init_welcome_screen' ), 20 );
+		add_action( 'customize_register', array( $this, 'init_customizer' ) );
+		add_filter( 'sidebars_widgets', array( $this, 'remove_specific_widget' ) );
+
+	}
+
+	/**
+	 * Builds the recommended actions list on first use, then memoizes it.
+	 *
+	 * Deliberately kept out of the constructor. The strings below are translated,
+	 * and the `illdy_required_actions` filter is answered by Illdy Companion using
+	 * its own text domain. Resolving either before `init` makes WordPress 6.7+ emit
+	 * "_load_textdomain_just_in_time was called incorrectly" for the `illdy` and
+	 * `illdy-companion` domains.
+	 *
+	 * @return array
+	 */
+	public function get_recommended_actions() {
+
+		if ( null !== $this->recommended_actions ) {
+			return $this->recommended_actions;
+		}
+
 		$this->recommended_actions = apply_filters(
 			'illdy_required_actions', array(
 				array(
@@ -54,12 +79,7 @@ class Illdy {
 			)
 		);
 
-		$this->init_epsilon();
-		$this->init_welcome_screen();
-
-		add_action( 'customize_register', array( $this, 'init_customizer' ) );
-		add_filter( 'sidebars_widgets', array( $this, 'remove_specific_widget' ) );
-
+		return $this->recommended_actions;
 	}
 
 	public function init_epsilon() {
@@ -123,7 +143,7 @@ class Illdy {
 					'title'                        => esc_html__( 'Recomended Actions', 'illdy' ),
 					'social_text'                  => esc_html( $current_theme->get( 'Author' ) ) . esc_html__( ' is social :', 'illdy' ),
 					'plugin_text'                  => esc_html__( 'Recomended Plugins :', 'illdy' ),
-					'actions'                      => $this->recommended_actions,
+					'actions'                      => $this->get_recommended_actions(),
 					'plugins'                      => $this->recommended_plugins,
 					'theme_specific_option'        => $this->theme_slug . '_show_required_actions',
 					'theme_specific_plugin_option' => $this->theme_slug . '_show_required_plugins',
@@ -143,7 +163,7 @@ class Illdy {
 			$config = array(
 				'theme-name' => 'Illdy',
 				'theme-slug' => 'illdy',
-				'actions'    => $this->recommended_actions,
+				'actions'    => $this->get_recommended_actions(),
 				'plugins'    => $this->recommended_plugins,
 			)
 		);
@@ -187,4 +207,20 @@ class Illdy {
 
 }
 
-new Illdy();
+/**
+ * Boots the theme controller.
+ *
+ * Hooked to `after_setup_theme` at priority 15 rather than run at file-parse time:
+ * `illdy_setup()` calls `load_theme_textdomain()` at priority 10, so by the time this
+ * runs the `illdy` domain is already registered and no just-in-time translation
+ * loading is triggered. Every hook registered downstream of here targets
+ * `admin_menu`, `admin_init`, `customize_*`, `wp_ajax_*` or `sidebars_widgets`,
+ * all of which fire well after this point.
+ */
+if ( ! function_exists( 'illdy_boot' ) ) {
+	function illdy_boot() {
+		new Illdy();
+	}
+
+	add_action( 'after_setup_theme', 'illdy_boot', 15 );
+}

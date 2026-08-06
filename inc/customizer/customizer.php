@@ -6,13 +6,22 @@
 if ( ! function_exists( 'illdy_customize_register' ) ) {
 	function illdy_customize_register( $wp_customize ) {
 
-		// Get Settings
-		$wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
-		$wp_customize->get_setting( 'blogdescription' )->transport   = 'postMessage';
-		$wp_customize->get_setting( 'header_image' )->transport      = 'postMessage';
-		$wp_customize->get_setting( 'header_image_data' )->transport = 'postMessage';
+		/*
+		 * Core settings/controls can be absent when a child theme or plugin drops the
+		 * matching theme support. Assigning a property on null is a fatal error in
+		 * PHP 8, so resolve each one before touching it.
+		 */
+		foreach ( array( 'blogname', 'blogdescription', 'header_image', 'header_image_data' ) as $illdy_core_setting ) {
+			$illdy_setting = $wp_customize->get_setting( $illdy_core_setting );
+			if ( $illdy_setting ) {
+				$illdy_setting->transport = 'postMessage';
+			}
+		}
 
-		$wp_customize->get_control( 'custom_logo' )->section = 'illdy_general_section';
+		$illdy_logo_control = $wp_customize->get_control( 'custom_logo' );
+		if ( $illdy_logo_control ) {
+			$illdy_logo_control->section = 'illdy_general_section';
+		}
 
 		/**********************************************/
 		/*************** INIT ************************/
@@ -409,87 +418,89 @@ function illdy_is_sticky_header() {
  */
 if ( ! function_exists( 'illdy_sanitize_select' ) ) {
 	function illdy_sanitize_select( $input ) {
-		if ( is_numeric( $input ) ) {
-			return intval( $input );
-		}
+		// Previously fell through and returned null for any non-numeric input, which
+		// stored a null theme mod. Constrain to the two registered choices instead.
+		$input = is_numeric( $input ) ? intval( $input ) : 0;
+
+		return in_array( $input, array( 1, 2 ), true ) ? $input : 1;
 	}
 }
 
 if ( ! function_exists( 'illdy_about_general_title' ) ) {
 	function illdy_about_general_title() {
-		return get_theme_mode( 'illdy_about_general_title' );
+		return get_theme_mod( 'illdy_about_general_title' );
 	}
 }
 
 if ( ! function_exists( 'illdy_about_general_entry' ) ) {
 	function illdy_about_general_entry() {
-		return get_theme_mode( 'illdy_about_general_entry' );
+		return get_theme_mod( 'illdy_about_general_entry' );
 	}
 }
 
 if ( ! function_exists( 'illdy_contact_us_general_title' ) ) {
 	function illdy_contact_us_general_title() {
-		return get_theme_mode( 'illdy_contact_us_general_title' );
+		return get_theme_mod( 'illdy_contact_us_general_title' );
 	}
 }
 
 if ( ! function_exists( 'illdy_contact_us_general_text' ) ) {
 	function illdy_contact_us_general_text() {
-		return get_theme_mode( 'illdy_contact_us_general_text' );
+		return get_theme_mod( 'illdy_contact_us_general_text' );
 	}
 }
 
 if ( ! function_exists( 'illdy_contact_us_general_address_title' ) ) {
 	function illdy_contact_us_general_address_title() {
-		return get_theme_mode( 'illdy_contact_us_general_address_title' );
+		return get_theme_mod( 'illdy_contact_us_general_address_title' );
 	}
 }
 
 if ( ! function_exists( 'illdy_contact_us_general_customer_support_title' ) ) {
 	function illdy_contact_us_general_customer_support_title() {
-		return get_theme_mode( 'illdy_contact_us_general_customer_support_title' );
+		return get_theme_mod( 'illdy_contact_us_general_customer_support_title' );
 	}
 }
 
 if ( ! function_exists( 'illdy_address2' ) ) {
 	function illdy_address2() {
-		return get_theme_mode( 'illdy_address2' );
+		return get_theme_mod( 'illdy_address2' );
 	}
 }
 
 if ( ! function_exists( 'illdy_address1' ) ) {
 	function illdy_address1() {
-		return get_theme_mode( 'illdy_address1' );
+		return get_theme_mod( 'illdy_address1' );
 	}
 }
 
 if ( ! function_exists( 'illdy_phone' ) ) {
 	function illdy_phone() {
-		return get_theme_mode( 'illdy_phone' );
+		return get_theme_mod( 'illdy_phone' );
 	}
 }
 
 if ( ! function_exists( 'illdy_email' ) ) {
 	function illdy_email() {
-		return get_theme_mode( 'illdy_email' );
+		return get_theme_mod( 'illdy_email' );
 	}
 }
 
 if ( ! function_exists( 'illdy_footer_copyright' ) ) {
 	function illdy_footer_copyright() {
-		return get_theme_mode( 'illdy_footer_copyright' );
+		return get_theme_mod( 'illdy_footer_copyright' );
 	}
 }
 
 if ( ! function_exists( 'illdy_jumbotron_general_first_row_from_title' ) ) {
 	function illdy_jumbotron_general_first_row_from_title() {
-		return get_theme_mode( 'illdy_jumbotron_general_first_row_from_title' );
+		return get_theme_mod( 'illdy_jumbotron_general_first_row_from_title' );
 	}
 }
 
 if ( ! function_exists( 'illdy_jumbotron_general_second_row_from_title' ) ) {
 	function illdy_jumbotron_general_second_row_from_title() {
-		return get_theme_mode( 'illdy_jumbotron_general_second_row_from_title' );
+		return get_theme_mod( 'illdy_jumbotron_general_second_row_from_title' );
 	}
 }
 
@@ -510,9 +521,15 @@ if ( ! function_exists( 'illdy_img_footer_logo' ) ) {
 if ( ! function_exists( 'illdy_custom_logo' ) ) {
 	function illdy_custom_logo() {
 		$logo_id    = get_theme_mod( 'custom_logo' );
-		$logo_image = wp_get_attachment_image_src( $logo_id, 'full' );
+		$logo_image = $logo_id ? wp_get_attachment_image_src( $logo_id, 'full' ) : false;
 
-		return '<img src="' . esc_url( $logo_image[0] ) . '" />';
+		// wp_get_attachment_image_src() returns false when the attachment is gone;
+		// indexing that produced a PHP notice and an <img src="">.
+		if ( empty( $logo_image[0] ) ) {
+			return '';
+		}
+
+		return '<img src="' . esc_url( $logo_image[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" />';
 	}
 }
 if ( ! function_exists( 'illdy_contact_us_social' ) ) {

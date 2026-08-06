@@ -231,7 +231,7 @@ class Epsilon_Welcome_Screen {
 		$method = $args_action[1];
 		$args   = array();
 
-		if ( is_array( $_POST['args']['args'] ) ) {
+		if ( isset( $_POST['args']['args'] ) && is_array( $_POST['args']['args'] ) ) {
 			$args = Epsilon_Sanitizers::array_map_recursive( 'sanitize_text_field', wp_unslash( $_POST['args']['args'] ) );
 		}
 

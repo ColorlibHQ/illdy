@@ -30,9 +30,12 @@ $wp_customize->add_panel(
 	)
 );
 
-//
-$wp_customize->get_section( 'header_image' )->panel = $panel_id;
-$wp_customize->get_section( 'header_image' )->title = __( 'Blog Archive Header Image', 'illdy' );
+// Only present while `custom-header` theme support is registered.
+$illdy_header_image_section = $wp_customize->get_section( 'header_image' );
+if ( $illdy_header_image_section ) {
+	$illdy_header_image_section->panel = $panel_id;
+	$illdy_header_image_section->title = __( 'Blog Archive Header Image', 'illdy' );
+}
 
 $wp_customize->add_setting(
 	$prefix . '_archive_page_background_stretch', array(

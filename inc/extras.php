@@ -146,7 +146,18 @@ if ( ! function_exists( 'illdy_sections' ) ) {
 
 		$sections = illdy_get_sections_position();
 
+		if ( ! is_array( $sections ) ) {
+			$sections = array_keys( $templates );
+		}
+
 		foreach ( $sections as $s_id ) {
+			// The stored order can hold stale or unrecognised ids. Skipping anything we
+			// cannot map avoids an "Undefined array key" warning on PHP 8 and keeps a
+			// tampered theme mod from influencing which template part is loaded.
+			if ( ! is_string( $s_id ) || ! isset( $templates[ $s_id ] ) ) {
+				continue;
+			}
+
 			if ( illdy_sections_order( $s_id ) ) {
 				get_template_part( 'sections/front-page', $templates[ $s_id ] );
 			}
@@ -156,9 +167,32 @@ if ( ! function_exists( 'illdy_sections' ) ) {
 }
 
 function illdy_hex2rgb( $hex_color, $opacity = 1 ) {
-	$shorthand = ( strlen( $hex_color ) == 4 );
+	// Cast rather than trim: get_theme_mod() yields false for an unset colour, and
+	// strlen( false ) is deprecated in PHP 8.1+. Trimming here would change how
+	// whitespace-padded values (possible in imported databases) resolve.
+	$hex_color = is_string( $hex_color ) ? $hex_color : '';
+	$shorthand = ( 4 === strlen( $hex_color ) );
 
-	list( $r, $g, $b ) = $shorthand ? sscanf( $hex_color, '#%1s%1s%1s' ) : sscanf( $hex_color, '#%2s%2s%2s' );
+	$parsed = $shorthand
+		? sscanf( $hex_color, '#%1s%1s%1s' )
+		: sscanf( $hex_color, '#%2s%2s%2s' );
+
+	/*
+	 * sscanf() returns null for every component it could not read (and an int when the
+	 * subject is empty). Those nulls used to reach hexdec() directly, which PHP 8.1+
+	 * reports as a deprecation. Substituting '0' here silences that while producing the
+	 * exact same rgba() string the theme has always emitted for an unset colour.
+	 */
+	$parts = array( '0', '0', '0' );
+	if ( is_array( $parsed ) ) {
+		foreach ( array( 0, 1, 2 ) as $i ) {
+			if ( isset( $parsed[ $i ] ) && '' !== $parsed[ $i ] ) {
+				$parts[ $i ] = $parsed[ $i ];
+			}
+		}
+	}
+
+	list( $r, $g, $b ) = $parts;
 
 	return 'rgba( ' . hexdec( $shorthand ? "$r$r" : $r ) . ', ' . hexdec( $shorthand ? "$g$g" : $g ) . ', ' . hexdec( $shorthand ? "$b$b" : $b ) . ', ' . $opacity . ' )';
 }

@@ -36,8 +36,15 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
-		add_theme_support( 'custom-logo', array() );
-		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+		add_theme_support(
+			'custom-logo', array(
+				'flex-width'  => true,
+				'flex-height' => true,
+			)
+		);
+		// 'style', 'script' and 'navigation-widgets' drop the legacy type="" attributes
+		// and emit standards-compliant markup.
+		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script', 'navigation-widgets' ) );
 		add_theme_support(
 			'custom-header', array(
 				'default-image'  => esc_url( get_template_directory_uri() . '/layout/images/blog/blog-header.png' ),

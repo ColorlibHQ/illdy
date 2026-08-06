@@ -16,7 +16,8 @@ $jumbotron_type            = get_theme_mod( 'illdy_jumbotron_background_type', '
 $jumbotron_single_image    = get_theme_mod( 'illdy_jumbotron_enable_featured_image', false );
 $jumbotron_parallax_enable = get_theme_mod( 'illdy_jumbotron_enable_parallax_effect', true );
 $preloader_enable          = get_theme_mod( 'illdy_preloader_enable', 1 );
-$is_mobile_safari          = preg_match( '/(iPod|iPhone|iPad)/', $_SERVER['HTTP_USER_AGENT'] );
+$user_agent                = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
+$is_mobile_safari          = '' !== $user_agent && preg_match( '/(iPod|iPhone|iPad)/', $user_agent );
 $accent_color              = get_theme_mod( 'epsilon_accent_color', '#f1d204' );
 
 $style = '';
