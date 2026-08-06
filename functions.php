@@ -569,6 +569,7 @@ if ( ! function_exists( 'illdy_get_recommended_actions_url' ) ) {
 
 // Include theme files
 require get_template_directory() . '/inc/libraries/epsilon-framework/class-epsilon-autoloader.php';
+require get_template_directory() . '/inc/customizer/class-illdy-color-scheme.php';
 require get_template_directory() . '/inc/class-mt-notify-system.php';
 require get_template_directory() . '/inc/libraries/welcome-screen/class-epsilon-welcome-screen.php';
 require get_template_directory() . '/inc/class-illdy.php';

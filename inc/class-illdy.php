@@ -129,9 +129,10 @@ class Illdy {
 					'hover-state' => false,
 				),
 			),
-			'css'    => Epsilon_Color_Scheme::load_css_overrides( get_template_directory() . '/layout/css/style-overrides.css' ),
+			'css'    => Illdy_Color_Scheme::load_css_overrides( get_template_directory() . '/layout/css/style-overrides.css' ),
 		);
-		Epsilon_Color_Scheme::get_instance( $handler, $args );
+
+		new Illdy_Color_Scheme( $handler, $args );
 
 	}
 
