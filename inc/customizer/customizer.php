@@ -29,6 +29,7 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 
 		// Custom Controls
 		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-text-editor.php';
+		require_once get_template_directory() . '/inc/customizer/controls/class-illdy-control-color-scheme.php';
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-button.php';
 		require_once get_template_directory() . '/inc/customizer/class-epsilon-control-tab.php';
 		require_once get_template_directory() . '/inc/customizer/class-illdy-kaliforms-custom-control.php';
@@ -68,9 +69,9 @@ if ( ! function_exists( 'illdy_customize_register' ) ) {
 			)
 		);
 		$wp_customize->add_control(
-			new Epsilon_Control_Color_Scheme(
+			new Illdy_Control_Color_Scheme(
 				$wp_customize, 'illdy_color_scheme', array(
-					'type'        => 'epsilon-color-scheme',
+					'type'        => 'illdy-color-scheme',
 					'label'       => esc_html__( 'Color scheme', 'illdy' ),
 					'description' => esc_html__( 'Select a color scheme', 'illdy' ),
 					'choices'     => array(

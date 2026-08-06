@@ -61,8 +61,40 @@
 		} );
 	}
 
+	/**
+	 * Colour scheme palettes.
+	 *
+	 * Selecting a palette stores its id on the control's own setting and pushes the
+	 * palette's colours into the individual epsilon_*_color settings, which is what
+	 * the previous control did and what the front end reads.
+	 */
+	function initColorSchemes() {
+		$( document ).on( 'change', '.illdy-color-schemes input[type="radio"]', function () {
+			var $input = $( this ),
+				colors;
+
+			$input.closest( '.illdy-color-schemes' )
+				.find( '.illdy-color-scheme' ).removeClass( 'is-selected' );
+			$input.closest( '.illdy-color-scheme' ).addClass( 'is-selected' );
+
+			try {
+				colors = JSON.parse( $input.attr( 'data-colors' ) || '{}' );
+			} catch ( e ) {
+				return;
+			}
+
+			$.each( colors, function ( settingId, hex ) {
+				var setting = api( settingId );
+				if ( setting ) {
+					setting.set( hex );
+				}
+			} );
+		} );
+	}
+
 	api.bind( 'ready', function () {
 		initAll();
+		initColorSchemes();
 
 		// Sections render lazily; catch editors that appear when one is expanded.
 		api.section.each( function ( section ) {

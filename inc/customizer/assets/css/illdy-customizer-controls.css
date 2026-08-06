@@ -24,3 +24,52 @@
 .customize-control-illdy-text-editor .wp-media-buttons {
 	display: none;
 }
+
+/* Colour scheme palettes */
+.customize-control-illdy-color-scheme .illdy-color-schemes {
+	margin-top: 8px;
+}
+
+.customize-control-illdy-color-scheme .illdy-color-scheme {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 6px 8px;
+	margin: 0 0 4px;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.customize-control-illdy-color-scheme .illdy-color-scheme:hover {
+	border-color: #8c8f94;
+}
+
+.customize-control-illdy-color-scheme .illdy-color-scheme.is-selected {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+.customize-control-illdy-color-scheme .illdy-color-scheme-swatches {
+	display: flex;
+	flex: 0 0 auto;
+}
+
+.customize-control-illdy-color-scheme .illdy-color-scheme-swatch {
+	width: 18px;
+	height: 18px;
+	display: block;
+	border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.customize-control-illdy-color-scheme .illdy-color-scheme-swatch:first-child {
+	border-radius: 2px 0 0 2px;
+}
+
+.customize-control-illdy-color-scheme .illdy-color-scheme-swatch:last-child {
+	border-radius: 0 2px 2px 0;
+}
+
+.customize-control-illdy-color-scheme .illdy-color-scheme-name {
+	flex: 1 1 auto;
+}
