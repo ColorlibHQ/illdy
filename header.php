@@ -18,7 +18,9 @@ $jumbotron_parallax_enable = get_theme_mod( 'illdy_jumbotron_enable_parallax_eff
 $preloader_enable          = get_theme_mod( 'illdy_preloader_enable', 1 );
 $user_agent                = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
 $is_mobile_safari          = '' !== $user_agent && preg_match( '/(iPod|iPhone|iPad)/', $user_agent );
-$accent_color              = get_theme_mod( 'epsilon_accent_color', '#f1d204' );
+// Falls back to the shipped default when the stored value is not a valid hex colour.
+$accent_color              = sanitize_hex_color( get_theme_mod( 'epsilon_accent_color', '#f1d204' ) );
+$accent_color              = $accent_color ? $accent_color : '#f1d204';
 
 $style = '';
 
@@ -29,15 +31,15 @@ if ( 'page' == get_option( 'show_on_front' ) && is_front_page() ) {
 } elseif ( ( is_single() || is_page() ) && true == $jumbotron_single_image ) {
 
 	global $post;
-	if ( has_post_thumbnail( $post->ID ) ) {
+	if ( $post instanceof WP_Post && has_post_thumbnail( $post->ID ) ) {
 		$style = 'background-image: url(' . esc_url( get_the_post_thumbnail_url( $post->ID, 'full' ) ) . ');';
 	} elseif ( has_header_image() ) {
-		$style = 'background-image: url(' . get_header_image() . ');';
+		$style = 'background-image: url(' . esc_url( get_header_image() ) . ');';
 	} else {
 		$style = 'background-color: ' . $accent_color . ';';
 	}
 } elseif ( has_header_image() ) {
-	$style = 'background-image: url(' . get_header_image() . ');';
+	$style = 'background-image: url(' . esc_url( get_header_image() ) . ');';
 } else {
 	$style = 'background-color: ' . $accent_color . ';';
 }
@@ -80,7 +82,7 @@ if ( get_theme_mod( 'illdy_sticky_header_enable', false ) ) {
 <?php if ( 1 == $preloader_enable && ! is_customize_preview() ) : ?>
 	<div class="pace-overlay"></div>
 <?php endif; ?>
-<header id="header" class="<?php echo $header_class; ?>" style="<?php echo $style; ?>">
+<header id="header" class="<?php echo esc_attr( $header_class ); ?>" style="<?php echo esc_attr( $style ); ?>">
 	<div class="top-header">
 		<div class="container">
 			<div class="row">

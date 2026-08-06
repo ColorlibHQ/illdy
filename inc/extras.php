@@ -647,7 +647,7 @@ if ( ! function_exists( 'illdy_testimonials_css' ) ) {
 			$css .= '#testimonials .section-content .testimonials-carousel .carousel-testimonial .testimonial-content:after {border-color: ' . esc_attr( $illdy_testimonials_container_background_color ) . ' transparent transparent transparent;}';
 		}
 		if ( $illdy_testimonials_dots_color ) {
-			$css .= '#testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot:hover, #testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot:focus, #testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot.active {border-color: ' . $illdy_testimonials_dots_color . ';}';
+			$css .= '#testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot:hover, #testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot:focus, #testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot.active {border-color: ' . esc_attr( $illdy_testimonials_dots_color ) . ';}';
 			$css .= '#testimonials .section-content .testimonials-carousel .owl-controls .owl-dots .owl-dot {background-color: ' . esc_attr( $illdy_testimonials_dots_color ) . ';}';
 		}
 
@@ -660,14 +660,15 @@ if ( ! function_exists( 'illdy_output_sections_css' ) ) {
 	function illdy_output_sections_css() {
 	?>
 
-		<style type="text/css" id="illdy-about-section-css"><?php echo illdy_jumbotron_css(); ?></style>
-		<style type="text/css" id="illdy-latestnews-section-css"><?php echo illdy_latestnews_css(); ?></style>
-		<style type="text/css" id="illdy-fullwidth-section-css"><?php echo illdy_fullwidth_css(); ?></style>
-		<style type="text/css" id="illdy-about-section-css"><?php echo illdy_about_css(); ?></style>
-		<style type="text/css" id="illdy-projects-section-css"><?php echo illdy_projects_css(); ?></style>
-		<style type="text/css" id="illdy-services-section-css"><?php echo illdy_services_css(); ?></style>
-		<style type="text/css" id="illdy-team-section-css"><?php echo illdy_team_css(); ?></style>
-		<style type="text/css" id="illdy-testimonials-section-css"><?php echo illdy_testimonials_css(); ?></style>
+		<?php // The id must stay "illdy-<section>-section-css": the Customizer previewer resolves these elements by that pattern. ?>
+		<style id="illdy-jumbotron-section-css"><?php echo illdy_jumbotron_css(); ?></style>
+		<style id="illdy-latestnews-section-css"><?php echo illdy_latestnews_css(); ?></style>
+		<style id="illdy-fullwidth-section-css"><?php echo illdy_fullwidth_css(); ?></style>
+		<style id="illdy-about-section-css"><?php echo illdy_about_css(); ?></style>
+		<style id="illdy-projects-section-css"><?php echo illdy_projects_css(); ?></style>
+		<style id="illdy-services-section-css"><?php echo illdy_services_css(); ?></style>
+		<style id="illdy-team-section-css"><?php echo illdy_team_css(); ?></style>
+		<style id="illdy-testimonials-section-css"><?php echo illdy_testimonials_css(); ?></style>
 
 	<?php
 	}

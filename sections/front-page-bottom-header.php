@@ -31,7 +31,7 @@ if ( $jumbotron_title || $entry || $first_button_title || $second_button_title )
 			<div class="row">
 				<?php if ( $jumbotron_title ) : ?>
 					<div class="col-sm-12">
-						<h1><?php echo $jumbotron_title; ?></h1>
+						<h1><?php echo wp_kses_post( $jumbotron_title ); ?></h1>
 					</div><!--/.col-sm-12-->
 				<?php endif; ?>
 				<div class="col-sm-8 col-sm-offset-2">

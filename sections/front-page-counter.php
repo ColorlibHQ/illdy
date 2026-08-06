@@ -21,6 +21,8 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 ?>
 
 <?php
+$counter_background_color = sanitize_hex_color( $counter_background_color );
+
 if ( 'image' == $counter_background_type && $counter_background_image ) :
 	$counter_style = 'background-image: url(' . esc_url( $counter_background_image ) . ');background-color:' . $counter_background_color . ';';
 else :
@@ -30,7 +32,7 @@ endif;
 
 <?php if ( is_active_sidebar( 'front-page-counter-sidebar' ) ) { ?>
 
-<section id="counter" class="front-page-section" style="<?php echo $counter_style; ?>">
+<section id="counter" class="front-page-section" style="<?php echo esc_attr( $counter_style ); ?>">
 	<div class="counter-overlay"></div>
 	<div class="container">
 		<div class="row inline-columns">

@@ -49,8 +49,14 @@ else :
 	if ( have_posts() ) :
 		while ( have_posts() ) :
 			the_post();
-			$static_page_content = get_the_content();
-			if ( '' != $static_page_content ) :
+			/*
+			 * Run the standard `the_content` pipeline. Echoing get_the_content() raw
+			 * meant shortcodes, dynamic blocks and oEmbeds on a static front page were
+			 * never rendered, and the raw string was printed unescaped.
+			 */
+			$static_page_content = apply_filters( 'the_content', get_the_content() );
+			$static_page_content = str_replace( ']]>', ']]&gt;', $static_page_content );
+			if ( '' !== trim( $static_page_content ) ) :
 			?>
 				<section class="front-page-section" id="static-page-content">
 					<div class="section-header">
@@ -66,7 +72,7 @@ else :
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-sm-10 col-sm-offset-1">
-									<?php echo $static_page_content; ?>
+									<?php echo $static_page_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already through the_content filters. ?>
 								</div>
 							</div>
 						</div>

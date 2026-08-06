@@ -41,6 +41,7 @@ jQuery( document ).ready( function( $ ) {
 			data: {
 				'action': 'illdy_order_sections',
 				'sections': s_ordered,
+				'nonce': IlldyCustomizer.order_nonce
 			}
 		})
 		.done( function( data ) {

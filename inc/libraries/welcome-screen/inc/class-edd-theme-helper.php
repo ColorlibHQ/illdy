@@ -335,7 +335,7 @@ class EDD_Theme_Helper {
 			$theme->get( 'AuthorURI' ),
 			array(
 				'timeout'   => 15,
-				'sslverify' => false,
+				'sslverify' => true,
 				'body'      => $params,
 			)
 		);

@@ -235,6 +235,7 @@ if ( ! function_exists( 'illdy_customizer_js_load' ) ) {
 		$illdy_customizer['ajax_url']           = admin_url( 'admin-ajax.php' );
 		$illdy_customizer['template_directory'] = get_template_directory_uri();
 		$illdy_customizer['site_url']           = site_url();
+		$illdy_customizer['order_nonce']        = wp_create_nonce( 'illdy_order_sections' );
 
 		wp_localize_script( 'illdy-customizer', 'IlldyCustomizer', $illdy_customizer );
 
@@ -266,19 +267,26 @@ if ( ! function_exists( 'illdy_sanitize_radio_buttons' ) ) {
 if ( ! function_exists( 'illdy_customizer_css' ) ) {
 	add_action( 'wp_head', 'illdy_customizer_css' );
 	function illdy_customizer_css() {
-		$preloader_primary_color    = esc_attr( get_theme_mod( 'illdy_preloader_primary_color', '#f1d204' ) );
-		$preloader_secondly_color   = esc_attr( get_theme_mod( 'illdy_preloader_secondly_color', '#ffffff' ) );
-		$preloader_background_color = esc_attr( get_theme_mod( 'illdy_preloader_background_color', '#ffffff' ) );
+		/*
+		 * These land inside a CSS declaration, where esc_attr() is the wrong tool: it
+		 * permits ";" and "}", so a stored value could close the rule and append
+		 * arbitrary CSS. sanitize_hex_color() constrains them to a colour literal.
+		 */
+		$preloader_primary_color    = sanitize_hex_color( get_theme_mod( 'illdy_preloader_primary_color', '#f1d204' ) );
+		$preloader_secondly_color   = sanitize_hex_color( get_theme_mod( 'illdy_preloader_secondly_color', '#ffffff' ) );
+		$preloader_background_color = sanitize_hex_color( get_theme_mod( 'illdy_preloader_background_color', '#ffffff' ) );
 
 		$output = '';
 
-		$output .= '<style type="text/css">';
 		$output .= ( $preloader_primary_color ? '.pace .pace-progress {background-color: ' . $preloader_primary_color . '; color: ' . $preloader_primary_color . ';}' : '' );
 		$output .= ( $preloader_primary_color || $preloader_secondly_color ? '.pace .pace-activity {box-shadow: inset 0 0 0 2px ' . $preloader_primary_color . ', inset 0 0 0 7px ' . $preloader_secondly_color . ';}' : '' );
 		$output .= ( $preloader_background_color ? '.pace-overlay {background-color: ' . $preloader_background_color . ';}' : '' );
-		$output .= '</style>';
 
-		echo $output;
+		if ( '' === $output ) {
+			return;
+		}
+
+		echo '<style id="illdy-preloader-css">' . $output . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- values constrained to hex colours above.
 	}
 }
 
@@ -576,21 +584,64 @@ if ( ! function_exists( 'illdy_contact_us_social' ) ) {
 
 add_action( 'wp_ajax_illdy_order_sections', 'illdy_order_sections' );
 
+/**
+ * Persists the front-page section order.
+ *
+ * Reordering rewrites a theme mod, so it requires the same authority the Customizer
+ * itself does. This endpoint previously ran for any authenticated user, verified no
+ * nonce, and wrote raw $_POST data into the option.
+ */
 function illdy_order_sections() {
 
-	if ( isset( $_POST['sections'] ) ) {
-
-		set_theme_mod( 'illdy_frontpage_sections', $_POST['sections'] );
-		echo 'succes';
-
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		wp_send_json_error( 'forbidden', 403 );
 	}
 
-	wp_die(); // this is required to terminate immediately and return a proper response
+	check_ajax_referer( 'illdy_order_sections', 'nonce' );
+
+	$submitted = isset( $_POST['sections'] ) ? wp_unslash( $_POST['sections'] ) : array();
+
+	if ( ! is_array( $submitted ) ) {
+		wp_send_json_error( 'invalid', 400 );
+	}
+
+	$allowed = illdy_get_default_sections();
+	$clean   = array();
+
+	foreach ( $submitted as $section ) {
+		if ( ! is_string( $section ) ) {
+			continue;
+		}
+
+		$section = sanitize_text_field( $section );
+
+		if ( in_array( $section, $allowed, true ) && ! in_array( $section, $clean, true ) ) {
+			$clean[] = $section;
+		}
+	}
+
+	// A short or partial payload must never drop sections off the front page.
+	foreach ( $allowed as $section ) {
+		if ( ! in_array( $section, $clean, true ) ) {
+			$clean[] = $section;
+		}
+	}
+
+	set_theme_mod( 'illdy_frontpage_sections', $clean );
+
+	wp_send_json_success();
 }
 
-if ( ! function_exists( 'illdy_get_sections_position' ) ) {
-	function illdy_get_sections_position() {
-		$defaults = array(
+if ( ! function_exists( 'illdy_get_default_sections' ) ) {
+	/**
+	 * The canonical set of front-page section ids, in their shipped order.
+	 *
+	 * Doubles as the allowlist for anything that writes the stored order.
+	 *
+	 * @return string[]
+	 */
+	function illdy_get_default_sections() {
+		return array(
 			'illdy_panel_about',
 			'illdy_panel_projects',
 			'illdy_testimonials_general',
@@ -601,8 +652,34 @@ if ( ! function_exists( 'illdy_get_sections_position' ) ) {
 			'illdy_contact_us',
 			'illdy_full_width',
 		);
+	}
+}
+
+if ( ! function_exists( 'illdy_get_sections_position' ) ) {
+	function illdy_get_sections_position() {
+		$defaults = illdy_get_default_sections();
 		$sections = get_theme_mod( 'illdy_frontpage_sections', $defaults );
-		return $sections;
+
+		if ( ! is_array( $sections ) ) {
+			return $defaults;
+		}
+
+		// Reconcile against the allowlist so a stale or tampered value cannot drop,
+		// duplicate or invent a section.
+		$clean = array();
+		foreach ( $sections as $section ) {
+			if ( is_string( $section ) && in_array( $section, $defaults, true ) && ! in_array( $section, $clean, true ) ) {
+				$clean[] = $section;
+			}
+		}
+
+		foreach ( $defaults as $section ) {
+			if ( ! in_array( $section, $clean, true ) ) {
+				$clean[] = $section;
+			}
+		}
+
+		return $clean;
 	}
 }
 

@@ -26,7 +26,7 @@ $page_button_label = get_theme_mod( 'illdy_404_button_label', esc_html__( 'Home'
 					<div class="col-md-10">
 						<h2 class="subheading-404"><?php echo wp_kses_post( $page_subtitle ); ?></h2>
 						<div class="content-404"><?php echo wp_kses_post( $page_content ); ?></div>
-						<a href="<?php echo site_url(); ?>" class="button button-404"><?php echo esc_html( $page_button_label ); ?></a>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="button button-404"><?php echo esc_html( $page_button_label ); ?></a>
 					</div>
 				</div>
 			</section><!--/#blog-->

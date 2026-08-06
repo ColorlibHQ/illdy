@@ -22,7 +22,7 @@ if ( ! $general_title && ! $general_entry ) {
 
 <?php if ( '' != $general_title || '' != $general_entry || is_active_sidebar( 'front-page-about-sidebar' ) ) { ?>
 
-<section id="about" class="front-page-section" style="<?php echo $custom_css; ?>">
+<section id="about" class="front-page-section" style="<?php echo esc_attr( $custom_css ); ?>">
 	<?php if ( $general_title || $general_entry ) : ?>
 		<div class="section-header">
 			<div class="container">

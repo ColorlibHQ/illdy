@@ -75,6 +75,17 @@ class Epsilon_Ajax_Controller {
 
 		$method = $args_action[1];
 
+		if ( ! Epsilon_Ajax_Controller::is_allowed_call( $class, $method ) ) {
+			wp_die(
+				wp_json_encode(
+					array(
+						'status' => false,
+						'error'  => esc_html__( 'Not allowed', 'epsilon-framework' ),
+					)
+				)
+			);
+		}
+
 		if ( 'generate_partial_section' === $method ) {
 			$args = array_map( 'Epsilon_Ajax_Controller::sanitize_arguments_for_output', wp_unslash( $_POST['args']['args'] ) );
 		} else {
@@ -120,6 +131,43 @@ class Epsilon_Ajax_Controller {
 		} else {
 			return sanitize_text_field( $args );
 		}
+	}
+
+	/**
+	 * Whether a class/method pair may be dispatched over AJAX.
+	 *
+	 * The class name was already checked against an allowlist, but the method was taken
+	 * straight from the request, so any public static method on those classes could be
+	 * reached. Pairing them removes that and turns a mistyped method into a clean error
+	 * response instead of a fatal.
+	 *
+	 * @param string $class  Allowlisted class name.
+	 * @param string $method Requested method name.
+	 *
+	 * @return bool
+	 */
+	public static function is_allowed_call( $class, $method ) {
+		$allowed = array(
+			'Epsilon_Helper'        => array( 'get_image_sizes' ),
+			'Epsilon_Notifications' => array( 'dismiss_notice' ),
+			'Epsilon_Notify_System' => array( 'dismiss_required_action' ),
+			'Epsilon_Page_Generator' => array( 'generate_partial_section' ),
+			'Epsilon_Color_Scheme'  => array( 'epsilon_generate_color_scheme_css' ),
+			'Epsilon_Typography'    => array( 'epsilon_generate_typography_css' ),
+		);
+
+		/**
+		 * Filters the dispatchable AJAX method map.
+		 *
+		 * @param array $allowed Class name => list of method names.
+		 */
+		$allowed = apply_filters( 'epsilon_framework_allowed_ajax_methods', $allowed );
+
+		if ( ! isset( $allowed[ $class ] ) || ! in_array( $method, $allowed[ $class ], true ) ) {
+			return false;
+		}
+
+		return is_callable( array( $class, $method ) );
 	}
 
     /**
