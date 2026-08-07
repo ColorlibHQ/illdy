@@ -28,9 +28,78 @@ if ( ! defined( 'ILLDY_VERSION' ) ) {
  *
  * @return bool
  */
+if ( ! function_exists( 'illdy_is_legacy_widget_preview' ) ) {
+	/**
+	 * Whether this request is the block widget editor rendering a widget preview.
+	 *
+	 * WP_REST_Widget_Types_Controller::render_legacy_widget_preview_iframe() builds a
+	 * whole front-end document — wp_head(), body_class(), wp_footer() — and defines
+	 * IFRAME_REQUEST just before doing so. Pairing that with REST_REQUEST identifies
+	 * the preview without matching the Customizer, admin-ajax or a normal page.
+	 *
+	 * @return bool
+	 */
+	function illdy_is_legacy_widget_preview() {
+		return defined( 'REST_REQUEST' ) && REST_REQUEST
+			&& defined( 'IFRAME_REQUEST' ) && IFRAME_REQUEST;
+	}
+}
+
+if ( ! function_exists( 'illdy_legacy_widget_preview_styles' ) ) {
+	/**
+	 * Makes a widget legible on its own in the block widget editor's preview.
+	 *
+	 * The front page styles these widgets as part of a section: the counter and the
+	 * testimonials are white text over a dark background image supplied by `#counter`
+	 * and `#testimonials`. A preview renders one widget with no section around it on a
+	 * white page, so that text came out white on white — the blank boxes the block
+	 * widget editor was showing.
+	 *
+	 * The rules below only ever apply inside that preview iframe. Two of them are
+	 * fallbacks for values the front page fills in with JavaScript on scroll, which
+	 * never fires in a preview: the counter's number and the skill bar's fill.
+	 */
+	function illdy_legacy_widget_preview_styles() {
+		if ( ! illdy_is_legacy_widget_preview() ) {
+			return;
+		}
+
+		$css = '
+		.widget[class*="widget_illdy_"]{padding:6px 0;}
+
+		/* Supplied by the section wrapper on the front page, absent here. */
+		.widget_illdy_counter .counter-number,
+		.widget_illdy_counter .counter-description,
+		.widget_illdy_testimonial .testimonial-content,
+		.widget_illdy_testimonial .testimonial-content blockquote,
+		.widget_illdy_testimonial .testimonial-meta{color:#1d2327;}
+
+		/* Front page type scale assumes a full-width section. */
+		.widget_illdy_counter .counter-number{font-size:34px;line-height:1.2;}
+
+		/* countTo never runs in a preview, so show the target it counts to. */
+		.widget_illdy_counter .counter-number:empty:after{content:attr(data-to);}
+
+		/* Likewise the jQuery UI progress bar: show the track rather than nothing. */
+		.widget_illdy_skill .skill-progress-bar:empty{display:block;height:6px;border-radius:3px;background:#dcdcde;}
+		';
+
+		wp_add_inline_style( 'illdy-main', $css );
+	}
+
+	add_action( 'wp_enqueue_scripts', 'illdy_legacy_widget_preview_styles', 20 );
+}
+
 if ( ! function_exists( 'illdy_needs_front_page_assets' ) ) {
 	function illdy_needs_front_page_assets() {
-		$needed = is_front_page() || is_customize_preview();
+		/*
+		 * The widget preview is not the front page, so this used to return false there
+		 * and the front-page-only libraries were skipped. The Companion's widgets need
+		 * them to render — the counter is drawn by countTo, the skill bars by jQuery UI
+		 * progressbar — so every preview came back blank and the block widget editor
+		 * looked broken for widgets that work perfectly well.
+		 */
+		$needed = is_front_page() || is_customize_preview() || illdy_is_legacy_widget_preview();
 
 		/**
 		 * Filters whether the front-page libraries load.
@@ -94,22 +163,6 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			)
 		);
 		add_theme_support( 'customize-selective-refresh-widgets' );
-
-		/*
-		 * Opt out of the block widget editor.
-		 *
-		 * Illdy's front page is a stack of widget areas filled with the Companion's
-		 * widgets, whose forms are jQuery-driven — icon picker, media frame, TinyMCE.
-		 * The block screen renders each of them as a Legacy Widget block, which shows a
-		 * rendered *preview* rather than the form, loads the theme's front-end CSS into
-		 * that preview, and never runs the widgets' admin scripts. The result is a
-		 * screen of blank and mis-styled boxes for widgets that work perfectly well.
-		 *
-		 * remove_theme_support() rather than a hard filter: `use_widgets_block_editor`
-		 * still runs on top of this, so a site that wants block widgets can opt back in
-		 * with add_filter( 'use_widgets_block_editor', '__return_true' ).
-		 */
-		remove_theme_support( 'widgets-block-editor' );
 
 		register_default_headers(
 			array(

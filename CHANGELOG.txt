@@ -83,15 +83,20 @@ nothing lost, nothing added, nothing changed, and a byte-identical front page.
 - Removed the Registration tab and the PRO licence client behind it. Illdy is a
   free theme, so it was never reachable, and it disabled TLS certificate
   verification when it did run.
-- The Widgets screen works again. WordPress 5.8 replaced it with the block widget
-  editor, which renders each of the Companion's widgets as a "Legacy Widget"
-  block: a rendered preview instead of the editable form, with the theme's
-  front-end CSS bleeding into it and the widgets' own scripts never running, so
-  the icon pickers and Upload Image buttons were missing and the screen looked
-  half-empty. The theme now opts out with remove_theme_support(
-  'widgets-block-editor' ), which is the opt-out core documents for themes. A site
-  that prefers block widgets can add_filter( 'use_widgets_block_editor',
-  '__return_true' ).
+- Widgets now preview properly in the block widget editor. Each widget there is
+  rendered as a "Legacy Widget" block, which builds a small front-end page for it
+  in an iframe. Two things made those come out blank. The front-page-only
+  libraries were skipped because a preview is not the front page, so the counter
+  and skill widgets rendered the empty elements that countTo and the jQuery UI
+  progress bar are supposed to fill. And the counter and testimonial widgets take
+  their white text from the section wrapper around them on the front page, which a
+  single previewed widget does not have, so they were white on white. Previews now
+  load those libraries and carry a small stylesheet that only ever applies inside
+  the preview iframe, including fallbacks for the two values the scroll-triggered
+  JavaScript would otherwise fill in.
+- The widget forms themselves needed no change: they already initialise on the
+  widget-added and widget-updated events that the Legacy Widget block fires. The
+  icon picker, colour picker and visual editor all work in the block editor.
 - The front page is better edited in the Customizer than on the Widgets screen,
   which lists the section widget areas out of order and shows no preview. About
   Illdy and the Widgets screen both now link straight into the Front Page Sections
