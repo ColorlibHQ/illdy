@@ -113,30 +113,61 @@ if ( ! function_exists( 'illdy_legacy_widget_preview_styles' ) ) {
 		' . $labels . '
 		';
 
+		/*
+		 * Restore the section-level design.
+		 *
+		 * Almost everything that makes these widgets look like themselves is written
+		 * against `#counter ...` or `#testimonials ...` — the background they sit on,
+		 * their type, even their colour. A previewed widget has no section around it,
+		 * so none of it applies and the widgets render as unstyled spans. Reproducing
+		 * those declarations here shows the real design rather than a flattened one,
+		 * and the Customizer's own values are read so a preview matches this site
+		 * rather than the demo.
+		 */
+		$counter_type  = get_theme_mod( 'illdy_counter_background_type', 'image' );
+		$counter_image = get_theme_mod( 'illdy_counter_background_image', get_template_directory_uri() . '/layout/images/front-page/front-page-counter.jpg' );
+		$counter_color = sanitize_hex_color( get_theme_mod( 'illdy_counter_background_color', '#000000' ) );
+
+		$counter_bg = 'background-color:' . ( $counter_color ? $counter_color : '#000000' ) . ';';
+
+		if ( 'image' === $counter_type && $counter_image ) {
+			$counter_bg .= 'background-image:url(' . esc_url( $counter_image ) . ');background-size:cover;background-position:center;';
+		}
+
+		$testimonial_image = get_theme_mod( 'illdy_testimonials_general_background_image', get_template_directory_uri() . '/layout/images/testiomnials-background.jpg' );
+
+		$testimonial_panel = sanitize_hex_color( get_theme_mod( 'illdy_testimonials_container_background_color' ) );
+		$testimonial_panel = $testimonial_panel ? $testimonial_panel : '#6a4d8a';
+
+		$testimonial_text = sanitize_hex_color( get_theme_mod( 'illdy_testimonials_text_color' ) );
+		$testimonial_text = $testimonial_text ? $testimonial_text : '#fff';
+
+		$testimonial_meta = sanitize_hex_color( get_theme_mod( 'illdy_testimonials_author_text_color' ) );
+		$testimonial_meta = $testimonial_meta ? $testimonial_meta : '#fff';
+
 		$css .= '
+		.widget_illdy_counter{' . $counter_bg . 'padding:34px 20px;text-align:center;}
+		.widget_illdy_counter .counter-number{display:block;margin-bottom:10px;line-height:70px;font-weight:700;font-size:65px;color:#fff;font-family:"Poppins";}
+		.widget_illdy_counter .counter-description{display:block;line-height:24px;font-size:20px;color:#fff;text-transform:uppercase;font-family:"Poppins";font-weight:700;}
 
-		/* Supplied by the section wrapper on the front page, absent here. */
-		.widget_illdy_counter .counter-number,
-		.widget_illdy_counter .counter-description,
-		.widget_illdy_testimonial .testimonial-content,
-		.widget_illdy_testimonial .testimonial-content blockquote,
-		.widget_illdy_testimonial .testimonial-meta{color:#1d2327;}
+		.widget_illdy_testimonial{background-image:url(' . esc_url( $testimonial_image ) . ');background-size:cover;background-position:center;padding:34px 24px 14px;text-align:center;}
+		.widget_illdy_testimonial .testimonial-content{background-color:' . $testimonial_panel . ';margin-bottom:34px;padding:40px 30px 20px;position:relative;}
+		.widget_illdy_testimonial .testimonial-content blockquote{border-left:none;margin:0;padding:0;line-height:26px;font-size:16px;font-weight:400;font-family:"Lato";color:' . $testimonial_text . ';}
+		.widget_illdy_testimonial .testimonial-content:after{content:"";width:0;height:0;margin:0 auto;border-style:solid;border-width:19px 18px 0 18px;border-color:' . $testimonial_panel . ' transparent transparent transparent;position:absolute;right:0;bottom:-19px;left:0;}
+		.widget_illdy_testimonial .testimonial-meta{color:' . $testimonial_meta . ';font-family:"Poppins";}
 
-		/* Front page type scale assumes a full-width section. */
-		.widget_illdy_counter .counter-number{font-size:34px;line-height:1.2;}
+		/*
+		 * The project image is a CSS background on a link sized by #projects. Without
+		 * it the link collapses to nothing; the tile is a quarter-width column on the
+		 * front page, so cap the width rather than stretching it into a band.
+		 */
+		.widget_illdy_project .project{display:block;position:relative;max-width:300px;height:200px;background-size:cover;background-position:center;}
 
 		/* countTo never runs in a preview, so show the target it counts to. */
 		.widget_illdy_counter .counter-number:empty:after{content:attr(data-to);}
 
 		/* Likewise the jQuery UI progress bar: show the track rather than nothing. */
 		.widget_illdy_skill .skill-progress-bar:empty{display:block;height:6px;border-radius:3px;background:#dcdcde;}
-
-		/*
-		 * The project image is a CSS background on a link whose height comes from
-		 * #projects. With no section wrapper the link collapses to nothing, so the
-		 * preview would be blank however well it loaded.
-		 */
-		.widget_illdy_project .project{display:block;height:150px;background-size:cover;background-position:center;}
 		';
 
 		wp_add_inline_style( 'illdy-main', $css );
