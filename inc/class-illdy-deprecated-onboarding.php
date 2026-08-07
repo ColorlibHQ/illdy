@@ -2,11 +2,14 @@
 /**
  * Backwards-compatibility shims for the removed onboarding subsystem.
  *
- * Illdy 2.2.0 removed the welcome screen ("About Illdy"), the Recommended Actions
- * Customizer section, and the Epsilon Framework that powered them. None of that held
- * user content: the front page is built from widgets and theme mods, both untouched.
- * What it did hold was a handful of public class names that a child theme or a snippet
- * might still reference, so those keep resolving here instead of fataling.
+ * Illdy 2.2.0 removed the Epsilon Framework, the Recommended Actions Customizer section
+ * and the framework's welcome screen. None of that held user content: the front page is
+ * built from widgets and theme mods, both untouched. What it did hold was a handful of
+ * public class names that a child theme or a snippet might still reference, so those
+ * keep resolving here instead of fataling.
+ *
+ * The About Illdy screen itself still exists, rebuilt on core admin markup — see
+ * inc/admin/class-illdy-welcome.php. Only the Epsilon implementation is gone.
  *
  * Every method below is either a no-op or a thin wrapper over a core function. They
  * exist so nobody's site white-screens on update; nothing new should call them.
@@ -154,15 +157,15 @@ if ( ! class_exists( 'Epsilon_Notify_System' ) ) {
 	 */
 	class Epsilon_Notify_System {
 		public static function _get_plugin_basename_from_slug( $slug ) {
-			return Illdy_Legacy_Plugin_State::basename_from_slug( $slug );
+			return Illdy_Plugin_State::basename_from_slug( $slug );
 		}
 
 		public static function check_plugin_is_installed( $slug ) {
-			return Illdy_Legacy_Plugin_State::is_installed( $slug );
+			return Illdy_Plugin_State::is_installed( $slug );
 		}
 
 		public static function check_plugin_is_active( $slug ) {
-			return Illdy_Legacy_Plugin_State::is_active( $slug );
+			return Illdy_Plugin_State::is_active( $slug );
 		}
 
 		public static function dismiss_required_action( $args = array() ) {
@@ -181,23 +184,23 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 	 */
 	class MT_Notify_System {
 		public static function get_plugins( $plugin_folder = '' ) {
-			return Illdy_Legacy_Plugin_State::all();
+			return Illdy_Plugin_State::all();
 		}
 
 		public static function _get_plugin_basename_from_slug( $slug ) {
-			return Illdy_Legacy_Plugin_State::basename_from_slug( $slug );
+			return Illdy_Plugin_State::basename_from_slug( $slug );
 		}
 
 		public static function check_plugin_is_installed( $slug ) {
-			return Illdy_Legacy_Plugin_State::is_installed( $slug );
+			return Illdy_Plugin_State::is_installed( $slug );
 		}
 
 		public static function check_plugin_is_active( $slug ) {
-			return Illdy_Legacy_Plugin_State::is_active( $slug );
+			return Illdy_Plugin_State::is_active( $slug );
 		}
 
 		public static function check_plugin_update( $slug ) {
-			return Illdy_Legacy_Plugin_State::is_active( $slug );
+			return Illdy_Plugin_State::is_active( $slug );
 		}
 
 		public static function is_not_static_page() {
@@ -209,73 +212,7 @@ if ( ! class_exists( 'MT_Notify_System' ) ) {
 		}
 
 		public static function create_plugin_requirement_title( $install_text, $activate_text, $plugin_slug ) {
-			return Illdy_Legacy_Plugin_State::is_installed( $plugin_slug ) ? $activate_text : $install_text;
-		}
-	}
-}
-
-if ( ! class_exists( 'Illdy_Legacy_Plugin_State' ) ) {
-	/**
-	 * Shared implementation behind the two notify-system shims above.
-	 *
-	 * get_plugins() lives in an admin-only file, so it is required on demand; calling
-	 * these helpers from a front-end request used to be a fatal.
-	 */
-	class Illdy_Legacy_Plugin_State {
-		/**
-		 * @return array Installed plugins keyed by basename.
-		 */
-		public static function all() {
-			if ( ! function_exists( 'get_plugins' ) ) {
-				require_once ABSPATH . 'wp-admin/includes/plugin.php';
-			}
-
-			return get_plugins();
-		}
-
-		/**
-		 * @param string $slug Plugin directory slug.
-		 *
-		 * @return string Plugin basename, or '' when not installed.
-		 */
-		public static function basename_from_slug( $slug ) {
-			$slug = (string) $slug;
-
-			foreach ( array_keys( self::all() ) as $basename ) {
-				if ( dirname( $basename ) === $slug ) {
-					return $basename;
-				}
-			}
-
-			return '';
-		}
-
-		/**
-		 * @param string $slug Plugin directory slug.
-		 *
-		 * @return bool
-		 */
-		public static function is_installed( $slug ) {
-			return '' !== self::basename_from_slug( $slug );
-		}
-
-		/**
-		 * @param string $slug Plugin directory slug.
-		 *
-		 * @return bool
-		 */
-		public static function is_active( $slug ) {
-			$basename = self::basename_from_slug( $slug );
-
-			if ( '' === $basename ) {
-				return false;
-			}
-
-			if ( ! function_exists( 'is_plugin_active' ) ) {
-				require_once ABSPATH . 'wp-admin/includes/plugin.php';
-			}
-
-			return is_plugin_active( $basename );
+			return Illdy_Plugin_State::is_installed( $plugin_slug ) ? $activate_text : $install_text;
 		}
 	}
 }

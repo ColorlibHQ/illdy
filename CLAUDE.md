@@ -8,7 +8,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The theme was previously built on a vendored copy of the **Epsilon Framework** (MachoThemes 1.2.2). It is **entirely removed** as of 2.2.0 — don't re-add it or reach for `Epsilon_*` classes. `inc/customizer/class-illdy-deprecated.php` and `inc/class-illdy-deprecated-onboarding.php` hold thin shims for the old public names so third-party code doesn't fatal; they are BC only, never a target for new code.
 
-There is **no onboarding UI**: no welcome/About screen, no Recommended Actions, no recommended-plugins list, no PRO licensing. Demo content import lives in the Illdy Companion plugin at **Appearance → Import Demo Content**. `themes.php?page=illdy-welcome` redirects there via the `admin_page_access_denied` hook.
+**Appearance → About Illdy** ([inc/admin/class-illdy-welcome.php](inc/admin/class-illdy-welcome.php)) is theme-owned and built on core admin markup — it keeps the original `illdy-welcome` slug so old bookmarks and Colorlib's docs links still resolve. Tabs: Getting Started, Recommended Plugins, Support, plus **Import Demo Content** contributed by Illdy Companion.
+
+Tabs are extensible — `illdy_welcome_tabs` (filter, id => label) and `illdy_welcome_tab_{id}` (action, renders the body). An unrecognised `?tab=` falls back to the first tab rather than being used as a path, which is how the Epsilon version fataled.
+
+The Recommended Plugins tab emits core's `.plugin-card` markup inside `#plugin-filter` and enqueues core's `plugin-install`/`updates` scripts, so Install/Activate run through `wp.updates` — **the theme ships no JS and owns no nonce for this**. `Illdy_Plugin_State` ([inc/admin/class-illdy-plugin-state.php](inc/admin/class-illdy-plugin-state.php)) resolves install/active state and caches `plugins_api()` in a transient (12 h; failures cached 1 h so an offline site doesn't retry every load).
+
+What is **not** coming back: Recommended Actions (the dismissable checklist that wrote its own option), the PRO licence/EDD updater, and the admin notice that nagged on every screen.
 
 Targets WordPress 7 / PHP 8.5; verified to boot with zero PHP notices, warnings or deprecations on WP 7.0.2 / PHP 8.5.6. Bootstrap's **JavaScript is deliberately not loaded** — no template emits a `data-toggle`/`data-target`/`data-ride`/`data-dismiss`/`data-slide` attribute, so no Bootstrap plugin was ever initialised, and every published Bootstrap 3 CVE lives in that code. Don't re-add it; if you need a Bootstrap JS component, add the specific behaviour in `layout/js/scripts.js` instead.
 
@@ -103,9 +109,14 @@ Custom actions available to templates and the companion plugin: `illdy_above_con
 
 ### Demo content import (lives in the plugin)
 
-Illdy Companion owns it end to end: `Illdy_Companion_Importer_Page` renders **Appearance → Import Demo Content** and handles `wp_ajax_illdy_companion_import_demo` (nonce + `manage_options`), calling `Illdy_Companion_Import_Data::process_sample_content()`. Step names from the request are intersected with `get_import_steps()` — never call a method named by request data.
+Illdy Companion owns the logic and the endpoint; the theme only provides the tab to render into. `Illdy_Companion_Importer_Page` hooks `illdy_welcome_tabs` and renders on `illdy_welcome_tab_import`, and handles `wp_ajax_illdy_companion_import_demo` (own nonce + `manage_options`), calling `Illdy_Companion_Import_Data::process_sample_content()`. Step names from the request are intersected with `get_import_steps()` — never call a method named by request data.
 
-The import **overwrites** theme mods and front-page widgets, which is why the page warns and the JS confirms first. `inc/libraries/` no longer exists; there is nothing vendored in the theme.
+Two things to know before touching it:
+
+- **It defers its wiring to `after_setup_theme`.** Plugins load *before* themes, so `class_exists( 'Illdy_Welcome' )` is false at plugin-parse time. Checking there would always fall through to the standalone-page fallback.
+- **It falls back to its own Appearance page** when the theme offers no About screen (older Illdy, or a child theme that removed it), so the importer is never unreachable.
+
+The import **overwrites** theme mods and front-page widgets, which is why the panel warns and the JS confirms first. `inc/libraries/` no longer exists; there is nothing vendored in the theme.
 
 ## Gotchas
 

@@ -67,15 +67,25 @@ which keep their original ids precisely so existing sites keep their colours.
 Verified by diffing a database with 205 customised options before and after:
 nothing lost, nothing added, nothing changed, and a byte-identical front page.
 
-- Removed the five-tab "About Illdy" screen (Getting Started, Recommended
-  Actions, Recommended Plugins, Support, Registration) and the Recommended
-  Actions Customizer section. Neither stored any content; they listed plugins to
-  install and links to documentation.
-- Old themes.php?page=illdy-welcome links now redirect to the demo importer
-  rather than showing WordPress's "not allowed to access this page" error.
-- Demo content import moved to Illdy Companion, under Appearance -> Import Demo
-  Content. It is the same import, but the plugin now owns the whole flow instead
-  of injecting markup into the theme's onboarding list, and it asks for
+- About Illdy was rebuilt rather than dropped. Appearance -> About Illdy is still
+  there, on the same themes.php?page=illdy-welcome address so existing bookmarks
+  and documentation links keep working, but it is now built from core admin
+  markup: Getting Started, Recommended Plugins, Support, and an Import Demo
+  Content tab contributed by Illdy Companion.
+- Recommended Plugins installs and activates in place using WordPress's own
+  plugin installer, so the theme ships no JavaScript and handles no nonce for it.
+  Plugin names, versions, authors and icons come from wordpress.org and are
+  cached for 12 hours; the screen still renders if that request fails.
+- Removed the Recommended Actions checklist and its Customizer section. It stored
+  dismissal state in its own option and duplicated what the Getting Started tab
+  now says in three steps. Existing illdy_show_required_actions values are left
+  in the database untouched.
+- Removed the Registration tab and the PRO licence client behind it. Illdy is a
+  free theme, so it was never reachable, and it disabled TLS certificate
+  verification when it did run.
+- Demo content import moved into Illdy Companion. Same import, same three steps,
+  same values written, but the plugin now owns the page, the nonce and the
+  endpoint instead of handing the theme a block of HTML to print, and it asks for
   confirmation first because importing overwrites Customizer settings and
   widgets.
 - Removed the PRO licensing client (EDD updater, licence key screen), which was
