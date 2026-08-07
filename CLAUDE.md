@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Illdy** — a free one-page/multipurpose **WordPress theme** by Colorlib (not a static HTML template). Current stack is Bootstrap **3.3.6 CSS only** + jQuery + Owl Carousel 2, with Customizer controls built on **core WordPress APIs** plus five theme-owned control classes in `inc/customizer/controls/`.
 
-The theme was previously built on a vendored copy of the **Epsilon Framework** (MachoThemes 1.2.2). It is **entirely removed** as of 2.2.0 — don't re-add it or reach for `Epsilon_*` classes. `inc/customizer/class-illdy-deprecated.php` and `inc/class-illdy-deprecated-onboarding.php` hold thin shims for the old public names so third-party code doesn't fatal; they are BC only, never a target for new code.
+The theme was previously built on a vendored copy of the **Epsilon Framework** (MachoThemes 1.2.2). It is **entirely removed** as of 2.3.0 — don't re-add it or reach for `Epsilon_*` classes. `inc/customizer/class-illdy-deprecated.php` and `inc/class-illdy-deprecated-onboarding.php` hold thin shims for the old public names so third-party code doesn't fatal; they are BC only, never a target for new code.
 
 **Appearance → About Illdy** ([inc/admin/class-illdy-welcome.php](inc/admin/class-illdy-welcome.php)) is theme-owned and built on core admin markup — it keeps the original `illdy-welcome` slug so old bookmarks and Colorlib's docs links still resolve. Tabs: Getting Started, Recommended Plugins, Support, plus **Import Demo Content** contributed by Illdy Companion.
 
@@ -46,7 +46,7 @@ npx grunt build-archive   # produce illdy.zip (excludes node_modules, Gruntfile,
 bin/build-release.sh        # -> dist/illdy.zip, ready for wordpress.org/themes/upload/
 ```
 
-The script excludes build tooling, dotfiles and `layout/scss/` (which is **not** the source of the shipped CSS), and fails if a hidden file survives. Version comes from `style.css` and must match `readme.txt` and `package.json`. Theme Check must report **0 REQUIRED and 0 WARNING** — it passes on 2.2.0, with six advisory RECOMMENDED items that RELEASE.md explains are intentionally left alone.
+The script excludes build tooling, dotfiles and `layout/scss/` (which is **not** the source of the shipped CSS), and fails if a hidden file survives. Version comes from `style.css` and must match `readme.txt` and `package.json`. Theme Check must report **0 REQUIRED and 0 WARNING** — it passes on 2.3.0, with six advisory RECOMMENDED items that RELEASE.md explains are intentionally left alone.
 
 `wp i18n make-pot` must finish with no warnings; a warning means a placeholder string lacks a `translators:` comment.
 

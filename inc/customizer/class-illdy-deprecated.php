@@ -2,7 +2,7 @@
 /**
  * Backwards-compatibility shims for the removed Epsilon Framework classes.
  *
- * Illdy 2.2.0 replaced the Epsilon controls with core WordPress controls and a small
+ * Illdy 2.3.0 replaced the Epsilon controls with core WordPress controls and a small
  * set of theme-owned ones. A child theme or snippet that still instantiates the old
  * class names keeps working through the wrappers below, and gets a deprecation notice
  * pointing at the replacement rather than a fatal error.
@@ -26,7 +26,7 @@ if ( ! function_exists( 'illdy_deprecated_control' ) ) {
 	 * @param string $new Suggested replacement.
 	 */
 	function illdy_deprecated_control( $old, $new ) {
-		_deprecated_function( esc_html( $old ), '2.2.0', esc_html( $new ) );
+		_deprecated_function( esc_html( $old ), '2.3.0', esc_html( $new ) );
 	}
 }
 
@@ -127,7 +127,7 @@ if ( ! class_exists( 'Epsilon_Control_Slider' ) ) {
 
 if ( ! class_exists( 'Epsilon_Section_Recommended_Actions' ) ) {
 	/**
-	 * The Recommended Actions section was removed in 2.2.0.
+	 * The Recommended Actions section was removed in 2.3.0.
 	 *
 	 * It held no settings — only plugin install buttons and social links — so nothing
 	 * stored is lost by it going away. Anything still registering it gets an ordinary

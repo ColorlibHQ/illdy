@@ -1,4 +1,4 @@
-### V 2.2.0
+### V 2.3.0
 Modernisation pass for WordPress 7 / PHP 8.5. Verified against WordPress 7.0.2
 on PHP 8.5.6: the theme now boots with zero PHP notices, warnings or
 deprecations, where the previous release emitted six.

@@ -6,7 +6,7 @@ Tags: blog, entertainment, portfolio, custom-header, custom-logo, custom-menu, f
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,7 +99,7 @@ The exceptions to this license are as follows:
 
 == Changelog ==
 
-= 2.2.0 =
+= 2.3.0 =
 Modernisation release for WordPress 7 / PHP 8.5. See CHANGELOG.txt for the full
 list; the headlines are:
 

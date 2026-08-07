@@ -4,7 +4,7 @@ Illdy ships to the [WordPress.org theme directory](https://wordpress.org/themes/
 as a zip uploaded through a web form. There is no SVN step for themes — the directory
 imports the upload into its own repository for you.
 
-Current version: **2.2.0** (WordPress 7.0, PHP 7.4+).
+Current version: **2.3.0** (WordPress 7.0, PHP 7.4+).
 
 ## Before you build
 
@@ -82,7 +82,7 @@ Uploading a version that already exists is rejected, so bump `style.css` first.
 ## Git
 
 ```bash
-git tag -a v2.2.0 -m "Illdy 2.2.0"
+git tag -a v2.3.0 -m "Illdy 2.3.0"
 git push origin main --tags     # once a remote is configured
 ```
 
@@ -91,12 +91,12 @@ There is no remote configured in this working copy. To publish to GitHub:
 ```bash
 git remote add origin git@github.com:ColorlibHQ/illdy.git
 git push -u origin main --tags
-gh release create v2.2.0 dist/illdy.zip --notes-file <(sed -n '/^### V 2.2.0/,/^### V 2.1.10/p' CHANGELOG.txt)
+gh release create v2.3.0 dist/illdy.zip --notes-file <(sed -n '/^### V 2.3.0/,/^### V 2.1.10/p' CHANGELOG.txt)
 ```
 
 ## Known recommendations
 
-Theme Check reports six RECOMMENDED items on 2.2.0, all of them block-editor
+Theme Check reports six RECOMMENDED items on 2.3.0, all of them block-editor
 features the theme does not implement:
 
 - `register_block_pattern`, `register_block_style`
@@ -105,13 +105,13 @@ features the theme does not implement:
 
 None block a release. They are left alone deliberately: `wp-block-styles`,
 `align-wide` and `responsive-embeds` all change how existing post content renders, and
-2.2.0 is a modernisation release whose whole guarantee is that nothing about the front
+2.3.0 is a modernisation release whose whole guarantee is that nothing about the front
 end changes. They are worth doing — as their own release, with the visual diff that
 implies.
 
 `custom-background` would collide with the theme's own per-section background options.
 
-## What 2.2.0 verified
+## What 2.3.0 verified
 
 Recorded here so the next release knows what "no regression" was measured against, not
 assumed:

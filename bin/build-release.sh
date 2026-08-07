@@ -52,6 +52,7 @@ rsync -a \
 	--exclude 'package.json' \
 	--exclude 'package-lock.json' \
 	--exclude 'CLAUDE.md' \
+	--exclude '*.md' \
 	--exclude '.claude' \
 	--exclude 'bin' \
 	--exclude 'dist' \

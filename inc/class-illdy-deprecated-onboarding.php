@@ -2,7 +2,7 @@
 /**
  * Backwards-compatibility shims for the removed onboarding subsystem.
  *
- * Illdy 2.2.0 removed the Epsilon Framework, the Recommended Actions Customizer section
+ * Illdy 2.3.0 removed the Epsilon Framework, the Recommended Actions Customizer section
  * and the framework's welcome screen. None of that held user content: the front page is
  * built from widgets and theme mods, both untouched. What it did hold was a handful of
  * public class names that a child theme or a snippet might still reference, so those
@@ -33,7 +33,7 @@ if ( ! function_exists( 'illdy_deprecated_onboarding' ) ) {
 	 * @param string $replacement What to do instead.
 	 */
 	function illdy_deprecated_onboarding( $old, $replacement = '' ) {
-		_deprecated_function( esc_html( $old ), '2.2.0', esc_html( $replacement ) );
+		_deprecated_function( esc_html( $old ), '2.3.0', esc_html( $replacement ) );
 	}
 }
 
