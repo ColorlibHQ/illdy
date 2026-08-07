@@ -12,6 +12,7 @@
 		<p>
 		<?php
 			printf(
+				/* translators: %1$s: URL of the new post screen. */
 				wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'illdy' ),
 					array(
 						'a' => array(

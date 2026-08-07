@@ -118,6 +118,7 @@ if ( get_theme_mod( $prefix . '_projects_general_entry' ) ) {
 		new Illdy_Text_Custom_Control(
 			$wp_customize, $prefix . '_projects_entry_text', array(
 				'label'       => __( 'Install Illdy Companion', 'illdy' ),
+				/* translators: %s: URL of the Recommended Plugins tab where Illdy Companion can be installed. */
 				'description' => sprintf( __( 'In order to edit description please install <a href="%s" target="_blank">Illdy Companion</a>', 'illdy' ), illdy_get_recommended_actions_url() ),
 				'section'     => $panel_id,
 				'settings'    => $prefix . '_projects_entry_text',

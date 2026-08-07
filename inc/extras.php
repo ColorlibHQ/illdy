@@ -45,6 +45,7 @@ if ( ! function_exists( 'illdy_comment' ) ) {
 					</div><!--/.col-sm-2-->
 					<div class="col-sm-10">
 						<?php printf( '%s', get_comment_author_link() ); ?>
+						<?php /* translators: 1: comment date, 2: comment time. */ ?>
 						<time class="comment-time" datetime="<?php printf( '%s-%s-%s', get_the_date( 'Y' ), get_the_date( 'm' ), get_the_date( 'd' ) ); ?>"><?php printf( __( '%1$s at %2$s', 'illdy' ), get_comment_date(), get_comment_time() ); ?></time>
 						<div class="comment-entry markup-format">
 							<?php comment_text(); ?>

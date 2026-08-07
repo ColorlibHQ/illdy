@@ -38,6 +38,18 @@ npx grunt build-archive   # produce illdy.zip (excludes node_modules, Gruntfile,
 
 `grunt` with no task is a no-op. `build-archive` has `makepot` and `allmin` commented out — run them explicitly before packaging.
 
+### Releasing
+
+**[RELEASE.md](RELEASE.md) is the procedure** — read it before shipping. In short:
+
+```bash
+bin/build-release.sh        # -> dist/illdy.zip, ready for wordpress.org/themes/upload/
+```
+
+The script excludes build tooling, dotfiles and `layout/scss/` (which is **not** the source of the shipped CSS), and fails if a hidden file survives. Version comes from `style.css` and must match `readme.txt` and `package.json`. Theme Check must report **0 REQUIRED and 0 WARNING** — it passes on 2.2.0, with six advisory RECOMMENDED items that RELEASE.md explains are intentionally left alone.
+
+`wp i18n make-pot` must finish with no warnings; a warning means a placeholder string lacks a `translators:` comment.
+
 ## Architecture
 
 ### Bootstrap order (`functions.php`)

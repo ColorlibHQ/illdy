@@ -127,6 +127,7 @@ if ( post_password_required() ) {
 			'id_submit'      => 'input-submit',
 			'label_submit'   => esc_attr__( 'Send', 'illdy' ),
 			'title_reply'    => esc_attr__( 'Leave a comment', 'illdy' ),
+			/* translators: %s: name of the comment author being replied to. */
 			'title_reply_to' => esc_attr__( 'Leave a comment to %s', 'illdy' ),
 		)
 	);
