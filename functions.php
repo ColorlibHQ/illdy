@@ -94,6 +94,23 @@ if ( ! function_exists( 'illdy_setup' ) ) {
 			)
 		);
 		add_theme_support( 'customize-selective-refresh-widgets' );
+
+		/*
+		 * Opt out of the block widget editor.
+		 *
+		 * Illdy's front page is a stack of widget areas filled with the Companion's
+		 * widgets, whose forms are jQuery-driven — icon picker, media frame, TinyMCE.
+		 * The block screen renders each of them as a Legacy Widget block, which shows a
+		 * rendered *preview* rather than the form, loads the theme's front-end CSS into
+		 * that preview, and never runs the widgets' admin scripts. The result is a
+		 * screen of blank and mis-styled boxes for widgets that work perfectly well.
+		 *
+		 * remove_theme_support() rather than a hard filter: `use_widgets_block_editor`
+		 * still runs on top of this, so a site that wants block widgets can opt back in
+		 * with add_filter( 'use_widgets_block_editor', '__return_true' ).
+		 */
+		remove_theme_support( 'widgets-block-editor' );
+
 		register_default_headers(
 			array(
 				'default' => array(
@@ -590,5 +607,7 @@ require get_template_directory() . '/inc/class-illdy.php';
  * translated strings do not trip WordPress 6.7+'s just-in-time translation notice.
  */
 if ( is_admin() ) {
+	// Loaded first: the About screen links to its Front Page Sections panel URL.
+	require get_template_directory() . '/inc/admin/class-illdy-widgets-admin.php';
 	require get_template_directory() . '/inc/admin/class-illdy-welcome.php';
 }

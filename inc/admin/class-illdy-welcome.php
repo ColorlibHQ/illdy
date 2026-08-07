@@ -331,10 +331,10 @@ if ( ! class_exists( 'Illdy_Welcome' ) ) {
 						<span class="illdy-step__num" aria-hidden="true">3</span>
 						<?php esc_html_e( 'Make it yours', 'illdy' ); ?>
 					</h3>
-					<p><?php esc_html_e( 'Colours, fonts, the header image or video, and the order of the front page sections are all in the Customizer. Drag the sections in Front Page Sections to reorder them.', 'illdy' ); ?></p>
+					<p><?php esc_html_e( 'Everything lives in the Customizer: colours, fonts, the header image or video, and the content of each front page section. Front Page Sections lists them in the order they render, previews changes live, and reorders them by dragging.', 'illdy' ); ?></p>
 					<p>
-						<a class="button button-primary" href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>"><?php esc_html_e( 'Open the Customizer', 'illdy' ); ?></a>
-						<a class="button" href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>"><?php esc_html_e( 'Manage widgets', 'illdy' ); ?></a>
+						<a class="button button-primary" href="<?php echo esc_url( Illdy_Widgets_Admin::panel_url() ); ?>"><?php esc_html_e( 'Edit front page sections', 'illdy' ); ?></a>
+						<a class="button" href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>"><?php esc_html_e( 'Open the Customizer', 'illdy' ); ?></a>
 					</p>
 				</div>
 			</div>

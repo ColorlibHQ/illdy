@@ -120,6 +120,8 @@ The import **overwrites** theme mods and front-page widgets, which is why the pa
 
 ## Gotchas
 
+- **The theme opts out of the block widget editor** — `remove_theme_support( 'widgets-block-editor' )` in `illdy_setup()`. Core adds that support on `after_setup_theme` priority **1** and documents it as themes' opt-out point; `illdy_setup()` runs at 10, so the ordering is intentional, not luck. Don't remove it: the Companion's widget forms are jQuery-driven (icon picker, media frame, TinyMCE), and the block screen renders them as Legacy Widget blocks — a rendered *preview* instead of the form, with the theme's front-end CSS bleeding in and the widgets' admin scripts never running. A site can still opt back in with `add_filter( 'use_widgets_block_editor', '__return_true' )`.
+- **Send people to the Customizer, not `widgets.php`.** The front page is a stack of widget areas, so the Widgets screen lists them out of order, named by section, with no preview. `Illdy_Widgets_Admin::panel_url()` deep-links into the Front Page Sections panel (`autofocus[panel]`); use it rather than hardcoding a Customizer URL. The Widgets screen still works and carries a pointer to that panel — core UI is not removed.
 - **The theme serves the `.min` assets, so edits to a source file are invisible until you regenerate it.** `functions.php` enqueues `main.min.css`, `custom.min.css`, `bootstrap.min.css`, `plugins.min.js` and `scripts.min.js`. After editing any of those sources run `npx grunt mincss` / `npx grunt minjs`, or directly:
 
   ```bash
