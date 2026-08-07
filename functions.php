@@ -130,6 +130,13 @@ if ( ! function_exists( 'illdy_legacy_widget_preview_styles' ) ) {
 
 		/* Likewise the jQuery UI progress bar: show the track rather than nothing. */
 		.widget_illdy_skill .skill-progress-bar:empty{display:block;height:6px;border-radius:3px;background:#dcdcde;}
+
+		/*
+		 * The project image is a CSS background on a link whose height comes from
+		 * #projects. With no section wrapper the link collapses to nothing, so the
+		 * preview would be blank however well it loaded.
+		 */
+		.widget_illdy_project .project{display:block;height:150px;background-size:cover;background-position:center;}
 		';
 
 		wp_add_inline_style( 'illdy-main', $css );

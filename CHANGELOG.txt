@@ -100,6 +100,13 @@ nothing lost, nothing added, nothing changed, and a byte-identical front page.
 - Each preview now carries the widget's name. The block editor renders the widget
   output and nothing else, so a column of previews gave no indication of which
   widget was which.
+- The search form has a real label. It was described only by a placeholder and a
+  title attribute, and the submit button, being styled as an icon, had an empty
+  value and so no accessible name at all: screen readers announced an unlabelled
+  field beside an unlabelled button. The label is visually hidden, so nothing about
+  the design changes. This was also why the Search widget reported "No preview
+  available" in the block widget editor, which treats markup containing no text and
+  no image as an empty preview.
 - Widget previews no longer load the preloader, the lightbox, the sticky header,
   the parallax script, scripts.min.js or jQuery Migrate. One preview iframe is
   rendered per widget, so a populated front page meant twenty or more full
