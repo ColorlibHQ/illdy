@@ -267,12 +267,38 @@
 	line-height: 1.6;
 }
 
-.illdy-welcome .button .dashicons-external {
-	font-size: 14px;
-	width: 14px;
-	height: 14px;
-	vertical-align: text-bottom;
-	margin-left: 2px;
+/* Icons in text ---------------------------------------------------------- */
+
+/*
+ * Dashicons are 20px inline-blocks with their own line-height, so vertical-align
+ * lines them up against the text baseline and they hang below it inside a button,
+ * whose line-height is taller again. Centring the icon against the label is what is
+ * actually wanted, so every icon-plus-text pair here is a flex row.
+ */
+.illdy-welcome .illdy-external-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+/*
+ * Deliberately not a blanket `.illdy-welcome .dashicons` rule: that outranks
+ * .illdy-plugin-card__icon and would override the 64px flex basis on the plugin
+ * card's fallback icon.
+ */
+.illdy-welcome .illdy-external-link .dashicons,
+.illdy-welcome .illdy-step__badge .dashicons,
+.illdy-welcome .illdy-support-card h3 .dashicons {
+	flex: 0 0 auto;
+	line-height: 1;
+}
+
+.illdy-welcome .illdy-external-link .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	/* Optically the arrow reads high next to a cap-height label. */
+	margin-top: 1px;
 }
 
 /* Importer tab (rendered by Illdy Companion) ------------------------------ */

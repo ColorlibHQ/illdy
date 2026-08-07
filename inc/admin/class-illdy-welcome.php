@@ -259,6 +259,28 @@ if ( ! class_exists( 'Illdy_Welcome' ) ) {
 		}
 
 		/**
+		 * A link that opens in a new tab, with a trailing external-link icon.
+		 *
+		 * Centralised so the icon spacing and the screen-reader hint stay identical
+		 * everywhere; the icon is aligned by flex on .illdy-external-link rather than by
+		 * vertical-align, which cannot centre an inline-block against the button's
+		 * line-height.
+		 *
+		 * @param string $url     Destination.
+		 * @param string $label   Visible text.
+		 * @param string $classes Classes for the anchor.
+		 */
+		private function external_link( $url, $label, $classes = 'button' ) {
+			printf(
+				'<a class="%1$s illdy-external-link" href="%2$s" target="_blank" rel="noopener noreferrer">%3$s<span class="dashicons dashicons-external" aria-hidden="true"></span><span class="screen-reader-text">%4$s</span></a>',
+				esc_attr( $classes ),
+				esc_url( $url ),
+				esc_html( $label ),
+				esc_html__( '(opens in a new tab)', 'illdy' )
+			);
+		}
+
+		/**
 		 * Tab: Getting Started.
 		 */
 		private function tab_getting_started() {
@@ -321,11 +343,7 @@ if ( ! class_exists( 'Illdy_Welcome' ) ) {
 				<h3><?php esc_html_e( 'Read the documentation', 'illdy' ); ?></h3>
 				<p><?php esc_html_e( 'Illdy works differently from most themes: the front page is a stack of widget areas rather than a page you edit. The documentation covers how each section is put together.', 'illdy' ); ?></p>
 				<p>
-					<a class="button" href="https://colorlib.com/wp/support/illdy/" target="_blank" rel="noopener noreferrer">
-						<?php esc_html_e( 'Illdy documentation', 'illdy' ); ?>
-						<span class="dashicons dashicons-external" aria-hidden="true"></span>
-						<span class="screen-reader-text"><?php esc_html_e( '(opens in a new tab)', 'illdy' ); ?></span>
-					</a>
+					<?php $this->external_link( 'https://colorlib.com/wp/support/illdy/', __( 'Illdy documentation', 'illdy' ) ); ?>
 				</p>
 			</div>
 			<?php
@@ -482,11 +500,7 @@ if ( ! class_exists( 'Illdy_Welcome' ) ) {
 						</h3>
 						<p><?php echo esc_html( $illdy_card['text'] ); ?></p>
 						<p>
-							<a class="button" href="<?php echo esc_url( $illdy_card['url'] ); ?>" target="_blank" rel="noopener noreferrer">
-								<?php echo esc_html( $illdy_card['label'] ); ?>
-								<span class="dashicons dashicons-external" aria-hidden="true"></span>
-								<span class="screen-reader-text"><?php esc_html_e( '(opens in a new tab)', 'illdy' ); ?></span>
-							</a>
+							<?php $this->external_link( $illdy_card['url'], $illdy_card['label'] ); ?>
 						</p>
 					</div>
 				<?php endforeach; ?>
