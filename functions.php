@@ -64,8 +64,56 @@ if ( ! function_exists( 'illdy_legacy_widget_preview_styles' ) ) {
 			return;
 		}
 
+		/*
+		 * Name each preview. The block widget editor renders the widget's output and
+		 * nothing else, so a column of previews gives no clue which widget is which —
+		 * the registered name is the one thing that says what you are looking at.
+		 * Scoped to this theme's widgets; other plugins' previews are left alone.
+		 */
+		$labels = '';
+
+		global $wp_widget_factory;
+
+		if ( $wp_widget_factory instanceof WP_Widget_Factory ) {
+			foreach ( $wp_widget_factory->widgets as $illdy_widget ) {
+				if ( ! isset( $illdy_widget->id_base ) || 0 !== strpos( $illdy_widget->id_base, 'illdy_' ) ) {
+					continue;
+				}
+
+				$classname = isset( $illdy_widget->widget_options['classname'] ) ? $illdy_widget->widget_options['classname'] : '';
+
+				if ( '' === $classname ) {
+					continue;
+				}
+
+				// Tags stripped first so a name can never close the <style> element.
+				$name = str_replace(
+					array( '\\', '"' ),
+					array( '\\\\', '\\"' ),
+					wp_strip_all_tags( (string) $illdy_widget->name )
+				);
+
+				$labels .= sprintf(
+					'.widget.%1$s:before{content:"%2$s";}',
+					preg_replace( '/[^A-Za-z0-9_-]/', '', $classname ),
+					$name
+				);
+			}
+		}
+
 		$css = '
 		.widget[class*="widget_illdy_"]{padding:6px 0;}
+
+		.widget[class*="widget_illdy_"]:before{
+			display:block;margin:0 0 10px;padding:3px 9px;
+			font:600 11px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+			color:#50575e;background:#f0f0f1;border-radius:3px;
+			text-transform:none;letter-spacing:0;
+		}
+		' . $labels . '
+		';
+
+		$css .= '
 
 		/* Supplied by the section wrapper on the front page, absent here. */
 		.widget_illdy_counter .counter-number,
@@ -88,6 +136,102 @@ if ( ! function_exists( 'illdy_legacy_widget_preview_styles' ) ) {
 	}
 
 	add_action( 'wp_enqueue_scripts', 'illdy_legacy_widget_preview_styles', 20 );
+}
+
+if ( ! function_exists( 'illdy_trim_legacy_widget_preview_assets' ) ) {
+	/**
+	 * Drops front-end assets a widget preview cannot use.
+	 *
+	 * The block widget editor builds one of these iframes per widget — on a populated
+	 * Illdy front page that is twenty or more full front-end documents on a single
+	 * admin screen. A preview renders one widget and is never scrolled, clicked or
+	 * navigated, so the preloader, the lightbox, the sticky header, the parallax
+	 * backgrounds and the theme's own behaviour script have nothing to act on.
+	 *
+	 * Nothing declares these as dependencies — plugins.js depends on jQuery, the
+	 * progress bar, Owl, countTo and Visible, all of which are kept — so removing them
+	 * cannot break the render. Priority 99 so it runs after everything is enqueued.
+	 */
+	function illdy_trim_legacy_widget_preview_assets() {
+		if ( ! illdy_is_legacy_widget_preview() ) {
+			return;
+		}
+
+		foreach ( array( 'illdy-pace', 'illdy-fancybox', 'illdy-stickyheader', 'illdy-parallax', 'illdy-scripts' ) as $illdy_handle ) {
+			wp_dequeue_script( $illdy_handle );
+		}
+
+		foreach ( array( 'illdy-pace', 'illdy-fancybox' ) as $illdy_handle ) {
+			wp_dequeue_style( $illdy_handle );
+		}
+	}
+
+	add_action( 'wp_enqueue_scripts', 'illdy_trim_legacy_widget_preview_assets', 99 );
+}
+
+if ( ! function_exists( 'illdy_needs_jquery_migrate' ) ) {
+	/**
+	 * Whether jQuery Migrate should load.
+	 *
+	 * Migrate patches jQuery APIs removed in 3.x. Neither this theme nor Illdy
+	 * Companion calls one — every `.bind()` in the theme is the Customizer's own
+	 * `wp.customize` API, not jQuery's deprecated method — so nothing here needs it.
+	 *
+	 * It still loads by default, because a theme cannot know what the site's plugins
+	 * call, and a missing Migrate turns a silent deprecation into a fatal JS error.
+	 * The one place it is dropped outright is the widget preview, which runs only this
+	 * theme's and the Companion's code and is otherwise loaded twenty times over on a
+	 * single admin screen.
+	 *
+	 * To drop it site-wide once you have checked your plugins:
+	 *
+	 *     add_filter( 'illdy_load_jquery_migrate', '__return_false' );
+	 *
+	 * Load the front end with the console open first: real problems announce
+	 * themselves as "JQMIGRATE: <warning>" lines. "Migrate is installed" on its own
+	 * means nothing is using it.
+	 *
+	 * @return bool
+	 */
+	function illdy_needs_jquery_migrate() {
+		return (bool) apply_filters( 'illdy_load_jquery_migrate', ! illdy_is_legacy_widget_preview() );
+	}
+}
+
+if ( ! function_exists( 'illdy_maybe_drop_jquery_migrate' ) ) {
+	/**
+	 * Removes jquery-migrate from jQuery's dependencies when it is not wanted.
+	 *
+	 * Dequeuing the handle does not work: core registers it as a dependency of
+	 * `jquery`, so it is pulled straight back in. The dependency itself has to go.
+	 *
+	 * Deliberately not on `wp_default_scripts`, which fires the first time anything
+	 * touches WP_Scripts — during a widget preview that can be before the controller
+	 * defines IFRAME_REQUEST, so the context check there reads the wrong answer. This
+	 * runs late on wp_enqueue_scripts instead, which is still well before scripts are
+	 * printed and long after the context is settled.
+	 */
+	function illdy_maybe_drop_jquery_migrate() {
+		// wp-admin proper is left alone: it is full of other people's code.
+		if ( is_admin() || illdy_needs_jquery_migrate() ) {
+			return;
+		}
+
+		$scripts = wp_scripts();
+
+		if ( ! isset( $scripts->registered['jquery'] ) || ! is_array( $scripts->registered['jquery']->deps ) ) {
+			return;
+		}
+
+		$scripts->registered['jquery']->deps = array_diff(
+			$scripts->registered['jquery']->deps,
+			array( 'jquery-migrate' )
+		);
+
+		wp_dequeue_script( 'jquery-migrate' );
+	}
+
+	add_action( 'wp_enqueue_scripts', 'illdy_maybe_drop_jquery_migrate', 99 );
 }
 
 if ( ! function_exists( 'illdy_needs_front_page_assets' ) ) {

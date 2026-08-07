@@ -97,6 +97,20 @@ nothing lost, nothing added, nothing changed, and a byte-identical front page.
 - The widget forms themselves needed no change: they already initialise on the
   widget-added and widget-updated events that the Legacy Widget block fires. The
   icon picker, colour picker and visual editor all work in the block editor.
+- Each preview now carries the widget's name. The block editor renders the widget
+  output and nothing else, so a column of previews gave no indication of which
+  widget was which.
+- Widget previews no longer load the preloader, the lightbox, the sticky header,
+  the parallax script, scripts.min.js or jQuery Migrate. One preview iframe is
+  rendered per widget, so a populated front page meant twenty or more full
+  front-end documents on a single admin screen, none of which can scroll, click or
+  navigate.
+- jQuery Migrate still loads everywhere else. Nothing in the theme or in Illdy
+  Companion uses an API it patches, but a theme cannot know what a site's plugins
+  call, and removing it turns a silent deprecation in some other plugin into a
+  fatal JavaScript error. Sites that have checked their plugins can drop it with
+  add_filter( 'illdy_load_jquery_migrate', '__return_false' ), which applies to
+  the front end only; wp-admin is left alone.
 - The front page is better edited in the Customizer than on the Widgets screen,
   which lists the section widget areas out of order and shows no preview. About
   Illdy and the Widgets screen both now link straight into the Front Page Sections
