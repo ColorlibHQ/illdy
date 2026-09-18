@@ -442,7 +442,7 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 		);
 
 		// WP Register Style
-		wp_register_style( 'illdy-google-fonts', add_query_arg( $google_fonts_args, 'https://fonts.googleapis.com/css' ), array(), null );
+		wp_register_style( 'illdy-google-fonts', get_template_directory_uri() . '/assets/css/google-fonts.css', array(), null );
 
 		// WP Enqueue Style
 		if ( 1 == get_theme_mod( 'illdy_preloader_enable', 1 ) && ! is_customize_preview() ) {
@@ -477,30 +477,6 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 		wp_enqueue_style( 'illdy-style', get_stylesheet_uri(), array(), ILLDY_VERSION, 'all' );
 	}
 }
-
-/**
- * Opens the connection to the Google Fonts CDN early.
- *
- * Core already emits a dns-prefetch for fonts.googleapis.com; the font files
- * themselves are served from fonts.gstatic.com, so preconnecting there saves a
- * DNS + TCP + TLS round trip before the first glyph can be requested.
- */
-if ( ! function_exists( 'illdy_resource_hints' ) ) {
-	add_filter( 'wp_resource_hints', 'illdy_resource_hints', 10, 2 );
-
-	function illdy_resource_hints( $urls, $relation_type ) {
-		if ( 'preconnect' === $relation_type && wp_style_is( 'illdy-google-fonts', 'enqueued' ) ) {
-			$urls[] = array(
-				'href'        => 'https://fonts.gstatic.com',
-				'crossorigin' => 'anonymous',
-			);
-		}
-
-		return $urls;
-	}
-}
-
-
 /**
  *    WP Enqueue JavaScripts
  */
