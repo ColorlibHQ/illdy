@@ -846,3 +846,16 @@ if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin/class-illdy-widgets-admin.php';
 	require get_template_directory() . '/inc/admin/class-illdy-welcome.php';
 }
+
+
+/**
+ * Editor and markup support this theme predates.
+ */
+if ( ! function_exists( 'illdy_modern_supports' ) ) {
+	function illdy_modern_supports() {
+		add_theme_support( 'responsive-embeds' );
+		add_theme_support( 'align-wide' );
+		add_theme_support( 'editor-styles' );
+	}
+	add_action( 'after_setup_theme', 'illdy_modern_supports', 20 );
+}
