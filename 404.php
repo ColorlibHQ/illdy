@@ -20,7 +20,7 @@ $page_button_label = get_theme_mod( 'illdy_404_button_label', esc_html__( 'Home'
 		<div class="col-sm-12">
 			<section id="blog">
 				<div class="row row-404">
-					<div class="col-md-2 text-right">
+					<div class="col-md-2 text-end">
 						<span class="error-code"><?php _e( '404', 'illdy' ); ?></span>
 					</div>
 					<div class="col-md-10">

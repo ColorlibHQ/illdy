@@ -115,7 +115,7 @@ if ( get_theme_mod( 'illdy_sticky_header_enable', false ) ) {
 						);
 						?>
 					</nav>
-					<button class="open-responsive-menu"><i class="fa fa-bars"></i></button>
+					<button class="open-responsive-menu"><i class="fa-solid fa-bars"></i></button>
 				</div><!--/.col-sm-10-->
 			</div><!--/.row-->
 		</div><!--/.container-->

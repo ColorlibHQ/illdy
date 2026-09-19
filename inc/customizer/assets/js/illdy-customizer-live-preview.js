@@ -424,7 +424,7 @@
 	// Button Text
 	wp.customize( 'illdy_latest_news_button_text', function( value ) {
 		value.bind( function( newval ) {
-			$( '#latest-news .latest-news-button' ).html( '<i class="fa fa-chevron-circle-right"></i>' + newval );
+			$( '#latest-news .latest-news-button' ).html( '<i class="fa-solid fa-chevron-circle-right"></i>' + newval );
 		} );
 	} );
 

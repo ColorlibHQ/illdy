@@ -601,28 +601,28 @@ if ( ! function_exists( 'illdy_contact_us_social' ) ) {
 
 		$html = '';
 		if ( $contact_bar_twitter_url ) :
-			$html .= '<a href="' . esc_url( $contact_bar_twitter_url ) . '" title="' . __( 'Twitter', 'illdy' ) . '" target="_blank"><i class="fa fa-twitter"></i></a>';
+			$html .= '<a href="' . esc_url( $contact_bar_twitter_url ) . '" title="' . __( 'Twitter', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-twitter"></i></a>';
 		endif;
 		if ( $contact_bar_facebook_url ) :
-			$html .= '<a href="' . esc_url( $contact_bar_facebook_url ) . '" title="' . __( 'Facebook', 'illdy' ) . '" target="_blank"><i class="fa fa-facebook"></i></a>';
+			$html .= '<a href="' . esc_url( $contact_bar_facebook_url ) . '" title="' . __( 'Facebook', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-facebook"></i></a>';
 		endif;
 		if ( $contact_bar_linkedin_url ) :
-			$html .= '<a href="' . esc_url( $contact_bar_linkedin_url ) . '" title="' . __( 'LinkedIn', 'illdy' ) . '" target="_blank"><i class="fa fa-linkedin"></i></a>';
+			$html .= '<a href="' . esc_url( $contact_bar_linkedin_url ) . '" title="' . __( 'LinkedIn', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-linkedin"></i></a>';
 		endif;
 		if ( $contact_bar_googlep_url ) :
-			$html .= '<a href="' . esc_url( $contact_bar_googlep_url ) . '" title="' . __( 'Google+', 'illdy' ) . '" target="_blank"><i class="fa fa-google-plus"></i></a>';
+			$html .= '<a href="' . esc_url( $contact_bar_googlep_url ) . '" title="' . __( 'Google+', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-google-plus"></i></a>';
 		endif;
 		if ( $contact_bar_pinterest_url ) :
-			$html .= '<a href="' . esc_url( $contact_bar_pinterest_url ) . '" title="' . __( 'Pinterest', 'illdy' ) . '" target="_blank"><i class="fa fa-pinterest"></i></a>';
+			$html .= '<a href="' . esc_url( $contact_bar_pinterest_url ) . '" title="' . __( 'Pinterest', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-pinterest"></i></a>';
 		endif;
 		if ( $contact_bar_instagram_url ) :
-			$html .= '<a href="' . esc_url( $contact_bar_instagram_url ) . '" title="' . __( 'Instagram', 'illdy' ) . '" target="_blank"><i class="fa fa-instagram"></i></a>';
+			$html .= '<a href="' . esc_url( $contact_bar_instagram_url ) . '" title="' . __( 'Instagram', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-instagram"></i></a>';
 		endif;
 		if ( $contact_bar_youtube_url ) :
-			$html .= '<a href="' . esc_url( $contact_bar_youtube_url ) . '" title="' . __( 'YouTube', 'illdy' ) . '" target="_blank"><i class="fa fa-youtube"></i></a>';
+			$html .= '<a href="' . esc_url( $contact_bar_youtube_url ) . '" title="' . __( 'YouTube', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-youtube"></i></a>';
 		endif;
 		if ( $contact_bar_vimeo_url ) :
-			$html .= '<a href="' . esc_url( $contact_bar_vimeo_url ) . '" title="' . __( 'Vimeo', 'illdy' ) . '" target="_blank"><i class="fa fa-vimeo"></i></a>';
+			$html .= '<a href="' . esc_url( $contact_bar_vimeo_url ) . '" title="' . __( 'Vimeo', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-vimeo"></i></a>';
 		endif;
 
 		return $html;

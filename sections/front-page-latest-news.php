@@ -61,7 +61,7 @@ if ( $post_query->have_posts() || '' != $general_title || '' != $general_entry |
 			</div><!--/.container-->
 		</div><!--/.section-header-->
 		<?php if ( $button_text ) : ?>
-			<a href="<?php echo esc_url( $button_url ); ?>" title="<?php echo esc_attr( $button_text ); ?>" class="latest-news-button"><i class="fa fa-chevron-circle-right"></i><?php echo esc_html( $button_text ); ?>
+			<a href="<?php echo esc_url( $button_url ); ?>" title="<?php echo esc_attr( $button_text ); ?>" class="latest-news-button"><i class="fa-solid fa-chevron-circle-right"></i><?php echo esc_html( $button_text ); ?>
 			</a>
 		<?php endif; ?>
 
@@ -91,7 +91,7 @@ endif;
 									<div class="post-entry">
 										<?php echo wp_trim_words( get_the_content(), $number_of_words ); ?>
 									</div><!--/.post-entry-->
-									<a href="<?php the_permalink(); ?>" title="<?php _e( 'Read more', 'illdy' ); ?>" class="post-button"><i class="fa fa-chevron-circle-right"></i><?php _e( 'Read more', 'illdy' ); ?>
+									<a href="<?php the_permalink(); ?>" title="<?php _e( 'Read more', 'illdy' ); ?>" class="post-button"><i class="fa-solid fa-chevron-circle-right"></i><?php _e( 'Read more', 'illdy' ); ?>
 									</a>
 								</div><!--/.post-->
 							</div><!--/.col-sm-4-->

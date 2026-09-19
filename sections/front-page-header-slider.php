@@ -31,10 +31,10 @@ $autoplay_time = get_theme_mod( 'illdy_jumbotron_slider_autoplay_time', 5000 );
 <?php if ( $navigation ) { ?>
 	<div class="illdy-slider-navigation">
 		<a href="#" id="prev" class="illdy-navigation-button">
-			<i class="fa fa-angle-left" aria-hidden="true"></i>
+			<i class="fa-solid fa-angle-left" aria-hidden="true"></i>
 		</a>
 		<a href="#" id="next" class="illdy-navigation-button">
-			<i class="fa fa-angle-right" aria-hidden="true"></i>
+			<i class="fa-solid fa-angle-right" aria-hidden="true"></i>
 		</a>
 	</div>
 <?php } ?>
