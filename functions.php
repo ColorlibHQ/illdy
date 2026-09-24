@@ -454,7 +454,7 @@ if ( ! function_exists( 'illdy_enqueue_stylesheets' ) ) {
 		 * bootstrap-theme.css was dropped: it only styles .btn-*, .navbar-*, .alert-*,
 		 * .panel-* and .list-group-*, none of which this theme's front-end markup uses.
 		 */
-		wp_enqueue_style( 'illdy-bootstrap', get_template_directory_uri() . '/layout/css/bootstrap.min.css', array(), '5.3.8-4', 'all' );
+		wp_enqueue_style( 'illdy-bootstrap', get_template_directory_uri() . '/layout/css/bootstrap.min.css', array(), '3.4.1-1', 'all' );
 		wp_enqueue_style( 'illdy-font-awesome', get_template_directory_uri() . '/layout/css/font-awesome.min.css', array(), '7.3.1-1', 'all' );
 
 		// Only the front-page sections carry carousels.
