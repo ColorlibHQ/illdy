@@ -12,7 +12,6 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$contact_bar_facebook_url  = get_theme_mod( 'illdy_contact_bar_facebook_url', esc_url( '#' ) );
 	$contact_bar_twitter_url   = get_theme_mod( 'illdy_contact_bar_twitter_url', esc_url( '#' ) );
 	$contact_bar_linkedin_url  = get_theme_mod( 'illdy_contact_bar_linkedin_url', esc_url( '#' ) );
-	$contact_bar_googlep_url   = get_theme_mod( 'illdy_contact_bar_googlep_url', esc_url( '#' ) );
 	$contact_bar_youtube_url   = get_theme_mod( 'illdy_contact_bar_youtube_url', esc_url( '#' ) );
 	$contact_bar_vimeo_url     = get_theme_mod( 'illdy_contact_bar_vimeo_url', esc_url( '#' ) );
 	$contact_bar_pinterest_url = get_theme_mod( 'illdy_contact_bar_pinterest_url', esc_url( '#' ) );
@@ -30,7 +29,6 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$contact_bar_facebook_url  = get_theme_mod( 'illdy_contact_bar_facebook_url' );
 	$contact_bar_twitter_url   = get_theme_mod( 'illdy_contact_bar_twitter_url' );
 	$contact_bar_linkedin_url  = get_theme_mod( 'illdy_contact_bar_linkedin_url' );
-	$contact_bar_googlep_url   = get_theme_mod( 'illdy_contact_bar_googlep_url' );
 	$contact_bar_youtube_url   = get_theme_mod( 'illdy_contact_bar_youtube_url' );
 	$contact_bar_vimeo_url     = get_theme_mod( 'illdy_contact_bar_vimeo_url' );
 	$contact_bar_pinterest_url = get_theme_mod( 'illdy_contact_bar_pinterest_url' );
@@ -46,7 +44,7 @@ if ( current_user_can( 'edit_theme_options' ) ) {
 	$customer_support_title    = get_theme_mod( 'illdy_contact_us_general_customer_support_title' );
 }// End if().
 
-if ( '' != $general_title || '' != $general_entry || '' != $general_address_title || '' != $address1 || '' != $address2 || '' != $customer_support_title || '' != $email || '' != $phone || '' != $contact_bar_twitter_url || '' != $contact_bar_facebook_url || '' != $contact_bar_linkedin_url || '' != $contact_bar_googlep_url || '' != $contact_bar_instagram_url || '' != $contact_bar_vimeo_url || '' != $contact_bar_pinterest_url || '' != $contact_bar_youtube_url || null != $general_contact_form && 'default' != $general_contact_form ) {
+if ( '' != $general_title || '' != $general_entry || '' != $general_address_title || '' != $address1 || '' != $address2 || '' != $customer_support_title || '' != $email || '' != $phone || '' != $contact_bar_twitter_url || '' != $contact_bar_facebook_url || '' != $contact_bar_linkedin_url || '' != $contact_bar_instagram_url || '' != $contact_bar_vimeo_url || '' != $contact_bar_pinterest_url || '' != $contact_bar_youtube_url || null != $general_contact_form && 'default' != $general_contact_form ) {
 
 	?>
 	<section id="contact-us" class="front-page-section">
@@ -109,7 +107,7 @@ if ( '' != $general_title || '' != $general_entry || '' != $general_address_titl
 								</div><!--/.contact-us-box-->
 							</div><!--/.col-sm-5-->
 							<div class="col-sm-3">
-								<?php if ( $contact_bar_twitter_url || $contact_bar_facebook_url || $contact_bar_linkedin_url || $contact_bar_googlep_url || $contact_bar_pinterest_url || $contact_bar_instagram_url || $contact_bar_youtube_url || $contact_bar_vimeo_url ) { ?>
+								<?php if ( $contact_bar_twitter_url || $contact_bar_facebook_url || $contact_bar_linkedin_url || $contact_bar_pinterest_url || $contact_bar_instagram_url || $contact_bar_youtube_url || $contact_bar_vimeo_url ) { ?>
 									<div class="contact-us-social">
 										<?php if ( $contact_bar_twitter_url ) : ?>
 											<a href="<?php echo esc_url( $contact_bar_twitter_url ); ?>" title="<?php _e( 'Twitter', 'illdy' ); ?>" target="_blank"><i class="fa-brands fa-twitter"></i></a>
@@ -119,9 +117,6 @@ if ( '' != $general_title || '' != $general_entry || '' != $general_address_titl
 										<?php endif; ?>
 										<?php if ( $contact_bar_linkedin_url ) : ?>
 											<a href="<?php echo esc_url( $contact_bar_linkedin_url ); ?>" title="<?php _e( 'LinkedIn', 'illdy' ); ?>" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-										<?php endif; ?>
-										<?php if ( $contact_bar_googlep_url ) : ?>
-											<a href="<?php echo esc_url( $contact_bar_googlep_url ); ?>" title="<?php _e( 'Google+', 'illdy' ); ?>" target="_blank"><i class="fa-brands fa-google-plus"></i></a>
 										<?php endif; ?>
 										<?php if ( $contact_bar_pinterest_url ) : ?>
 											<a href="<?php echo esc_url( $contact_bar_pinterest_url ); ?>" title="<?php _e( 'Pinterest', 'illdy' ); ?>" target="_blank"><i class="fa-brands fa-pinterest"></i></a>

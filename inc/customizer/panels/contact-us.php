@@ -39,7 +39,6 @@ $wp_customize->add_control(
 						$prefix . '_contact_bar_facebook_url',
 						$prefix . '_contact_bar_twitter_url',
 						$prefix . '_contact_bar_linkedin_url',
-						$prefix . '_contact_bar_googlep_url',
 						$prefix . '_contact_bar_pinterest_url',
 						$prefix . '_contact_bar_instagram_url',
 						$prefix . '_contact_bar_youtube_url',
@@ -310,23 +309,6 @@ $wp_customize->add_control(
 	)
 );
 
-/* Google+ URL */
-$wp_customize->add_setting(
-	$prefix . '_contact_bar_googlep_url', array(
-		'sanitize_callback' => 'esc_url_raw',
-		'default'           => esc_url_raw( '#' ),
-		'transport'         => 'postMessage',
-	)
-);
-
-$wp_customize->add_control(
-	$prefix . '_contact_bar_googlep_url', array(
-		'label'    => __( 'Google+ URL', 'illdy' ),
-		'section'  => $prefix . '_contact_us',
-		'settings' => $prefix . '_contact_bar_googlep_url',
-		'priority' => 10,
-	)
-);
 
 /* Pinterest URL */
 $wp_customize->add_setting(

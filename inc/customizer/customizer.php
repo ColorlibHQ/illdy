@@ -593,7 +593,6 @@ if ( ! function_exists( 'illdy_contact_us_social' ) ) {
 		$contact_bar_facebook_url  = get_theme_mod( 'illdy_contact_bar_facebook_url' );
 		$contact_bar_twitter_url   = get_theme_mod( 'illdy_contact_bar_twitter_url' );
 		$contact_bar_linkedin_url  = get_theme_mod( 'illdy_contact_bar_linkedin_url' );
-		$contact_bar_googlep_url   = get_theme_mod( 'illdy_contact_bar_googlep_url' );
 		$contact_bar_youtube_url   = get_theme_mod( 'illdy_contact_bar_youtube_url' );
 		$contact_bar_vimeo_url     = get_theme_mod( 'illdy_contact_bar_vimeo_url' );
 		$contact_bar_pinterest_url = get_theme_mod( 'illdy_contact_bar_pinterest_url' );
@@ -608,9 +607,6 @@ if ( ! function_exists( 'illdy_contact_us_social' ) ) {
 		endif;
 		if ( $contact_bar_linkedin_url ) :
 			$html .= '<a href="' . esc_url( $contact_bar_linkedin_url ) . '" title="' . __( 'LinkedIn', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-linkedin"></i></a>';
-		endif;
-		if ( $contact_bar_googlep_url ) :
-			$html .= '<a href="' . esc_url( $contact_bar_googlep_url ) . '" title="' . __( 'Google+', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-google-plus"></i></a>';
 		endif;
 		if ( $contact_bar_pinterest_url ) :
 			$html .= '<a href="' . esc_url( $contact_bar_pinterest_url ) . '" title="' . __( 'Pinterest', 'illdy' ) . '" target="_blank"><i class="fa-brands fa-pinterest"></i></a>';
